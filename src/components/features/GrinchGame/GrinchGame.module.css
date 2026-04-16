@@ -1,0 +1,85 @@
+/* Grinch Game */
+.grinchGameContainer {
+  background: linear-gradient(180deg, #134e4a 0%, #064e3b 100%);
+  border-radius: 24px; padding: 30px; color: white; position: relative;
+  overflow: hidden; min-height: 500px; border: 4px solid #b91c1c;
+  box-shadow: 0 0 30px rgba(220, 38, 38, 0.2); font-family: var(--font-poppins), sans-serif; z-index: 1;
+}
+.snowOverlay {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(white 2px, transparent 3px);
+  background-size: 50px 50px; opacity: 0.15; pointer-events: none; z-index: 1;
+}
+.dynamicSnowContainer { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; z-index: 2; overflow: hidden; }
+.snowflakeParticle { position: absolute; top: -20px; background: white; border-radius: 50%; filter: blur(0.5px); animation: snowFall linear infinite; }
+
+.floatingDecor { position: absolute; opacity: 0.8; pointer-events: none; animation: floatDecor 6s ease-in-out infinite; z-index: 0; }
+.decor1 { top: 5%; left: 5%; animation-delay: 0s; transform: rotate(-15deg); }
+.decor2 { bottom: 15%; right: 5%; animation-delay: 2s; transform: rotate(10deg); }
+.decor3 { top: 20%; right: 15%; animation-delay: 1s; }
+.decor4 { bottom: 5%; left: 10%; animation-delay: 3s; transform: rotate(-10deg); }
+
+.grinchCharacter { position: absolute; top: -10px; right: -25px; width: 120px; z-index: 20; transform: rotate(-15deg); pointer-events: none; }
+.grinchCharacter img { width: 100%; height: auto; filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); }
+@media (min-width: 600px) { .grinchCharacter { width: 150px; top: -20px; right: -30px; } }
+
+.grinchHeader { text-align: center; margin-bottom: 40px; position: relative; z-index: 2; }
+.grinchHeader h3 { font-size: 1.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+
+.successBadge {
+  background: #F59E0B; color: #000; display: inline-block; padding: 5px 15px;
+  border-radius: 20px; font-weight: bold; position: absolute; bottom: -55px;
+  left: 50%; transform: translateX(-50%); width: max-content; animation: popInCentered 0.5s;
+}
+
+.numberPool {
+  display: flex; flex-wrap: wrap; justify-content: center; align-content: flex-start; gap: 15px;
+  min-height: 140px; margin-top: 70px; margin-bottom: 40px; position: relative; z-index: 10; padding: 10px; width: 100%;
+}
+.poolEmpty {
+  font-style: italic; opacity: 0.8; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  margin-top: 50px; padding-top: 20px;
+}
+
+.dropZonesContainer { display: flex; gap: 20px; justify-content: center; align-items: stretch; }
+.dropZone { flex: 1; min-height: 200px; background: rgba(0,0,0,0.3); border-radius: 16px; padding: 15px; border: 2px dashed rgba(255,255,255,0.3); transition: background 0.3s; }
+.errorFlash { background: rgba(239, 68, 68, 0.4); border-color: #ef4444; }
+.dropZone h4 { text-align: center; margin-top: 0; margin-bottom: 15px; font-size: 1.2rem; }
+.zoneSlots { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: flex-end; min-height: 80px; }
+.emptySlot { width: 50px; height: 50px; border-radius: 50%; border: 2px dashed rgba(255,255,255,0.2); margin: 0 3px; box-shadow: inset 0 0 10px rgba(0,0,0,0.1); flex-shrink: 0; }
+
+/* Toy Component Styles */
+.toyItem { width: 50px; height: 50px; position: relative; user-select: none; }
+.toyBody {
+  width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; box-shadow: 2px 5px 10px rgba(0,0,0,0.3);
+  position: relative; overflow: hidden;
+}
+.toyShapeWrapper {
+  width: 54px; height: 54px; position: relative; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+}
+.toySvgShape { width: 100%; height: 100%; display: block; }
+.toyNum {
+  font-size: 1.5rem; font-weight: bold; color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  z-index: 10; pointer-events: none;
+}
+.candyNum {
+  top: 65%; left: 68%; color: #14532d; font-size: 1.6rem; font-weight: 800; z-index: 20;
+  text-shadow: 1.5px 1.5px 0 #ffffff, -1.5px 1.5px 0 #ffffff, 1.5px -1.5px 0 #ffffff, -1.5px -1.5px 0 #ffffff, 0 2px 5px rgba(0,0,0,0.3);
+}
+.toyHighlight {
+  position: absolute; top: 10%; left: 10%; width: 40%; height: 40%;
+  background: radial-gradient(circle, rgba(251,255,255,0.8) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.toyVariant0 .toyBody { background: radial-gradient(circle at 30% 30%, #f87171, #991b1b); }
+.toyVariant4 .toyBody { background: radial-gradient(circle at 30% 30%, #2dd4bf, #0f766e); }
+
+.toyHangerLoop { position: absolute; top: -8px; left: 50%; transform: translateX(-50%); width: 12px; height: 12px; border: 2px solid #ccc; border-radius: 50%; border-bottom: none; z-index: 0; }
+.toyHangerCap { position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 18px; height: 8px; background: #999; border-radius: 3px; z-index: 1; }
+
+@keyframes popInCentered { 0% { transform: translateX(-50%) scale(0); } 100% { transform: translateX(-50%) scale(1); } }
+@keyframes snowFall { 100% { transform: translate(0, 105vh); } }
+@keyframes floatDecor { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(5deg); } }
