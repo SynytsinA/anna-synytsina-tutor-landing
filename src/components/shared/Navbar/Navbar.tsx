@@ -25,7 +25,7 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
-  const menuItems = t.menu || [];
+  const menuItems = React.useMemo(() => t.menu || [], [t.menu]);
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";

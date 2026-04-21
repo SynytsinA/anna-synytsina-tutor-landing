@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Instagram, Sparkles } from "lucide-react";
 import { FadeIn } from "@/components/shared/FadeIn";
 import { SOCIAL_LINKS, NAVIGATION_IMAGES } from "@/constants/navigation";
@@ -67,10 +68,11 @@ export const Footer = ({ t }: FooterProps) => {
 
               {/* Right Side: Image */}
               <div className="flex-1 relative min-h-[250px] md:min-h-full overflow-hidden border-t-[3px] md:border-t-0 md:border-l-[3px] border-slate-900 group">
-                <img
+                <Image
                   src={NAVIGATION_IMAGES.footerTeacher}
                   alt="Teacher Anna Class"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
 

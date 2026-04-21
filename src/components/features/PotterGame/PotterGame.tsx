@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/components/shared/MainLayout";
 import { usePotterGame } from "@/hooks/usePotterGame";
 import styles from "./PotterGame.module.css";
@@ -36,8 +37,19 @@ const FeatherIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const CheckIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" className={className}>
+const CheckIcon = ({ className, style }: { className?: string, style?: React.CSSProperties }) => (
+  <svg 
+    viewBox="0 0 24 24" 
+    width="24" 
+    height="24" 
+    stroke="currentColor" 
+    strokeWidth="3" 
+    fill="none" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+    style={style}
+  >
     <polyline points="20 6 9 17 4 12" />
   </svg>
 );
@@ -129,9 +141,11 @@ export const PotterGame = () => {
 
       <div className={styles.potterHeaderModern}>
         <div>
-          <img
+          <Image
             src="/sorting-hat.png"
             alt="Sorting Hat"
+            width={80}
+            height={80}
             className={styles.sortingHatImg}
           />
         </div>

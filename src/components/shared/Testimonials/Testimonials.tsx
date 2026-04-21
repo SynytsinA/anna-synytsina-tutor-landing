@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import { Heart, Send, MoreHorizontal, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/components/shared/MainLayout";
 import { FadeIn } from "@/components/shared/FadeIn";
@@ -45,11 +46,12 @@ const StoryCard: React.FC<StoryCardProps> = ({ review, index }) => {
              </div>
              
              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full overflow-hidden border border-white/50 bg-white/20">
-                   <img 
+                <div className="w-8 h-8 rounded-full overflow-hidden border border-white/50 bg-white/20 relative">
+                   <Image 
                      src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`} 
                      alt="avatar" 
-                     className="w-full h-full"
+                     fill
+                     className="object-cover"
                    />
                 </div>
                 <div className="flex flex-col flex-1 leading-[1.1]">
@@ -66,7 +68,7 @@ const StoryCard: React.FC<StoryCardProps> = ({ review, index }) => {
           {/* Story Content */}
           <div className="flex-1 flex flex-col justify-center items-center text-center gap-5 relative">
              <div className="bg-white text-black px-5 py-4 rounded-[16px_16px_16px_4px] font-semibold text-lg shadow-lg -rotate-2 max-w-[90%]">
-                "{review.text}"
+                &quot;{review.text}&quot;
              </div>
              <div className="bg-black/60 backdrop-blur-md px-4 py-2 rounded-full text-sm font-semibold">
                 {review.author}
@@ -100,7 +102,7 @@ export const Testimonials = () => {
   const t = allTranslations.testimonials;
   const reviews = t.reviews || [];
 
-  const checkScrollPosition = () => {
+  const checkScrollPosition = useCallback(() => {
     if (scrollRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
       setCanScrollLeft(scrollLeft > 0);
@@ -111,13 +113,13 @@ export const Testimonials = () => {
         setActiveIndex(index);
       }
     }
-  };
+  }, [activeIndex, reviews.length]);
 
   useEffect(() => {
     checkScrollPosition();
     window.addEventListener('resize', checkScrollPosition);
     return () => window.removeEventListener('resize', checkScrollPosition);
-  }, [activeIndex, reviews.length]);
+  }, [activeIndex, reviews.length, checkScrollPosition]);
 
   const handleScroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Candy, TreePine, Snowflake, Gift } from "lucide-react";
 import { useGrinchGame } from "@/hooks/useGrinchGame";
 import { Toy } from "./parts/Toy";
@@ -63,7 +64,7 @@ export const GrinchGame = ({ translations }: GrinchGameProps) => {
 
       {/* Grinch Character Image */}
       <div className={styles.grinchCharacter}>
-        <img src={grinchImgUrl} alt="The Grinch" />
+        <Image src={grinchImgUrl} alt="The Grinch" width={480} height={480} />
       </div>
 
       <div className={styles.grinchHeader}>
