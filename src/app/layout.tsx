@@ -1,18 +1,20 @@
-import type { Metadata } from "next";
-import { Fredoka, Patrick_Hand, Cinzel, Henny_Penny, Poppins } from "next/font/google";
+import { Nunito, Caveat, Cinzel, Henny_Penny } from "next/font/google";
 import "./globals.css";
 import { MainLayout } from "@/components/shared/MainLayout";
 import { ScrollToTop } from "@/components/ui/ScrollToTop/ScrollToTop";
 
-const fredoka = Fredoka({
-  variable: "--font-fredoka",
-  subsets: ["latin"],
+// Rounded, friendly font for body and headings (Cyrillic supported)
+const nunito = Nunito({
+  variable: "--font-nunito",
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "600", "700", "800", "900"],
 });
 
-const patrickHand = Patrick_Hand({
-  variable: "--font-patrick",
-  subsets: ["latin"],
-  weight: "400",
+// Original Whimsical/Handwritten font (Cyrillic supported)
+const whimsicalFont = Caveat({
+  variable: "--font-whimsical",
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "700"],
 });
 
 const cinzel = Cinzel({
@@ -26,15 +28,9 @@ const hennyPenny = Henny_Penny({
   weight: "400",
 });
 
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
-
 export const metadata: Metadata = {
   title: "Primary Tutor Landing",
-  description: "Landing page for Anna Synytsina",
+  description: "Educational platform for personalized learning",
 };
 
 export default function RootLayout({
@@ -43,9 +39,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="uk">
       <body
-        className={`${fredoka.variable} ${patrickHand.variable} ${cinzel.variable} ${hennyPenny.variable} ${poppins.variable} antialiased font-body text-slate-900 bg-white`}
+        className={`${nunito.variable} ${whimsicalFont.variable} ${cinzel.variable} ${hennyPenny.variable} antialiased font-body text-slate-900 bg-white`}
       >
         <MainLayout>
           {children}
@@ -55,3 +51,6 @@ export default function RootLayout({
     </html>
   );
 }
+
+
+

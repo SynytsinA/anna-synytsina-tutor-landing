@@ -20,9 +20,10 @@ const config = {
         }
       },
       fontFamily: {
-        heading: ["var(--font-fredoka)", "sans-serif"],
-        body: ["var(--font-fredoka)", "sans-serif"],
-        hand: ["var(--font-patrick)", "cursive"],
+        heading: ["var(--font-nunito)", "sans-serif"],
+        body: ["var(--font-nunito)", "sans-serif"],
+        hand: ["var(--font-whimsical)", "cursive"], // Caveat
+        whimsical: ["var(--font-whimsical)", "cursive"],
         cinzel: ["var(--font-cinzel)", "serif"],
         harry: ["var(--font-henny)", "serif"],
       },

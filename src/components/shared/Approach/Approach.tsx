@@ -63,7 +63,7 @@ export const Approach = () => {
                   >
                     <Icon size={28} strokeWidth={2.5} />
                   </div>
-                  <h3 className="font-heading text-2xl font-bold text-slate-900 mb-4 leading-tight">
+                  <h3 className="font-hand text-2xl font-bold text-slate-900 mb-4 leading-tight">
                     {item.title}
                   </h3>
                   <p className="text-slate-700 leading-relaxed font-medium">
