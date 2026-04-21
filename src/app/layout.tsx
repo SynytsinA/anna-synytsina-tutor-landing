@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito, Caveat, Cinzel, Henny_Penny } from "next/font/google";
+import { Nunito, Caveat, Alice, Kelly_Slab } from "next/font/google";
 import "./globals.css";
 import { MainLayout } from "@/components/shared/MainLayout";
 import { ScrollToTop } from "@/components/ui/ScrollToTop/ScrollToTop";
@@ -18,14 +18,17 @@ const whimsicalFont = Caveat({
   weight: ["400", "700"],
 });
 
-const cinzel = Cinzel({
-  variable: "--font-cinzel",
-  subsets: ["latin"],
+// Elegant magical serif (replaces Cinzel for Cyrillic support)
+const alice = Alice({
+  variable: "--font-alice",
+  subsets: ["latin", "cyrillic"],
+  weight: "400",
 });
 
-const hennyPenny = Henny_Penny({
-  variable: "--font-henny",
-  subsets: ["latin"],
+// Fantasy/Potter-style font (replaces Henny Penny for Cyrillic support)
+const kellySlab = Kelly_Slab({
+  variable: "--font-kelly",
+  subsets: ["latin", "cyrillic"],
   weight: "400",
 });
 
@@ -42,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="uk">
       <body
-        className={`${nunito.variable} ${whimsicalFont.variable} ${cinzel.variable} ${hennyPenny.variable} antialiased font-body text-slate-900 bg-white`}
+        className={`${nunito.variable} ${whimsicalFont.variable} ${alice.variable} ${kellySlab.variable} antialiased font-body text-slate-900 bg-white`}
       >
         <MainLayout>
           {children}
@@ -52,6 +55,7 @@ export default function RootLayout({
     </html>
   );
 }
+
 
 
 

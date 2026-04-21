@@ -24,8 +24,8 @@ const config = {
         body: ["var(--font-nunito)", "sans-serif"],
         hand: ["var(--font-whimsical)", "cursive"], // Caveat
         whimsical: ["var(--font-whimsical)", "cursive"],
-        cinzel: ["var(--font-cinzel)", "serif"],
-        harry: ["var(--font-henny)", "serif"],
+        cinzel: ["var(--font-alice)", "serif"],
+        harry: ["var(--font-kelly)", "serif"],
       },
       borderRadius: {
         'hand': '255px 15px 225px 15px / 15px 225px 15px 255px',
