@@ -51,6 +51,7 @@ const StoryCard: React.FC<StoryCardProps> = ({ review, index }) => {
                      src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`} 
                      alt="avatar" 
                      fill
+                     sizes="32px"
                      className="object-cover"
                    />
                 </div>

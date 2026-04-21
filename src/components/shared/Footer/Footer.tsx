@@ -72,6 +72,7 @@ export const Footer = ({ t }: FooterProps) => {
                   src={NAVIGATION_IMAGES.footerTeacher}
                   alt="Teacher Anna Class"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
