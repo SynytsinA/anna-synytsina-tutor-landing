@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Nunito, Caveat, Cinzel, Henny_Penny } from "next/font/google";
 import "./globals.css";
 import { MainLayout } from "@/components/shared/MainLayout";
