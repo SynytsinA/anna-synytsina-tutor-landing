@@ -23,3 +23,8 @@
 - Use `next/image` for all graphics.
 - Use `next/font` for local font optimization.
 - Every page must define a `Metadata` object in its `layout.tsx` or `page.tsx`.
+
+## Workflow & Git Rules
+- **No Auto-Commits:** You are STRICTLY FORBIDDEN from executing `git commit` or `git push` commands automatically after completing a task.
+- **Manual Review:** Always leave changes in the "modified" or "staged" state. The user will perform the final review and manual commit.
+- **Completion Protocol:** After finishing a task, provide a concise summary of the changes made and ask the user to verify the code.
