@@ -38,15 +38,15 @@ const FeatherIcon = ({ className }: { className?: string }) => (
 );
 
 const CheckIcon = ({ className, style }: { className?: string, style?: React.CSSProperties }) => (
-  <svg 
-    viewBox="0 0 24 24" 
-    width="24" 
-    height="24" 
-    stroke="currentColor" 
-    strokeWidth="3" 
-    fill="none" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
+  <svg
+    viewBox="0 0 24 24"
+    width="24"
+    height="24"
+    stroke="currentColor"
+    strokeWidth="3"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     className={className}
     style={style}
   >
@@ -74,18 +74,18 @@ export const PotterGame = () => {
     if (currentIndex === -1) return;
 
     for (let i = currentIndex + 1; i < currentPuzzles.length; i++) {
-        const nextId = currentPuzzles[i].id;
-        if (!completed[nextId] && inputRefs.current[nextId]) {
-            inputRefs.current[nextId]?.focus();
-            return;
-        }
+      const nextId = currentPuzzles[i].id;
+      if (!completed[nextId] && inputRefs.current[nextId]) {
+        inputRefs.current[nextId]?.focus();
+        return;
+      }
     }
     for (let i = 0; i < currentIndex; i++) {
-        const nextId = currentPuzzles[i].id;
-        if (!completed[nextId] && inputRefs.current[nextId]) {
-            inputRefs.current[nextId]?.focus();
-            return;
-        }
+      const nextId = currentPuzzles[i].id;
+      if (!completed[nextId] && inputRefs.current[nextId]) {
+        inputRefs.current[nextId]?.focus();
+        return;
+      }
     }
   };
 
@@ -142,11 +142,12 @@ export const PotterGame = () => {
       <div className={styles.potterHeaderModern}>
         <div>
           <Image
-            src="/sorting-hat.png"
+            src="/sorting-hat.png?v=2"
             alt="Sorting Hat"
-            width={80}
-            height={80}
+            width={250}
+            height={250}
             className={styles.sortingHatImg}
+            unoptimized
           />
         </div>
 

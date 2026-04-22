@@ -1,176 +1,604 @@
 .potterGameContainer {
   background-color: #0b090a;
-  border-radius: 24px; padding: 40px 20px; color: #fbbf24; position: relative;
-  overflow: hidden; min-height: 600px; border: 4px solid #1a1625;
-  box-shadow: inset 0 0 100px rgba(0,0,0,0.9), 0 15px 40px rgba(0,0,0,0.8); font-family: var(--font-alice), serif; z-index: 1;
+  border-radius: 24px;
+  padding: 40px 20px;
+  color: #fbbf24;
+  position: relative;
+  overflow: hidden;
+  min-height: 600px;
+  border: 4px solid #1a1625;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9), 0 15px 40px rgba(0, 0, 0, 0.8);
+  font-family: var(--font-alice), serif;
+  z-index: 1;
 }
+
 .potterBgStone {
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url('https://images.unsplash.com/photo-1518331647614-7a1f04cd34cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-  background-size: cover; background-position: center; opacity: 0.35; mix-blend-mode: multiply; z-index: 0; pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/hogwart-hall.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.7;
+  z-index: 0;
+  pointer-events: none;
 }
+
 .potterBgOverlay {
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: radial-gradient(circle at 50% 20%, rgba(251, 191, 36, 0.15) 0%, rgba(0, 0, 0, 0.7) 60%, rgba(0, 0, 0, 1) 100%);
-  z-index: 1; pointer-events: none;
+  z-index: 1;
+  pointer-events: none;
 }
+
 .hallowsBgWatermark {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 450px; height: 450px; opacity: 0.1; pointer-events: none; z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  height: 450px;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 2;
   filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.8));
 }
-.hallowsIconBg { width: 100%; height: 100%; color: #fbbf24; stroke-width: 1.5px; }
+
+.hallowsIconBg {
+  width: 100%;
+  height: 100%;
+  color: #fbbf24;
+  stroke-width: 1.5px;
+}
 
 /* Magical Dust */
-.magicalDustContainer { position: absolute; inset: 0; z-index: 3; pointer-events: none; overflow: hidden; }
-.magicalSpark {
-  position: absolute; width: 3px; height: 3px; background: #fbbf24; border-radius: 50%;
-  box-shadow: 0 0 8px 2px rgba(251, 191, 36, 0.6); animation: floatSpark 4s infinite ease-in-out; opacity: 0;
+.magicalDustContainer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
 }
+
+.magicalSpark {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #fbbf24;
+  border-radius: 50%;
+  box-shadow: 0 0 8px 2px rgba(251, 191, 36, 0.6);
+  animation: floatSpark 4s infinite ease-in-out;
+  opacity: 0;
+}
+
 @keyframes floatSpark {
-  0% { transform: translateY(0) scale(0.5); opacity: 0; }
-  50% { transform: translateY(-40px) scale(1.5); opacity: 0.8; }
-  100% { transform: translateY(-80px) scale(0.5); opacity: 0; }
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateY(-40px) scale(1.5);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-80px) scale(0.5);
+    opacity: 0;
+  }
 }
 
 /* House Crests */
 .crest {
-  position: absolute; width: 60px; height: 75px; z-index: 4; opacity: 0.2; pointer-events: none;
-  background-size: contain; background-repeat: no-repeat;
+  position: absolute;
+  width: 60px;
+  height: 75px;
+  z-index: 4;
+  opacity: 0.2;
+  pointer-events: none;
+  background-size: contain;
+  background-repeat: no-repeat;
   filter: sepia(1) hue-rotate(10deg) saturate(2) drop-shadow(0 0 10px rgba(251, 191, 36, 0.3));
 }
-.crestTl { top: 20px; left: 20px; background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Hermes_caduceus_gold.svg/100px-Hermes_caduceus_gold.svg.png'); } /* placeholder */
-.crestTr { top: 20px; right: 20px; background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Hermes_caduceus_gold.svg/100px-Hermes_caduceus_gold.svg.png'); }
-.crestBl { bottom: 20px; left: 20px; background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Hermes_caduceus_gold.svg/100px-Hermes_caduceus_gold.svg.png'); }
-.crestBr { bottom: 20px; right: 20px; background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Hermes_caduceus_gold.svg/100px-Hermes_caduceus_gold.svg.png'); }
 
-.candleContainer { position: absolute; z-index: 4; pointer-events: none; }
-.candleAnimator { display: flex; flex-direction: column; align-items: center; animation: candleFloat 5s ease-in-out infinite; }
+.crestTl {
+  top: 20px;
+  left: 20px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Hermes_caduceus_gold.svg/100px-Hermes_caduceus_gold.svg.png');
+}
+
+/* placeholder */
+.crestTr {
+  top: 20px;
+  right: 20px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Hermes_caduceus_gold.svg/100px-Hermes_caduceus_gold.svg.png');
+}
+
+.crestBl {
+  bottom: 20px;
+  left: 20px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Hermes_caduceus_gold.svg/100px-Hermes_caduceus_gold.svg.png');
+}
+
+.crestBr {
+  bottom: 20px;
+  right: 20px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Hermes_caduceus_gold.svg/100px-Hermes_caduceus_gold.svg.png');
+}
+
+.candleContainer {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.candleAnimator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: candleFloat 5s ease-in-out infinite;
+}
+
 .candleStick {
-  width: 14px; height: 40px; background: linear-gradient(90deg, #d6d3d1, #fefce8 40%, #e7e5e4);
-  border-radius: 4px; position: relative; box-shadow: inset -2px 0 5px rgba(0,0,0,0.3), 3px 5px 10px rgba(0,0,0,0.5);
+  width: 14px;
+  height: 40px;
+  background: linear-gradient(90deg, #d6d3d1, #fefce8 40%, #e7e5e4);
+  border-radius: 4px;
+  position: relative;
+  box-shadow: inset -2px 0 5px rgba(0, 0, 0, 0.3), 3px 5px 10px rgba(0, 0, 0, 0.5);
 }
-.candleFlameWrapper { position: relative; display: flex; justify-content: center; margin-bottom: -1px; }
-.candleWick { width: 2px; height: 6px; background: #1c1917; margin-bottom: -2px; }
+
+.candleFlameWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: -1px;
+}
+
+.candleWick {
+  width: 2px;
+  height: 6px;
+  background: #1c1917;
+  margin-bottom: -2px;
+}
+
 .candleFlame {
-  width: 12px; height: 24px; background: radial-gradient(ellipse at center, #fff 10%, #fbbf24 40%, #ea580c 80%, rgba(234, 88, 12, 0) 100%);
-  border-radius: 50% 50% 35% 35%; position: absolute; bottom: 3px;
-  animation: flameFlicker 3s infinite ease-in-out; filter: drop-shadow(0 0 10px rgba(251, 191, 36, 1));
+  width: 12px;
+  height: 24px;
+  background: radial-gradient(ellipse at center, #fff 10%, #fbbf24 40%, #ea580c 80%, rgba(234, 88, 12, 0) 100%);
+  border-radius: 50% 50% 35% 35%;
+  position: absolute;
+  bottom: 3px;
+  animation: flameFlicker 3s infinite ease-in-out;
+  filter: drop-shadow(0 0 10px rgba(251, 191, 36, 1));
 }
+
 .candleHalo {
-  position: absolute; bottom: 8px; width: 80px; height: 80px; background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 60%);
-  border-radius: 50%; animation: haloPulse 2s infinite alternate; mix-blend-mode: screen;
+  position: absolute;
+  bottom: 8px;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 60%);
+  border-radius: 50%;
+  animation: haloPulse 2s infinite alternate;
+  mix-blend-mode: screen;
 }
 
-.potterHeaderModern { text-align: center; margin-bottom: 50px; position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 12px; }
-.sortingHatImg { width: 120px; height: auto; filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.4)); margin-bottom: 5px; animation: floatHat 4s ease-in-out infinite; }
+.candlePos1 {
+  top: 10%;
+  left: 15%;
+  animation-duration: 4.5s;
+}
+
+.candlePos2 {
+  top: 25%;
+  right: 20%;
+  animation-duration: 5.2s;
+}
+
+.candlePos3 {
+  top: 60%;
+  left: 8%;
+  animation-duration: 4.8s;
+}
+
+.candlePos4 {
+  bottom: 15%;
+  right: 10%;
+  animation-duration: 5.5s;
+}
+
+.candlePos5 {
+  top: 35%;
+  left: 80%;
+  animation-duration: 4.2s;
+}
+
+.candlePos6 {
+  bottom: 30%;
+  right: 25%;
+  animation-duration: 5.0s;
+}
+
+.potterHeaderModern {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.sortingHatImg {
+  width: 250px;
+  height: auto;
+  filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.4));
+  margin-bottom: 5px;
+  animation: floatHat 4s ease-in-out infinite;
+}
+
 .magicalGlowText {
-  font-size: 3rem; color: #fdf5e6; text-transform: uppercase; margin: 0;
-  text-shadow: 0 0 5px #fff, 0 0 10px #fbbf24, 0 0 20px #fbbf24, 0 0 40px #b45309, 2px 2px 4px rgba(0,0,0,0.8);
-  font-weight: 700; line-height: 1.2; letter-spacing: 2px;
+  font-size: 3rem;
+  color: #fdf5e6;
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fbbf24, 0 0 20px #fbbf24, 0 0 40px #b45309, 2px 2px 4px rgba(0, 0, 0, 0.8);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 2px;
 }
 
-.snitchProgressTrack { width: 100%; max-width: 500px; height: 6px; background: rgba(0,0,0,0.5); border: 1px solid rgba(251, 191, 36, 0.2); border-radius: 10px; position: relative; margin-top: 15px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5); }
-.snitchProgressFill { height: 100%; background: linear-gradient(90deg, #b45309, #fbbf24, #fef3c7); border-radius: 10px; position: relative; transition: width 0.5s ease-out; box-shadow: 0 0 10px rgba(251, 191, 36, 0.5); }
-.flyingSnitchMarker { position: absolute; right: -20px; top: -22px; width: 45px; height: 45px; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8)); animation: flutter 0.15s linear infinite alternate; }
+.snitchProgressTrack {
+  width: 100%;
+  max-width: 500px;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  border-radius: 10px;
+  position: relative;
+  margin-top: 15px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+}
 
-.potterSuccessMsgModern { display: flex; align-items: center; gap: 16px; color: #fbbf24; font-weight: 700; font-size: 1.4rem; text-shadow: 0 0 15px rgba(251, 191, 36, 0.8), 2px 2px 0 #000; background: linear-gradient(90deg, transparent, rgba(120, 53, 15, 0.6), transparent); padding: 12px 40px; border-radius: 10px; border-top: 1px solid rgba(251, 191, 36, 0.3); border-bottom: 1px solid rgba(251, 191, 36, 0.3); }
-.boltIcon { width: 24px; height: 24px; color: #facc15; filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.6)); }
+.snitchProgressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #b45309, #fbbf24, #fef3c7);
+  border-radius: 10px;
+  position: relative;
+  transition: width 0.5s ease-out;
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+}
 
-.potterGridParchment { 
-  display: grid; 
-  grid-template-columns: repeat(2, 1fr); 
+.flyingSnitchMarker {
+  position: absolute;
+  right: -20px;
+  top: -22px;
+  width: 45px;
+  height: 45px;
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+  animation: flutter 0.15s linear infinite alternate;
+}
+
+.potterSuccessMsgModern {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #fbbf24;
+  font-weight: 700;
+  font-size: 1.4rem;
+  text-shadow: 0 0 15px rgba(251, 191, 36, 0.8), 2px 2px 0 #000;
+  background: linear-gradient(90deg, transparent, rgba(120, 53, 15, 0.6), transparent);
+  padding: 12px 40px;
+  border-radius: 10px;
+  border-top: 1px solid rgba(251, 191, 36, 0.3);
+  border-bottom: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.boltIcon {
+  width: 24px;
+  height: 24px;
+  color: #facc15;
+  filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.6));
+}
+
+.potterGridParchment {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 1fr;
-  gap: 20px; 
-  position: relative; 
-  z-index: 10; 
-  padding: 20px; 
-  max-width: 1000px; 
-  margin: 0 auto; 
-  width: 100%; 
+  gap: 20px;
+  position: relative;
+  z-index: 10;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
 }
-@media (min-width: 850px) { .potterGridParchment { grid-template-columns: repeat(4, 1fr); gap: 30px 20px; } }
+
+@media (min-width: 850px) {
+  .potterGridParchment {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px 20px;
+  }
+}
 
 .potterParchmentCard {
   background: linear-gradient(135deg, #eaddc5 0%, #c4aa7b 50%, #9e7f4c 100%);
-  border: 2px solid #574123; border-radius: 6px; padding: 10px 15px;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.6), inset 0 0 20px rgba(87, 65, 35, 0.5); color: #3f2e18;
-  height: 145px; width: 100%; min-width: 0;
+  border: 2px solid #574123;
+  border-radius: 6px;
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(87, 65, 35, 0.5);
+  color: #3f2e18;
+  height: 145px;
+  width: 100%;
+  min-width: 0;
 }
+
 .potterParchmentCard::before {
-  content: ''; position: absolute; inset: 4px; border: 1px solid rgba(87, 65, 35, 0.4); pointer-events: none; border-radius: 4px;
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(87, 65, 35, 0.4);
+  pointer-events: none;
+  border-radius: 4px;
 }
-.potterParchmentCard:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 15px rgba(251, 191, 36, 0.3); z-index: 20; }
-.potterParchmentCard.solved { background: linear-gradient(135deg, #d4c5a9 0%, #a8946e 100%); opacity: 0.9; transform: scale(0.95); filter: grayscale(20%); box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+
+.potterParchmentCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 15px rgba(251, 191, 36, 0.3);
+  z-index: 20;
+}
+
+.potterParchmentCard.solved {
+  background: linear-gradient(135deg, #d4c5a9 0%, #a8946e 100%);
+  opacity: 0.9;
+  transform: scale(0.95);
+  filter: grayscale(20%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
 
 /* Red Runic Circles */
-.runicCircle { position: absolute; width: 24px; height: 24px; border: 1px dotted #991b1b; border-radius: 50%; opacity: 0.4; }
-.runicCircle::after { content: '⍰'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #991b1b; font-family: monospace; }
-.runicTl { top: 8px; left: 8px; }
-.runicBr { bottom: 8px; right: 8px; }
+.runicCircle {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 1px dotted #991b1b;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+.runicCircle::after {
+  content: '⍰';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #991b1b;
+  font-family: monospace;
+}
+
+.runicTl {
+  top: 8px;
+  left: 8px;
+}
+
+.runicBr {
+  bottom: 8px;
+  right: 8px;
+}
 
 .waxSealStatus {
-  position: absolute; top: -12px; right: -12px; width: 36px; height: 36px;
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 36px;
+  height: 36px;
   background: radial-gradient(circle at 30% 30%, #dc2626, #7f1d1d);
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  color: rgba(255,255,255,0.9); box-shadow: 2px 4px 8px rgba(0,0,0,0.5), inset -2px -2px 5px rgba(0,0,0,0.5); z-index: 10;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.9);
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5), inset -2px -2px 5px rgba(0, 0, 0, 0.5);
+  z-index: 10;
 }
 
-.puzzleContentModern { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-.scrambledTextParchment { 
-  font-size: clamp(0.9rem, 4vw, 1.25rem); 
-  letter-spacing: 2px; 
-  color: #291206; 
-  font-weight: 800; 
-  text-align: center; 
-  text-shadow: 1px 1px 0 rgba(255,255,255,0.3); 
-  white-space: nowrap; 
-  overflow: hidden; 
-  width: 100%; 
+.puzzleContentModern {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
-.inputWrapperParchment { display: flex; align-items: center; justify-content: center; width: 100%; border-bottom: 2px solid #4a341e; padding-bottom: 4px; position: relative; }
-.quillIcon { color: #4a341e; position: absolute; left: 4px; opacity: 0.8; }
-.parchmentInput { 
-  width: 100%; 
-  background: transparent !important; 
-  border: none !important; 
-  color: #291206; 
-  font-size: clamp(0.8rem, 3.5vw, 1rem); 
-  font-weight: 700; 
-  text-transform: uppercase; 
-  outline: none !important; 
-  text-align: center; 
-  padding: 0 20px; 
-  font-family: var(--font-alice), serif; 
-  box-shadow: none !important; 
-  appearance: none; 
-  -webkit-appearance: none; 
+
+.scrambledTextParchment {
+  font-size: clamp(0.9rem, 4vw, 1.25rem);
+  letter-spacing: 2px;
+  color: #291206;
+  font-weight: 800;
+  text-align: center;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+}
+
+.inputWrapperParchment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 2px solid #4a341e;
+  padding-bottom: 4px;
+  position: relative;
+}
+
+.quillIcon {
+  color: #4a341e;
+  position: absolute;
+  left: 4px;
+  opacity: 0.8;
+}
+
+.parchmentInput {
+  width: 100%;
+  background: transparent !important;
+  border: none !important;
+  color: #291206;
+  font-size: clamp(0.8rem, 3.5vw, 1rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  outline: none !important;
+  text-align: center;
+  padding: 0 20px;
+  font-family: var(--font-alice), serif;
+  box-shadow: none !important;
+  appearance: none;
+  -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
 }
-.parchmentInput::placeholder { color: rgba(41, 18, 6, 0.4); font-weight: 400; }
-.parchmentInput:focus, .parchmentInput:active { 
-  outline: none !important; 
-  border: none !important; 
-  box-shadow: none !important; 
+
+.parchmentInput::placeholder {
+  color: rgba(41, 18, 6, 0.4);
+  font-weight: 400;
+}
+
+.parchmentInput:focus,
+.parchmentInput:active {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
   background: transparent !important;
 }
 
-@keyframes candleFloat { 0%, 100% { transform: translateY(0px) rotate(1deg); } 50% { transform: translateY(-12px) rotate(-1deg); } }
-@keyframes flameFlicker { 0% { transform: scale(1) rotate(-2deg); opacity: 0.9; } 25% { transform: scale(0.95, 1.1) rotate(1deg); opacity: 1; } 50% { transform: scale(1.05, 0.9) rotate(-1deg); opacity: 0.85; } 75% { transform: scale(0.9, 1.05) rotate(2deg); opacity: 1; } 100% { transform: scale(1) rotate(-2deg); opacity: 0.9; } }
-@keyframes haloPulse { 0% { transform: scale(0.8); opacity: 0.3; } 100% { transform: scale(1.2); opacity: 0.8; } }
-@keyframes floatHat { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-8px) rotate(2deg); } }
-@keyframes flutter { 0% { transform: translateY(0); } 100% { transform: translateY(-3px); } }
+@keyframes candleFloat {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(1deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(-1deg);
+  }
+}
+
+@keyframes flameFlicker {
+  0% {
+    transform: scale(1) rotate(-2deg);
+    opacity: 0.9;
+  }
+
+  25% {
+    transform: scale(0.95, 1.1) rotate(1deg);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.05, 0.9) rotate(-1deg);
+    opacity: 0.85;
+  }
+
+  75% {
+    transform: scale(0.9, 1.05) rotate(2deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1) rotate(-2deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes haloPulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+@keyframes floatHat {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+@keyframes flutter {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-3px);
+  }
+}
 
 @media (max-width: 600px) {
-  .potterGameContainer { padding: 20px 10px; }
-  .magicalGlowText { font-size: 1.8rem; }
-  .snitchProgressTrack { width: calc(100% - 30px); margin-left: auto; margin-right: auto; }
-  .candleContainer { opacity: 0.4; }
-  .potterGridParchment { gap: 15px 10px; }
-  .scrambledTextParchment { font-size: 1.2rem; letter-spacing: 1px; }
-  .parchmentInput { font-size: 1rem; padding: 0 18px; }
-  .hallowsBgWatermark { width: 300px; height: 300px; }
-  .sortingHatImg { width: 80px; height: 80px; }
+  .potterGameContainer {
+    padding: 20px 10px;
+  }
+
+  .magicalGlowText {
+    font-size: 1.8rem;
+  }
+
+  .snitchProgressTrack {
+    width: calc(100% - 30px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .candleContainer {
+    opacity: 0.4;
+  }
+
+  .potterGridParchment {
+    gap: 15px 10px;
+  }
+
+  .scrambledTextParchment {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+
+  .parchmentInput {
+    font-size: 1rem;
+    padding: 0 18px;
+  }
+
+  .hallowsBgWatermark {
+    width: 300px;
+    height: 300px;
+  }
+
+  .sortingHatImg {
+    width: 150px;
+    height: auto;
+  }
 }
