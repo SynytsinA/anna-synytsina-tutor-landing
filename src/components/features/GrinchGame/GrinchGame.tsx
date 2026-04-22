@@ -36,6 +36,8 @@ export const GrinchGame = ({ translations }: GrinchGameProps) => {
   return (
     <div className={styles.grinchGameContainer}>
       {/* Decorative Background Elements */}
+      <div className={styles.grinchBgCity} />
+      <div className={styles.grinchBgOverlay} />
       <div className={styles.snowOverlay} />
       
       {/* Dynamic Falling Snow */}
