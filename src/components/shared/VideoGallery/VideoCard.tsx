@@ -56,12 +56,12 @@ export const VideoCard = ({ video, meta }: VideoCardProps) => {
 
   return (
     <div
-      className="relative bg-black rounded-[36px] p-3 shadow-2xl border border-slate-200 cursor-pointer transition-transform duration-300 aspect-[9/17] max-w-[320px] mx-auto hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)] group"
+      className="relative bg-black rounded-[36px] p-3 shadow-2xl border border-slate-200 cursor-pointer transition-transform duration-300 aspect-[9/17] max-w-[320px] mx-auto hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)] group will-change-transform transform-gpu"
       onClick={togglePlay}
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40%] h-6 bg-black rounded-b-xl z-10"></div>
 
-      <div className="relative w-full h-full bg-[#1e1e1e] rounded-3xl overflow-hidden isolate">
+      <div className="relative w-full h-full bg-[#1e1e1e] rounded-3xl overflow-hidden isolate transform-gpu">
         <video
           ref={videoRef}
           src={video.src}
@@ -69,7 +69,7 @@ export const VideoCard = ({ video, meta }: VideoCardProps) => {
           playsInline
           loop
           muted={isMuted}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover rounded-3xl"
         />
 
         <div
