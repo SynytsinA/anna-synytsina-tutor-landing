@@ -144,8 +144,9 @@ export const PotterGame = () => {
           <Image
             src="/sorting-hat.png?v=2"
             alt="Sorting Hat"
-            width={250}
-            height={250}
+            width={0}
+            height={0}
+            sizes="100vw"
             className={styles.sortingHatImg}
             unoptimized
           />
