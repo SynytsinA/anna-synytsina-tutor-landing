@@ -38,9 +38,7 @@ export const usePotterGame = (lang: "en" | "ua" = "ua") => {
   const [sparkConfigs, setSparkConfigs] = useState<
     { left: string; top: string; delay: string; duration: string }[]
   >([]);
-  const [candleConfigs, setCandleConfigs] = useState<
-    { num: number; delay: string }[]
-  >([]);
+
 
   // Sound Refs
   const correctSfx = useRef<HTMLAudioElement | null>(null);
@@ -66,12 +64,7 @@ export const usePotterGame = (lang: "en" | "ua" = "ua") => {
       }))
     );
 
-    setCandleConfigs(
-      [1, 2, 3, 4, 5, 6].map((num) => ({
-        num,
-        delay: `${Math.random() * 2}s`,
-      }))
-    );
+
 
     // Initialize Audio
     correctSfx.current = new Audio(
@@ -119,7 +112,6 @@ export const usePotterGame = (lang: "en" | "ua" = "ua") => {
     completed,
     allFinished,
     sparkConfigs,
-    candleConfigs,
     currentPuzzles,
     progressPercent,
     handleInputChange,

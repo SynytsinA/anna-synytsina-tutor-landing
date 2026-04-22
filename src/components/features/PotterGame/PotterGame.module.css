@@ -82,12 +82,10 @@
     transform: translateY(0) scale(0.5);
     opacity: 0;
   }
-
   50% {
     transform: translateY(-40px) scale(1.5);
     opacity: 0.8;
   }
-
   100% {
     transform: translateY(-80px) scale(0.5);
     opacity: 0;
@@ -113,7 +111,6 @@
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Hermes_caduceus_gold.svg/100px-Hermes_caduceus_gold.svg.png');
 }
 
-/* placeholder */
 .crestTr {
   top: 20px;
   right: 20px;
@@ -130,100 +127,6 @@
   bottom: 20px;
   right: 20px;
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Hermes_caduceus_gold.svg/100px-Hermes_caduceus_gold.svg.png');
-}
-
-.candleContainer {
-  position: absolute;
-  z-index: 4;
-  pointer-events: none;
-}
-
-.candleAnimator {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: candleFloat 5s ease-in-out infinite;
-}
-
-.candleStick {
-  width: 14px;
-  height: 40px;
-  background: linear-gradient(90deg, #d6d3d1, #fefce8 40%, #e7e5e4);
-  border-radius: 4px;
-  position: relative;
-  box-shadow: inset -2px 0 5px rgba(0, 0, 0, 0.3), 3px 5px 10px rgba(0, 0, 0, 0.5);
-}
-
-.candleFlameWrapper {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  margin-bottom: -1px;
-}
-
-.candleWick {
-  width: 2px;
-  height: 6px;
-  background: #1c1917;
-  margin-bottom: -2px;
-}
-
-.candleFlame {
-  width: 12px;
-  height: 24px;
-  background: radial-gradient(ellipse at center, #fff 10%, #fbbf24 40%, #ea580c 80%, rgba(234, 88, 12, 0) 100%);
-  border-radius: 50% 50% 35% 35%;
-  position: absolute;
-  bottom: 3px;
-  animation: flameFlicker 3s infinite ease-in-out;
-  filter: drop-shadow(0 0 10px rgba(251, 191, 36, 1));
-}
-
-.candleHalo {
-  position: absolute;
-  bottom: 8px;
-  width: 80px;
-  height: 80px;
-  background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 60%);
-  border-radius: 50%;
-  animation: haloPulse 2s infinite alternate;
-  mix-blend-mode: screen;
-}
-
-.candlePos1 {
-  top: 10%;
-  left: 15%;
-  animation-duration: 4.5s;
-}
-
-.candlePos2 {
-  top: 25%;
-  right: 20%;
-  animation-duration: 5.2s;
-}
-
-.candlePos3 {
-  top: 60%;
-  left: 8%;
-  animation-duration: 4.8s;
-}
-
-.candlePos4 {
-  bottom: 15%;
-  right: 10%;
-  animation-duration: 5.5s;
-}
-
-.candlePos5 {
-  top: 35%;
-  left: 80%;
-  animation-duration: 4.2s;
-}
-
-.candlePos6 {
-  bottom: 30%;
-  right: 25%;
-  animation-duration: 5.0s;
 }
 
 .potterHeaderModern {
@@ -244,6 +147,15 @@
   filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.4));
   margin-bottom: 5px;
   animation: floatHat 4s ease-in-out infinite;
+}
+
+@keyframes floatHat {
+  0%, 100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
 }
 
 .magicalGlowText {
@@ -286,6 +198,11 @@
   height: 45px;
   filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
   animation: flutter 0.15s linear infinite alternate;
+}
+
+@keyframes flutter {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-3px); }
 }
 
 .potterSuccessMsgModern {
@@ -371,6 +288,10 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
+.potterParchmentCard.solved .parchmentInput {
+  color: #d97706 !important;
+}
+
 /* Red Runic Circles */
 .runicCircle {
   position: absolute;
@@ -393,15 +314,8 @@
   font-family: monospace;
 }
 
-.runicTl {
-  top: 8px;
-  left: 8px;
-}
-
-.runicBr {
-  bottom: 8px;
-  right: 8px;
-}
+.runicTl { top: 8px; left: 8px; }
+.runicBr { bottom: 8px; right: 8px; }
 
 .waxSealStatus {
   position: absolute;
@@ -487,118 +401,33 @@
   background: transparent !important;
 }
 
-@keyframes candleFloat {
-
-  0%,
-  100% {
-    transform: translateY(0px) rotate(1deg);
-  }
-
-  50% {
-    transform: translateY(-12px) rotate(-1deg);
-  }
-}
-
-@keyframes flameFlicker {
-  0% {
-    transform: scale(1) rotate(-2deg);
-    opacity: 0.9;
-  }
-
-  25% {
-    transform: scale(0.95, 1.1) rotate(1deg);
-    opacity: 1;
-  }
-
-  50% {
-    transform: scale(1.05, 0.9) rotate(-1deg);
-    opacity: 0.85;
-  }
-
-  75% {
-    transform: scale(0.9, 1.05) rotate(2deg);
-    opacity: 1;
-  }
-
-  100% {
-    transform: scale(1) rotate(-2deg);
-    opacity: 0.9;
-  }
-}
-
-@keyframes haloPulse {
-  0% {
-    transform: scale(0.8);
-    opacity: 0.3;
-  }
-
-  100% {
-    transform: scale(1.2);
-    opacity: 0.8;
-  }
-}
-
-@keyframes floatHat {
-
-  0%,
-  100% {
-    transform: translateY(0) rotate(-2deg);
-  }
-
-  50% {
-    transform: translateY(-8px) rotate(2deg);
-  }
-}
-
-@keyframes flutter {
-  0% {
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(-3px);
-  }
-}
-
 @media (max-width: 600px) {
   .potterGameContainer {
     padding: 20px 10px;
   }
-
   .magicalGlowText {
     font-size: 1.8rem;
   }
-
   .snitchProgressTrack {
     width: calc(100% - 30px);
     margin-left: auto;
     margin-right: auto;
   }
-
-  .candleContainer {
-    opacity: 0.4;
-  }
-
   .potterGridParchment {
     gap: 15px 10px;
   }
-
   .scrambledTextParchment {
     font-size: 1.2rem;
     letter-spacing: 1px;
   }
-
   .parchmentInput {
     font-size: 1rem;
     padding: 0 18px;
   }
-
   .hallowsBgWatermark {
     width: 300px;
     height: 300px;
   }
-
-
   .sortingHatImg {
     max-width: 150px;
     height: auto;

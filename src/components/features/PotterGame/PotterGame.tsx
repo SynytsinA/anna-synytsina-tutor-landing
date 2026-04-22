@@ -61,7 +61,6 @@ export const PotterGame = () => {
     completed,
     allFinished,
     sparkConfigs,
-    candleConfigs,
     currentPuzzles,
     progressPercent,
     handleInputChange,
@@ -121,23 +120,7 @@ export const PotterGame = () => {
       <div className={`${styles.crest} ${styles.crestBl}`} />
       <div className={`${styles.crest} ${styles.crestBr}`} />
 
-      {/* Floating Candles */}
-      {candleConfigs.map((cfg) => (
-        <div
-          key={`candle-${cfg.num}`}
-          className={`${styles.candleContainer} ${styles[`candlePos${cfg.num}`]}`}
-        >
-          <div className={styles.candleAnimator} style={{ animationDelay: cfg.delay }}>
-            <div className={styles.candleStick}>
-              <div className={styles.candleFlameWrapper}>
-                <div className={styles.candleWick} />
-                <div className={styles.candleFlame} />
-                <div className={styles.candleHalo} />
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
+
 
       <div className={styles.potterHeaderModern}>
         <div>
