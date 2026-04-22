@@ -25,6 +25,7 @@ interface VideoCardProps {
 export const VideoCard = ({ video, meta, isPlaying, onToggle }: VideoCardProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
     if (!videoRef.current) return;
@@ -44,6 +45,11 @@ export const VideoCard = ({ video, meta, isPlaying, onToggle }: VideoCardProps) 
 
     videoRef.current.muted = !isMuted;
     setIsMuted(!isMuted);
+  };
+
+  const toggleLike = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsLiked(!isLiked);
   };
 
   return (
@@ -92,7 +98,14 @@ export const VideoCard = ({ video, meta, isPlaying, onToggle }: VideoCardProps) 
               >
                 {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
               </button>
-              <Heart size={26} className="filter drop-shadow-md hover:fill-rose-500 transition-colors" />
+              <Heart 
+                size={26} 
+                onClick={toggleLike}
+                className={cn(
+                  "filter drop-shadow-md transition-all cursor-pointer",
+                  isLiked ? "fill-rose-500 text-rose-500 scale-125" : "text-white hover:text-rose-300"
+                )} 
+              />
               <MessageCircle size={26} className="filter drop-shadow-md" />
             </div>
           </div>
