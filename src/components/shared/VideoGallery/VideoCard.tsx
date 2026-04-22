@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Play, Volume2, VolumeX, Heart, MessageCircle } from "lucide-react";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -12,39 +12,31 @@ function cn(...inputs: any[]) {
 interface VideoCardProps {
   video: {
     src: string;
-    poster: string;
+    poster?: string;
   };
   meta: {
     title: string;
     desc: string;
   };
+  isPlaying: boolean;
+  onToggle: () => void;
 }
 
-export const VideoCard = ({ video, meta }: VideoCardProps) => {
+export const VideoCard = ({ video, meta, isPlaying, onToggle }: VideoCardProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
 
-  const togglePlay = () => {
+  useEffect(() => {
     if (!videoRef.current) return;
 
     if (isPlaying) {
-      videoRef.current.pause();
-      setIsPlaying(false);
+      videoRef.current.play().catch((error) => {
+        console.error("Video play failed:", error);
+      });
     } else {
-      const playPromise = videoRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            setIsPlaying(true);
-          })
-          .catch((error) => {
-            console.error("Video play failed:", error);
-            setIsPlaying(false);
-          });
-      }
+      videoRef.current.pause();
     }
-  };
+  }, [isPlaying]);
 
   const toggleMute = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -57,7 +49,7 @@ export const VideoCard = ({ video, meta }: VideoCardProps) => {
   return (
     <div
       className="relative bg-black rounded-[36px] p-3 shadow-2xl border border-slate-200 cursor-pointer transition-transform duration-300 aspect-[9/17] max-w-[320px] mx-auto hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)] group will-change-transform transform-gpu"
-      onClick={togglePlay}
+      onClick={onToggle}
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40%] h-6 bg-black rounded-b-xl z-10"></div>
 
@@ -69,6 +61,7 @@ export const VideoCard = ({ video, meta }: VideoCardProps) => {
           playsInline
           loop
           muted={isMuted}
+          preload="metadata"
           className="w-full h-full object-cover rounded-3xl"
         />
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { FadeIn } from "@/components/shared/FadeIn";
 import { useLanguage } from "@/components/shared/MainLayout";
 import { LANDING_SECTIONS, VIDEO_GALLERY_METADATA } from "@/constants/landing";
@@ -10,6 +10,11 @@ export const VideoGallery = () => {
   const { t } = useLanguage();
   const galleryT = t.videoGallery;
   const metaList = galleryT.videos || [];
+  const [playingId, setPlayingId] = useState<number | null>(null);
+
+  const handleToggle = (id: number) => {
+    setPlayingId(prev => (prev === id ? null : id));
+  };
 
   return (
     <section 
@@ -34,6 +39,8 @@ export const VideoGallery = () => {
               <VideoCard
                 video={video}
                 meta={metaList[index] || { title: "Lesson", desc: "" }}
+                isPlaying={playingId === video.id}
+                onToggle={() => handleToggle(video.id)}
               />
             </FadeIn>
           ))}
