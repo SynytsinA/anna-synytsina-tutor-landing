@@ -56,17 +56,17 @@ export const APPROACH_METADATA = {
 export const VIDEO_GALLERY_METADATA = [
   {
     id: 1,
-    src: "https://assets.mixkit.co/videos/preview/mixkit-little-girl-writing-in-a-notebook-42352-large.mp4",
+    src: "/videos/1-lesson-example.mp4",
     poster: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
   },
   {
     id: 2,
-    src: "https://assets.mixkit.co/videos/preview/mixkit-mother-reading-a-book-to-her-children-40502-large.mp4",
+    src: "/videos/grinch-lesson-example.mp4",
     poster: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
   },
   {
     id: 3,
-    src: "https://assets.mixkit.co/videos/preview/mixkit-little-girl-learning-colors-42471-large.mp4",
+    src: "/videos/hogwarts-lesson-example.mp4",
     poster: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
   },
 ];
