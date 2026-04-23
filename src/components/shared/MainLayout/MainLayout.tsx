@@ -1,0 +1,26 @@
+"use client";
+
+import React from "react";
+import { Navbar } from "@/components/shared/Navbar";
+import { Footer } from "@/components/shared/Footer";
+import { LanguageProvider, useLanguage } from "@/context/LanguageContext";
+
+const LayoutContent: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { t, toggleLang } = useLanguage();
+
+  return (
+    <>
+      <Navbar t={t.nav} toggleLang={toggleLang} />
+      {children}
+      <Footer t={t.footer} />
+    </>
+  );
+};
+
+export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return (
+    <LanguageProvider>
+      <LayoutContent>{children}</LayoutContent>
+    </LanguageProvider>
+  );
+};

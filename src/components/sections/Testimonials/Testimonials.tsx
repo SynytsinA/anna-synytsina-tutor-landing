@@ -3,7 +3,7 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { Heart, Send, MoreHorizontal, X, ChevronLeft, ChevronRight } from "lucide-react";
-import { useLanguage } from "@/components/shared/MainLayout";
+import { useLanguage } from "@/context/LanguageContext";
 import { FadeIn } from "@/components/shared/FadeIn";
 import { InteractiveSlider } from "@/components/shared/InteractiveSlider";
 import { TESTIMONIALS_CONFIG } from "@/constants/landing";

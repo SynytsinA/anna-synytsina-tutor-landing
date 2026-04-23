@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { FadeIn } from "@/components/shared/FadeIn/FadeIn";
 import { InteractiveSlider } from "@/components/shared/InteractiveSlider";
-import { useLanguage } from "@/components/shared/MainLayout";
+import { useLanguage } from "@/context/LanguageContext";
 import { LANDING_SECTIONS, VIDEO_GALLERY_METADATA } from "@/constants/landing";
 import { VideoCard } from "./VideoCard";
 

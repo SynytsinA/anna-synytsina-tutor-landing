@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Laptop, Wifi, Globe } from "lucide-react";
-import { useLanguage } from "@/components/shared/MainLayout";
+import { useLanguage } from "@/context/LanguageContext";
 import { FadeIn } from "@/components/shared/FadeIn";
 import { GLOBAL_CLASSROOM_CONFIG } from "@/constants/landing";
 import styles from "./GlobalClassroom.module.css";

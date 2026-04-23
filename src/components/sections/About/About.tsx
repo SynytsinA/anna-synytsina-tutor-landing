@@ -11,7 +11,7 @@ import {
   Star, 
   Sparkles 
 } from "lucide-react";
-import { useLanguage } from "@/components/shared/MainLayout";
+import { useLanguage } from "@/context/LanguageContext";
 import { ABOUT_METADATA, LANDING_SECTIONS } from "@/constants/landing";
 
 const colorClasses = ["bg-indigo-50", "bg-pink-50", "bg-yellow-50"];

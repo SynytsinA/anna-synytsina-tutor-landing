@@ -3,7 +3,7 @@
 import React from "react";
 import { Backpack, BookOpen, Pencil, CheckCircle } from "lucide-react";
 import { FadeIn } from "@/components/shared/FadeIn";
-import { useLanguage } from "@/components/shared/MainLayout";
+import { useLanguage } from "@/context/LanguageContext";
 import { LANDING_SECTIONS, SERVICES_CONFIG } from "@/constants/landing";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";

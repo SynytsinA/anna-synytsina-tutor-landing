@@ -1,8 +1,6 @@
 "use client";
 
 import React, { createContext, useContext, useState } from "react";
-import { Navbar } from "@/components/shared/Navbar";
-import { Footer } from "@/components/shared/Footer";
 import { translations } from "@/constants/data";
 
 interface LanguageContextType {
@@ -19,7 +17,7 @@ export const useLanguage = () => {
   return context;
 };
 
-export function MainLayout({ children }: { children: React.ReactNode }) {
+export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [lang, setLang] = useState<"en" | "ua">("ua");
   const t = translations[lang];
 
@@ -29,9 +27,7 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <LanguageContext.Provider value={{ lang, t, toggleLang }}>
-      <Navbar t={t.nav} toggleLang={toggleLang} />
       {children}
-      <Footer t={t.footer} />
     </LanguageContext.Provider>
   );
-}
+};

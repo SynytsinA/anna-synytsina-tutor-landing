@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import Image from "next/image";
-import { useLanguage } from "@/components/shared/MainLayout";
+import { useLanguage } from "@/context/LanguageContext";
 import { usePotterGame } from "@/hooks/usePotterGame";
 import styles from "./PotterGame.module.css";
 

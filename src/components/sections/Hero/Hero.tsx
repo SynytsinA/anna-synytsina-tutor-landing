@@ -5,7 +5,7 @@ import { ArrowRight, Play } from "lucide-react";
 import { FadeIn } from "@/components/shared/FadeIn";
 import { HeroQuiz } from "@/components/features/HeroQuiz";
 import { HERO_CONFIG, LANDING_SECTIONS } from "@/constants/landing";
-import { useLanguage } from "@/components/shared/MainLayout";
+import { useLanguage } from "@/context/LanguageContext";
 
 const InteractiveWord = ({ word }: { word: string }) => {
   return (

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { Brain, Calculator, BookA, Check, X, RotateCcw, PartyPopper, Star, Lightbulb } from "lucide-react";
-import { useLanguage } from "@/components/shared/MainLayout";
+import { useLanguage } from "@/context/LanguageContext";
 import { QUIZ_QUESTIONS, HERO_CONFIG } from "@/constants/landing";
 
 type Subject = 'ua' | 'math';

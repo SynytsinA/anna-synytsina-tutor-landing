@@ -9,7 +9,7 @@ import {
   Zap, 
   Sparkles,
 } from "lucide-react";
-import { useLanguage } from "@/components/shared/MainLayout";
+import { useLanguage } from "@/context/LanguageContext";
 import { APPROACH_METADATA, LANDING_SECTIONS } from "@/constants/landing";
 
 const icons = [ShieldCheck, Award, Zap, Sparkles];

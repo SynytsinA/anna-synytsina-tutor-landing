@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Wand2, Gift, Play, Loader2, Snowflake } from "lucide-react";
 import { FadeIn } from "@/components/shared/FadeIn";
-import { useLanguage } from "@/components/shared/MainLayout";
+import { useLanguage } from "@/context/LanguageContext";
 import { LANDING_SECTIONS, GAMES_SECTION_CONFIG } from "@/constants/landing";
 import { PotterGame } from "@/components/features/PotterGame/PotterGame";
 import { GrinchGame } from "@/components/features/GrinchGame/GrinchGame";

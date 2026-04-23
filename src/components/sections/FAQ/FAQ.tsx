@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Plus, Minus, MessageCircleQuestion } from "lucide-react";
-import { useLanguage } from "@/components/shared/MainLayout";
+import { useLanguage } from "@/context/LanguageContext";
 import { FadeIn } from "@/components/shared/FadeIn";
 import { FAQ_CONFIG } from "@/constants/landing";
 
