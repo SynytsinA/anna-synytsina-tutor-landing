@@ -110,7 +110,7 @@ export const Testimonials = () => {
         
         <InteractiveSlider 
           itemCount={reviews.length} 
-          maxWidth="1000px"
+          maxWidth="1100px"
           containerClassName={styles.storyCardContainer}
         >
           {reviews.map((review: { text: string; author: string }, i: number) => (
