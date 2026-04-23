@@ -78,7 +78,10 @@ export const translations = {
       videos: [
         { title: "Math Magic", desc: "Mental arithmetic with games" },
         { title: "Reading", desc: "Interactive storytelling" },
-        { title: "Grammar", desc: "Learning rules effortlessly" }
+        { title: "Grammar", desc: "Learning rules effortlessly" },
+        { title: "Writing", desc: "Calligraphy and motor skills" },
+        { title: "Logic", desc: "Puzzles and critical thinking" },
+        { title: "Speaking", desc: "Communication and vocabulary" }
       ]
     },
     subjects: {
@@ -299,7 +302,10 @@ export const translations = {
       videos: [
         { title: "Математика", desc: "Ментальна арифметика в іграх" },
         { title: "Читання", desc: "Інтерактивні розповіді" },
-        { title: "Граматика", desc: "Вивчаємо правила легко" }
+        { title: "Граматика", desc: "Вивчаємо правила легко" },
+        { title: "Письмо", desc: "Каліграфія та моторика" },
+        { title: "Логіка", desc: "Головоломки та мислення" },
+        { title: "Мовлення", desc: "Комунікація та словниковий запас" }
       ]
     },
     subjects: {

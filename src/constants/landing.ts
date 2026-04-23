@@ -66,6 +66,18 @@ export const VIDEO_GALLERY_METADATA = [
     id: 3,
     src: "/videos/hogwarts-lesson-example.mp4",
   },
+  {
+    id: 4,
+    src: "/videos/2-lesson-example.mp4",
+  },
+  {
+    id: 5,
+    src: "/videos/3-lesson-example.mp4",
+  },
+  {
+    id: 6,
+    src: "/videos/4-lesson-example.mp4",
+  },
 ];
 
 export const SERVICES_CONFIG = {
