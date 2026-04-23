@@ -125,7 +125,7 @@ export const PotterGame = () => {
       <div className={styles.potterHeaderModern}>
         <div>
           <Image
-            src="/sorting-hat.png?v=2"
+            src="/images/sorting-hat.png?v=2"
             alt="Sorting Hat"
             width={0}
             height={0}
