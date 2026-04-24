@@ -55,12 +55,20 @@ export const APPROACH_METADATA = {
 
 export const VIDEO_GALLERY_METADATA = [
   {
+    id: 2,
+    src: "/videos/grinch-lesson-example.mp4",
+  },
+  {
     id: 1,
     src: "/videos/1-lesson-example-math.mp4",
   },
   {
-    id: 2,
-    src: "/videos/grinch-lesson-example.mp4",
+    id: 11,
+    src: "/videos/1-lesson-example-preparing-for-school.mp4",
+  },
+  {
+    id: 7,
+    src: "/videos/1-lesson-example-ukrainian-language.mp4",
   },
   {
     id: 3,
@@ -71,44 +79,36 @@ export const VIDEO_GALLERY_METADATA = [
     src: "/videos/2-lesson-example-math.mp4",
   },
   {
-    id: 5,
-    src: "/videos/3-lesson-example-math.mp4",
-  },
-  {
-    id: 6,
-    src: "/videos/4-lesson-example-math.mp4",
-  },
-  {
-    id: 7,
-    src: "/videos/1-lesson-example-ukrainian-language.mp4",
+    id: 12,
+    src: "/videos/2-lesson-example-preparing-for-school.mp4",
   },
   {
     id: 8,
     src: "/videos/2-lesson-example-ukrainian-language.mp4",
   },
   {
-    id: 9,
-    src: "/videos/3-lesson-example-ukrainian-language.mp4",
-  },
-  {
-    id: 10,
-    src: "/videos/4-lesson-example-ukrainian-language.mp4",
-  },
-  {
-    id: 11,
-    src: "/videos/1-lesson-example-preparing-for-school.mp4",
-  },
-  {
-    id: 12,
-    src: "/videos/2-lesson-example-preparing-for-school.mp4",
+    id: 5,
+    src: "/videos/3-lesson-example-math.mp4",
   },
   {
     id: 13,
     src: "/videos/3-lesson-example-preparing-for-school.mp4",
   },
   {
+    id: 9,
+    src: "/videos/3-lesson-example-ukrainian-language.mp4",
+  },
+  {
+    id: 6,
+    src: "/videos/4-lesson-example-math.mp4",
+  },
+  {
     id: 14,
     src: "/videos/4-lesson-example-preparing-for-school.mp4",
+  },
+  {
+    id: 10,
+    src: "/videos/4-lesson-example-ukrainian-language.mp4",
   },
 ];
 
