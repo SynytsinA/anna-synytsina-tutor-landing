@@ -2,6 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import { VideoGallery } from "./VideoGallery";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { VIDEO_GALLERY_METADATA } from "@/constants/landing";
 
 // Mock the InteractiveSlider
 vi.mock("@/components/shared/InteractiveSlider", () => ({
@@ -31,7 +32,7 @@ describe("VideoGallery", () => {
   it("renders all videos in the slider", () => {
     renderWithLanguage(<VideoGallery />);
     const videoCards = screen.getAllByTestId("video-card");
-    expect(videoCards.length).toBe(6);
+    expect(videoCards.length).toBe(VIDEO_GALLERY_METADATA.length);
   });
 
   it("opens modal when fullscreen button is clicked", () => {
@@ -94,6 +95,6 @@ describe("VideoGallery", () => {
     // When modal is open, ALL background slider cards should show the play icon (opacity-100)
     // because background playback is explicitly disabled via (modalVideoId === null && ...)
     const sliderPlayIcons = document.querySelectorAll("[data-testid='video-card']:not(.modal-card) .opacity-100");
-    expect(sliderPlayIcons.length).toBeGreaterThanOrEqual(6);
+    expect(sliderPlayIcons.length).toBeGreaterThanOrEqual(VIDEO_GALLERY_METADATA.length);
   });
 });

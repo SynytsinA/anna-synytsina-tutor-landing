@@ -78,6 +78,22 @@ export const VIDEO_GALLERY_METADATA = [
     id: 6,
     src: "/videos/4-lesson-example-math.mp4",
   },
+  {
+    id: 7,
+    src: "/videos/1-lesson-example-ukrainian-language.mp4",
+  },
+  {
+    id: 8,
+    src: "/videos/2-lesson-example-ukrainian-language.mp4",
+  },
+  {
+    id: 9,
+    src: "/videos/3-lesson-example-ukrainian-language.mp4",
+  },
+  {
+    id: 10,
+    src: "/videos/4-lesson-example-ukrainian-language.mp4",
+  },
 ];
 
 export const SERVICES_CONFIG = {
