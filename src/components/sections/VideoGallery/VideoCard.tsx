@@ -38,6 +38,8 @@ export const VideoCard = ({
   const labels = t.videoGallery.labels;
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   const getLabel = () => {
     const src = video.src.toLowerCase();
@@ -46,6 +48,37 @@ export const VideoCard = ({
     if (src.includes("preparing-for-school")) return labels.schoolPrep;
     if (src.includes("grinch") || src.includes("hogwarts")) return labels.thematic;
     return labels.lesson;
+  };
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleTimeUpdate = () => setCurrentTime(video.currentTime);
+    const handleLoadedMetadata = () => setDuration(video.duration);
+
+    video.addEventListener("timeupdate", handleTimeUpdate);
+    video.addEventListener("loadedmetadata", handleLoadedMetadata);
+
+    return () => {
+      video.removeEventListener("timeupdate", handleTimeUpdate);
+      video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+    };
+  }, []);
+
+  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.stopPropagation();
+    const time = Number(e.target.value);
+    if (videoRef.current) {
+      videoRef.current.currentTime = time;
+      setCurrentTime(time);
+    }
+  };
+
+  const formatTime = (time: number) => {
+    const mins = Math.floor(time / 60);
+    const secs = Math.floor(time % 60);
+    return `${mins}:${secs.toString().padStart(2, "0")}`;
   };
 
   useEffect(() => {
@@ -108,7 +141,7 @@ export const VideoCard = ({
           src={video.src}
           poster={video.poster}
           playsInline
-          loop
+          onEnded={onToggle}
           muted={isMuted}
           preload="metadata"
           className="w-full h-full object-cover rounded-3xl"
@@ -157,6 +190,25 @@ export const VideoCard = ({
               </button>
             </div>
           </div>
+
+          {/* Progress Bar (Modal Only) */}
+          {isModal && (
+            <div className="absolute bottom-6 left-5 right-14 pointer-events-auto flex items-center gap-3">
+              <input
+                type="range"
+                min="0"
+                max={duration || 0}
+                step="0.1"
+                value={currentTime}
+                onChange={handleSeek}
+                onClick={(e) => e.stopPropagation()}
+                className="w-full h-1 bg-white/30 rounded-lg appearance-none cursor-pointer accent-white transition-all hover:h-1.5"
+              />
+              <span className="text-white text-[10px] font-mono whitespace-nowrap min-w-[60px]">
+                {formatTime(currentTime)} / {formatTime(duration)}
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </div>

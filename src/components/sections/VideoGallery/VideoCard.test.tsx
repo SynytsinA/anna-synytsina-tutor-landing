@@ -116,4 +116,19 @@ describe("VideoCard", () => {
     );
     expect(screen.getByText("Тематичний урок")).toBeInTheDocument();
   });
+
+  it("shows progress bar in modal mode", () => {
+    renderWithLanguage(
+      <VideoCard 
+        video={mockVideo} 
+        isPlaying={true} 
+        onToggle={() => {}} 
+        isModal={true}
+      />
+    );
+    
+    const progressBar = screen.getByRole("slider");
+    expect(progressBar).toBeInTheDocument();
+    expect(progressBar).toHaveAttribute("type", "range");
+  });
 });
