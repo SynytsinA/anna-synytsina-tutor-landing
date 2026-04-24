@@ -155,28 +155,6 @@ export const translations = {
     },
     testimonials: {
       title: "Happy Parents & Students",
-      reviews: [
-        {
-          text: "\"Anna is incredible! My son used to hate math, but now he asks when his next lesson is. The approach is very modern.\"",
-          author: "- Elena, Mom from Germany"
-        },
-        {
-          text: "\"Living in Australia, it's hard to keep up with Ukrainian curriculum. Anna works perfectly with the NUSH program.\"",
-          author: "- Dmytro, Dad from Australia"
-        },
-        {
-          text: "\"12 years of experience really shows. She knows exactly how to keep my 6-year-old focused during school prep.\"",
-          author: "- Olena, Mom from Poland"
-        },
-        {
-          text: "\"We struggled with homework every evening. Anna took that burden off our shoulders. Quality and Result!\"",
-          author: "- Sarah, Mom from UK"
-        },
-        {
-          text: "\"My son is very shy, but he opened up to Anna immediately. The game-based approach makes him forget he's studying.\"",
-          author: "- Maria, Mom from Spain"
-        }
-      ]
     },
     faq: {
       title: "Frequently Asked Questions",
@@ -378,28 +356,6 @@ export const translations = {
     },
     testimonials: {
       title: "Щасливі батьки та учні",
-      reviews: [
-        {
-          text: "\"Анна неймовірна! Мій син раніше не любив математику, але тепер питає, коли наступний урок. Підхід дуже сучасний.\"",
-          author: "- Олена, мама з Німеччини"
-        },
-        {
-          text: "\"Живучи в Австралії, важко підтримувати українську програму. Анна ідеально знає НУШ та Росток.\"",
-          author: "- Dmytro, тато з Австралії"
-        },
-        {
-          text: "\"12 років досвіду дійсно відчуваються. Вона точно знає, як утримати увагу моєї 6-річної дитини на підготовці до школи.\"",
-          author: "- Олена, мама з Польщі"
-        },
-        {
-          text: "\"У нас були великі проблеми з домашніми завданнями. Анна зняла цей тягар з наших плечей. Якість та результат!\"",
-          author: "- Сара, мама з Англії"
-        },
-        {
-          text: "\"Мій син дуже сором'язливий, але він відкрився Анні миттєво. Завдяки ігровому підходу він забуває, що вчиться.\"",
-          author: "- Марія, мама з Іспанії"
-        }
-      ]
     },
     faq: {
       title: "Часті запитання",

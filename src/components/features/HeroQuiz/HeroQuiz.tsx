@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Brain, Calculator, BookA, Check, X, RotateCcw, PartyPopper, Star, Lightbulb } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { QUIZ_QUESTIONS, HERO_CONFIG } from "@/constants/landing";
+import { QUIZ_QUESTIONS } from "@/constants/landing";
 
 type Subject = 'ua' | 'math';
 
@@ -13,7 +13,7 @@ interface ShuffledOption {
 }
 
 export const HeroQuiz = () => {
-  const { lang, t: allTranslations } = useLanguage();
+  const { t: allTranslations } = useLanguage();
   const t = allTranslations.heroQuiz;
 
   const [activeTab, setActiveTab] = useState<Subject>('ua');

@@ -15,7 +15,7 @@ function cn(...inputs: any[]) {
 }
 
 export const GamesSection = () => {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
   const themesT = t.themes;
   const [activeTab, setActiveTab] = useState<"potter" | "grinch">("potter");
   const [lessonStatus, setLessonStatus] = useState<"idle" | "loading" | "active">("idle");

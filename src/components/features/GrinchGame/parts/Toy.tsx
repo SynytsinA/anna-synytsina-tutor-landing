@@ -57,7 +57,7 @@ export const Toy: React.FC<ToyProps> = ({
     elementRef.current.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(1.2)`;
   };
 
-  const handleTouchEnd = (e: React.TouchEvent) => {
+  const handleTouchEnd = () => {
     if (!isDraggable || !elementRef.current) return;
 
     elementRef.current.style.visibility = "hidden";
@@ -169,9 +169,7 @@ export const Toy: React.FC<ToyProps> = ({
   return (
     <div
       ref={elementRef}
-      className={`${styles.toyItem} ${styles[`toyVariant${variant}`]} ${
-        isDraggable ? "cursor-grab active:cursor-grabbing" : ""
-      }`}
+      className={`${styles.toyItem} ${styles[`toyVariant${variant}`]} ${isDraggable ? "cursor-grab active:cursor-grabbing" : ""}`}
       draggable={isDraggable}
       onDragStart={onDragStart}
       onDragEnd={onDragEnd}

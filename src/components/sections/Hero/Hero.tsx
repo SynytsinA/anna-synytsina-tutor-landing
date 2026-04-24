@@ -42,7 +42,7 @@ const InteractiveWord = ({ word }: { word: string }) => {
 };
 
 export const Hero = () => {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
 
   const handleScroll = (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();

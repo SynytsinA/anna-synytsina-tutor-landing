@@ -11,7 +11,7 @@ describe("FadeIn", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     
-    // @ts-ignore
+    // @ts-expect-error - Mocking IntersectionObserver
     window.IntersectionObserver = class {
       observe = mockObserve;
       unobserve = mockUnobserve;
@@ -45,7 +45,7 @@ describe("FadeIn", () => {
   it("triggers visibility when intersection observer fires", () => {
     let observerCallback: any;
     
-    // @ts-ignore
+    // @ts-expect-error - Mocking IntersectionObserver
     window.IntersectionObserver = class {
       constructor(callback: any) {
         observerCallback = callback;
