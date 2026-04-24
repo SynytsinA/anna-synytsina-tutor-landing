@@ -78,6 +78,7 @@ export const VideoCard = ({
 
   return (
     <div
+      data-testid="video-card"
       className={cn(
         "relative bg-black rounded-[36px] p-2 shadow-2xl border border-slate-200 cursor-pointer transition-all duration-300 aspect-[9/17] mx-auto group will-change-transform transform-gpu",
         isModal 
