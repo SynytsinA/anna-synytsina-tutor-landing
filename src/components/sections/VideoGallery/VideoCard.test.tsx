@@ -86,6 +86,17 @@ describe("VideoCard", () => {
     rerender(
       <LanguageProvider>
         <VideoCard 
+          video={{ src: "ukrainian-language-demo.mp4" }} 
+          isPlaying={false} 
+          onToggle={() => {}} 
+        />
+      </LanguageProvider>
+    );
+    expect(screen.getByText("Українська мова")).toBeInTheDocument();
+
+    rerender(
+      <LanguageProvider>
+        <VideoCard 
           video={{ src: "grinch-lesson.mp4" }} 
           isPlaying={false} 
           onToggle={() => {}} 

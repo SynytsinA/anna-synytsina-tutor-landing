@@ -77,6 +77,7 @@ export const translations = {
       subtitle: "Watch snippets from real lessons. Interactive tasks, games, and genuine emotions.",
       labels: {
         math: "Math",
+        ukrainian: "Ukrainian Language",
         thematic: "Thematic Lesson",
         lesson: "Lesson"
       }
@@ -298,6 +299,7 @@ export const translations = {
       subtitle: "Подивіться фрагменти з реальних занять. Інтерактивні вправи, ігри та щирі емоції.",
       labels: {
         math: "Математика",
+        ukrainian: "Українська мова",
         thematic: "Тематичний урок",
         lesson: "Урок"
       }
