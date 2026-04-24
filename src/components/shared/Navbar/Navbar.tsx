@@ -68,8 +68,29 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [menuItems]);
 
-  const handleLinkClick = () => {
-    setIsMobileMenuOpen(false);
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("#")) {
+      const id = href.substring(1);
+      const element = document.getElementById(id);
+      if (element) {
+        e.preventDefault();
+        
+        // Manual smooth scroll
+        const offset = 80; // Navbar height
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+
+        // Update URL hash without standard jump
+        window.history.pushState(null, "", href);
+        setActiveSection(href);
+        setIsMobileMenuOpen(false);
+      }
+    }
   };
 
   return (
@@ -89,7 +110,12 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
           <Link
             href="/"
             className="flex items-center gap-3 cursor-pointer shrink-0"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              window.history.pushState(null, "", "/");
+              setIsMobileMenuOpen(false);
+            }}
           >
             <div className="w-10 h-10 bg-primary rounded-blob flex items-center justify-center text-white border-2 border-slate-900 shadow-[2px_2px_0px_#0f172a]">
               <GraduationCap size={20} color="white" />
@@ -105,6 +131,7 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
               <Link
                 key={index}
                 href={item.href}
+                onClick={(e) => handleAnchorClick(e, item.href)}
                 className={cn(
                   "no-underline text-slate-900 font-bold text-xl font-hand transition-colors duration-200 relative hover:text-primary",
                   activeSection === item.href &&
@@ -163,7 +190,7 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
               <Link
                 key={index}
                 href={item.href}
-                onClick={handleLinkClick}
+                onClick={(e) => handleAnchorClick(e, item.href)}
                 className={cn(
                   "text-4xl font-bold font-hand text-slate-800 no-underline transition-all duration-500 ease-out transform hover:scale-105 active:scale-95",
                   isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0",
