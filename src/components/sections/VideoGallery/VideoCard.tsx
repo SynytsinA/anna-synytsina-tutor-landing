@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { Play, Volume2, VolumeX, Heart, MessageCircle } from "lucide-react";
+import { Play, Volume2, VolumeX, Heart, Maximize, X } from "lucide-react";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { useLanguage } from "@/context/LanguageContext";
 
 function cn(...inputs: any[]) {
   return twMerge(clsx(inputs));
@@ -14,18 +15,36 @@ interface VideoCardProps {
     src: string;
     poster?: string;
   };
-  meta: {
-    title: string;
-    desc: string;
-  };
   isPlaying: boolean;
+  isLiked?: boolean;
   onToggle: () => void;
+  onFullscreen?: () => void;
+  onLike?: () => void;
+  onClose?: () => void;
+  isModal?: boolean;
 }
 
-export const VideoCard = ({ video, meta, isPlaying, onToggle }: VideoCardProps) => {
+export const VideoCard = ({ 
+  video, 
+  isPlaying, 
+  isLiked = false,
+  onToggle, 
+  onFullscreen,
+  onLike,
+  onClose,
+  isModal = false 
+}: VideoCardProps) => {
+  const { t } = useLanguage();
+  const labels = t.videoGallery.labels;
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
+
+  const getLabel = () => {
+    const src = video.src.toLowerCase();
+    if (src.includes("math")) return labels.math;
+    if (src.includes("grinch") || src.includes("hogwarts")) return labels.thematic;
+    return labels.lesson;
+  };
 
   useEffect(() => {
     if (!videoRef.current) return;
@@ -49,15 +68,36 @@ export const VideoCard = ({ video, meta, isPlaying, onToggle }: VideoCardProps) 
 
   const toggleLike = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setIsLiked(!isLiked);
+    onLike?.();
+  };
+
+  const handleFullscreen = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onFullscreen?.();
   };
 
   return (
     <div
-      className="relative bg-black rounded-[36px] p-3 shadow-2xl border border-slate-200 cursor-pointer transition-transform duration-300 aspect-[9/17] max-w-[320px] mx-auto hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)] group will-change-transform transform-gpu"
+      className={cn(
+        "relative bg-black rounded-[36px] p-2 shadow-2xl border border-slate-200 cursor-pointer transition-all duration-300 aspect-[9/17] mx-auto group will-change-transform transform-gpu",
+        isModal 
+          ? "w-[min(90vw,450px)] h-auto shadow-[0_0_100px_rgba(0,0,0,0.5)] border-white/20" 
+          : "w-full max-w-[320px] hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)]"
+      )}
       onClick={onToggle}
     >
+      {/* Notch */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40%] h-6 bg-black rounded-b-xl z-10"></div>
+
+      {/* Close button for modal */}
+      {isModal && (
+        <button 
+          onClick={(e) => { e.stopPropagation(); onClose?.(); }}
+          className="absolute -top-4 -right-4 w-10 h-10 bg-white text-black rounded-full flex items-center justify-center shadow-xl border border-slate-200 z-[20] hover:scale-110 transition-transform pointer-events-auto"
+        >
+          <X size={24} />
+        </button>
+      )}
 
       <div className="relative w-full h-full bg-[#1e1e1e] rounded-3xl overflow-hidden isolate transform-gpu">
         <video
@@ -84,19 +124,19 @@ export const VideoCard = ({ video, meta, isPlaying, onToggle }: VideoCardProps) 
 
         {/* Video UI Overlay */}
         <div className="absolute inset-0 pointer-events-none flex flex-col justify-between p-5 bg-gradient-to-b from-black/40 via-transparent via-80% to-black/80 z-[6]">
-          <div className="pt-4 flex justify-between">
+          <div className={cn("pt-4 flex justify-between transition-opacity duration-300", isPlaying ? "opacity-0" : "opacity-100")}>
             <div className="text-white text-[10px] font-bold flex items-center gap-1 bg-white/20 px-2.5 py-1 rounded-full backdrop-blur-md border border-white/10 uppercase tracking-widest">
-              <span>Lessons</span>
+              <span>{getLabel()}</span>
             </div>
           </div>
 
           <div className="absolute right-4 bottom-[100px] pointer-events-auto">
             <div className="flex flex-col gap-5 items-center text-white">
               <button
-                className="bg-black/50 border-none text-white w-9 h-9 rounded-full flex items-center justify-center cursor-pointer backdrop-blur-sm hover:bg-black/70 transition-colors"
+                className="bg-transparent border-none text-white p-0 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
                 onClick={toggleMute}
               >
-                {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+                {isMuted ? <VolumeX size={26} className="filter drop-shadow-md" /> : <Volume2 size={26} className="filter drop-shadow-md" />}
               </button>
               <Heart 
                 size={26} 
@@ -106,17 +146,13 @@ export const VideoCard = ({ video, meta, isPlaying, onToggle }: VideoCardProps) 
                   isLiked ? "fill-rose-500 text-rose-500 scale-125" : "text-white hover:text-rose-300"
                 )} 
               />
-              <MessageCircle size={26} className="filter drop-shadow-md" />
+              <button
+                className="bg-transparent border-none text-white p-0 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                onClick={handleFullscreen}
+              >
+                <Maximize size={26} className="filter drop-shadow-md" />
+              </button>
             </div>
-          </div>
-
-          <div className="text-white mb-5">
-            <strong className="block text-[1rem] font-bold mb-1 drop-shadow-lg">
-              {meta.title}
-            </strong>
-            <p className="text-[0.85rem] font-medium opacity-90 m-0 leading-tight drop-shadow-md">
-              {meta.desc}
-            </p>
           </div>
         </div>
       </div>
