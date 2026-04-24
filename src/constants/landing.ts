@@ -94,6 +94,22 @@ export const VIDEO_GALLERY_METADATA = [
     id: 10,
     src: "/videos/4-lesson-example-ukrainian-language.mp4",
   },
+  {
+    id: 11,
+    src: "/videos/1-lesson-example-preparing-for-school.mp4",
+  },
+  {
+    id: 12,
+    src: "/videos/2-lesson-example-preparing-for-school.mp4",
+  },
+  {
+    id: 13,
+    src: "/videos/3-lesson-example-preparing-for-school.mp4",
+  },
+  {
+    id: 14,
+    src: "/videos/4-lesson-example-preparing-for-school.mp4",
+  },
 ];
 
 export const SERVICES_CONFIG = {

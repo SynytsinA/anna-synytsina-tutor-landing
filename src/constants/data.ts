@@ -78,6 +78,7 @@ export const translations = {
       labels: {
         math: "Math",
         ukrainian: "Ukrainian Language",
+        schoolPrep: "School Prep",
         thematic: "Thematic Lesson",
         lesson: "Lesson"
       }
@@ -300,6 +301,7 @@ export const translations = {
       labels: {
         math: "Математика",
         ukrainian: "Українська мова",
+        schoolPrep: "Підготовка до школи",
         thematic: "Тематичний урок",
         lesson: "Урок"
       }

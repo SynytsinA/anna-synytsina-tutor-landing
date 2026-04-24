@@ -43,6 +43,7 @@ export const VideoCard = ({
     const src = video.src.toLowerCase();
     if (src.includes("math")) return labels.math;
     if (src.includes("ukrainian-language")) return labels.ukrainian;
+    if (src.includes("preparing-for-school")) return labels.schoolPrep;
     if (src.includes("grinch") || src.includes("hogwarts")) return labels.thematic;
     return labels.lesson;
   };

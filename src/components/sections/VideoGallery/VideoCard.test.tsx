@@ -97,6 +97,17 @@ describe("VideoCard", () => {
     rerender(
       <LanguageProvider>
         <VideoCard 
+          video={{ src: "preparing-for-school-lesson.mp4" }} 
+          isPlaying={false} 
+          onToggle={() => {}} 
+        />
+      </LanguageProvider>
+    );
+    expect(screen.getByText("Підготовка до школи")).toBeInTheDocument();
+
+    rerender(
+      <LanguageProvider>
+        <VideoCard 
           video={{ src: "grinch-lesson.mp4" }} 
           isPlaying={false} 
           onToggle={() => {}} 
