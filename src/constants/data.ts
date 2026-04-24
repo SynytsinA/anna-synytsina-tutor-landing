@@ -75,14 +75,11 @@ export const translations = {
     videoGallery: {
       title: "See It In Action",
       subtitle: "Watch snippets from real lessons. Interactive tasks, games, and genuine emotions.",
-      videos: [
-        { title: "Math Magic", desc: "Mental arithmetic with games" },
-        { title: "Reading", desc: "Interactive storytelling" },
-        { title: "Grammar", desc: "Learning rules effortlessly" },
-        { title: "Writing", desc: "Calligraphy and motor skills" },
-        { title: "Logic", desc: "Puzzles and critical thinking" },
-        { title: "Speaking", desc: "Communication and vocabulary" }
-      ]
+      labels: {
+        math: "Math",
+        thematic: "Thematic Lesson",
+        lesson: "Lesson"
+      }
     },
     subjects: {
       title: "My Services",
@@ -299,14 +296,11 @@ export const translations = {
     videoGallery: {
       title: "Як проходять уроки",
       subtitle: "Подивіться фрагменти з реальних занять. Інтерактивні вправи, ігри та щирі емоції.",
-      videos: [
-        { title: "Математика", desc: "Ментальна арифметика в іграх" },
-        { title: "Читання", desc: "Інтерактивні розповіді" },
-        { title: "Граматика", desc: "Вивчаємо правила легко" },
-        { title: "Письмо", desc: "Каліграфія та моторика" },
-        { title: "Логіка", desc: "Головоломки та мислення" },
-        { title: "Мовлення", desc: "Комунікація та словниковий запас" }
-      ]
+      labels: {
+        math: "Математика",
+        thematic: "Тематичний урок",
+        lesson: "Урок"
+      }
     },
     subjects: {
       title: "Мої Послуги",
