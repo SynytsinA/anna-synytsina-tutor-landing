@@ -56,7 +56,7 @@ export const APPROACH_METADATA = {
 export const VIDEO_GALLERY_METADATA = [
   {
     id: 1,
-    src: "/videos/1-lesson-example.mp4",
+    src: "/videos/1-lesson-example-math.mp4",
   },
   {
     id: 2,
@@ -68,15 +68,15 @@ export const VIDEO_GALLERY_METADATA = [
   },
   {
     id: 4,
-    src: "/videos/2-lesson-example.mp4",
+    src: "/videos/2-lesson-example-math.mp4",
   },
   {
     id: 5,
-    src: "/videos/3-lesson-example.mp4",
+    src: "/videos/3-lesson-example-math.mp4",
   },
   {
     id: 6,
-    src: "/videos/4-lesson-example.mp4",
+    src: "/videos/4-lesson-example-math.mp4",
   },
 ];
 
