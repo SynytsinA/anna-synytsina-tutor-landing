@@ -77,7 +77,7 @@ export const Approach = () => {
           {/* Right: Portrait Image */}
           <div className="order-1 lg:order-2 flex justify-center">
             <FadeIn
-              className="relative p-3 bg-white border-2 border-slate-900 shadow-hard-xl rotate-3 transition-transform hover:rotate-0 duration-500"
+              className="relative p-3 bg-white border-2 border-slate-900 shadow-hard-xl rotate-3 transition-all duration-300 hover:rotate-0 hover:scale-[1.02] hover:shadow-hard-2xl"
               delay={0.2}
             >
               <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-[120px] h-[40px] bg-white/60 border-x border-slate-200/50 shadow-sm opacity-80 z-10 backdrop-blur-sm"></div>

@@ -35,6 +35,7 @@ const config = {
         'hard': '4px 4px 0px #0f172a',
         'hard-lg': '6px 6px 0px #0f172a',
         'hard-xl': '8px 8px 0px #0f172a',
+        'hard-2xl': '12px 12px 0px #0f172a',
         'hard-orange': '4px 4px 0px #f97316',
         'hard-indigo': '0 8px 0px #4338ca',
       },
