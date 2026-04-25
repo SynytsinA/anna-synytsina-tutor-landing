@@ -28,3 +28,9 @@
 - **No Auto-Commits:** You are STRICTLY FORBIDDEN from executing `git commit` or `git push` commands automatically after completing a task.
 - **Manual Review:** Always leave changes in the "modified" or "staged" state. The user will perform the final review and manual commit.
 - **Completion Protocol:** After finishing a task, provide a concise summary of the changes made and ask the user to verify the code.
+
+## TypeScript & Type Safety
+- **No "any" Type:** The use of `any` is STRICTLY PROHIBITED. 
+- **Alternatives:** Use specific interfaces, types, or `unknown` if the type is truly dynamic. Use generics for reusable logic.
+- **Strict Definitions:** Every function parameter, return type, and component prop must be explicitly typed.
+- **External Data:** For API responses or external data, define a contract (Interface/Type) that matches the expected structure.
