@@ -7,6 +7,13 @@ vi.mock("@/components/shared/FadeIn", () => ({
   FadeIn: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
 }));
 
+// Mock useLanguage
+vi.mock("@/context/LanguageContext", () => ({
+  useLanguage: () => ({
+    lang: "en",
+  }),
+}));
+
 describe("Footer", () => {
   const mockTranslations = {
     title: "Contacts",
@@ -39,7 +46,7 @@ describe("Footer", () => {
   it("renders the teacher image", () => {
     render(<Footer t={mockTranslations} />);
     
-    const img = screen.getByAltText(/Teacher Anna Class/i);
+    const img = screen.getByAltText(/Teacher Anna waiting for students/i);
     expect(img).toBeInTheDocument();
   });
 });

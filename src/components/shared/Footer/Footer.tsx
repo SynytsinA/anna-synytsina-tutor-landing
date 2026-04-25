@@ -2,7 +2,9 @@ import React from "react";
 import Image from "next/image";
 import { Instagram, Sparkles } from "lucide-react";
 import { FadeIn } from "@/components/shared/FadeIn";
-import { SOCIAL_LINKS, NAVIGATION_IMAGES } from "@/constants/navigation";
+import { SOCIAL_LINKS } from "@/constants/navigation";
+import { FOOTER_METADATA } from "@/constants/landing";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface FooterProps {
   t: {
@@ -15,6 +17,8 @@ interface FooterProps {
 }
 
 export const Footer = ({ t }: FooterProps) => {
+  const { lang } = useLanguage();
+
   return (
     <footer
       className="bg-orange-50 text-slate-900 relative mt-20"
@@ -69,8 +73,8 @@ export const Footer = ({ t }: FooterProps) => {
               {/* Right Side: Image */}
               <div className="flex-1 relative min-h-[250px] md:min-h-full overflow-hidden border-t-[3px] md:border-t-0 md:border-l-[3px] border-slate-900 group">
                 <Image
-                  src={NAVIGATION_IMAGES.footerTeacher}
-                  alt="Teacher Anna Class"
+                  src={FOOTER_METADATA.image.url}
+                  alt={FOOTER_METADATA.image.alt[lang]}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"

@@ -31,7 +31,7 @@ export const GAMES_SECTION_CONFIG = {
 
 export const ABOUT_METADATA = {
   profilePhoto: {
-    url: "https://images.unsplash.com/photo-1558021212-51b6ecfa0db9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    url: "/images/repetytor-pochatkovyh-klasiv-anna-synytsina-about.jpg",
     alt: {
       en: "Anna Synytsina - Professional Tutor",
       ua: "Синиціна Анна Юріївна - професійний репетитор",
@@ -43,13 +43,23 @@ export const ABOUT_METADATA = {
 
 export const APPROACH_METADATA = {
   portraitImage: {
-    url: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    url: "/images/repetytor-pochatkovyh-klasiv-anna-synytsina-approach.jpg",
     alt: {
       en: "Anna Synytsina teaching online",
       ua: "Анна Синиціна під час онлайн-уроку",
     },
     width: 500,
     height: 700,
+  },
+};
+
+export const FOOTER_METADATA = {
+  image: {
+    url: "/images/repetytor-pochatkovyh-klasiv-anna-synytsina-contact.jpg",
+    alt: {
+      en: "Teacher Anna waiting for students",
+      ua: "Вчитель Анна чекає на учнів",
+    },
   },
 };
 
