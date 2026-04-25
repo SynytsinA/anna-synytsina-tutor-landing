@@ -212,17 +212,17 @@ export const FAQ_CONFIG = {
 };
 
 export const TESTIMONIALS_DATA = [
-  { id: 1, image: "/images/1-feedback.jpg", username: "olena_germany", time: "2h" },
-  { id: 2, image: "/images/2-feedback.jpg", username: "dmytro_aus", time: "5h" },
-  { id: 3, image: "/images/3-feedback.jpg", username: "mari_poland", time: "8h" },
-  { id: 4, image: "/images/4-feedback.jpg", username: "sara_uk_mom", time: "12h" },
-  { id: 5, image: "/images/5-feedback.jpg", username: "mama_marichka", time: "15h" },
-  { id: 6, image: "/images/6-feedback.jpg", username: "vlad_prep", time: "18h" },
-  { id: 7, image: "/images/7-feedback.jpg", username: "natalia_v", time: "20h" },
-  { id: 8, image: "/images/8-feedback.jpg", username: "anna_school", time: "21h" },
-  { id: 9, image: "/images/9-feedback.jpg", username: "tetiana_math", time: "22h" },
-  { id: 10, image: "/images/10-feedback.jpg", username: "i_love_lessons", time: "23h" },
-  { id: 11, image: "/images/11-feedback.jpg", username: "best_tutor_ever", time: "23h" },
+  { id: 1, image: "/images/vidhuk-pro-navchannya-anna-synytsina-1.jpg", username: "olena_germany", time: "2h" },
+  { id: 2, image: "/images/vidhuk-pro-navchannya-anna-synytsina-2.jpg", username: "dmytro_aus", time: "5h" },
+  { id: 3, image: "/images/vidhuk-pro-navchannya-anna-synytsina-3.jpg", username: "mari_poland", time: "8h" },
+  { id: 4, image: "/images/vidhuk-pro-navchannya-anna-synytsina-4.jpg", username: "sara_uk_mom", time: "12h" },
+  { id: 5, image: "/images/vidhuk-pro-navchannya-anna-synytsina-5.jpg", username: "mama_marichka", time: "15h" },
+  { id: 6, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-1.jpg", username: "vlad_prep", time: "18h" },
+  { id: 7, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-2.jpg", username: "natalia_v", time: "20h" },
+  { id: 8, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-3.jpg", username: "anna_school", time: "21h" },
+  { id: 9, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-4.jpg", username: "tetiana_math", time: "22h" },
+  { id: 10, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-5.jpg", username: "i_love_lessons", time: "23h" },
+  { id: 11, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-6.jpg", username: "best_tutor_ever", time: "23h" },
 ];
 
 export const TESTIMONIALS_CONFIG = {
