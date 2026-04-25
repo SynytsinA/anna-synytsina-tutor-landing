@@ -4,7 +4,7 @@ import { Footer } from "./Footer";
 
 // Mock FadeIn to avoid intersection observer overhead in unit test
 vi.mock("@/components/shared/FadeIn", () => ({
-  FadeIn: ({ children }: any) => <div>{children}</div>,
+  FadeIn: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
 }));
 
 describe("Footer", () => {

@@ -5,6 +5,7 @@ import { Laptop, Wifi, Globe } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { FadeIn } from "@/components/shared/FadeIn";
 import { GLOBAL_CLASSROOM_CONFIG } from "@/constants/landing";
+import { type CountryNode } from "@/types/landing";
 import styles from "./GlobalClassroom.module.css";
 
 export const GlobalClassroom = () => {
@@ -67,15 +68,15 @@ export const GlobalClassroom = () => {
                </div>
 
                {/* Nodes */}
-               {countries.map((c, i) => (
+               {(countries as CountryNode[]).map((c, i) => (
                  <div 
                     key={i} 
                     className={`absolute ${styles.floatNode} flex items-center`}
                     style={{ 
-                        top: (c as any).top,
-                        left: (c as any).left,
-                        right: (c as any).right,
-                        bottom: (c as any).bottom,
+                        top: c.top,
+                        left: c.left,
+                        right: c.right,
+                        bottom: c.bottom,
                         animationDelay: `${i * 0.5}s`
                     }} 
                  >

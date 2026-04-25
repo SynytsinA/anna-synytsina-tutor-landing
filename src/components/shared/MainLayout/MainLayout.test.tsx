@@ -4,11 +4,11 @@ import { MainLayout } from "./MainLayout";
 
 // Mock Navbar and Footer
 vi.mock("@/components/shared/Navbar", () => ({
-  Navbar: ({ t }: any) => <nav data-testid="mock-navbar">{t.logo}</nav>,
+  Navbar: ({ t }: { t: { logo: string } }) => <nav data-testid="mock-navbar">{t.logo}</nav>,
 }));
 
 vi.mock("@/components/shared/Footer", () => ({
-  Footer: ({ t }: any) => <footer data-testid="mock-footer">{t.title}</footer>,
+  Footer: ({ t }: { t: { title: string } }) => <footer data-testid="mock-footer">{t.title}</footer>,
 }));
 
 describe("MainLayout", () => {

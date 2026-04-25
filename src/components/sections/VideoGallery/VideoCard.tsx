@@ -2,11 +2,11 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import { Play, Volume2, VolumeX, Heart, Maximize, X } from "lucide-react";
-import { clsx } from "clsx";
+import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { useLanguage } from "@/context/LanguageContext";
 
-function cn(...inputs: any[]) {
+function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 

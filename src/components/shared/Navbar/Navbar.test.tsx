@@ -4,7 +4,7 @@ import { Navbar } from "./Navbar";
 
 // Mock next/link to simplify navigation testing
 vi.mock("next/link", () => ({
-  default: ({ children, href, onClick, className }: any) => (
+  default: ({ children, href, onClick, className }: { children: React.ReactNode; href: string; onClick?: () => void; className?: string }) => (
     <a href={href} onClick={onClick} className={className}>
       {children}
     </a>

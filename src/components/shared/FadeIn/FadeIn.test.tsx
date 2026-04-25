@@ -43,11 +43,11 @@ describe("FadeIn", () => {
   });
 
   it("triggers visibility when intersection observer fires", () => {
-    let observerCallback: any;
+    let observerCallback: IntersectionObserverCallback;
     
     // @ts-expect-error - Mocking IntersectionObserver
     window.IntersectionObserver = class {
-      constructor(callback: any) {
+      constructor(callback: IntersectionObserverCallback) {
         observerCallback = callback;
       }
       observe = mockObserve;
@@ -63,8 +63,8 @@ describe("FadeIn", () => {
 
     // Simulate intersection
     act(() => {
-      const entry = { isIntersecting: true };
-      observerCallback([entry]);
+      const entry = { isIntersecting: true } as IntersectionObserverEntry;
+      observerCallback([entry], {} as IntersectionObserver);
     });
 
     const container = screen.getByTestId("child").parentElement;

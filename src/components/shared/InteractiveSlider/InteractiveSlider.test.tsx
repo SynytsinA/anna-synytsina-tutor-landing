@@ -4,7 +4,7 @@ import { InteractiveSlider } from "./InteractiveSlider";
 
 // Mock the FadeIn component to avoid animation-related complexities in tests
 vi.mock("@/components/shared/FadeIn/FadeIn", () => ({
-  FadeIn: ({ children, className }: any) => <div className={className}>{children}</div>,
+  FadeIn: ({ children, className }: { children: React.ReactNode; className?: string }) => <div className={className}>{children}</div>,
 }));
 
 describe("InteractiveSlider", () => {

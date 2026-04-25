@@ -115,7 +115,7 @@ export const About = () => {
 
             <div className="flex flex-col gap-4">
               {aboutT.stats &&
-                aboutT.stats.map((stat: any, index: number) => (
+                aboutT.stats.map((stat, index: number) => (
                   <FadeIn
                     key={index}
                     delay={0.2 + index * 0.1}

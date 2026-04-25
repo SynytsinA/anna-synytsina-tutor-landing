@@ -3,10 +3,10 @@
 import React from "react";
 import Image from "next/image";
 import { FadeIn } from "@/components/shared/FadeIn";
-import { 
-  ShieldCheck, 
-  Award, 
-  Zap, 
+import {
+  ShieldCheck,
+  Award,
+  Zap,
   Sparkles,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -45,7 +45,7 @@ export const Approach = () => {
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-20 items-center">
           {/* Left: 4 Value Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 order-2 lg:order-1">
-            {list.map((item: any, index: number) => {
+            {list.map((item, index: number) => {
               const Icon = icons[index % icons.length];
               const colorClass = colorClasses[index % colorClasses.length];
               const iconColorClass = iconColorClasses[index % iconColorClasses.length];
@@ -54,9 +54,8 @@ export const Approach = () => {
                 <FadeIn
                   key={index}
                   delay={index * 0.1}
-                  className={`rounded-hand p-8 border-2 border-slate-900 shadow-hard transition-all duration-300 hover:shadow-hard-lg hover:-translate-y-1 ${
-                    index % 2 === 0 ? "rotate-1" : "-rotate-1"
-                  } ${colorClass}`}
+                  className={`rounded-hand p-8 border-2 border-slate-900 shadow-hard transition-all duration-300 hover:shadow-hard-lg hover:-translate-y-1 ${index % 2 === 0 ? "rotate-1" : "-rotate-1"
+                    } ${colorClass}`}
                 >
                   <div
                     className={`w-14 h-14 rounded-full flex items-center justify-center bg-white border-2 border-slate-900 mb-6 shrink-0 shadow-sm ${iconColorClass}`}
@@ -81,7 +80,7 @@ export const Approach = () => {
               delay={0.2}
             >
               <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-[120px] h-[40px] bg-white/60 border-x border-slate-200/50 shadow-sm opacity-80 z-10 backdrop-blur-sm"></div>
-              
+
               <div className="overflow-hidden border border-slate-100 flex">
                 <Image
                   src={APPROACH_METADATA.portraitImage.url}
@@ -92,10 +91,10 @@ export const Approach = () => {
                   priority
                 />
               </div>
-              
+
               {/* Decorative Corner Element */}
               <div className="absolute -bottom-6 -right-6 w-16 h-16 bg-accent rounded-full border-2 border-slate-900 flex items-center justify-center shadow-hard animate-bounce-slow">
-                 <Sparkles className="text-white" size={24} />
+                <Sparkles className="text-white" size={24} />
               </div>
             </FadeIn>
           </div>

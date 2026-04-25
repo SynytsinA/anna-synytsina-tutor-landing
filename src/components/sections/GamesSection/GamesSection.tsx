@@ -7,10 +7,10 @@ import { useLanguage } from "@/context/LanguageContext";
 import { LANDING_SECTIONS, GAMES_SECTION_CONFIG } from "@/constants/landing";
 import { PotterGame } from "@/components/features/PotterGame/PotterGame";
 import { GrinchGame } from "@/components/features/GrinchGame/GrinchGame";
-import { clsx } from "clsx";
+import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-function cn(...inputs: any[]) {
+function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 

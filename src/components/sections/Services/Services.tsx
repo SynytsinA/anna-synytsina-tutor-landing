@@ -5,10 +5,10 @@ import { Backpack, BookOpen, Pencil, CheckCircle } from "lucide-react";
 import { FadeIn } from "@/components/shared/FadeIn";
 import { useLanguage } from "@/context/LanguageContext";
 import { LANDING_SECTIONS, SERVICES_CONFIG } from "@/constants/landing";
-import { clsx } from "clsx";
+import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-function cn(...inputs: any[]) {
+function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
@@ -53,7 +53,7 @@ export const Services = () => {
         </FadeIn>
 
         <div className={cn("grid gap-8", SERVICES_CONFIG.grid)}>
-          {cards.map((card: any, index: number) => (
+          {cards.map((card, index: number) => (
             <FadeIn
               key={index}
               className="bg-white rounded-3xl p-8 border-[3px] border-slate-900 transition-all duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] flex flex-col gap-6 h-full shadow-[6px_6px_0px_rgba(15,23,42,0.1)] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg hover:border-slate-900"
