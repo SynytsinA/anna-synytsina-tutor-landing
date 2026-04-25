@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { Play, Volume2, VolumeX, Heart, Maximize, X } from "lucide-react";
+import { Play, Volume2, VolumeX, Heart, Maximize, Minimize, X } from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { useLanguage } from "@/context/LanguageContext";
@@ -186,7 +186,11 @@ export const VideoCard = ({
                 className="bg-transparent border-none text-white p-0 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
                 onClick={handleFullscreen}
               >
-                <Maximize size={26} className="filter drop-shadow-md" />
+                {isModal ? (
+                  <Minimize size={26} className="filter drop-shadow-md" />
+                ) : (
+                  <Maximize size={26} className="filter drop-shadow-md" />
+                )}
               </button>
             </div>
           </div>

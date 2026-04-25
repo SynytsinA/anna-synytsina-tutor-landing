@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FadeIn } from "@/components/shared/FadeIn/FadeIn";
 import { InteractiveSlider } from "@/components/shared/InteractiveSlider";
 import { useLanguage } from "@/context/LanguageContext";
@@ -15,24 +16,49 @@ export const VideoGallery = () => {
   const [modalVideoId, setModalVideoId] = useState<number | null>(null);
   const [likedIds, setLikedIds] = useState<Set<number>>(new Set());
 
-  // Lock scroll and handle ESC when modal is open
+  const closeModal = React.useCallback(() => {
+    setModalVideoId(null);
+    setPlayingId(null);
+  }, []);
+
+  const navigateVideo = React.useCallback((direction: number) => {
+    if (modalVideoId === null) return;
+    const currentIndex = VIDEO_GALLERY_METADATA.findIndex(v => v.id === modalVideoId);
+    let nextIndex = currentIndex + direction;
+    
+    if (nextIndex >= VIDEO_GALLERY_METADATA.length) nextIndex = 0;
+    if (nextIndex < 0) nextIndex = VIDEO_GALLERY_METADATA.length - 1;
+    
+    const nextId = VIDEO_GALLERY_METADATA[nextIndex].id;
+    setModalVideoId(nextId);
+    setPlayingId(null); // Ensure video is paused when navigating
+  }, [modalVideoId]);
+
+  const handleNext = React.useCallback(() => navigateVideo(1), [navigateVideo]);
+  const handlePrev = React.useCallback(() => navigateVideo(-1), [navigateVideo]);
+
+  // Lock scroll and handle ESC and arrows when modal is open
   useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeModal();
+      if (modalVideoId !== null) {
+        if (e.key === "ArrowLeft") handlePrev();
+        if (e.key === "ArrowRight") handleNext();
+      }
     };
 
-    if (modalVideoId) {
+    if (modalVideoId !== null) {
       document.body.style.overflow = "hidden";
-      window.addEventListener("keydown", handleEsc);
+      window.addEventListener("keydown", handleKeyDown);
     } else {
       document.body.style.overflow = "unset";
     }
 
     return () => {
       document.body.style.overflow = "unset";
-      window.removeEventListener("keydown", handleEsc);
+      window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [modalVideoId]);
+  }, [modalVideoId, closeModal, handleNext, handlePrev]);
 
   const handleToggle = (id: number) => {
     setPlayingId(prev => (prev === id ? null : id));
@@ -40,6 +66,7 @@ export const VideoGallery = () => {
 
   const handleFullscreen = (id: number) => {
     setModalVideoId(id);
+    setPlayingId(null); // Ensure video is paused when entering modal
   };
 
   const handleLike = (id: number) => {
@@ -52,11 +79,6 @@ export const VideoGallery = () => {
       }
       return next;
     });
-  };
-
-  const closeModal = () => {
-    setModalVideoId(null);
-    setPlayingId(null);
   };
 
   const modalVideo = VIDEO_GALLERY_METADATA.find(v => v.id === modalVideoId);
@@ -95,12 +117,32 @@ export const VideoGallery = () => {
       </div>
 
       {/* Modal Overlay */}
-      {modalVideoId && modalVideo && (
+      {modalVideoId !== null && modalVideo && (
         <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-md z-[9999] flex items-center justify-center p-4 animate-in fade-in duration-300"
+          className="fixed inset-0 bg-black/90 backdrop-blur-xl z-[9999] flex items-center justify-center p-4 sm:p-10 animate-in fade-in duration-500"
           onClick={closeModal}
         >
-          <div className="animate-in zoom-in-95 duration-300" onClick={(e) => e.stopPropagation()}>
+          {/* Close Button Background Tap Target */}
+          <div className="absolute inset-0" onClick={closeModal}></div>
+
+          {/* Navigation Buttons - Desktop */}
+          <button
+            onClick={(e) => { e.stopPropagation(); handlePrev(); }}
+            className="hidden sm:flex absolute left-8 top-1/2 -translate-y-1/2 w-16 h-16 items-center justify-center rounded-full bg-white/10 text-white border border-white/20 backdrop-blur-md hover:bg-white/20 hover:scale-110 transition-all z-20"
+            aria-label="Previous video"
+          >
+            <ChevronLeft size={32} />
+          </button>
+
+          <button
+            onClick={(e) => { e.stopPropagation(); handleNext(); }}
+            className="hidden sm:flex absolute right-8 top-1/2 -translate-y-1/2 w-16 h-16 items-center justify-center rounded-full bg-white/10 text-white border border-white/20 backdrop-blur-md hover:bg-white/20 hover:scale-110 transition-all z-20"
+            aria-label="Next video"
+          >
+            <ChevronRight size={32} />
+          </button>
+
+          <div className="relative animate-in zoom-in-95 duration-500 z-10" onClick={(e) => e.stopPropagation()}>
             <VideoCard
               video={modalVideo}
               isPlaying={playingId === modalVideoId}
@@ -111,6 +153,22 @@ export const VideoGallery = () => {
               onLike={() => handleLike(modalVideoId)}
               isModal={true}
             />
+
+            {/* Navigation Buttons - Mobile (Bottom) */}
+            <div className="flex sm:hidden justify-center gap-10 mt-8">
+              <button
+                onClick={(e) => { e.stopPropagation(); handlePrev(); }}
+                className="w-14 h-14 flex items-center justify-center rounded-full bg-white/10 text-white border border-white/20 backdrop-blur-md active:scale-95 transition-all"
+              >
+                <ChevronLeft size={28} />
+              </button>
+              <button
+                onClick={(e) => { e.stopPropagation(); handleNext(); }}
+                className="w-14 h-14 flex items-center justify-center rounded-full bg-white/10 text-white border border-white/20 backdrop-blur-md active:scale-95 transition-all"
+              >
+                <ChevronRight size={28} />
+              </button>
+            </div>
           </div>
         </div>
       )}
