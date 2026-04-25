@@ -38,34 +38,54 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const scrolledToBottom =
-        Math.ceil(window.innerHeight + window.scrollY) >=
-        document.documentElement.scrollHeight - 50;
-
-      if (scrolledToBottom && menuItems.length > 0) {
-        setActiveSection(menuItems[menuItems.length - 1].href);
-        return;
-      }
-
-      const sections = menuItems.map((item) => item.href.substring(1));
-      let current = "";
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 200 && rect.bottom >= 150) {
-            current = "#" + section;
-          }
+      if (menuItems.length > 0) {
+        const scrolledToBottom = 
+          window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 20;
+        
+        if (scrolledToBottom) {
+          setActiveSection(menuItems[menuItems.length - 1].href);
         }
       }
-
-      if (current) setActiveSection(current);
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
+  }, [menuItems]);
+
+  useEffect(() => {
+    if (menuItems.length === 0) return;
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "-10% 0px -70% 0px", // Trigger when section is in upper-middle of viewport
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      // Check if we are at the bottom first - if so, don't let observer override
+      const scrolledToBottom = 
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 20;
+      
+      if (scrolledToBottom) return;
+
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection("#" + entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    menuItems.forEach((item) => {
+      if (item.href.startsWith("#")) {
+        const id = item.href.substring(1);
+        const element = document.getElementById(id);
+        if (element) observer.observe(element);
+      }
+    });
+
+    return () => observer.disconnect();
   }, [menuItems]);
 
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -87,7 +107,6 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
 
         // Update URL hash without standard jump
         window.history.pushState(null, "", href);
-        setActiveSection(href);
         setIsMobileMenuOpen(false);
       }
     }
@@ -133,9 +152,11 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
                 href={item.href}
                 onClick={(e) => handleAnchorClick(e, item.href)}
                 className={cn(
-                  "no-underline text-slate-900 font-bold text-xl font-hand transition-colors duration-200 relative hover:text-primary",
-                  activeSection === item.href &&
-                    'text-primary after:content-[""] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[3px] after:bg-primary after:rounded-xl after:-rotate-2'
+                  "no-underline text-slate-900 font-bold text-xl font-hand transition-all duration-300 relative hover:text-primary pb-1",
+                  "after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[3px] after:bg-primary after:rounded-xl after:-rotate-2 after:transition-all after:duration-300 after:origin-center",
+                  activeSection === item.href
+                    ? "text-primary after:opacity-100 after:scale-x-100"
+                    : "after:opacity-0 after:scale-x-0"
                 )}
               >
                 {item.label}
@@ -192,16 +213,17 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
                 href={item.href}
                 onClick={(e) => handleAnchorClick(e, item.href)}
                 className={cn(
-                  "text-4xl font-bold font-hand text-slate-800 no-underline transition-all duration-500 ease-out transform hover:scale-105 active:scale-95",
+                  "text-4xl font-bold font-hand text-slate-800 no-underline transition-all duration-500 ease-out transform hover:scale-105 active:scale-95 flex items-center justify-center",
                   isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0",
                   activeSection === item.href && "text-primary"
                 )}
                 style={{ transitionDelay: `${100 + index * 50}ms` }}
               >
                 {item.label}
-                {activeSection === item.href && (
-                  <span className="inline-block w-2.5 h-2.5 bg-primary rounded-full ml-3 mb-2 animate-pulse"></span>
-                )}
+                <span className={cn(
+                  "inline-block w-2.5 h-2.5 bg-primary rounded-full ml-3 mb-2 transition-all duration-500",
+                  activeSection === item.href ? "opacity-100 scale-100 animate-pulse" : "opacity-0 scale-0"
+                )}></span>
               </Link>
             ))}
           </div>
