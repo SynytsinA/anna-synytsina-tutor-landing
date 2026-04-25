@@ -6,6 +6,7 @@ import { FadeIn } from "@/components/shared/FadeIn/FadeIn";
 import { InteractiveSlider } from "@/components/shared/InteractiveSlider";
 import { useLanguage } from "@/context/LanguageContext";
 import { LANDING_SECTIONS, VIDEO_GALLERY_METADATA } from "@/constants/landing";
+import { useSwipeNavigation } from "@/hooks/useSwipeNavigation";
 import { VideoCard } from "./VideoCard";
 
 export const VideoGallery = () => {
@@ -19,6 +20,10 @@ export const VideoGallery = () => {
   const closeModal = React.useCallback(() => {
     setModalVideoId(null);
     setPlayingId(null);
+    // If we're at the modal state in history, go back
+    if (window.history.state?.modalVideo) {
+      window.history.back();
+    }
   }, []);
 
   const navigateVideo = React.useCallback((direction: number) => {
@@ -37,6 +42,17 @@ export const VideoGallery = () => {
   const handleNext = React.useCallback(() => navigateVideo(1), [navigateVideo]);
   const handlePrev = React.useCallback(() => navigateVideo(-1), [navigateVideo]);
 
+  const {
+    handleTouchStart,
+    handleTouchMove,
+    handleTouchEnd,
+    isAnimating,
+    getSwipeStyle
+  } = useSwipeNavigation({
+    onNext: handleNext,
+    onPrev: handlePrev
+  });
+
   // Lock scroll and handle ESC and arrows when modal is open
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -50,15 +66,29 @@ export const VideoGallery = () => {
     if (modalVideoId !== null) {
       document.body.style.overflow = "hidden";
       window.addEventListener("keydown", handleKeyDown);
+
+      // Push state for back button handling
+      if (!window.history.state?.modalVideo) {
+        window.history.pushState({ modalVideo: true }, "");
+      }
+
+      const handlePopState = (e: PopStateEvent) => {
+        if (!e.state?.modalVideo) {
+          setModalVideoId(null);
+          setPlayingId(null);
+        }
+      };
+
+      window.addEventListener("popstate", handlePopState);
+
+      return () => {
+        window.removeEventListener("keydown", handleKeyDown);
+        window.removeEventListener("popstate", handlePopState);
+      };
     } else {
       document.body.style.overflow = "unset";
     }
-
-    return () => {
-      document.body.style.overflow = "unset";
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [modalVideoId, closeModal, handleNext, handlePrev]);
+  }, [modalVideoId, handleNext, handlePrev, closeModal]);
 
   const handleToggle = (id: number) => {
     setPlayingId(prev => (prev === id ? null : id));
@@ -109,6 +139,7 @@ export const VideoGallery = () => {
                 isLiked={likedIds.has(video.id)}
                 onToggle={() => handleToggle(video.id)}
                 onFullscreen={() => handleFullscreen(video.id)}
+                onDoubleClick={() => handleFullscreen(video.id)}
                 onLike={() => handleLike(video.id)}
               />
             </div>
@@ -121,6 +152,9 @@ export const VideoGallery = () => {
         <div
           className="fixed inset-0 bg-black/90 backdrop-blur-xl z-[9999] flex items-center justify-center p-4 sm:p-10 animate-in fade-in duration-500"
           onClick={closeModal}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           {/* Close Button Background Tap Target */}
           <div className="absolute inset-0" onClick={closeModal}></div>
@@ -142,7 +176,11 @@ export const VideoGallery = () => {
             <ChevronRight size={32} />
           </button>
 
-          <div className="relative animate-in zoom-in-95 duration-500 z-10" onClick={(e) => e.stopPropagation()}>
+          <div 
+            className={`relative z-10 transition-all ${isAnimating ? "opacity-0" : "opacity-100"}`}
+            style={getSwipeStyle()}
+            onClick={(e) => e.stopPropagation()}
+          >
             <VideoCard
               video={modalVideo}
               isPlaying={playingId === modalVideoId}
@@ -153,22 +191,6 @@ export const VideoGallery = () => {
               onLike={() => handleLike(modalVideoId)}
               isModal={true}
             />
-
-            {/* Navigation Buttons - Mobile (Bottom) */}
-            <div className="flex sm:hidden justify-center gap-10 mt-8">
-              <button
-                onClick={(e) => { e.stopPropagation(); handlePrev(); }}
-                className="w-14 h-14 flex items-center justify-center rounded-full bg-white/10 text-white border border-white/20 backdrop-blur-md active:scale-95 transition-all"
-              >
-                <ChevronLeft size={28} />
-              </button>
-              <button
-                onClick={(e) => { e.stopPropagation(); handleNext(); }}
-                className="w-14 h-14 flex items-center justify-center rounded-full bg-white/10 text-white border border-white/20 backdrop-blur-md active:scale-95 transition-all"
-              >
-                <ChevronRight size={28} />
-              </button>
-            </div>
           </div>
         </div>
       )}
