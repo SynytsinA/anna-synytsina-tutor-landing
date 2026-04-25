@@ -96,12 +96,13 @@ export const Testimonials = () => {
   const [modalItemId, setModalItemId] = useState<number | null>(null);
 
   const closeModal = useCallback(() => {
+    if (modalItemId === null) return;
     setModalItemId(null);
     // If we're at the modal state in history, go back
     if (window.history.state?.modal) {
       window.history.back();
     }
-  }, []);
+  }, [modalItemId]);
 
   const navigateItem = useCallback((direction: number) => {
     if (modalItemId === null) return;
@@ -194,7 +195,6 @@ export const Testimonials = () => {
       {modalItemId !== null && selectedItem && (
         <div
           className="fixed inset-0 bg-black/90 backdrop-blur-xl z-[9999] flex items-center justify-center p-4 sm:p-10 animate-in fade-in duration-500"
-          onClick={closeModal}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -221,7 +221,7 @@ export const Testimonials = () => {
 
           {/* Close Button */}
           <button
-            onClick={closeModal}
+            onClick={(e) => { e.stopPropagation(); closeModal(); }}
             className="absolute top-6 right-6 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 text-white border border-white/20 backdrop-blur-md hover:bg-white/20 hover:scale-110 transition-all z-20"
             aria-label="Close"
           >

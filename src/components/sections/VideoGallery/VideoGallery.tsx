@@ -18,13 +18,14 @@ export const VideoGallery = () => {
   const [likedIds, setLikedIds] = useState<Set<number>>(new Set());
 
   const closeModal = React.useCallback(() => {
+    if (modalVideoId === null) return;
     setModalVideoId(null);
     setPlayingId(null);
     // If we're at the modal state in history, go back
     if (window.history.state?.modalVideo) {
       window.history.back();
     }
-  }, []);
+  }, [modalVideoId]);
 
   const navigateVideo = React.useCallback((direction: number) => {
     if (modalVideoId === null) return;
@@ -151,7 +152,6 @@ export const VideoGallery = () => {
       {modalVideoId !== null && modalVideo && (
         <div
           className="fixed inset-0 bg-black/90 backdrop-blur-xl z-[9999] flex items-center justify-center p-4 sm:p-10 animate-in fade-in duration-500"
-          onClick={closeModal}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
