@@ -143,8 +143,8 @@ export const VideoCard = ({
           ref={videoRef}
           src={video.src}
           poster={video.poster}
-          aria-label={`${getLabel()} - Відео-урок Анни Синиціної`}
-          title={`${getLabel()} - Відео-урок Анни Синиціної`}
+          aria-label={t.videoGallery.ariaLabelFormat.replace("{subject}", getLabel())}
+          title={t.videoGallery.ariaLabelFormat.replace("{subject}", getLabel())}
           playsInline
           onEnded={onToggle}
           muted={isMuted}

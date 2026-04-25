@@ -75,6 +75,7 @@ export const translations = {
     videoGallery: {
       title: "See It In Action",
       subtitle: "Watch snippets from real lessons. Interactive tasks, games, and genuine emotions.",
+      ariaLabelFormat: "{subject} - Online lesson for primary school by Anna Synytsina",
       labels: {
         math: "Math",
         ukrainian: "Ukrainian Language",
@@ -276,6 +277,7 @@ export const translations = {
     videoGallery: {
       title: "Як проходять уроки",
       subtitle: "Подивіться фрагменти з реальних занять. Інтерактивні вправи, ігри та щирі емоції.",
+      ariaLabelFormat: "{subject} - Онлайн-урок для початкової школи від Анни Синиціної",
       labels: {
         math: "Математика",
         ukrainian: "Українська мова",
