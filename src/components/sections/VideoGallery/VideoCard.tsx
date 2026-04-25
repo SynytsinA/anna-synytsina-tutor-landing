@@ -21,6 +21,7 @@ interface VideoCardProps {
   onFullscreen?: () => void;
   onLike?: () => void;
   onClose?: () => void;
+  onDoubleClick?: () => void;
   isModal?: boolean;
 }
 
@@ -32,6 +33,7 @@ export const VideoCard = ({
   onFullscreen,
   onLike,
   onClose,
+  onDoubleClick,
   isModal = false 
 }: VideoCardProps) => {
   const { t } = useLanguage();
@@ -117,10 +119,11 @@ export const VideoCard = ({
       className={cn(
         "relative bg-black rounded-[36px] p-2 shadow-2xl border border-slate-200 cursor-pointer transition-all duration-300 aspect-[9/17] mx-auto group will-change-transform transform-gpu",
         isModal 
-          ? "w-[min(90vw,450px)] h-auto shadow-[0_0_100px_rgba(0,0,0,0.5)] border-white/20" 
+          ? "w-[min(95vw,600px)] h-auto max-h-[75vh] sm:max-h-[95vh] shadow-[0_0_100px_rgba(0,0,0,0.5)] border-white/20" 
           : "w-full max-w-[320px] hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)]"
       )}
       onClick={onToggle}
+      onDoubleClick={onDoubleClick}
     >
       {/* Notch */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40%] h-6 bg-black rounded-b-xl z-10"></div>
