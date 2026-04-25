@@ -212,17 +212,17 @@ export const FAQ_CONFIG = {
 };
 
 export const TESTIMONIALS_DATA = [
-  { id: 1, image: "/images/vidhuk-pro-navchannya-anna-synytsina-1.jpg", username: "olena_germany", time: "2h" },
-  { id: 2, image: "/images/vidhuk-pro-navchannya-anna-synytsina-2.jpg", username: "dmytro_aus", time: "5h" },
-  { id: 3, image: "/images/vidhuk-pro-navchannya-anna-synytsina-3.jpg", username: "mari_poland", time: "8h" },
-  { id: 4, image: "/images/vidhuk-pro-navchannya-anna-synytsina-4.jpg", username: "sara_uk_mom", time: "12h" },
-  { id: 5, image: "/images/vidhuk-pro-navchannya-anna-synytsina-5.jpg", username: "mama_marichka", time: "15h" },
-  { id: 6, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-1.jpg", username: "vlad_prep", time: "18h" },
-  { id: 7, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-2.jpg", username: "natalia_v", time: "20h" },
-  { id: 8, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-3.jpg", username: "anna_school", time: "21h" },
-  { id: 9, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-4.jpg", username: "tetiana_math", time: "22h" },
-  { id: 10, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-5.jpg", username: "i_love_lessons", time: "23h" },
-  { id: 11, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-6.jpg", username: "best_tutor_ever", time: "23h" },
+  { id: 1, image: "/images/vidhuk-pro-navchannya-anna-synytsina-1.jpg", alt: "Відгук про навчання у Анни Синиціної", username: "olena_germany", time: "2h" },
+  { id: 2, image: "/images/vidhuk-pro-navchannya-anna-synytsina-2.jpg", alt: "Позитивний відгук про вчителя Анну Синиціну", username: "dmytro_aus", time: "5h" },
+  { id: 3, image: "/images/vidhuk-pro-navchannya-anna-synytsina-3.jpg", alt: "Відгук мами про уроки у початковій школі", username: "mari_poland", time: "8h" },
+  { id: 4, image: "/images/vidhuk-pro-navchannya-anna-synytsina-4.jpg", alt: "Враження від інтерактивного навчання у Анни", username: "sara_uk_mom", time: "12h" },
+  { id: 5, image: "/images/vidhuk-pro-navchannya-anna-synytsina-5.jpg", alt: "Відгук про репетиторство з Анною Синиціною", username: "mama_marichka", time: "15h" },
+  { id: 6, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-1.jpg", alt: "Відгук батьків про вчительку початкових класів", username: "vlad_prep", time: "18h" },
+  { id: 7, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-2.jpg", alt: "Подяка вчительці за якісну підготовку до школи", username: "natalia_v", time: "20h" },
+  { id: 8, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-3.jpg", alt: "Відгук про успіхи дитини у початковій школі", username: "anna_school", time: "21h" },
+  { id: 9, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-4.jpg", alt: "Враження батьків від онлайн-занять з репетитором", username: "tetiana_math", time: "22h" },
+  { id: 10, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-5.jpg", alt: "Відгук про індивідуальний підхід вчительки Анни Синиціної", username: "i_love_lessons", time: "23h" },
+  { id: 11, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-6.jpg", alt: "Результати навчання у початкових класах - відгук", username: "best_tutor_ever", time: "23h" },
 ];
 
 export const TESTIMONIALS_CONFIG = {

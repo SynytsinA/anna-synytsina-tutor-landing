@@ -69,7 +69,7 @@ const StoryCard: React.FC<StoryCardProps> = ({ item, index, onClick, isModal = f
         <div className="absolute inset-0 z-10 bg-black/20 flex items-center justify-center">
           <Image
             src={item.image}
-            alt={`Feedback from ${item.username}`}
+            alt={item.alt}
             fill
             className="object-cover"
             sizes={isModal ? "1000px" : "(max-width: 768px) 85vw, 300px"}

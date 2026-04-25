@@ -126,7 +126,7 @@ export const PotterGame = () => {
         <div>
           <Image
             src="/images/sortuvalnyi-kapelyuh-interaktyvna-ukrainska-mova.png"
-            alt="Sorting Hat"
+            alt="Сортувальний капелюх — інтерактивне навчання від Анни Синиціної"
             width={0}
             height={0}
             sizes="100vw"
