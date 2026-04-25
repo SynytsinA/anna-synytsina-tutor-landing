@@ -66,59 +66,59 @@ export const FOOTER_METADATA = {
 export const VIDEO_GALLERY_METADATA = [
   {
     id: 2,
-    src: "/videos/grinch-lesson-example.mp4",
+    src: "/videos/navchannya-v-ihrovii-formi-grinch.mp4",
   },
   {
     id: 1,
-    src: "/videos/1-lesson-example-math.mp4",
+    src: "/videos/urok-matematyky-online-pochatkovi-klasy-1.mp4",
   },
   {
     id: 11,
-    src: "/videos/1-lesson-example-preparing-for-school.mp4",
+    src: "/videos/pidhotovka-do-shkoly-online-pryklad-1.mp4",
   },
   {
     id: 7,
-    src: "/videos/1-lesson-example-ukrainian-language.mp4",
+    src: "/videos/urok-ukrainskoi-movy-nush-pochatkova-shkola-1.mp4",
   },
   {
     id: 3,
-    src: "/videos/hogwarts-lesson-example.mp4",
+    src: "/videos/navchannya-v-ihrovii-formi-harry-potter.mp4",
   },
   {
     id: 4,
-    src: "/videos/2-lesson-example-math.mp4",
+    src: "/videos/urok-matematyky-online-pochatkovi-klasy-2.mp4",
   },
   {
     id: 12,
-    src: "/videos/2-lesson-example-preparing-for-school.mp4",
+    src: "/videos/pidhotovka-do-shkoly-online-pryklad-2.mp4",
   },
   {
     id: 8,
-    src: "/videos/2-lesson-example-ukrainian-language.mp4",
+    src: "/videos/urok-ukrainskoi-movy-nush-pochatkova-shkola-2.mp4",
   },
   {
     id: 5,
-    src: "/videos/3-lesson-example-math.mp4",
+    src: "/videos/urok-matematyky-online-pochatkovi-klasy-3.mp4",
   },
   {
     id: 13,
-    src: "/videos/3-lesson-example-preparing-for-school.mp4",
+    src: "/videos/pidhotovka-do-shkoly-online-pryklad-3.mp4",
   },
   {
     id: 9,
-    src: "/videos/3-lesson-example-ukrainian-language.mp4",
+    src: "/videos/urok-ukrainskoi-movy-nush-pochatkova-shkola-3.mp4",
   },
   {
     id: 6,
-    src: "/videos/4-lesson-example-math.mp4",
+    src: "/videos/urok-matematyky-online-pochatkovi-klasy-4.mp4",
   },
   {
     id: 14,
-    src: "/videos/4-lesson-example-preparing-for-school.mp4",
+    src: "/videos/pidhotovka-do-shkoly-online-pryklad-4.mp4",
   },
   {
     id: 10,
-    src: "/videos/4-lesson-example-ukrainian-language.mp4",
+    src: "/videos/urok-ukrainskoi-movy-nush-pochatkova-shkola-4.mp4",
   },
 ];
 

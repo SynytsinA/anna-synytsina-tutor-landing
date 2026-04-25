@@ -5,7 +5,7 @@ import { LanguageProvider } from "@/context/LanguageContext";
 
 const mockVideo = {
   id: 1,
-  src: "/videos/math-lesson.mp4",
+  src: "/videos/urok-matematyky.mp4",
 };
 
 const renderWithLanguage = (ui: React.ReactElement) => {
@@ -76,7 +76,7 @@ describe("VideoCard", () => {
   it("displays correct category label based on filename", () => {
     const { rerender } = renderWithLanguage(
       <VideoCard 
-        video={{ src: "test-math.mp4" }} 
+        video={{ src: "urok-matematyky-demo.mp4" }} 
         isPlaying={false} 
         onToggle={() => {}} 
       />
@@ -86,7 +86,7 @@ describe("VideoCard", () => {
     rerender(
       <LanguageProvider>
         <VideoCard 
-          video={{ src: "ukrainian-language-demo.mp4" }} 
+          video={{ src: "urok-ukrainskoi-movy-demo.mp4" }} 
           isPlaying={false} 
           onToggle={() => {}} 
         />
@@ -97,7 +97,7 @@ describe("VideoCard", () => {
     rerender(
       <LanguageProvider>
         <VideoCard 
-          video={{ src: "preparing-for-school-lesson.mp4" }} 
+          video={{ src: "pidhotovka-do-shkoly-lesson.mp4" }} 
           isPlaying={false} 
           onToggle={() => {}} 
         />
@@ -108,7 +108,7 @@ describe("VideoCard", () => {
     rerender(
       <LanguageProvider>
         <VideoCard 
-          video={{ src: "grinch-lesson.mp4" }} 
+          video={{ src: "navchannya-v-ihrovii-formi-demo.mp4" }} 
           isPlaying={false} 
           onToggle={() => {}} 
         />

@@ -25,16 +25,16 @@ interface VideoCardProps {
   isModal?: boolean;
 }
 
-export const VideoCard = ({ 
-  video, 
-  isPlaying, 
+export const VideoCard = ({
+  video,
+  isPlaying,
   isLiked = false,
-  onToggle, 
+  onToggle,
   onFullscreen,
   onLike,
   onClose,
   onDoubleClick,
-  isModal = false 
+  isModal = false
 }: VideoCardProps) => {
   const { t } = useLanguage();
   const labels = t.videoGallery.labels;
@@ -45,10 +45,10 @@ export const VideoCard = ({
 
   const getLabel = () => {
     const src = video.src.toLowerCase();
-    if (src.includes("math")) return labels.math;
-    if (src.includes("ukrainian-language")) return labels.ukrainian;
-    if (src.includes("preparing-for-school")) return labels.schoolPrep;
-    if (src.includes("grinch") || src.includes("hogwarts")) return labels.thematic;
+    if (src.includes("navchannya-v-ihrovii-formi")) return labels.thematic;
+    if (src.includes("urok-matematyky")) return labels.math;
+    if (src.includes("urok-ukrainskoi-movy")) return labels.ukrainian;
+    if (src.includes("pidhotovka-do-shkoly")) return labels.schoolPrep;
     return labels.lesson;
   };
 
@@ -118,8 +118,8 @@ export const VideoCard = ({
       data-testid="video-card"
       className={cn(
         "relative bg-black rounded-[36px] p-2 shadow-2xl border border-slate-200 cursor-pointer transition-all duration-300 aspect-[9/17] mx-auto group will-change-transform transform-gpu",
-        isModal 
-          ? "w-[min(95vw,600px)] h-auto max-h-[75vh] sm:max-h-[95vh] shadow-[0_0_100px_rgba(0,0,0,0.5)] border-white/20" 
+        isModal
+          ? "w-[min(95vw,600px)] h-auto max-h-[75vh] sm:max-h-[95vh] shadow-[0_0_100px_rgba(0,0,0,0.5)] border-white/20"
           : "w-full max-w-[320px] hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)]"
       )}
       onClick={onToggle}
@@ -130,7 +130,7 @@ export const VideoCard = ({
 
       {/* Close button for modal */}
       {isModal && (
-        <button 
+        <button
           onClick={(e) => { e.stopPropagation(); onClose?.(); }}
           className="absolute -top-4 -right-4 w-10 h-10 bg-white text-black rounded-full flex items-center justify-center shadow-xl border border-slate-200 z-[20] hover:scale-110 transition-transform pointer-events-auto"
         >
@@ -177,13 +177,13 @@ export const VideoCard = ({
               >
                 {isMuted ? <VolumeX size={26} className="filter drop-shadow-md" /> : <Volume2 size={26} className="filter drop-shadow-md" />}
               </button>
-              <Heart 
-                size={26} 
+              <Heart
+                size={26}
                 onClick={toggleLike}
                 className={cn(
                   "filter drop-shadow-md transition-all cursor-pointer",
                   isLiked ? "fill-rose-500 text-rose-500 scale-125" : "text-white hover:text-rose-300"
-                )} 
+                )}
               />
               <button
                 className="bg-transparent border-none text-white p-0 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
