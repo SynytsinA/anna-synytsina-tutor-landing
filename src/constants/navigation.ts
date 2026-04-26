@@ -1,5 +1,5 @@
 export const SOCIAL_LINKS = {
-  instagram: "https://www.instagram.com/synytsina.anna/?hl=en",
+  instagram: "https://www.instagram.com/synytsina.anna",
 };
 
 

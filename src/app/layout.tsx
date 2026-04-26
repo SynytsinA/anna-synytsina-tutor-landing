@@ -3,6 +3,7 @@ import { Nunito, Caveat, Alice, Kelly_Slab } from "next/font/google";
 import "./globals.css";
 import { MainLayout } from "@/components/shared/MainLayout";
 import { ScrollToTop } from "@/components/ui/ScrollToTop/ScrollToTop";
+import { SchemaOrg } from "@/components/seo/SchemaOrg";
 
 // Rounded, friendly font for body and headings (Cyrillic supported)
 const nunito = Nunito({
@@ -47,6 +48,7 @@ export default function RootLayout({
       <body
         className={`${nunito.variable} ${whimsicalFont.variable} ${alice.variable} ${kellySlab.variable} antialiased font-body text-slate-900 bg-white`}
       >
+        <SchemaOrg />
         <MainLayout>
           {children}
           <ScrollToTop />
