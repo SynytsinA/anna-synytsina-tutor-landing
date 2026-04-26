@@ -5,7 +5,8 @@ import Link from "next/link";
 import { Instagram, GraduationCap, Menu, X } from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { SOCIAL_LINKS } from "@/constants/navigation";
+import { SOCIAL_LINKS } from "@/constants/seo";
+import { NAV_STRUCTURE } from "@/constants/landing";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -15,7 +16,7 @@ interface NavbarProps {
   t: {
     logo: string;
     toggle: string;
-    menu: Array<{ label: string; href: string }>;
+    menuLabels: Record<string, string>;
   };
   toggleLang: () => void;
 }
@@ -25,7 +26,13 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
-  const menuItems = React.useMemo(() => t.menu || [], [t.menu]);
+  const menuItems = React.useMemo(() => 
+    NAV_STRUCTURE.map(item => ({
+      ...item,
+      label: t.menuLabels[item.id] || item.id
+    })), 
+    [t.menuLabels]
+  );
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";

@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { Instagram, Sparkles } from "lucide-react";
 import { FadeIn } from "@/components/shared/FadeIn";
-import { SOCIAL_LINKS } from "@/constants/navigation";
+import { SOCIAL_LINKS } from "@/constants/seo";
 import { FOOTER_METADATA } from "@/constants/landing";
 import { useLanguage } from "@/context/LanguageContext";
 

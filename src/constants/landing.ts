@@ -21,6 +21,17 @@ export const LANDING_SECTIONS = {
   contact: "contact",
 };
 
+export const NAV_STRUCTURE = [
+  { id: "about", href: `#${LANDING_SECTIONS.about}` },
+  { id: "services", href: `#${LANDING_SECTIONS.subjects}` },
+  { id: "approach", href: `#${LANDING_SECTIONS.approach}` },
+  { id: "videos", href: `#${LANDING_SECTIONS.videoGallery}` },
+  { id: "games", href: `#${LANDING_SECTIONS.games}` },
+  { id: "reviews", href: "#reviews" },
+  { id: "faq", href: "#faq" },
+  { id: "contact", href: `#${LANDING_SECTIONS.contact}` },
+];
+
 export const GAMES_SECTION_CONFIG = {
   loadingDelay: 800,
   tabs: {

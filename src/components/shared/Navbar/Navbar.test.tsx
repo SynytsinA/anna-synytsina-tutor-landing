@@ -15,10 +15,10 @@ describe("Navbar", () => {
   const mockTranslations = {
     logo: "Anna Tutoring",
     toggle: "UA/EN",
-    menu: [
-      { label: "Home", href: "#home" },
-      { label: "About", href: "#about" },
-    ],
+    menuLabels: {
+      about: "About",
+      services: "Services",
+    },
   };
   const mockToggleLang = vi.fn();
 
@@ -31,7 +31,7 @@ describe("Navbar", () => {
     render(<Navbar t={mockTranslations} toggleLang={mockToggleLang} />);
 
     expect(screen.getByText("Anna Tutoring")).toBeInTheDocument();
-    expect(screen.getAllByText("Home").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Services").length).toBeGreaterThan(0);
     expect(screen.getAllByText("About").length).toBeGreaterThan(0);
   });
 
@@ -59,7 +59,7 @@ describe("Navbar", () => {
     // Mobile menu items should now be visible (though we don't test CSS visibility strictly in JSDOM, 
     // the state-driven classes will be applied)
     // The mobile menu also contains the menu labels.
-    const mobileLinks = screen.getAllByText("Home");
+    const mobileLinks = screen.getAllByText("Services");
     expect(mobileLinks.length).toBeGreaterThan(1); // One for desktop, one for mobile
   });
 

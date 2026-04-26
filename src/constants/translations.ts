@@ -5,16 +5,16 @@ export const translations = {
       instagram: "Instagram",
       toggle: "🇺🇦 UA",
       logo: "Synytsina Anna",
-      menu: [
-        { label: "About", href: "#about" },
-        { label: "Services", href: "#subjects" },
-        { label: "Approach", href: "#approach" },
-        { label: "Videos", href: "#video-gallery" },
-        { label: "Games", href: "#games" },
-        { label: "Reviews", href: "#reviews" },
-        { label: "FAQ", href: "#faq" },
-        { label: "Contact", href: "#contact" }
-      ],
+      menuLabels: {
+        about: "About",
+        services: "Services",
+        approach: "Approach",
+        videos: "Videos",
+        games: "Games",
+        reviews: "Reviews",
+        faq: "FAQ",
+        contact: "Contact"
+      },
       bookBtn: "Book Lesson"
     },
     hero: {
@@ -207,16 +207,16 @@ export const translations = {
       instagram: "Instagram",
       toggle: "🇬🇧 EN",
       logo: "Синиціна Анна",
-      menu: [
-        { label: "Про мене", href: "#about" },
-        { label: "Послуги", href: "#subjects" },
-        { label: "Підхід", href: "#approach" },
-        { label: "Відео", href: "#video-gallery" },
-        { label: "Ігри", href: "#games" },
-        { label: "Відгуки", href: "#reviews" },
-        { label: "Питання", href: "#faq" },
-        { label: "Записатись", href: "#contact" }
-      ],
+      menuLabels: {
+        about: "Про мене",
+        services: "Послуги",
+        approach: "Підхід",
+        videos: "Відео",
+        games: "Ігри",
+        reviews: "Відгуки",
+        faq: "Питання",
+        contact: "Записатись"
+      },
       bookBtn: "Записатись"
     },
     hero: {

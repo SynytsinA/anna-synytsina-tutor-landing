@@ -7,3 +7,7 @@ export const SEO_CONFIG = {
   ],
   areaServed: ["Ukraine", "Online", "Poland", "Germany", "UK", "France", "Italy", "Spain", "Czech Republic", "Portugal"],
 };
+
+export const SOCIAL_LINKS = {
+  instagram: SEO_CONFIG.socials[0],
+};
