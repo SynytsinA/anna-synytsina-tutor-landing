@@ -46,8 +46,8 @@ To run this project locally:
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/your-username/primary-tutor-landing.git
-cd primary-tutor-landing
+git clone https://github.com/SynytsinA/anna-synytsina-tutor-landing.git
+cd anna-synytsina-tutor-landing
 ```
 
 2. **Install dependencies:**
