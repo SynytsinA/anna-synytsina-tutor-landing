@@ -148,7 +148,7 @@ export const VideoCard = ({
           playsInline
           onEnded={onToggle}
           muted={isMuted}
-          preload="metadata"
+          preload="none"
           className="w-full h-full object-cover rounded-3xl"
         />
 

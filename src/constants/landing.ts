@@ -67,58 +67,72 @@ export const VIDEO_GALLERY_METADATA = [
   {
     id: 2,
     src: "/videos/navchannya-v-ihrovii-formi-grinch.mp4",
+    poster: "/images/posters/navchannya-v-ihrovii-formi-grinch.jpg",
   },
   {
     id: 1,
     src: "/videos/urok-matematyky-online-pochatkovi-klasy-1.mp4",
+    poster: "/images/posters/urok-matematyky-online-pochatkovi-klasy-1.jpg",
   },
   {
     id: 11,
     src: "/videos/pidhotovka-do-shkoly-online-pryklad-1.mp4",
+    poster: "/images/posters/pidhotovka-do-shkoly-online-pryklad-1.jpg",
   },
   {
     id: 7,
     src: "/videos/urok-ukrainskoi-movy-nush-pochatkova-shkola-1.mp4",
+    poster: "/images/posters/urok-ukrainskoi-movy-nush-pochatkova-shkola-1.jpg",
   },
   {
     id: 3,
     src: "/videos/navchannya-v-ihrovii-formi-harry-potter.mp4",
+    poster: "/images/posters/navchannya-v-ihrovii-formi-harry-potter.jpg",
   },
   {
     id: 4,
     src: "/videos/urok-matematyky-online-pochatkovi-klasy-2.mp4",
+    poster: "/images/posters/urok-matematyky-online-pochatkovi-klasy-2.jpg",
   },
   {
     id: 12,
     src: "/videos/pidhotovka-do-shkoly-online-pryklad-2.mp4",
+    poster: "/images/posters/pidhotovka-do-shkoly-online-pryklad-2.jpg",
   },
   {
     id: 8,
     src: "/videos/urok-ukrainskoi-movy-nush-pochatkova-shkola-2.mp4",
+    poster: "/images/posters/urok-ukrainskoi-movy-nush-pochatkova-shkola-2.jpg",
   },
   {
     id: 5,
     src: "/videos/urok-matematyky-online-pochatkovi-klasy-3.mp4",
+    poster: "/images/posters/urok-matematyky-online-pochatkovi-klasy-3.jpg",
   },
   {
     id: 13,
     src: "/videos/pidhotovka-do-shkoly-online-pryklad-3.mp4",
+    poster: "/images/posters/pidhotovka-do-shkoly-online-pryklad-3.jpg",
   },
   {
     id: 9,
     src: "/videos/urok-ukrainskoi-movy-nush-pochatkova-shkola-3.mp4",
+    poster: "/images/posters/urok-ukrainskoi-movy-nush-pochatkova-shkola-3.jpg",
   },
   {
     id: 6,
     src: "/videos/urok-matematyky-online-pochatkovi-klasy-4.mp4",
+    poster: "/images/posters/urok-matematyky-online-pochatkovi-klasy-4.jpg",
   },
   {
     id: 14,
     src: "/videos/pidhotovka-do-shkoly-online-pryklad-4.mp4",
+    poster: "/images/posters/pidhotovka-do-shkoly-online-pryklad-4.jpg",
   },
   {
     id: 10,
     src: "/videos/urok-ukrainskoi-movy-nush-pochatkova-shkola-4.mp4",
+    poster: "/images/posters/urok-ukrainskoi-movy-nush-pochatkova-shkola-4.jpg",
   },
 ];
 
