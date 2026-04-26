@@ -12,7 +12,9 @@ export const SchemaOrg = () => {
       "@type": "Place",
       "name": area
     })),
-    "sameAs": SEO_CONFIG.socials,
+    "sameAs": [
+      SEO_CONFIG.socials.instagram,
+    ],
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Dnipro",
