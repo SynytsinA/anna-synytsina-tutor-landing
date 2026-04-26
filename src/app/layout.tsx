@@ -33,11 +33,6 @@ const kellySlab = Kelly_Slab({
   weight: "400",
 });
 
-// export const metadata: Metadata = {
-//   title: "Primary Tutor Landing",
-//   description: "Educational platform for personalized learning",
-// };
-
 export const metadata: Metadata = {
   title: "Анна Синиціна — Репетитор для початкової школи",
   description: "Інтерактивне навчання для дітей 1-4 класів",
