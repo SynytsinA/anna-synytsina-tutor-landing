@@ -31,7 +31,7 @@ export const GrinchGame = ({ translations }: GrinchGameProps) => {
     handleDragOver,
   } = useGrinchGame();
 
-  const grinchImgUrl = "https://img.icons8.com/color/480/grinch.png";
+  const grinchImgUrl = "/images/interaktyvna-navchalna-gra-grinch-pochatkova-shkola.png";
 
   return (
     <div className={styles.grinchGameContainer}>
