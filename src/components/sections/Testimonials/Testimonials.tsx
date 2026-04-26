@@ -8,6 +8,7 @@ import { FadeIn } from "@/components/shared/FadeIn";
 import { InteractiveSlider } from "@/components/shared/InteractiveSlider";
 import { useSwipeNavigation } from "@/hooks/useSwipeNavigation";
 import { TESTIMONIALS_DATA } from "@/constants/landing";
+import { Avatar } from "@/components/ui/Avatar";
 import styles from "./Testimonials.module.css";
 
 const getGradientClass = (index: number) => {
@@ -45,15 +46,7 @@ const StoryCard: React.FC<StoryCardProps> = ({ item, index, onClick, isModal = f
           </div>
 
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-full overflow-hidden border border-white/50 bg-white/20 relative">
-              <Image
-                src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${item.username}`}
-                alt="avatar"
-                fill
-                sizes="32px"
-                className="object-cover"
-              />
-            </div>
+            <Avatar username={item.username} size="sm" />
             <div className="flex flex-col flex-1 leading-[1.1]">
               <span className="font-bold text-sm">{item.username}</span>
               <span className="text-xs opacity-80">{item.time}</span>

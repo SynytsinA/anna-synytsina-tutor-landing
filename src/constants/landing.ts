@@ -244,10 +244,10 @@ export const TESTIMONIALS_DATA = [
   { id: 5, image: "/images/vidhuk-pro-navchannya-anna-synytsina-5.jpg", alt: "Відгук про репетиторство з Анною Синиціною", username: "mama_marichka", time: "15h" },
   { id: 6, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-1.jpg", alt: "Відгук батьків про вчительку початкових класів", username: "vlad_prep", time: "18h" },
   { id: 7, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-2.jpg", alt: "Подяка вчительці за якісну підготовку до школи", username: "natalia_v", time: "20h" },
-  { id: 8, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-3.jpg", alt: "Відгук про успіхи дитини у початковій школі", username: "anna_school", time: "21h" },
-  { id: 9, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-4.jpg", alt: "Враження батьків від онлайн-занять з репетитором", username: "tetiana_math", time: "22h" },
-  { id: 10, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-5.jpg", alt: "Відгук про індивідуальний підхід вчительки Анни Синиціної", username: "i_love_lessons", time: "23h" },
-  { id: 11, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-6.jpg", alt: "Результати навчання у початкових класах - відгук", username: "best_tutor_ever", time: "23h" },
+  { id: 8, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-3.jpg", alt: "Відгук про успіхи дитини у початковій школі", username: "olha_school", time: "21h" },
+  { id: 9, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-4.jpg", alt: "Враження батьків від онлайн-занять з репетитором", username: "tetiana_m", time: "22h" },
+  { id: 10, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-5.jpg", alt: "Відгук про індивідуальний підхід вчительки Анни Синиціної", username: "viktor_hol", time: "23h" },
+  { id: 11, image: "/images/vidhuky-batkiv-vchytel-pochatkovyh-klasiv-6.jpg", alt: "Результати навчання у початкових класах - відгук", username: "anastasia_prep", time: "23h" },
 ];
 
 export const TESTIMONIALS_CONFIG = {
