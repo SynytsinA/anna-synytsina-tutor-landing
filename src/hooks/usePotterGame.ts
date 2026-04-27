@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useMemo } from "react";
+import { AUDIO_ASSETS } from "@/constants/audio";
 
 interface Puzzle {
   id: number;
@@ -69,14 +70,10 @@ export const usePotterGame = (lang: "en" | "ua" = "ua") => {
 
 
     // Initialize Audio
-    correctSfx.current = new Audio(
-      "https://cdn.pixabay.com/audio/2022/03/10/audio_c8c8a73467.mp3"
-    );
+    correctSfx.current = new Audio(AUDIO_ASSETS.GAME_STEP_SUCCESS);
     correctSfx.current.volume = 0.5;
 
-    winSfx.current = new Audio(
-      "https://cdn.pixabay.com/audio/2021/08/04/audio_12b0c7443c.mp3"
-    );
+    winSfx.current = new Audio(AUDIO_ASSETS.RESULT_PERFECT);
     winSfx.current.volume = 0.6;
     return () => clearTimeout(timer);
   }, []);

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { AUDIO_ASSETS } from "@/constants/audio";
 
 export const useGrinchGame = () => {
   const initialNumbers = [1, 8, 10, 9, 3, 7, 4, 6, 2, 5];
@@ -42,14 +43,10 @@ export const useGrinchGame = () => {
     }, 0);
 
     // Initialize Audio
-    dropSfxRef.current = new Audio(
-      "https://cdn.pixabay.com/audio/2022/03/10/audio_c8c8a73467.mp3"
-    );
+    dropSfxRef.current = new Audio(AUDIO_ASSETS.GAME_STEP_SUCCESS);
     dropSfxRef.current.volume = 0.5;
 
-    completionSfxRef.current = new Audio(
-      "https://cdn.pixabay.com/audio/2021/08/04/audio_12b0c7443c.mp3"
-    );
+    completionSfxRef.current = new Audio(AUDIO_ASSETS.RESULT_PERFECT);
     completionSfxRef.current.volume = 0.6;
     return () => clearTimeout(timer);
   }, []);

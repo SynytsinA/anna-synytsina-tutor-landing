@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Brain, Calculator, BookA, Check, X, RotateCcw, PartyPopper, Star, Lightbulb } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { QUIZ_QUESTIONS } from "@/constants/landing";
+import { AUDIO_ASSETS } from "@/constants/audio";
 
 type Subject = 'ua' | 'math';
 
@@ -21,21 +22,20 @@ export const HeroQuiz = () => {
   const [selectedOptionIndex, setSelectedOptionIndex] = useState<number | null>(null);
   const [score, setScore] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
-  
+
   const correctAudio = useRef<HTMLAudioElement | null>(null);
   const wrongAudio = useRef<HTMLAudioElement | null>(null);
   const completeAudio = useRef<HTMLAudioElement | null>(null);
   const averageAudio = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    correctAudio.current = new Audio("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3");
-    correctAudio.current.volume = 0.5;
-    wrongAudio.current = new Audio("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/error.mp3"); 
-    wrongAudio.current.volume = 0.5; 
-    completeAudio.current = new Audio("https://cdn.pixabay.com/audio/2021/08/04/audio_12b0c7443c.mp3"); 
-    completeAudio.current.volume = 0.5;
-    averageAudio.current = new Audio("https://cdn.pixabay.com/audio/2021/08/04/audio_bb630cc098.mp3");
-    averageAudio.current.volume = 0.5;
+    correctAudio.current = new Audio(AUDIO_ASSETS.QUIZ_CORRECT);
+    wrongAudio.current = new Audio(AUDIO_ASSETS.QUIZ_INCORRECT);
+    wrongAudio.current.volume = 0.6;
+    completeAudio.current = new Audio(AUDIO_ASSETS.RESULT_PERFECT);
+    completeAudio.current.volume = 0.3;
+    averageAudio.current = new Audio(AUDIO_ASSETS.RESULT_AVERAGE);
+    averageAudio.current.volume = 0.7;
   }, []);
 
   const currentQuestions = QUIZ_QUESTIONS[activeTab];
@@ -53,30 +53,30 @@ export const HeroQuiz = () => {
     return opts;
   };
 
-  const [shuffledOptions, setShuffledOptions] = useState<ShuffledOption[]>(() => 
+  const [shuffledOptions, setShuffledOptions] = useState<ShuffledOption[]>(() =>
     generateShuffledOptions('ua', 0, false)
   );
 
   useEffect(() => {
-     const timer = setTimeout(() => {
-        setShuffledOptions(generateShuffledOptions(activeTab, currentIndex));
-     }, 0);
-     return () => clearTimeout(timer);
+    const timer = setTimeout(() => {
+      setShuffledOptions(generateShuffledOptions(activeTab, currentIndex));
+    }, 0);
+    return () => clearTimeout(timer);
   }, [activeTab, currentIndex]);
 
   useEffect(() => {
-     if (document.activeElement instanceof HTMLElement) {
-        document.activeElement.blur();
-     }
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
   }, [currentIndex, isFinished]);
 
   useEffect(() => {
     if (isFinished) {
-        if (score === currentQuestions.length) {
-            completeAudio.current?.play().catch(() => {});
-        } else {
-            averageAudio.current?.play().catch(() => {});
-        }
+      if (score === currentQuestions.length) {
+        completeAudio.current?.play().catch(() => { });
+      } else {
+        averageAudio.current?.play().catch(() => { });
+      }
     }
   }, [isFinished, score, currentQuestions.length]);
 
@@ -95,22 +95,22 @@ export const HeroQuiz = () => {
   };
 
   const playFeedbackSound = (type: 'correct' | 'wrong') => {
-    if (type === 'correct') correctAudio.current?.play().catch(() => {});
-    else wrongAudio.current?.play().catch(() => {});
+    if (type === 'correct') correctAudio.current?.play().catch(() => { });
+    else wrongAudio.current?.play().catch(() => { });
   };
 
   const handleOptionClick = (visualIndex: number, originalIndex: number) => {
-    if (selectedOptionIndex !== null) return; 
+    if (selectedOptionIndex !== null) return;
 
     (document.activeElement as HTMLElement)?.blur();
     setSelectedOptionIndex(visualIndex);
     const correct = originalIndex === currentQuestions[currentIndex].correct;
 
     if (correct) {
-        setScore(s => s + 1);
-        playFeedbackSound('correct');
+      setScore(s => s + 1);
+      playFeedbackSound('correct');
     } else {
-        playFeedbackSound('wrong');
+      playFeedbackSound('wrong');
     }
 
     setTimeout(() => {
@@ -139,114 +139,114 @@ export const HeroQuiz = () => {
 
       {/* Header Badge */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-white px-3 sm:px-4 py-1.5 rounded-full border-2 border-slate-900 shadow-sm z-30 flex items-center gap-2 w-[90%] sm:w-auto justify-center">
-          <Brain size={18} className="text-primary shrink-0" />
-          <span className="font-heading font-bold text-slate-900 text-xs sm:text-sm text-center leading-tight whitespace-nowrap sm:whitespace-normal">
-            {t.tryNow}
-          </span>
+        <Brain size={18} className="text-primary shrink-0" />
+        <span className="font-heading font-bold text-slate-900 text-xs sm:text-sm text-center leading-tight whitespace-nowrap sm:whitespace-normal">
+          {t.tryNow}
+        </span>
       </div>
 
       {/* Main Card */}
       <div className="bg-white rounded-[2rem] border-[3px] border-slate-900 shadow-hard-xl overflow-hidden relative z-10 flex flex-col h-[580px] transition-transform duration-300 hover:-translate-y-1">
-        
+
         {/* Tabs */}
         <div className="p-2 bg-slate-100/50 flex gap-2 pt-8 sm:pt-10 border-b-2 border-slate-100 shrink-0">
-           <button 
-             onClick={() => handleTabChange('ua')}
-             className={`flex-1 py-3 rounded-xl font-bold font-heading text-sm transition-all duration-200 flex items-center justify-center gap-2 outline-none focus:outline-none ${activeTab === 'ua' ? 'bg-primary text-white shadow-md scale-[1.02]' : 'bg-white text-slate-500 hover:bg-slate-50'}`}
-           >
-             <BookA size={18} /> 
-             <span className="hidden sm:inline">{t.tabUA}</span>
-             <span className="sm:hidden">{t.tabUAMobile}</span>
-           </button>
-           <button 
-             onClick={() => handleTabChange('math')}
-             className={`flex-1 py-3 rounded-xl font-bold font-heading text-sm transition-all duration-200 flex items-center justify-center gap-2 outline-none focus:outline-none ${activeTab === 'math' ? 'bg-secondary text-white shadow-md scale-[1.02]' : 'bg-white text-slate-500 hover:bg-slate-50'}`}
-           >
-             <Calculator size={18} /> {t.tabMath}
-           </button>
+          <button
+            onClick={() => handleTabChange('ua')}
+            className={`flex-1 py-3 rounded-xl font-bold font-heading text-sm transition-all duration-200 flex items-center justify-center gap-2 outline-none focus:outline-none ${activeTab === 'ua' ? 'bg-primary text-white shadow-md scale-[1.02]' : 'bg-white text-slate-500 hover:bg-slate-50'}`}
+          >
+            <BookA size={18} />
+            <span className="hidden sm:inline">{t.tabUA}</span>
+            <span className="sm:hidden">{t.tabUAMobile}</span>
+          </button>
+          <button
+            onClick={() => handleTabChange('math')}
+            className={`flex-1 py-3 rounded-xl font-bold font-heading text-sm transition-all duration-200 flex items-center justify-center gap-2 outline-none focus:outline-none ${activeTab === 'math' ? 'bg-secondary text-white shadow-md scale-[1.02]' : 'bg-white text-slate-500 hover:bg-slate-50'}`}
+          >
+            <Calculator size={18} /> {t.tabMath}
+          </button>
         </div>
 
         {/* Content Area */}
         <div className="p-4 sm:p-6 flex-1 flex flex-col">
-           
-           {!isFinished ? (
-              <>
-                <div className="flex justify-between items-center h-6 mb-2 shrink-0">
-                   <span className="text-xs font-bold text-slate-400 tracking-wider uppercase">{t.questionLabel} {currentIndex + 1} / {currentQuestions.length}</span>
-                   <div className="w-24 h-2 bg-slate-100 rounded-full overflow-hidden">
-                      <div 
-                        className={`h-full rounded-full transition-all duration-500 ${activeTab === 'ua' ? 'bg-primary' : 'bg-secondary'}`} 
-                        style={{ width: `${progress}%` }}
-                      ></div>
-                   </div>
-                </div>
 
-                <div className="h-[120px] flex items-center justify-center mb-2 shrink-0 px-2">
-                   <h3 className="text-lg sm:text-xl md:text-2xl font-heading font-bold text-slate-900 text-center leading-tight w-full">
-                      {currentQuestions[currentIndex].q}
-                   </h3>
+          {!isFinished ? (
+            <>
+              <div className="flex justify-between items-center h-6 mb-2 shrink-0">
+                <span className="text-xs font-bold text-slate-400 tracking-wider uppercase">{t.questionLabel} {currentIndex + 1} / {currentQuestions.length}</span>
+                <div className="w-24 h-2 bg-slate-100 rounded-full overflow-hidden">
+                  <div
+                    className={`h-full rounded-full transition-all duration-500 ${activeTab === 'ua' ? 'bg-primary' : 'bg-secondary'}`}
+                    style={{ width: `${progress}%` }}
+                  ></div>
                 </div>
-
-                <div className="flex flex-col gap-3 mt-2">
-                   {shuffledOptions.map((optionObj, idx) => {
-                      let btnClass = "bg-white border-2 border-slate-200 text-slate-700 hover:border-slate-900 hover:bg-slate-50";
-                      let icon = null;
-                      
-                      if (selectedOptionIndex !== null) {
-                         if (optionObj.originalIndex === currentQuestions[currentIndex].correct) {
-                            btnClass = "bg-green-100 border-2 border-green-500 text-green-700";
-                            icon = <Check size={24} className="absolute right-4 text-green-600" />;
-                         } else if (idx === selectedOptionIndex) {
-                            btnClass = "bg-red-100 border-2 border-red-500 text-red-700";
-                            icon = <X size={24} className="absolute right-4 text-red-500" />;
-                         } else {
-                            btnClass = "border-2 border-transparent opacity-0 pointer-events-none"; 
-                         }
-                      } else {
-                         btnClass = "bg-white border-2 border-slate-200 text-slate-700 hover:border-slate-900 hover:bg-slate-50 shadow-sm";
-                      }
-
-                      return (
-                        <button
-                          key={idx}
-                          onClick={() => handleOptionClick(idx, optionObj.originalIndex)}
-                          disabled={selectedOptionIndex !== null}
-                          className={`w-full min-h-[64px] px-6 rounded-xl font-bold text-base sm:text-lg transition-colors duration-200 relative flex items-center justify-center outline-none focus:outline-none ${btnClass}`}
-                        >
-                           <span className="text-center w-full">{optionObj.text}</span>
-                           {icon}
-                        </button>
-                      );
-                   })}
-                </div>
-              </>
-           ) : (
-              <div className="flex flex-col items-center justify-center text-center animate-pop-in h-full">
-                 <div className={`w-20 h-20 ${resultContent.bgClass} rounded-full flex items-center justify-center mb-6`}>
-                    <ResultIcon size={40} className={resultContent.colorClass} />
-                 </div>
-                 <h3 className="text-3xl font-heading font-bold text-slate-900 mb-2">{resultContent.title}</h3>
-                 <p className="text-slate-600 mb-8 text-lg">
-                    {t.scoreLabel.replace('{score}', score.toString()).replace('{total}', currentQuestions.length.toString())}
-                    <br/>{resultContent.desc}
-                 </p>
-                 <button 
-                   onClick={resetQuizState}
-                   className="bg-slate-900 text-white px-8 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-slate-800 transition-colors shadow-hard outline-none focus:outline-none"
-                 >
-                    <RotateCcw size={18} /> {t.retry}
-                 </button>
               </div>
-           )}
+
+              <div className="h-[120px] flex items-center justify-center mb-2 shrink-0 px-2">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-heading font-bold text-slate-900 text-center leading-tight w-full">
+                  {currentQuestions[currentIndex].q}
+                </h3>
+              </div>
+
+              <div className="flex flex-col gap-3 mt-2">
+                {shuffledOptions.map((optionObj, idx) => {
+                  let btnClass = "bg-white border-2 border-slate-200 text-slate-700 hover:border-slate-900 hover:bg-slate-50";
+                  let icon = null;
+
+                  if (selectedOptionIndex !== null) {
+                    if (optionObj.originalIndex === currentQuestions[currentIndex].correct) {
+                      btnClass = "bg-green-100 border-2 border-green-500 text-green-700";
+                      icon = <Check size={24} className="absolute right-4 text-green-600" />;
+                    } else if (idx === selectedOptionIndex) {
+                      btnClass = "bg-red-100 border-2 border-red-500 text-red-700";
+                      icon = <X size={24} className="absolute right-4 text-red-500" />;
+                    } else {
+                      btnClass = "border-2 border-transparent opacity-0 pointer-events-none";
+                    }
+                  } else {
+                    btnClass = "bg-white border-2 border-slate-200 text-slate-700 hover:border-slate-900 hover:bg-slate-50 shadow-sm";
+                  }
+
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => handleOptionClick(idx, optionObj.originalIndex)}
+                      disabled={selectedOptionIndex !== null}
+                      className={`w-full min-h-[64px] px-6 rounded-xl font-bold text-base sm:text-lg transition-colors duration-200 relative flex items-center justify-center outline-none focus:outline-none ${btnClass}`}
+                    >
+                      <span className="text-center w-full">{optionObj.text}</span>
+                      {icon}
+                    </button>
+                  );
+                })}
+              </div>
+            </>
+          ) : (
+            <div className="flex flex-col items-center justify-center text-center animate-pop-in h-full">
+              <div className={`w-20 h-20 ${resultContent.bgClass} rounded-full flex items-center justify-center mb-6`}>
+                <ResultIcon size={40} className={resultContent.colorClass} />
+              </div>
+              <h3 className="text-3xl font-heading font-bold text-slate-900 mb-2">{resultContent.title}</h3>
+              <p className="text-slate-600 mb-8 text-lg">
+                {t.scoreLabel.replace('{score}', score.toString()).replace('{total}', currentQuestions.length.toString())}
+                <br />{resultContent.desc}
+              </p>
+              <button
+                onClick={resetQuizState}
+                className="bg-slate-900 text-white px-8 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-slate-800 transition-colors shadow-hard outline-none focus:outline-none"
+              >
+                <RotateCcw size={18} /> {t.retry}
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
       {/* Floating Elements */}
       <div className="hidden sm:flex absolute top-20 -right-8 w-14 h-14 bg-white rounded-lg border-2 border-slate-900 shadow-hard rotate-12 items-center justify-center z-20 animate-float-decor">
-         <span className="font-heading font-bold text-2xl text-primary">5+3</span>
+        <span className="font-heading font-bold text-2xl text-primary">5+3</span>
       </div>
       <div className="hidden sm:flex absolute bottom-32 -left-6 w-12 h-12 bg-white rounded-full border-2 border-slate-900 shadow-hard -rotate-6 items-center justify-center z-20 animate-float-decor" style={{ animationDelay: '1.5s' }}>
-         <span className="font-hand font-bold text-xl text-secondary">АБВ</span>
+        <span className="font-hand font-bold text-xl text-secondary">АБВ</span>
       </div>
     </div>
   );
