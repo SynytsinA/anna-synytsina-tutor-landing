@@ -143,12 +143,13 @@
 }
 
 .successBadge {
+  font-weight: 600;
+  font-size: 1.2rem;
   background: #F59E0B;
   color: #000;
   display: inline-block;
   padding: 5px 15px;
   border-radius: 20px;
-  font-weight: bold;
   position: absolute;
   bottom: -55px;
   left: 50%;
@@ -174,6 +175,7 @@
 
 .poolEmpty {
   font-style: italic;
+  font-size: 1.4rem;
   opacity: 0.8;
   width: 100%;
   height: 100%;
