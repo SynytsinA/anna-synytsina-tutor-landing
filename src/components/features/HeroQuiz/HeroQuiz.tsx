@@ -58,7 +58,10 @@ export const HeroQuiz = () => {
   );
 
   useEffect(() => {
-     setShuffledOptions(generateShuffledOptions(activeTab, currentIndex));
+     const timer = setTimeout(() => {
+        setShuffledOptions(generateShuffledOptions(activeTab, currentIndex));
+     }, 0);
+     return () => clearTimeout(timer);
   }, [activeTab, currentIndex]);
 
   useEffect(() => {

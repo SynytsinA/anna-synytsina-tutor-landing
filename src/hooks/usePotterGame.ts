@@ -55,14 +55,16 @@ export const usePotterGame = (lang: "en" | "ua" = "ua") => {
 
   useEffect(() => {
     // Generate randomized configs only on the client
-    setSparkConfigs(
-      [...Array(15)].map(() => ({
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-        delay: `${Math.random() * 5}s`,
-        duration: `${3 + Math.random() * 4}s`,
-      }))
-    );
+    const timer = setTimeout(() => {
+      setSparkConfigs(
+        [...Array(15)].map(() => ({
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * 100}%`,
+          delay: `${Math.random() * 5}s`,
+          duration: `${3 + Math.random() * 4}s`,
+        }))
+      );
+    }, 0);
 
 
 
@@ -76,6 +78,7 @@ export const usePotterGame = (lang: "en" | "ua" = "ua") => {
       "https://cdn.pixabay.com/audio/2021/08/04/audio_12b0c7443c.mp3"
     );
     winSfx.current.volume = 0.6;
+    return () => clearTimeout(timer);
   }, []);
 
   const handleInputChange = (id: number, val: string, onFocusNext: (id: number) => void) => {

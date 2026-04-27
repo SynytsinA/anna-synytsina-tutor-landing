@@ -28,16 +28,18 @@ export const useGrinchGame = () => {
   const isComplete = pool.length === 0;
 
   useEffect(() => {
-    setSnowflakes(
-      Array.from({ length: 40 }).map((_, i) => ({
-        id: i,
-        left: Math.random() * 100,
-        animationDuration: 15 + Math.random() * 20,
-        animationDelay: -Math.random() * 35,
-        opacity: 0.15 + Math.random() * 0.4,
-        size: 2 + Math.random() * 4,
-      }))
-    );
+    const timer = setTimeout(() => {
+      setSnowflakes(
+        Array.from({ length: 40 }).map((_, i) => ({
+          id: i,
+          left: Math.random() * 100,
+          animationDuration: 15 + Math.random() * 20,
+          animationDelay: -Math.random() * 35,
+          opacity: 0.15 + Math.random() * 0.4,
+          size: 2 + Math.random() * 4,
+        }))
+      );
+    }, 0);
 
     // Initialize Audio
     dropSfxRef.current = new Audio(
@@ -49,6 +51,7 @@ export const useGrinchGame = () => {
       "https://cdn.pixabay.com/audio/2021/08/04/audio_12b0c7443c.mp3"
     );
     completionSfxRef.current.volume = 0.6;
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
