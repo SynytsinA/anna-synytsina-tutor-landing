@@ -4,7 +4,7 @@ export const translations = {
     nav: {
       instagram: "Instagram",
       toggle: "🇺🇦 UA",
-      logo: "Synytsina Anna",
+      logo: "Anna Synytsina",
       menuLabels: {
         about: "About",
         services: "Services",
@@ -15,11 +15,11 @@ export const translations = {
         faq: "FAQ",
         contact: "Contact"
       },
-      bookBtn: "Book Lesson"
+      bookBtn: "Book a Lesson"
     },
     hero: {
       tag: "Grades 1-4",
-      fullName: "Synytsina Anna",
+      fullName: "Anna Synytsina",
       titleStart: "Interactive Learning",
       titleHighlight: "For Kids",
       subtitle: "Learning is not boring! We turn difficult topics into exciting adventures using games and storytelling.",
@@ -30,9 +30,9 @@ export const translations = {
     },
     about: {
       title: "About Me",
-      name: "Synytsina Anna Yuriivna",
+      name: "Anna Synytsina",
       role: "Professional Educator & Tutor",
-      desc: "Hello! With over 12 years of experience, I have combined the fundamental nature of state education with the flexibility of private schools and kindergartens. As a Master of Philology specializing in primary education, I deeply understand child psychology and create a space where there is no fear of making mistakes. Having experience in leading offline groups, today I work online with students from all over the world using my original methods. Every lesson of mine is a child's confident step towards new knowledge and their own success.",
+      desc: "Hello! With over 12 years of experience, I combine a solid foundation in public education with the flexibility of private schools and kindergartens. As a Master of Philology specializing in primary education, I deeply understand child psychology and create a space where there is no fear of making mistakes. Having experience in leading offline groups, today I work online with students from all over the world using my original methods. Every lesson of mine is a child's confident step towards new knowledge and their own success.",
       stats: [
         {
           value: "12+",
@@ -67,7 +67,7 @@ export const translations = {
           desc: "Beyond academic knowledge, I focus on developing critical thinking, logic, and soft skills. Your child learns how to learn, how to ask the right questions, and how to find solutions independently."
         },
         {
-          title: "Modernity",
+          title: "Modern Approach",
           desc: "Goodbye, boring textbooks! I use gamification, interactive online platforms, bright presentations, and current educational trends that resonate with the 'iPad generation'."
         }
       ]
@@ -88,7 +88,7 @@ export const translations = {
       title: "My Services",
       cards: [
         {
-          title: "School Preparation",
+          title: "School Readiness",
           desc: "Comprehensive preparation for future first-graders.",
           list: [
             "Counting up to 10",
@@ -198,7 +198,7 @@ export const translations = {
       title: "Ready to start?",
       sub: "Contact me on Instagram to discuss your child's needs and schedule a trial lesson.",
       cta: "DM on Instagram",
-      copyright: "Synytsina Anna. All rights reserved.",
+      copyright: "Anna Synytsina. All rights reserved.",
       waitingMsg: "Waiting for you in class!"
     }
   },
@@ -376,7 +376,7 @@ export const translations = {
         },
         {
           q: "Що робити, якщо дитина пропустила урок?",
-          a: "Життя трапляється! Якщо ви попередите мене за 24 години, ми зможемо перенести урок на інший зручний час без втрати коштів."
+          a: "Життя трапляється! Ми розуміємо, що плани можуть змінитися! Якщо ви попередите за 24 години, ми зможемо перенести урок на інший зручний час без втрати коштів."
         },
         {
           q: "З якого віку ви працюєте?",
