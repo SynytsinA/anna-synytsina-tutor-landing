@@ -2,43 +2,15 @@
 
 import { useState, useEffect, useRef, useMemo } from "react";
 import { AUDIO_ASSETS } from "@/constants/audio";
-
-interface Puzzle {
-  id: number;
-  scrambled: string;
-  answer: string;
-}
-
-const puzzlesUA: Puzzle[] = [
-  { id: 1, scrambled: "ІЧКВДІ", answer: "КВІДІЧ" },
-  { id: 2, scrambled: "ЯМАТІН", answer: "МАНТІЯ" },
-  { id: 3, scrambled: "ЛЛЯЗІ", answer: "ЗІЛЛЯ" },
-  { id: 4, scrambled: "ЛЬРОТ", answer: "ТРОЛЬ" },
-  { id: 5, scrambled: "ЮЧКЛ", answer: "КЛЮЧ" },
-  { id: 6, scrambled: "ХИША", answer: "ШАХИ" },
-  { id: 7, scrambled: "ЕСТПРКЕС", answer: "ЕКСПРЕС" },
-  { id: 8, scrambled: "ІСКВАСИЛ", answer: "ВАСИЛІСК" },
-];
-
-const puzzlesEN: Puzzle[] = [
-  { id: 1, scrambled: "IDDITCHQU", answer: "QUIDDITCH" },
-  { id: 2, scrambled: "OLAKC", answer: "CLOAK" },
-  { id: 3, scrambled: "TIONPO", answer: "POTION" },
-  { id: 4, scrambled: "LLORT", answer: "TROLL" },
-  { id: 5, scrambled: "YEK", answer: "KEY" },
-  { id: 6, scrambled: "SECHS", answer: "CHESS" },
-  { id: 7, scrambled: "XPRESS", answer: "EXPRESS" },
-  { id: 8, scrambled: "SILISKBA", answer: "BASILISK" },
-];
+import { POTTER_PUZZLES_UA, POTTER_PUZZLES_EN } from "@/constants/game";
+import { SparkConfig } from "@/types/game";
 
 export const usePotterGame = (lang: "en" | "ua" = "ua") => {
   const [inputs, setInputs] = useState<{ [key: number]: string }>({});
   const [completed, setCompleted] = useState<{ [key: number]: boolean }>({});
   const [allFinished, setAllFinished] = useState(false);
 
-  const [sparkConfigs, setSparkConfigs] = useState<
-    { left: string; top: string; delay: string; duration: string }[]
-  >([]);
+  const [sparkConfigs, setSparkConfigs] = useState<SparkConfig[]>([]);
 
 
   // Sound Refs
@@ -46,7 +18,7 @@ export const usePotterGame = (lang: "en" | "ua" = "ua") => {
   const winSfx = useRef<HTMLAudioElement | null>(null);
 
   const currentPuzzles = useMemo(
-    () => (lang === "ua" ? puzzlesUA : puzzlesEN),
+    () => (lang === "ua" ? POTTER_PUZZLES_UA : POTTER_PUZZLES_EN),
     [lang]
   );
   

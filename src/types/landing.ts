@@ -39,13 +39,15 @@ export interface CountryNode {
 }
 
 export interface VideoMetadata {
-  id: number;
+  id?: number;
   src: string;
+  poster?: string;
 }
 
-export interface TestimonialData {
+export interface Testimonial {
   id: number;
   image: string;
   username: string;
   time: string;
+  alt: string;
 }

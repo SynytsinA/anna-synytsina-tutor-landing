@@ -1,11 +1,5 @@
 import { useState, useCallback } from "react";
-
-interface SwipeNavigationProps {
-  onNext: () => void;
-  onPrev: () => void;
-  threshold?: number;
-  speed?: number;
-}
+import { SwipeNavigationProps } from "@/types/navigation";
 
 export const useSwipeNavigation = ({ 
   onNext, 

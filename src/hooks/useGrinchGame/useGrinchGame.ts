@@ -2,25 +2,17 @@
 
 import { useState, useEffect, useRef } from "react";
 import { AUDIO_ASSETS } from "@/constants/audio";
+import { GRINCH_INITIAL_NUMBERS } from "@/constants/game";
+import { Snowflake } from "@/types/game";
 
 export const useGrinchGame = () => {
-  const initialNumbers = [1, 8, 10, 9, 3, 7, 4, 6, 2, 5];
-  const [pool, setPool] = useState<number[]>(initialNumbers);
+  const [pool, setPool] = useState<number[]>(GRINCH_INITIAL_NUMBERS);
   const [evenBox, setEvenBox] = useState<number[]>([]);
   const [oddBox, setOddBox] = useState<number[]>([]);
   const [errorFlash, setErrorFlash] = useState<"even" | "odd" | null>(null);
 
   // Generate random snowflakes
-  const [snowflakes, setSnowflakes] = useState<
-    {
-      id: number;
-      left: number;
-      animationDuration: number;
-      animationDelay: number;
-      opacity: number;
-      size: number;
-    }[]
-  >([]);
+  const [snowflakes, setSnowflakes] = useState<Snowflake[]>([]);
 
   // Audio Refs
   const dropSfxRef = useRef<HTMLAudioElement | null>(null);
