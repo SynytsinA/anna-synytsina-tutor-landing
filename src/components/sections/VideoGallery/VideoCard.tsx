@@ -2,19 +2,12 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import { Play, Volume2, VolumeX, Heart, Maximize, Minimize, X } from "lucide-react";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
 import { useLanguage } from "@/context/LanguageContext";
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+import { cn } from "@/utils/cn";
+import { VideoMetadata } from "@/types/landing";
 
 interface VideoCardProps {
-  video: {
-    src: string;
-    poster?: string;
-  };
+  video: VideoMetadata;
   isPlaying: boolean;
   isLiked?: boolean;
   onToggle: () => void;

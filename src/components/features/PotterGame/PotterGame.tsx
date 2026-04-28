@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
-import { usePotterGame } from "@/hooks/usePotterGame";
+import { usePotterGame } from "@/hooks";
 import styles from "./PotterGame.module.css";
 
 // --- Custom SVGs ---

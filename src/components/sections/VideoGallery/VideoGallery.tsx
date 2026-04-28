@@ -6,7 +6,7 @@ import { FadeIn } from "@/components/shared/FadeIn/FadeIn";
 import { InteractiveSlider } from "@/components/shared/InteractiveSlider";
 import { useLanguage } from "@/context/LanguageContext";
 import { LANDING_SECTIONS, VIDEO_GALLERY_METADATA } from "@/constants/landing";
-import { useSwipeNavigation } from "@/hooks/useSwipeNavigation";
+import { useSwipeNavigation } from "@/hooks";
 import { VideoCard } from "./VideoCard";
 
 export const VideoGallery = () => {

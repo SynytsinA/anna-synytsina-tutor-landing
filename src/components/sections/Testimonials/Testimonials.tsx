@@ -6,10 +6,18 @@ import { Heart, Send, MoreHorizontal, X, ChevronLeft, ChevronRight } from "lucid
 import { useLanguage } from "@/context/LanguageContext";
 import { FadeIn } from "@/components/shared/FadeIn";
 import { InteractiveSlider } from "@/components/shared/InteractiveSlider";
-import { useSwipeNavigation } from "@/hooks/useSwipeNavigation";
+import { useSwipeNavigation } from "@/hooks";
 import { TESTIMONIALS_DATA } from "@/constants/landing";
 import { Avatar } from "@/components/ui/Avatar";
+import { Testimonial } from "@/types/landing";
 import styles from "./Testimonials.module.css";
+
+interface StoryCardProps {
+  item: Testimonial;
+  index: number;
+  onClick?: () => void;
+  isModal?: boolean;
+}
 
 const getGradientClass = (index: number) => {
   const classes = [
@@ -21,13 +29,6 @@ const getGradientClass = (index: number) => {
   ];
   return classes[index % classes.length];
 };
-
-interface StoryCardProps {
-  item: typeof TESTIMONIALS_DATA[0];
-  index: number;
-  onClick?: () => void;
-  isModal?: boolean;
-}
 
 const StoryCard: React.FC<StoryCardProps> = ({ item, index, onClick, isModal = false }) => {
   return (

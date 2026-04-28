@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { Candy, TreePine, Snowflake, Gift } from "lucide-react";
-import { useGrinchGame } from "@/hooks/useGrinchGame";
+import { useGrinchGame } from "@/hooks";
 import { Toy } from "./parts/Toy";
 import styles from "./GrinchGame.module.css";
 

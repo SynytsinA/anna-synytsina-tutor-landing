@@ -1,12 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+import { cn } from "@/utils/cn";
 
 interface FadeInProps {
   children?: React.ReactNode;

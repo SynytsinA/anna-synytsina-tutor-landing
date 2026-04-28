@@ -3,14 +3,9 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Instagram, GraduationCap, Menu, X } from "lucide-react";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
 import { SOCIAL_LINKS } from "@/constants/seo";
 import { NAV_STRUCTURE } from "@/constants/landing";
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+import { cn } from "@/utils/cn";
 
 interface NavbarProps {
   t: {

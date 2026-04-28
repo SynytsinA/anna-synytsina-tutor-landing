@@ -5,12 +5,7 @@ import { Backpack, BookOpen, Pencil, CheckCircle } from "lucide-react";
 import { FadeIn } from "@/components/shared/FadeIn";
 import { useLanguage } from "@/context/LanguageContext";
 import { LANDING_SECTIONS, SERVICES_CONFIG } from "@/constants/landing";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+import { cn } from "@/utils/cn";
 
 const getIcon = (iconName: string) => {
   switch (iconName) {
