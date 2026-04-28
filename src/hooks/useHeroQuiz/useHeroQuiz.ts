@@ -1,10 +1,12 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { QUIZ_QUESTIONS } from "@/constants/landing";
 import { AUDIO_ASSETS } from "@/constants/audio";
 import { Subject, ShuffledOption } from "@/types/quiz";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const useHeroQuiz = () => {
-  const [activeTab, setActiveTab] = useState<Subject>('ua');
+  const { lang } = useLanguage();
+  const [activeTab, setActiveTab] = useState<Subject>('ukrainian');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOptionIndex, setSelectedOptionIndex] = useState<number | null>(null);
   const [score, setScore] = useState(0);
@@ -25,11 +27,12 @@ export const useHeroQuiz = () => {
     averageAudio.current.volume = 0.7;
   }, []);
 
-  const currentQuestions = QUIZ_QUESTIONS[activeTab];
+  const currentQuestions = QUIZ_QUESTIONS[lang][activeTab] || [];
 
-  const generateShuffledOptions = (tab: Subject, idx: number, shouldShuffle = true): ShuffledOption[] => {
-    if (!QUIZ_QUESTIONS[tab][idx]) return [];
-    const q = QUIZ_QUESTIONS[tab][idx];
+  const generateShuffledOptions = useCallback((subject: Subject, idx: number, shouldShuffle = true): ShuffledOption[] => {
+    const questions = QUIZ_QUESTIONS[lang][subject];
+    if (!questions || !questions[idx]) return [];
+    const q = questions[idx];
     const opts = q.options.map((text, i) => ({ text, originalIndex: i }));
     if (shouldShuffle) {
       for (let i = opts.length - 1; i > 0; i--) {
@@ -38,10 +41,10 @@ export const useHeroQuiz = () => {
       }
     }
     return opts;
-  };
+  }, [lang]);
 
   const [shuffledOptions, setShuffledOptions] = useState<ShuffledOption[]>(() =>
-    generateShuffledOptions('ua', 0, false)
+    generateShuffledOptions('ukrainian', 0, false)
   );
 
   useEffect(() => {
@@ -49,10 +52,10 @@ export const useHeroQuiz = () => {
       setShuffledOptions(generateShuffledOptions(activeTab, currentIndex));
     }, 0);
     return () => clearTimeout(timer);
-  }, [activeTab, currentIndex]);
+  }, [activeTab, currentIndex, generateShuffledOptions]);
 
   useEffect(() => {
-    if (isFinished) {
+    if (isFinished && currentQuestions.length > 0) {
       if (score === currentQuestions.length) {
         completeAudio.current?.play().catch(() => { });
       } else {
@@ -79,7 +82,7 @@ export const useHeroQuiz = () => {
   };
 
   const handleOptionClick = (visualIndex: number, originalIndex: number) => {
-    if (selectedOptionIndex !== null) return;
+    if (selectedOptionIndex !== null || currentQuestions.length === 0) return;
 
     (document.activeElement as HTMLElement)?.blur();
     setSelectedOptionIndex(visualIndex);
@@ -102,7 +105,7 @@ export const useHeroQuiz = () => {
     }, 1200);
   };
 
-  const progress = ((currentIndex) / currentQuestions.length) * 100;
+  const progress = currentQuestions.length > 0 ? (currentIndex / currentQuestions.length) * 100 : 0;
 
   return {
     activeTab,

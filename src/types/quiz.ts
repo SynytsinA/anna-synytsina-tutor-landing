@@ -1,4 +1,4 @@
-export type Subject = 'ua' | 'math';
+export type Subject = 'ukrainian' | 'math';
 
 export interface ShuffledOption {
   text: string;

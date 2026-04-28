@@ -58,8 +58,8 @@ export const HeroQuiz = () => {
         {/* Tabs */}
         <div className="p-2 bg-slate-100/50 flex gap-2 pt-8 sm:pt-10 border-b-2 border-slate-100 shrink-0">
           <button
-            onClick={() => handleTabChange('ua')}
-            className={`flex-1 py-3 rounded-xl font-bold font-heading text-sm transition-all duration-200 flex items-center justify-center gap-2 outline-none focus:outline-none ${activeTab === 'ua' ? 'bg-primary text-white shadow-md scale-[1.02]' : 'bg-white text-slate-500 hover:bg-slate-50'}`}
+            onClick={() => handleTabChange('ukrainian')}
+            className={`flex-1 py-3 rounded-xl font-bold font-heading text-sm transition-all duration-200 flex items-center justify-center gap-2 outline-none focus:outline-none ${activeTab === 'ukrainian' ? 'bg-primary text-white shadow-md scale-[1.02]' : 'bg-white text-slate-500 hover:bg-slate-50'}`}
           >
             <BookA size={18} />
             <span className="hidden sm:inline">{t.tabUA}</span>
@@ -82,7 +82,7 @@ export const HeroQuiz = () => {
                 <span className="text-xs font-bold text-slate-400 tracking-wider uppercase">{t.questionLabel} {currentIndex + 1} / {currentQuestions.length}</span>
                 <div className="w-24 h-2 bg-slate-100 rounded-full overflow-hidden">
                   <div
-                    className={`h-full rounded-full transition-all duration-500 ${activeTab === 'ua' ? 'bg-primary' : 'bg-secondary'}`}
+                    className={`h-full rounded-full transition-all duration-500 ${activeTab === 'ukrainian' ? 'bg-primary' : 'bg-secondary'}`}
                     style={{ width: `${progress}%` }}
                   ></div>
                 </div>

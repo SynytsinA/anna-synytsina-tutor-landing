@@ -2,6 +2,17 @@ import { renderHook, act } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { useHeroQuiz } from "./useHeroQuiz";
 import { QUIZ_QUESTIONS } from "@/constants/landing";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/constants/translations";
+
+// Mock useLanguage
+vi.mock("@/context/LanguageContext", () => ({
+  useLanguage: vi.fn(() => ({ 
+    lang: "ua", 
+    t: translations.ua, 
+    toggleLang: vi.fn() 
+  }))
+}));
 
 class MockAudio {
   play = vi.fn().mockResolvedValue(undefined);
@@ -15,12 +26,17 @@ describe("useHeroQuiz", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     vi.useFakeTimers();
+    vi.mocked(useLanguage).mockReturnValue({ 
+      lang: "ua", 
+      t: translations.ua, 
+      toggleLang: vi.fn() 
+    });
   });
 
   it("should initialize with default values", () => {
     const { result } = renderHook(() => useHeroQuiz());
 
-    expect(result.current.activeTab).toBe("ua");
+    expect(result.current.activeTab).toBe("ukrainian");
     expect(result.current.currentIndex).toBe(0);
     expect(result.current.score).toBe(0);
     expect(result.current.isFinished).toBe(false);
@@ -39,7 +55,7 @@ describe("useHeroQuiz", () => {
 
   it("should increment score on correct answer", () => {
     const { result } = renderHook(() => useHeroQuiz());
-    const currentQuestion = QUIZ_QUESTIONS.ua[0];
+    const currentQuestion = QUIZ_QUESTIONS.ua.ukrainian[0];
     const correctIdx = currentQuestion.correct;
 
     // Find the shuffled option that has the original correct index
@@ -79,7 +95,7 @@ describe("useHeroQuiz", () => {
 
   it("should finish quiz after last question", () => {
     const { result } = renderHook(() => useHeroQuiz());
-    const totalQuestions = QUIZ_QUESTIONS.ua.length;
+    const totalQuestions = QUIZ_QUESTIONS.ua.ukrainian.length;
 
     for (let i = 0; i < totalQuestions; i++) {
       act(() => {
@@ -97,7 +113,7 @@ describe("useHeroQuiz", () => {
     const { result } = renderHook(() => useHeroQuiz());
 
     act(() => {
-      result.current.handleOptionClick(0, QUIZ_QUESTIONS.ua[0].correct);
+      result.current.handleOptionClick(0, QUIZ_QUESTIONS.ua.ukrainian[0].correct);
     });
 
     act(() => {
@@ -107,5 +123,21 @@ describe("useHeroQuiz", () => {
     expect(result.current.score).toBe(0);
     expect(result.current.currentIndex).toBe(0);
     expect(result.current.isFinished).toBe(false);
+  });
+
+  it("should use English questions when language is set to 'en'", () => {
+    vi.mocked(useLanguage).mockReturnValue({ 
+      lang: "en", 
+      t: translations.en, 
+      toggleLang: vi.fn() 
+    });
+
+    const { result } = renderHook(() => useHeroQuiz());
+
+    act(() => {
+      result.current.handleTabChange("math");
+    });
+
+    expect(result.current.currentQuestions[0].q).toBe("What is 5 + 3?");
   });
 });
