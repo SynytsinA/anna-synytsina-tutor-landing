@@ -1,3 +1,5 @@
+import { QuizQuestion, Subject } from "@/types/quiz";
+
 export const HERO_CONFIG = {
   startYear: 2014,
   badgeIcon: "📚",
@@ -151,7 +153,7 @@ export const SERVICES_CONFIG = {
   grid: "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
 };
 
-export const QUIZ_QUESTIONS = {
+export const QUIZ_QUESTIONS: Record<Subject, QuizQuestion[]> = {
   ua: [
     {
       q: "Яке слово є іменником? (Хто? Що?)",
