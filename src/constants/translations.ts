@@ -32,7 +32,7 @@ export const translations = {
       title: "About Me",
       name: "Anna Synytsina",
       role: "Professional Educator & Tutor",
-      desc: "Hello! With over 12 years of experience, I combine a solid foundation in public education with the flexibility of private schools and kindergartens. As a Master of Philology specializing in primary education, I deeply understand child psychology and create a space where there is no fear of making mistakes. Having experience in leading offline groups, today I work online with students from all over the world using my original methods. Every lesson of mine is a child's confident step towards new knowledge and their own success.",
+      desc: "Hello! With over 12 years of experience, I combine a solid foundation in public education with the flexibility of private schools and kindergartens. As a Master of Philology specializing in primary education, I deeply understand child psychology and create a space where there is no fear of making mistakes. After years of leading offline groups, I now work online with students from all over the world using my original methods. Every lesson of mine is a child's confident step towards new knowledge and their own success.",
       stats: [
         {
           value: "12+",
@@ -263,7 +263,7 @@ export const translations = {
       title: "Про мене",
       name: "Синиціна Анна Юріївна",
       role: "Професійний Педагог та Репетитор",
-      desc: "Привіт! Маючи понад 12 років досвіду, я поєднала фундаментальність державної освіти з гнучкістю приватних шкіл та садочків. Як магістр філології зі спеціалізацією у початковій освіті, я глибоко розумію психологію дитини та створюю простір, де немає страху помилки. Маючи досвід проведення офлайн-груп, сьогодні я працюю онлайн з учнями з усього світу за авторськими методиками. Кожен мій урок — це впевнений крок дитини до нових знань та власного успіху",
+      desc: "Привіт! Маючи понад 12 років досвіду, я поєднала фундаментальність державної освіти з гнучкістю приватних шкіл та садочків. Як магістр філології зі спеціалізацією у початковій освіті, я глибоко розумію психологію дитини та створюю простір, де немає страху помилки. Маючи досвід проведення офлайн-груп, сьогодні я працюю онлайн з учнями з усього світу за авторськими методиками. Кожен мій урок — це впевнений крок дитини до нових знань та власного успіху.",
       stats: [
         {
           value: "12+",
@@ -283,7 +283,7 @@ export const translations = {
       ]
     },
     values: {
-      title: "Мої уроки це про:",
+      title: "Мої уроки — це про:",
       list: [
         {
           title: "Якість",
@@ -381,7 +381,7 @@ export const translations = {
     },
     global: {
       title: "Глобальний клас",
-      desc: "Дистанційне навчання не має кордонів. Наразі я на зв'язку з учнями з 10-ти країн світу.",
+      desc: "Дистанційне навчання не має кордонів. Наразі я на зв’язку з учнями з 10-ти країн світу.",
       countriesLabel: "Країн",
       onlineLabel: "Онлайн"
     },
@@ -392,7 +392,7 @@ export const translations = {
       questionLabel: "ПИТАННЯ",
       tryNow: "Перевір свої знання!",
       result5: { title: "Чудовий результат!", desc: "Ти справжній розумник! Так тримати!" },
-      result3: { title: "Добре!", desc: "Ще трішки старань і буде ідеально!" },
+      result3: { title: "Добре!", desc: "Ще трішки старань, і буде ідеально!" },
       resultBad: { title: "Гарна спроба!", desc: "Не засмучуйся, практика робить дива!" },
       scoreLabel: "Ти набрав {score} з {total} балів!",
       retry: "Спробувати ще"
@@ -409,7 +409,7 @@ export const translations = {
         },
         {
           q: "Які платформи ви використовуєте?",
-          a: "Я використовую Zoom для відеозв'язку, а також інтерактивні платформи Miro, Wordwall, Gynzy та Canva, щоб зробити процес навчання наочним та цікавим."
+          a: "Я використовую Zoom для відеозв’язку, а також інтерактивні платформи Miro, Wordwall, Gynzy та Canva, щоб зробити процес навчання наочним та цікавим."
         },
         {
           q: "Чи є пробний урок?",
