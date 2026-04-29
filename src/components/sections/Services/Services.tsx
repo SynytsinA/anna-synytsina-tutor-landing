@@ -63,9 +63,9 @@ export const Services = () => {
                 {getIcon(card.icon)}
               </div>
               <div>
-                <h3 className="font-heading text-2xl font-bold mb-2">
+                <h2 className="font-heading text-2xl font-bold mb-2">
                   {card.title}
-                </h3>
+                </h2>
                 <p className="mb-4 text-slate-600">{card.desc}</p>
                 <ul className="flex flex-col gap-3 m-0 p-0 list-none">
                   {card.list.map((item: string, i: number) => (
