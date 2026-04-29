@@ -226,6 +226,8 @@ export const translations = {
       nextFeedback: "Next feedback",
       previousVideo: "Previous video",
       nextVideo: "Next video",
+      enterWord: "Enter word",
+      videoProgress: "Video progress",
       goToPage: "Go to page {page}"
     }
   },
@@ -455,6 +457,8 @@ export const translations = {
       nextFeedback: "Наступний відгук",
       previousVideo: "Попереднє відео",
       nextVideo: "Наступне відео",
+      enterWord: "Введіть слово",
+      videoProgress: "Прогрес відео",
       goToPage: "Перейти до сторінки {page}"
     }
   }

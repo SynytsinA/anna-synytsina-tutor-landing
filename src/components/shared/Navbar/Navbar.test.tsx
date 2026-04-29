@@ -19,6 +19,10 @@ describe("Navbar", () => {
       about: "About",
       services: "Services",
     },
+    a11y: {
+      menu: "Menu",
+      close: "Close",
+    },
   };
   const mockToggleLang = vi.fn();
 

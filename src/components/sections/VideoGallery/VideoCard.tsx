@@ -208,6 +208,7 @@ export const VideoCard = ({
                 onChange={handleSeek}
                 onClick={(e) => e.stopPropagation()}
                 className="w-full h-1 bg-white/30 rounded-lg appearance-none cursor-pointer accent-white transition-all hover:h-1.5"
+                aria-label={t.a11y.videoProgress}
               />
               <span className="text-white text-[10px] font-mono whitespace-nowrap min-w-[60px]">
                 {formatTime(currentTime)} / {formatTime(duration)}

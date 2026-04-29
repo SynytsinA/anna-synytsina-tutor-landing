@@ -191,19 +191,20 @@ export const PotterGame = () => {
 
                 <div className={styles.inputWrapperParchment}>
                   {!isSolved && <FeatherIcon className={styles.quillIcon} />}
-                  <input
-                    ref={(el) => {
-                      inputRefs.current[puzzle.id] = el;
-                    }}
-                    type="text"
-                    value={inputs[puzzle.id] || ""}
-                    onChange={(e) => handleInputChange(puzzle.id, e.target.value, focusNextInput)}
-                    className={styles.parchmentInput}
-                    disabled={isSolved}
-                    autoComplete="off"
-                    spellCheck="false"
-                    placeholder={isSolved ? "" : "?"}
-                  />
+                    <input
+                      ref={(el) => {
+                        inputRefs.current[puzzle.id] = el;
+                      }}
+                      type="text"
+                      value={inputs[puzzle.id] || ""}
+                      onChange={(e) => handleInputChange(puzzle.id, e.target.value, focusNextInput)}
+                      className={styles.parchmentInput}
+                      disabled={isSolved}
+                      autoComplete="off"
+                      spellCheck="false"
+                      placeholder={isSolved ? "" : "?"}
+                      aria-label={t.a11y.enterWord}
+                    />
                 </div>
               </div>
             </div>

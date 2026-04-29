@@ -2,9 +2,20 @@ import { render, screen, fireEvent, act } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { InteractiveSlider } from "./InteractiveSlider";
 
-// Mock the FadeIn component to avoid animation-related complexities in tests
 vi.mock("@/components/shared/FadeIn/FadeIn", () => ({
   FadeIn: ({ children, className }: { children: React.ReactNode; className?: string }) => <div className={className}>{children}</div>,
+}));
+
+vi.mock("@/context/LanguageContext", () => ({
+  useLanguage: () => ({
+    t: {
+      a11y: {
+        previous: "Previous",
+        next: "Next",
+        goToPage: "Go to page {page}",
+      },
+    },
+  }),
 }));
 
 describe("InteractiveSlider", () => {
@@ -60,7 +71,7 @@ describe("InteractiveSlider", () => {
       </InteractiveSlider>
     );
 
-    const nextButton = screen.getByRole("button", { name: /Next page/i });
+    const nextButton = screen.getByRole("button", { name: "Next" });
     fireEvent.click(nextButton);
 
     expect(Element.prototype.scrollBy).toHaveBeenCalledWith({
@@ -77,13 +88,13 @@ describe("InteractiveSlider", () => {
       </InteractiveSlider>
     );
 
-    const prevButton = screen.getByRole("button", { name: /Previous page/i });
-    
+    const prevButton = screen.getByRole("button", { name: "Previous" });
+
     // We need to simulate that we have scrolled to enable the button
     // This is tricky because the state update happens in onScroll
     // For this test, we check if the function is called when clicked
     // Assuming we somehow enabled it (or disable check is correct)
-    
+
     // Actually, at the start it's disabled.
     expect(prevButton).toBeDisabled();
   });
@@ -127,7 +138,7 @@ describe("InteractiveSlider", () => {
 
     // With 300 clientWidth and 300+20 gap -> 300/320 round = 1 item per page
     // 6 items / 1 per page = 6 dots
-    
+
     // We need to force a re-render or wait for state update
     rerender(
       <InteractiveSlider itemCount={mockItemCount} itemWidth={mockItemWidth}>
