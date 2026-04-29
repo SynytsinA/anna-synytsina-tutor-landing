@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useMemo } from "react";
 import { AUDIO_ASSETS } from "@/constants/audio";
-import { POTTER_PUZZLES_UA, POTTER_PUZZLES_EN } from "@/constants/game";
+import { translations } from "@/constants/translations";
 import { SparkConfig } from "@/types/game";
 
 export const usePotterGame = (lang: "en" | "ua" = "ua") => {
@@ -18,7 +18,11 @@ export const usePotterGame = (lang: "en" | "ua" = "ua") => {
   const winSfx = useRef<HTMLAudioElement | null>(null);
 
   const currentPuzzles = useMemo(
-    () => (lang === "ua" ? POTTER_PUZZLES_UA : POTTER_PUZZLES_EN),
+    () => translations[lang].themes.potterPuzzles.map(([scrambled, answer], index) => ({
+      id: index + 1,
+      scrambled,
+      answer
+    })),
     [lang]
   );
   

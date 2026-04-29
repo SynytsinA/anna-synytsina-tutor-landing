@@ -1,7 +1,13 @@
 import { renderHook, act } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { usePotterGame } from "./usePotterGame";
-import { POTTER_PUZZLES_UA } from "@/constants/game";
+import { translations } from "@/constants/translations";
+
+const POTTER_PUZZLES_UA = translations.ua.themes.potterPuzzles.map(([scrambled, answer], index) => ({
+  id: index + 1,
+  scrambled,
+  answer
+}));
 
 class MockAudio {
   play = vi.fn().mockResolvedValue(undefined);

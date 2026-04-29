@@ -134,7 +134,19 @@ export const translations = {
       even: "Even Numbers",
       odd: "Odd Numbers",
       success: "Great Job! 🎄",
-      empty: "All sorted!"
+      empty: "All sorted!",
+      potterTitle: "UNSPELL THE WORDS",
+      potterSuccess: "10 Points to Gryffindor!",
+      potterPuzzles: [
+        ["IDDITCHQU", "QUIDDITCH"],
+        ["OLAKC", "CLOAK"],
+        ["TIONPO", "POTION"],
+        ["LLORT", "TROLL"],
+        ["YEK", "KEY"],
+        ["SECHS", "CHESS"],
+        ["XPRESS", "EXPRESS"],
+        ["SILISKBA", "BASILISK"],
+      ],
     },
     global: {
       title: "Global Classroom",
@@ -336,7 +348,19 @@ export const translations = {
       even: "Парні числа",
       odd: "Непарні числа",
       success: "Чудова робота! 🎄",
-      empty: "Все розсортовано!"
+      empty: "Все розсортовано!",
+      potterTitle: "РОЗЧАКЛУЙ СЛОВА",
+      potterSuccess: "Виграш Гриффіндору!",
+      potterPuzzles: [
+        ["ІЧКВДІ", "КВІДІЧ"],
+        ["ЯМАТІН", "МАНТІЯ"],
+        ["ЛЛЯЗІ", "ЗІЛЛЯ"],
+        ["ЛЬРОТ", "ТРОЛЬ"],
+        ["ЮЧКЛ", "КЛЮЧ"],
+        ["ХИША", "ШАХИ"],
+        ["ЕСТПРКЕС", "ЕКСПРЕС"],
+        ["ІСКВАСИЛ", "ВАСИЛІСК"],
+      ],
     },
     global: {
       title: "Глобальний клас",

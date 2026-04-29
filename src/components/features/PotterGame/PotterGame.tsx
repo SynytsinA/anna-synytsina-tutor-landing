@@ -55,7 +55,7 @@ const CheckIcon = ({ className, style }: { className?: string, style?: React.CSS
 );
 
 export const PotterGame = () => {
-  const { lang } = useLanguage();
+  const { lang, t } = useLanguage();
   const {
     inputs,
     completed,
@@ -136,7 +136,7 @@ export const PotterGame = () => {
         </div>
 
         <h3 className={styles.magicalGlowText}>
-          {lang === "ua" ? "РОЗЧАКЛУЙ СЛОВА" : "UNSPELL THE WORDS"}
+          {t.themes.potterTitle}
         </h3>
 
         {/* Progress or Success Message */}
@@ -155,7 +155,7 @@ export const PotterGame = () => {
           ) : (
             <div className={styles.potterSuccessMsgModern}>
               <LightningBolt className={styles.boltIcon} />
-              <span>{lang === "ua" ? "Виграш Гриффіндору!" : "10 Points to Gryffindor!"}</span>
+              <span>{t.themes.potterSuccess}</span>
               <LightningBolt className={styles.boltIcon} />
             </div>
           )}
