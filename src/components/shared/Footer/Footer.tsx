@@ -53,7 +53,7 @@ export const Footer = ({ t }: FooterProps) => {
                 <h2 className="text-[2.5rem] m-0 mb-6 leading-[1.1] font-heading font-bold">
                   {t.title}
                 </h2>
-                <p className="text-[1.1rem] text-slate-600 mb-10 max-w-[450px] leading-[1.6]">
+                <p className="text-[1.1rem] text-slate-700 mb-10 max-w-[450px] leading-[1.6]">
                   {t.sub}
                 </p>
 
@@ -92,7 +92,7 @@ export const Footer = ({ t }: FooterProps) => {
             </div>
           </FadeIn>
 
-          <div className="border-t-2 border-dashed border-slate-300 pt-8 text-center text-slate-500 text-sm font-medium">
+          <div className="border-t-2 border-dashed border-slate-300 pt-8 text-center text-slate-600 text-sm font-medium">
             © {new Date().getFullYear()} {t.copyright}
           </div>
         </div>

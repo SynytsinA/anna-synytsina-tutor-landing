@@ -59,7 +59,7 @@ export const HeroQuiz = () => {
         <div className="p-2 bg-slate-100/50 flex gap-2 pt-8 sm:pt-10 border-b-2 border-slate-100 shrink-0">
           <button
             onClick={() => handleTabChange('ukrainian')}
-            className={`flex-1 py-3 rounded-xl font-bold font-heading text-sm transition-all duration-200 flex items-center justify-center gap-2 outline-none focus:outline-none ${activeTab === 'ukrainian' ? 'bg-primary text-white shadow-md scale-[1.02]' : 'bg-white text-slate-500 hover:bg-slate-50'}`}
+            className={`flex-1 py-3 rounded-xl font-bold font-heading text-sm transition-all duration-200 flex items-center justify-center gap-2 outline-none focus:outline-none ${activeTab === 'ukrainian' ? 'bg-primary text-white shadow-md scale-[1.02]' : 'bg-white text-slate-600 hover:bg-slate-50'}`}
           >
             <BookA size={18} />
             <span className="hidden sm:inline">{t.tabUA}</span>
@@ -67,7 +67,7 @@ export const HeroQuiz = () => {
           </button>
           <button
             onClick={() => handleTabChange('math')}
-            className={`flex-1 py-3 rounded-xl font-bold font-heading text-sm transition-all duration-200 flex items-center justify-center gap-2 outline-none focus:outline-none ${activeTab === 'math' ? 'bg-secondary text-white shadow-md scale-[1.02]' : 'bg-white text-slate-500 hover:bg-slate-50'}`}
+            className={`flex-1 py-3 rounded-xl font-bold font-heading text-sm transition-all duration-200 flex items-center justify-center gap-2 outline-none focus:outline-none ${activeTab === 'math' ? 'bg-secondary text-white shadow-md scale-[1.02]' : 'bg-white text-slate-600 hover:bg-slate-50'}`}
           >
             <Calculator size={18} /> {t.tabMath}
           </button>
@@ -79,7 +79,7 @@ export const HeroQuiz = () => {
           {!isFinished ? (
             <>
               <div className="flex justify-between items-center h-6 mb-2 shrink-0">
-                <span className="text-xs font-bold text-slate-400 tracking-wider uppercase">{t.questionLabel} {currentIndex + 1} / {currentQuestions.length}</span>
+                <span className="text-xs font-bold text-slate-600 tracking-wider uppercase">{t.questionLabel} {currentIndex + 1} / {currentQuestions.length}</span>
                 <div className="w-24 h-2 bg-slate-100 rounded-full overflow-hidden">
                   <div
                     className={`h-full rounded-full transition-all duration-500 ${activeTab === 'ukrainian' ? 'bg-primary' : 'bg-secondary'}`}
@@ -89,9 +89,9 @@ export const HeroQuiz = () => {
               </div>
 
               <div className="h-[120px] flex items-center justify-center mb-2 shrink-0 px-2">
-                <h3 className="text-lg sm:text-xl md:text-2xl font-heading font-bold text-slate-900 text-center leading-tight w-full">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-heading font-bold text-slate-900 text-center leading-tight w-full">
                   {currentQuestions[currentIndex].q}
-                </h3>
+                </h2>
               </div>
 
               <div className="flex flex-col gap-3 mt-2">
@@ -132,8 +132,8 @@ export const HeroQuiz = () => {
               <div className={`w-20 h-20 ${resultContent.bgClass} rounded-full flex items-center justify-center mb-6`}>
                 <ResultIcon size={40} className={resultContent.colorClass} />
               </div>
-              <h3 className="text-3xl font-heading font-bold text-slate-900 mb-2">{resultContent.title}</h3>
-              <p className="text-slate-600 mb-8 text-lg">
+              <h2 className="text-3xl font-heading font-bold text-slate-900 mb-2">{resultContent.title}</h2>
+              <p className="text-slate-700 mb-8 text-lg">
                 {t.scoreLabel.replace('{score}', score.toString()).replace('{total}', currentQuestions.length.toString())}
                 <br />{resultContent.desc}
               </p>

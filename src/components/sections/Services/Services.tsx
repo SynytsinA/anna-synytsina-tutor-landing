@@ -63,15 +63,15 @@ export const Services = () => {
                 {getIcon(card.icon)}
               </div>
               <div>
-                <h2 className="font-heading text-2xl font-bold mb-2">
+                <h3 className="font-heading text-2xl font-bold mb-2">
                   {card.title}
-                </h2>
-                <p className="mb-4 text-slate-600">{card.desc}</p>
+                </h3>
+                <p className="mb-4 text-slate-700">{card.desc}</p>
                 <ul className="flex flex-col gap-3 m-0 p-0 list-none">
                   {card.list.map((item: string, i: number) => (
                     <li
                       key={i}
-                      className="flex items-start gap-2.5 text-slate-900 font-semibold text-[0.95rem] leading-[1.4]"
+                      className="flex items-start gap-2.5 text-slate-700 font-semibold text-[0.95rem] leading-[1.4]"
                     >
                       <CheckCircle
                         size={16}

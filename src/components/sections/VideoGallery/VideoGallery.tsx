@@ -125,7 +125,7 @@ export const VideoGallery = () => {
             <h2 className="text-4xl font-heading font-bold text-slate-900 mb-5">
               {galleryT.title}
             </h2>
-            <p className="max-w-2xl mx-auto text-lg text-slate-600 font-medium">
+            <p className="max-w-2xl mx-auto text-lg text-slate-700 font-medium">
               {galleryT.subtitle}
             </p>
           </FadeIn>

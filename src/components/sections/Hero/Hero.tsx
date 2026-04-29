@@ -102,9 +102,9 @@ export const Hero = () => {
             </FadeIn>
 
             <FadeIn delay={HERO_CONFIG.fadeDelays.subtitle}>
-              <p className="text-xl leading-relaxed text-slate-600 max-w-[500px] mb-10 font-medium">
-                {t.hero.subtitle}
-              </p>
+            <p className="text-xl leading-relaxed text-slate-700 max-w-[500px] mb-10 font-medium">
+              {t.hero.subtitle}
+            </p>
             </FadeIn>
 
             <FadeIn

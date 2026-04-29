@@ -130,7 +130,7 @@ export const About = () => {
                       <h4 className="font-heading text-2xl font-bold text-slate-900 m-0 leading-none mb-1">
                         {stat.value}
                       </h4>
-                      <span className="font-bold text-xs uppercase tracking-wider text-slate-500 mb-1">
+                      <span className="font-bold text-xs uppercase tracking-wider text-slate-600 mb-1">
                         {stat.label}
                       </span>
                       <p className="text-sm text-slate-700 m-0 leading-tight">
