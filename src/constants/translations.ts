@@ -212,6 +212,21 @@ export const translations = {
       cta: "DM on Instagram",
       copyright: "Anna Synytsina. All rights reserved.",
       waitingMsg: "Waiting for you in class!"
+    },
+    a11y: {
+      mute: "Mute video",
+      unmute: "Unmute video",
+      fullscreen: "Toggle fullscreen",
+      close: "Close",
+      menu: "Open menu",
+      scrollToTop: "Scroll to top",
+      previous: "Previous",
+      next: "Next",
+      previousFeedback: "Previous feedback",
+      nextFeedback: "Next feedback",
+      previousVideo: "Previous video",
+      nextVideo: "Next video",
+      goToPage: "Go to page {page}"
     }
   },
   ua: {
@@ -426,6 +441,21 @@ export const translations = {
       cta: "Написати в Instagram",
       copyright: "Синиціна Анна. Всі права захищені.",
       waitingMsg: "Чекаю на уроці!"
+    },
+    a11y: {
+      mute: "Вимкнути звук",
+      unmute: "Увімкнути звук",
+      fullscreen: "На весь екран",
+      close: "Закрити",
+      menu: "Відкрити меню",
+      scrollToTop: "Вгору",
+      previous: "Попередній",
+      next: "Наступний",
+      previousFeedback: "Попередній відгук",
+      nextFeedback: "Наступний відгук",
+      previousVideo: "Попереднє відео",
+      nextVideo: "Наступне відео",
+      goToPage: "Перейти до сторінки {page}"
     }
   }
 };

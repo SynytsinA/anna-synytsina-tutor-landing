@@ -126,6 +126,7 @@ export const VideoCard = ({
         <button
           onClick={(e) => { e.stopPropagation(); onClose?.(); }}
           className="absolute -top-4 -right-4 w-10 h-10 bg-white text-black rounded-full flex items-center justify-center shadow-xl border border-slate-200 z-[20] hover:scale-110 transition-transform pointer-events-auto"
+          aria-label={t.a11y.close}
         >
           <X size={24} />
         </button>
@@ -169,6 +170,7 @@ export const VideoCard = ({
               <button
                 className="bg-transparent border-none text-white p-0 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
                 onClick={toggleMute}
+                aria-label={isMuted ? t.a11y.unmute : t.a11y.mute}
               >
                 {isMuted ? <VolumeX size={26} className="filter drop-shadow-md" /> : <Volume2 size={26} className="filter drop-shadow-md" />}
               </button>
@@ -183,6 +185,7 @@ export const VideoCard = ({
               <button
                 className="bg-transparent border-none text-white p-0 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
                 onClick={handleFullscreen}
+                aria-label={t.a11y.fullscreen}
               >
                 {isModal ? (
                   <Minimize size={26} className="filter drop-shadow-md" />

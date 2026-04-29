@@ -12,6 +12,10 @@ interface NavbarProps {
     logo: string;
     toggle: string;
     menuLabels: Record<string, string>;
+    a11y: {
+      menu: string;
+      close: string;
+    };
   };
   toggleLang: () => void;
 }
@@ -188,6 +192,7 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
             <button
               className="lg:hidden bg-white border-2 border-slate-900 rounded-lg cursor-pointer flex items-center justify-center text-slate-900 p-1.5 shadow-[3px_3px_0px_#0f172a] w-10 h-10 z-[1001] relative transition-transform active:scale-95"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? t.a11y.close : t.a11y.menu}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

@@ -3,6 +3,7 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FadeIn } from "@/components/shared/FadeIn/FadeIn";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface InteractiveSliderProps {
   children: React.ReactNode;
@@ -21,6 +22,7 @@ export const InteractiveSlider: React.FC<InteractiveSliderProps> = ({
   className = "",
   containerClassName = "",
 }) => {
+  const { t } = useLanguage();
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activePage, setActivePage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(1);
@@ -105,7 +107,7 @@ export const InteractiveSlider: React.FC<InteractiveSliderProps> = ({
           className="hidden md:flex absolute left-1 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border-2 border-orange-500 shadow-hard-orange items-center justify-center cursor-pointer z-20 text-orange-500 transition-all duration-200 hover:scale-110 hover:-rotate-3 hover:shadow-[6px_6px_0px_#ea580c] hover:border-orange-600 hover:text-orange-600 active:scale-95 active:shadow-none disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed outline-none focus:outline-none"
           onClick={() => handleScroll("left")}
           disabled={!canScrollLeft}
-          aria-label="Previous page"
+          aria-label={t.a11y.previous}
         >
           <ChevronLeft size={28} />
         </button>
@@ -123,7 +125,7 @@ export const InteractiveSlider: React.FC<InteractiveSliderProps> = ({
           className="hidden md:flex absolute right-1 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border-2 border-orange-500 shadow-hard-orange items-center justify-center cursor-pointer z-20 text-orange-500 transition-all duration-200 hover:scale-110 hover:rotate-3 hover:shadow-[6px_6px_0px_#ea580c] hover:border-orange-600 hover:text-orange-600 active:scale-95 active:shadow-none disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed outline-none focus:outline-none"
           onClick={() => handleScroll("right")}
           disabled={!canScrollRight}
-          aria-label="Next page"
+          aria-label={t.a11y.next}
         >
           <ChevronRight size={28} />
         </button>
@@ -137,7 +139,7 @@ export const InteractiveSlider: React.FC<InteractiveSliderProps> = ({
               i === activePage ? "bg-primary scale-125 shadow-hard" : "bg-white"
             }`}
             onClick={() => scrollToDots(i)}
-            aria-label={`Go to page ${i + 1}`}
+            aria-label={t.a11y.goToPage.replace("{page}", (i + 1).toString())}
           />
         ))}
       </div>

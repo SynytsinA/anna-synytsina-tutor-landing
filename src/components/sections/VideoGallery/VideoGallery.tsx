@@ -163,7 +163,7 @@ export const VideoGallery = () => {
           <button
             onClick={(e) => { e.stopPropagation(); handlePrev(); }}
             className="hidden sm:flex absolute left-8 top-1/2 -translate-y-1/2 w-16 h-16 items-center justify-center rounded-full bg-white/10 text-white border border-white/20 backdrop-blur-md hover:bg-white/20 hover:scale-110 transition-all z-20"
-            aria-label="Previous video"
+            aria-label={t.a11y.previousVideo}
           >
             <ChevronLeft size={32} />
           </button>
@@ -171,7 +171,7 @@ export const VideoGallery = () => {
           <button
             onClick={(e) => { e.stopPropagation(); handleNext(); }}
             className="hidden sm:flex absolute right-8 top-1/2 -translate-y-1/2 w-16 h-16 items-center justify-center rounded-full bg-white/10 text-white border border-white/20 backdrop-blur-md hover:bg-white/20 hover:scale-110 transition-all z-20"
-            aria-label="Next video"
+            aria-label={t.a11y.nextVideo}
           >
             <ChevronRight size={32} />
           </button>

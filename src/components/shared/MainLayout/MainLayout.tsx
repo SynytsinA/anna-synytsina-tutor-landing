@@ -10,7 +10,7 @@ const LayoutContent: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
   return (
     <>
-      <Navbar t={t.nav} toggleLang={toggleLang} />
+      <Navbar t={{ ...t.nav, a11y: t.a11y }} toggleLang={toggleLang} />
       {children}
       <Footer t={t.footer} />
     </>

@@ -200,7 +200,7 @@ export const Testimonials = () => {
           <button
             onClick={(e) => { e.stopPropagation(); handlePrev(); }}
             className="hidden sm:flex absolute left-8 top-1/2 -translate-y-1/2 w-16 h-16 items-center justify-center rounded-full bg-white/10 text-white border border-white/20 backdrop-blur-md hover:bg-white/20 hover:scale-110 transition-all z-20"
-            aria-label="Previous feedback"
+            aria-label={allTranslations.a11y.previousFeedback}
           >
             <ChevronLeft size={32} />
           </button>
@@ -208,7 +208,7 @@ export const Testimonials = () => {
           <button
             onClick={(e) => { e.stopPropagation(); handleNext(); }}
             className="hidden sm:flex absolute right-8 top-1/2 -translate-y-1/2 w-16 h-16 items-center justify-center rounded-full bg-white/10 text-white border border-white/20 backdrop-blur-md hover:bg-white/20 hover:scale-110 transition-all z-20"
-            aria-label="Next feedback"
+            aria-label={allTranslations.a11y.nextFeedback}
           >
             <ChevronRight size={32} />
           </button>
@@ -217,7 +217,7 @@ export const Testimonials = () => {
           <button
             onClick={(e) => { e.stopPropagation(); closeModal(); }}
             className="absolute top-6 right-6 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 text-white border border-white/20 backdrop-blur-md hover:bg-white/20 hover:scale-110 transition-all z-20"
-            aria-label="Close"
+            aria-label={allTranslations.a11y.close}
           >
             <X size={28} />
           </button>
