@@ -182,6 +182,7 @@ export const VideoGallery = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <VideoCard
+              key={modalVideoId}
               video={modalVideo}
               isPlaying={playingId === modalVideoId}
               isLiked={likedIds.has(modalVideoId)}
