@@ -133,9 +133,9 @@ export const InteractiveSlider: React.FC<InteractiveSliderProps> = ({
       </FadeIn>
 
       <div className="mt-8 pb-4 flex justify-center relative z-10">
-        <div className="relative overflow-hidden" style={{ width: "200px" }}>
+        <div className="relative overflow-hidden py-4" style={{ width: "200px" }}>
           <div 
-            className="flex gap-3 transition-transform duration-300 ease-out w-max"
+            className="flex items-center gap-3 transition-transform duration-300 ease-out w-max"
             style={{ 
               transform: `translateX(calc(100px - ${(activePage * 26) + 7}px))` 
             }}
