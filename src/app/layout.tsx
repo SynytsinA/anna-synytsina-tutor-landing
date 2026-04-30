@@ -55,12 +55,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="uk">
+    <html lang="uk" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://anna-synytsina-tutor-landing.vercel.app" />
       </head>
       <body
         className={`${nunito.variable} ${whimsicalFont.variable} ${alice.variable} ${kellySlab.variable} antialiased font-body text-slate-900 bg-white`}
+        suppressHydrationWarning
       >
         <SchemaOrg />
         <MainLayout>
