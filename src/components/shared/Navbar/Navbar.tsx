@@ -54,6 +54,9 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
       }
     };
 
+    // Initialize state on mount
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [menuItems]);
