@@ -26,10 +26,7 @@ export const GrinchGame = ({ translations }: GrinchGameProps) => {
     errorFlash,
     snowflakes,
     isComplete,
-    handleDragStart,
-    handleDrop,
     handleTouchDrop,
-    handleDragOver,
   } = useGrinchGame();
 
   const grinchImgUrl = "/images/interaktyvna-navchalna-gra-grinch-pochatkova-shkola.png";
@@ -88,7 +85,7 @@ export const GrinchGame = ({ translations }: GrinchGameProps) => {
           <Toy
             key={num}
             num={num}
-            onDragStart={(e) => handleDragStart(e, num)}
+            isDraggable={true}
             onTouchDrop={handleTouchDrop}
           />
         ))}
@@ -101,9 +98,7 @@ export const GrinchGame = ({ translations }: GrinchGameProps) => {
       <div className={styles.dropZonesContainer}>
         <div
           id="zone-even"
-          className={`${styles.dropZone} ${errorFlash === "even" ? styles.errorFlash : ""}`}
-          onDragOver={handleDragOver}
-          onDrop={(e) => handleDrop(e, "even")}
+          className={`drop-zone ${styles.dropZone} ${errorFlash === "even" ? styles.errorFlash : ""}`}
         >
           <h4>{translations.even}</h4>
           <div className={styles.zoneSlots}>
@@ -118,9 +113,7 @@ export const GrinchGame = ({ translations }: GrinchGameProps) => {
 
         <div
           id="zone-odd"
-          className={`${styles.dropZone} ${errorFlash === "odd" ? styles.errorFlash : ""}`}
-          onDragOver={handleDragOver}
-          onDrop={(e) => handleDrop(e, "odd")}
+          className={`drop-zone ${styles.dropZone} ${errorFlash === "odd" ? styles.errorFlash : ""}`}
         >
           <h4>{translations.odd}</h4>
           <div className={styles.zoneSlots}>

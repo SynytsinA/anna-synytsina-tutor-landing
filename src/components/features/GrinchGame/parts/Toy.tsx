@@ -5,60 +5,64 @@ import styles from "../GrinchGame.module.css";
 
 interface ToyProps {
   num: number;
-  onDragStart?: (e: React.DragEvent) => void;
-  onDragEnd?: () => void;
+  isDraggable?: boolean;
   onTouchDrop?: (num: number, zoneId: string) => void;
 }
 
 export const Toy: React.FC<ToyProps> = ({
   num,
-  onDragStart,
-  onDragEnd,
+  isDraggable = false,
   onTouchDrop,
 }) => {
   const variant = num % 5;
-  const isDraggable = !!onDragStart;
 
   const elementRef = useRef<HTMLDivElement>(null);
   const touchStartPos = useRef({ x: 0, y: 0 });
   const lastTouchPos = useRef({ x: 0, y: 0 });
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (!isDraggable) return;
+  const handlePointerDown = (e: React.PointerEvent) => {
+    if (!isDraggable || !elementRef.current) return;
+    
+    // Only handle primary button (left click) or touch
+    if (e.button !== 0 && e.pointerType === 'mouse') return;
+
     if (e.cancelable) {
       e.preventDefault();
       e.stopPropagation();
     }
 
-    const touch = e.touches[0];
-    touchStartPos.current = { x: touch.clientX, y: touch.clientY };
-    lastTouchPos.current = { x: touch.clientX, y: touch.clientY };
+    elementRef.current.setPointerCapture(e.pointerId);
 
-    if (elementRef.current) {
-      elementRef.current.style.transition = "none";
-      elementRef.current.style.zIndex = "1000";
-      elementRef.current.style.position = "relative";
-    }
+    touchStartPos.current = { x: e.clientX, y: e.clientY };
+    lastTouchPos.current = { x: e.clientX, y: e.clientY };
+
+    elementRef.current.style.transition = "none";
+    elementRef.current.style.zIndex = "1000";
+    elementRef.current.style.position = "relative";
   };
 
-  const handleTouchMove = (e: React.TouchEvent) => {
+  const handlePointerMove = (e: React.PointerEvent) => {
     if (!isDraggable || !elementRef.current) return;
+    if (!elementRef.current.hasPointerCapture(e.pointerId)) return;
+
     if (e.cancelable) {
       e.preventDefault();
       e.stopPropagation();
     }
 
-    const touch = e.touches[0];
-    lastTouchPos.current = { x: touch.clientX, y: touch.clientY };
+    lastTouchPos.current = { x: e.clientX, y: e.clientY };
 
-    const deltaX = touch.clientX - touchStartPos.current.x;
-    const deltaY = touch.clientY - touchStartPos.current.y;
+    const deltaX = e.clientX - touchStartPos.current.x;
+    const deltaY = e.clientY - touchStartPos.current.y;
 
-    elementRef.current.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(1.2)`;
+    elementRef.current.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(1.1)`;
   };
 
-  const handleTouchEnd = () => {
+  const handlePointerUp = (e: React.PointerEvent) => {
     if (!isDraggable || !elementRef.current) return;
+    if (!elementRef.current.hasPointerCapture(e.pointerId)) return;
+
+    elementRef.current.releasePointerCapture(e.pointerId);
 
     elementRef.current.style.visibility = "hidden";
     const elemBelow = document.elementFromPoint(
@@ -170,12 +174,11 @@ export const Toy: React.FC<ToyProps> = ({
     <div
       ref={elementRef}
       className={`${styles.toyItem} ${styles[`toyVariant${variant}`]} ${isDraggable ? "cursor-grab active:cursor-grabbing" : ""}`}
-      draggable={isDraggable}
-      onDragStart={onDragStart}
-      onDragEnd={onDragEnd}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
+      style={{ touchAction: "none" }}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerUp}
     >
       <div className={styles.toyHangerLoop} />
       <div className={styles.toyHangerCap} />

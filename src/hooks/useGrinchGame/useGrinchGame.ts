@@ -75,29 +75,6 @@ export const useGrinchGame = () => {
     }
   };
 
-  const handleDragStart = (e: React.DragEvent, num: number) => {
-    e.dataTransfer.effectAllowed = "move";
-    e.dataTransfer.setData("application/json", JSON.stringify({ num }));
-  };
-
-  const handleDragOver = (e: React.DragEvent) => {
-    e.preventDefault();
-    e.dataTransfer.dropEffect = "move";
-  };
-
-  const handleDrop = (e: React.DragEvent, target: "even" | "odd") => {
-    e.preventDefault();
-    const data = e.dataTransfer.getData("application/json");
-    if (!data) return;
-
-    try {
-      const parsed = JSON.parse(data);
-      processMove(parsed.num, target);
-    } catch (err) {
-      console.error("Grinch drop parse failed", err);
-    }
-  };
-
   const handleTouchDrop = (num: number, targetZoneId: string) => {
     let target: "even" | "odd" | null = null;
     if (targetZoneId === "zone-even") target = "even";
@@ -115,9 +92,6 @@ export const useGrinchGame = () => {
     errorFlash,
     snowflakes,
     isComplete,
-    handleDragStart,
-    handleDragOver,
-    handleDrop,
     handleTouchDrop,
   };
 };
