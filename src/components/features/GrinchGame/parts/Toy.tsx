@@ -174,7 +174,7 @@ export const Toy: React.FC<ToyProps> = ({
     <div
       ref={elementRef}
       className={`${styles.toyItem} ${styles[`toyVariant${variant}`]} ${isDraggable ? "cursor-grab active:cursor-grabbing" : ""}`}
-      style={{ touchAction: "none" }}
+      style={{ touchAction: isDraggable ? "none" : "auto" }}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}

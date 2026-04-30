@@ -132,7 +132,7 @@
 
 .grinchHeader {
   text-align: center;
-  margin: 40px 0;
+  margin: 60px auto 30px;
   position: relative;
   z-index: 2;
 }
