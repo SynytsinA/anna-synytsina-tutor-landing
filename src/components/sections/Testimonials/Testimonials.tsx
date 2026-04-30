@@ -7,7 +7,7 @@ import { FadeIn } from "@/components/shared/FadeIn";
 import { InteractiveSlider } from "@/components/shared/InteractiveSlider";
 import { useSwipeNavigation } from "@/hooks";
 import { TESTIMONIALS_DATA } from "@/constants/landing";
-import { StoryCard } from "./StoryCard";
+import { ReviewCard } from "./ReviewCard";
 import styles from "./Testimonials.module.css";
 
 
@@ -102,7 +102,7 @@ export const Testimonials = () => {
           containerClassName={styles.storyCardContainer}
         >
           {TESTIMONIALS_DATA.map((item, i) => (
-            <StoryCard
+            <ReviewCard
               key={item.id}
               item={item}
               index={i}
@@ -154,7 +154,8 @@ export const Testimonials = () => {
             style={getSwipeStyle()}
             onClick={(e) => e.stopPropagation()}
           >
-            <StoryCard
+            <ReviewCard
+              key={selectedItem.id}
               item={selectedItem}
               index={selectedIndex}
               isModal={true}

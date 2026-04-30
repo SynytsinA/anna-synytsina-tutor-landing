@@ -5,14 +5,18 @@ import Image from "next/image";
 import { Heart, Send, MoreHorizontal, X } from "lucide-react";
 import { Avatar } from "@/components/ui/Avatar";
 import { Testimonial } from "@/types/landing";
-import styles from "./StoryCard.module.css";
+import styles from "./ReviewCard.module.css";
 
-interface StoryCardProps {
+import { ReviewSkeleton } from "../ReviewSkeleton";
+
+interface ReviewCardProps {
   item: Testimonial;
   index: number;
   onClick?: () => void;
   isModal?: boolean;
 }
+
+const BLUR_DATA_URL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==";
 
 const getGradientClass = (index: number) => {
   const classes = [
@@ -25,14 +29,16 @@ const getGradientClass = (index: number) => {
   return classes[index % classes.length];
 };
 
-export const StoryCard: React.FC<StoryCardProps> = ({ item, index, onClick, isModal = false }) => {
+export const ReviewCard: React.FC<ReviewCardProps> = ({ item, index, onClick, isModal = false }) => {
+  const [isLoading, setIsLoading] = React.useState(true);
+
   return (
     <div
-      className={`${isModal ? "" : "flex-none w-[300px] md:w-[300px] w-[85vw] snap-center"}`}
+      className={`${isModal ? "" : "relative flex-none w-[300px] md:w-[300px] w-[85vw] snap-center"}`}
       onClick={onClick}
     >
       <div
-        className={`relative flex flex-col justify-between text-white shadow-xl overflow-hidden border-[3px] border-white transition-transform duration-300 ${!isModal ? "w-full aspect-[9/16] max-h-[550px] rounded-3xl p-5 hover:scale-[1.02] cursor-pointer" : "h-[80vh] sm:h-[95vh] aspect-[9/16] p-3 sm:p-8 rounded-xl sm:rounded-[40px]"} ${getGradientClass(index)}`}
+        className={`relative flex flex-col justify-between text-white shadow-xl overflow-hidden border-[3px] border-white transition-all duration-500 ${!isModal ? "w-full aspect-[9/16] max-h-[550px] rounded-3xl p-5 hover:scale-[1.02] cursor-pointer" : "h-[80vh] sm:h-[95vh] aspect-[9/16] p-3 sm:p-8 rounded-xl sm:rounded-[40px]"} ${getGradientClass(index)} ${isLoading ? "opacity-0" : "opacity-100"}`}
       >
         {/* Story Header */}
         <div className="relative z-20 flex flex-col gap-3">
@@ -62,6 +68,10 @@ export const StoryCard: React.FC<StoryCardProps> = ({ item, index, onClick, isMo
             fill
             className="object-cover"
             sizes={isModal ? "1000px" : "(max-width: 768px) 85vw, 300px"}
+            priority={isModal || index < 3}
+            placeholder="blur"
+            blurDataURL={BLUR_DATA_URL}
+            onLoad={() => setIsLoading(false)}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent via-80% to-black/40"></div>
         </div>
@@ -75,6 +85,12 @@ export const StoryCard: React.FC<StoryCardProps> = ({ item, index, onClick, isMo
           <Send size={28} color="white" strokeWidth={1.5} className="rotate-[15deg] mb-1 filter drop-shadow-md" />
         </div>
       </div>
+
+      {isLoading && (
+        <div className={`absolute inset-0 z-50 ${isModal ? "flex items-center justify-center" : ""}`}>
+          <ReviewSkeleton isModal={isModal} />
+        </div>
+      )}
     </div>
   );
 };
