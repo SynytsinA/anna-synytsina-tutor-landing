@@ -114,13 +114,6 @@ export const PotterGame = () => {
         <HallowsIcon className={styles.hallowsIconBg} />
       </div>
 
-      {/* House Crests */}
-      <div className={`${styles.crest} ${styles.crestTl}`} />
-      <div className={`${styles.crest} ${styles.crestTr}`} />
-      <div className={`${styles.crest} ${styles.crestBl}`} />
-      <div className={`${styles.crest} ${styles.crestBr}`} />
-
-
 
       <div className={styles.potterHeaderModern}>
         <div>
@@ -191,20 +184,20 @@ export const PotterGame = () => {
 
                 <div className={styles.inputWrapperParchment}>
                   {!isSolved && <FeatherIcon className={styles.quillIcon} />}
-                    <input
-                      ref={(el) => {
-                        inputRefs.current[puzzle.id] = el;
-                      }}
-                      type="text"
-                      value={inputs[puzzle.id] || ""}
-                      onChange={(e) => handleInputChange(puzzle.id, e.target.value, focusNextInput)}
-                      className={styles.parchmentInput}
-                      disabled={isSolved}
-                      autoComplete="off"
-                      spellCheck="false"
-                      placeholder={isSolved ? "" : "?"}
-                      aria-label={t.a11y.enterWord}
-                    />
+                  <input
+                    ref={(el) => {
+                      inputRefs.current[puzzle.id] = el;
+                    }}
+                    type="text"
+                    value={inputs[puzzle.id] || ""}
+                    onChange={(e) => handleInputChange(puzzle.id, e.target.value, focusNextInput)}
+                    className={styles.parchmentInput}
+                    disabled={isSolved}
+                    autoComplete="off"
+                    spellCheck="false"
+                    placeholder={isSolved ? "" : "?"}
+                    aria-label={t.a11y.enterWord}
+                  />
                 </div>
               </div>
             </div>

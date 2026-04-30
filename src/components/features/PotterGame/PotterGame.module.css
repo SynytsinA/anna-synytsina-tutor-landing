@@ -82,10 +82,12 @@
     transform: translateY(0) scale(0.5);
     opacity: 0;
   }
+
   50% {
     transform: translateY(-40px) scale(1.5);
     opacity: 0.8;
   }
+
   100% {
     transform: translateY(-80px) scale(0.5);
     opacity: 0;
@@ -93,41 +95,6 @@
 }
 
 /* House Crests */
-.crest {
-  position: absolute;
-  width: 60px;
-  height: 75px;
-  z-index: 4;
-  opacity: 0.2;
-  pointer-events: none;
-  background-size: contain;
-  background-repeat: no-repeat;
-  filter: sepia(1) hue-rotate(10deg) saturate(2) drop-shadow(0 0 10px rgba(251, 191, 36, 0.3));
-}
-
-.crestTl {
-  top: 20px;
-  left: 20px;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Hermes_caduceus_gold.svg/100px-Hermes_caduceus_gold.svg.png');
-}
-
-.crestTr {
-  top: 20px;
-  right: 20px;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Hermes_caduceus_gold.svg/100px-Hermes_caduceus_gold.svg.png');
-}
-
-.crestBl {
-  bottom: 20px;
-  left: 20px;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Hermes_caduceus_gold.svg/100px-Hermes_caduceus_gold.svg.png');
-}
-
-.crestBr {
-  bottom: 20px;
-  right: 20px;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Hermes_caduceus_gold.svg/100px-Hermes_caduceus_gold.svg.png');
-}
 
 .potterHeaderModern {
   text-align: center;
@@ -150,9 +117,12 @@
 }
 
 @keyframes floatHat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0) rotate(-2deg);
   }
+
   50% {
     transform: translateY(-8px) rotate(2deg);
   }
@@ -201,8 +171,13 @@
 }
 
 @keyframes flutter {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-3px); }
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-3px);
+  }
 }
 
 .potterSuccessMsgModern {
@@ -314,8 +289,15 @@
   font-family: monospace;
 }
 
-.runicTl { top: 8px; left: 8px; }
-.runicBr { bottom: 8px; right: 8px; }
+.runicTl {
+  top: 8px;
+  left: 8px;
+}
+
+.runicBr {
+  bottom: 8px;
+  right: 8px;
+}
 
 .waxSealStatus {
   position: absolute;
@@ -405,29 +387,36 @@
   .potterGameContainer {
     padding: 20px 10px;
   }
+
   .magicalGlowText {
     font-size: 1.8rem;
   }
+
   .snitchProgressTrack {
     width: calc(100% - 30px);
     margin-left: auto;
     margin-right: auto;
   }
+
   .potterGridParchment {
     gap: 15px 10px;
   }
+
   .scrambledTextParchment {
     font-size: 1.2rem;
     letter-spacing: 1px;
   }
+
   .parchmentInput {
     font-size: 1rem;
     padding: 0 18px;
   }
+
   .hallowsBgWatermark {
     width: 300px;
     height: 300px;
   }
+
   .sortingHatImg {
     max-width: 150px;
     height: auto;
