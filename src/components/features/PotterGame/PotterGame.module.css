@@ -1,7 +1,7 @@
 .potterGameContainer {
   background-color: #0b090a;
   border-radius: 24px;
-  padding: 40px 20px;
+  padding: 10px;
   color: #fbbf24;
   position: relative;
   overflow: hidden;
@@ -98,7 +98,7 @@
 
 .potterHeaderModern {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   position: relative;
   z-index: 10;
   display: flex;
