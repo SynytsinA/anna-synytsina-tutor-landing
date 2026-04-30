@@ -3,7 +3,8 @@
 import React from "react";
 import Image from "next/image";
 import { Candy, TreePine, Snowflake, Gift } from "lucide-react";
-import { useGrinchGame } from "@/hooks";
+import { useGrinchGame, useImagePreloader } from "@/hooks";
+import { GameLoader } from "@/components/shared/GameLoader";
 import { Toy } from "./parts/Toy";
 import styles from "./GrinchGame.module.css";
 
@@ -32,9 +33,16 @@ export const GrinchGame = ({ translations }: GrinchGameProps) => {
   } = useGrinchGame();
 
   const grinchImgUrl = "/images/interaktyvna-navchalna-gra-grinch-pochatkova-shkola.png";
+  const bgImgUrl = "/images/ihrova-metodyka-navchannya-misto-grincha.png";
+
+  const isLoaded = useImagePreloader([grinchImgUrl, bgImgUrl]);
+
+  if (!isLoaded) {
+    return <GameLoader />;
+  }
 
   return (
-    <div className={styles.grinchGameContainer}>
+    <div className={`${styles.grinchGameContainer} animate-in fade-in duration-700`}>
       {/* Decorative Background Elements */}
       <div className={styles.grinchBgCity} />
       <div className={styles.grinchBgOverlay} />

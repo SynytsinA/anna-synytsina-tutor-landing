@@ -3,7 +3,8 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
-import { usePotterGame } from "@/hooks";
+import { usePotterGame, useImagePreloader } from "@/hooks";
+import { GameLoader } from "@/components/shared/GameLoader";
 import styles from "./PotterGame.module.css";
 
 // --- Custom SVGs ---
@@ -66,6 +67,11 @@ export const PotterGame = () => {
     handleInputChange,
   } = usePotterGame(lang);
 
+  const isLoaded = useImagePreloader([
+    '/images/tsikavi-uroky-dlya-ditei-hogwarts-hall.png',
+    '/images/sortuvalnyi-kapelyuh-interaktyvna-ukrainska-mova.png'
+  ]);
+
   const inputRefs = useRef<{ [key: number]: HTMLInputElement | null }>({});
 
   const focusNextInput = (currentId: number) => {
@@ -88,9 +94,13 @@ export const PotterGame = () => {
     }
   };
 
+  if (!isLoaded) {
+    return <GameLoader />;
+  }
+
   return (
-    <div className={styles.potterGameContainer}>
-      {/* Background Decor */}
+    <div className={`${styles.potterGameContainer} animate-in fade-in duration-700`}>
+      {/* Background Stones */}
       <div className={styles.potterBgStone} />
       <div className={styles.potterBgOverlay} />
 

@@ -1,0 +1,150 @@
+.loaderContainer {
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 10, 0.4);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  gap: 30px;
+}
+
+.wand {
+  width: 150px;
+  height: 6px;
+  background: linear-gradient(90deg, #3f2b1d, #6b4423);
+  border-radius: 3px;
+  position: relative;
+  transform: rotate(-30deg);
+  margin-bottom: 10px;
+  animation: waveWand 2s ease-in-out infinite;
+}
+
+.wand::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  background: #fef3c7;
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0 0 15px #fbbf24;
+}
+
+.sparkles {
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #fbbf24;
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 10px #fbbf24, 0 0 20px #f59e0b;
+}
+
+.sparkle:nth-child(1) {
+  animation: spark 1.5s infinite 0.1s;
+}
+
+.sparkle:nth-child(2) {
+  animation: sparkAlt 1.5s infinite 0.3s;
+}
+
+.sparkle:nth-child(3) {
+  animation: spark 1.5s infinite 0.5s;
+}
+
+.sparkle:nth-child(4) {
+  animation: sparkAlt 1.5s infinite 0.7s;
+}
+
+.sparkle:nth-child(5) {
+  animation: spark 1.5s infinite 0.9s;
+}
+
+.loadingText {
+  font-family: var(--font-kelly), sans-serif;
+  color: #fbbf24;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+  animation: pulseText 2s ease-in-out infinite;
+}
+
+@keyframes waveWand {
+
+  0%,
+  100% {
+    transform: rotate(-30deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(-20deg) translateY(-20px);
+  }
+}
+
+@keyframes spark {
+  0% {
+    transform: translate(0, 0) scale(0);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate(15px, -10px) scale(1.2);
+  }
+
+  100% {
+    transform: translate(60px, -40px) scale(0);
+    opacity: 0;
+  }
+}
+
+.sparkle:nth-child(2) {
+  animation-delay: 0.3s;
+  animation-name: sparkAlt;
+}
+
+.sparkle:nth-child(4) {
+  animation-delay: 0.7s;
+  animation-name: sparkAlt;
+}
+
+@keyframes sparkAlt {
+  0% {
+    transform: translate(0, 0) scale(0);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate(10px, 15px) scale(1.2);
+  }
+
+  100% {
+    transform: translate(40px, 50px) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes pulseText {
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
