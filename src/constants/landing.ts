@@ -79,72 +79,72 @@ export const VIDEO_GALLERY_METADATA = [
   {
     id: 2,
     src: "/videos/navchannya-v-ihrovii-formi-grinch.mp4",
-    poster: "/images/posters/navchannya-v-ihrovii-formi-grinch.jpg",
+    poster: "/images/posters/navchannya-v-ihrovii-formi-grinch.webp",
   },
   {
     id: 1,
     src: "/videos/urok-matematyky-online-pochatkovi-klasy-1.mp4",
-    poster: "/images/posters/urok-matematyky-online-pochatkovi-klasy-1.jpg",
+    poster: "/images/posters/urok-matematyky-online-pochatkovi-klasy-1.webp",
   },
   {
     id: 11,
     src: "/videos/pidhotovka-do-shkoly-online-pryklad-1.mp4",
-    poster: "/images/posters/pidhotovka-do-shkoly-online-pryklad-1.jpg",
+    poster: "/images/posters/pidhotovka-do-shkoly-online-pryklad-1.webp",
   },
   {
     id: 7,
     src: "/videos/urok-ukrainskoi-movy-nush-pochatkova-shkola-1.mp4",
-    poster: "/images/posters/urok-ukrainskoi-movy-nush-pochatkova-shkola-1.jpg",
+    poster: "/images/posters/urok-ukrainskoi-movy-nush-pochatkova-shkola-1.webp",
   },
   {
     id: 3,
     src: "/videos/navchannya-v-ihrovii-formi-harry-potter.mp4",
-    poster: "/images/posters/navchannya-v-ihrovii-formi-harry-potter.jpg",
+    poster: "/images/posters/navchannya-v-ihrovii-formi-harry-potter.webp",
   },
   {
     id: 4,
     src: "/videos/urok-matematyky-online-pochatkovi-klasy-2.mp4",
-    poster: "/images/posters/urok-matematyky-online-pochatkovi-klasy-2.jpg",
+    poster: "/images/posters/urok-matematyky-online-pochatkovi-klasy-2.webp",
   },
   {
     id: 12,
     src: "/videos/pidhotovka-do-shkoly-online-pryklad-2.mp4",
-    poster: "/images/posters/pidhotovka-do-shkoly-online-pryklad-2.jpg",
+    poster: "/images/posters/pidhotovka-do-shkoly-online-pryklad-2.webp",
   },
   {
     id: 8,
     src: "/videos/urok-ukrainskoi-movy-nush-pochatkova-shkola-2.mp4",
-    poster: "/images/posters/urok-ukrainskoi-movy-nush-pochatkova-shkola-2.jpg",
+    poster: "/images/posters/urok-ukrainskoi-movy-nush-pochatkova-shkola-2.webp",
   },
   {
     id: 5,
     src: "/videos/urok-matematyky-online-pochatkovi-klasy-3.mp4",
-    poster: "/images/posters/urok-matematyky-online-pochatkovi-klasy-3.jpg",
+    poster: "/images/posters/urok-matematyky-online-pochatkovi-klasy-3.webp",
   },
   {
     id: 13,
     src: "/videos/pidhotovka-do-shkoly-online-pryklad-3.mp4",
-    poster: "/images/posters/pidhotovka-do-shkoly-online-pryklad-3.jpg",
+    poster: "/images/posters/pidhotovka-do-shkoly-online-pryklad-3.webp",
   },
   {
     id: 9,
     src: "/videos/urok-ukrainskoi-movy-nush-pochatkova-shkola-3.mp4",
-    poster: "/images/posters/urok-ukrainskoi-movy-nush-pochatkova-shkola-3.jpg",
+    poster: "/images/posters/urok-ukrainskoi-movy-nush-pochatkova-shkola-3.webp",
   },
   {
     id: 6,
     src: "/videos/urok-matematyky-online-pochatkovi-klasy-4.mp4",
-    poster: "/images/posters/urok-matematyky-online-pochatkovi-klasy-4.jpg",
+    poster: "/images/posters/urok-matematyky-online-pochatkovi-klasy-4.webp",
   },
   {
     id: 14,
     src: "/videos/pidhotovka-do-shkoly-online-pryklad-4.mp4",
-    poster: "/images/posters/pidhotovka-do-shkoly-online-pryklad-4.jpg",
+    poster: "/images/posters/pidhotovka-do-shkoly-online-pryklad-4.webp",
   },
   {
     id: 10,
     src: "/videos/urok-ukrainskoi-movy-nush-pochatkova-shkola-4.mp4",
-    poster: "/images/posters/urok-ukrainskoi-movy-nush-pochatkova-shkola-4.jpg",
+    poster: "/images/posters/urok-ukrainskoi-movy-nush-pochatkova-shkola-4.webp",
   },
 ];
 
