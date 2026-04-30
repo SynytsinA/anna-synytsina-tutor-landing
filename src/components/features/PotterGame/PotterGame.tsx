@@ -68,8 +68,8 @@ export const PotterGame = () => {
   } = usePotterGame(lang);
 
   const isLoaded = useImagePreloader([
-    '/images/tsikavi-uroky-dlya-ditei-hogwarts-hall.png',
-    '/images/sortuvalnyi-kapelyuh-interaktyvna-ukrainska-mova.png'
+    '/images/tsikavi-uroky-dlya-ditei-hogwarts-hall.webp',
+    '/images/sortuvalnyi-kapelyuh-interaktyvna-ukrainska-mova.webp'
   ]);
 
   const inputRefs = useRef<{ [key: number]: HTMLInputElement | null }>({});
@@ -128,7 +128,7 @@ export const PotterGame = () => {
       <div className={styles.potterHeaderModern}>
         <div>
           <Image
-            src="/images/sortuvalnyi-kapelyuh-interaktyvna-ukrainska-mova.png"
+            src="/images/sortuvalnyi-kapelyuh-interaktyvna-ukrainska-mova.webp"
             alt="Сортувальний капелюх — інтерактивне навчання від Анни Синиціної"
             width={0}
             height={0}
