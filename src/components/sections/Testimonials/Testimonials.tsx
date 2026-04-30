@@ -99,6 +99,7 @@ export const Testimonials = () => {
         <InteractiveSlider
           itemCount={TESTIMONIALS_DATA.length}
           maxWidth="1100px"
+          itemWidth={280}
           containerClassName={styles.storyCardContainer}
         >
           {TESTIMONIALS_DATA.map((item, i) => (

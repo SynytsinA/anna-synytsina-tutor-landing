@@ -29,6 +29,14 @@ export const InteractiveSlider: React.FC<InteractiveSliderProps> = ({
   const [itemsPerPage, setItemsPerPage] = useState(1);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const checkScrollPosition = useCallback(() => {
     if (scrollRef.current) {
@@ -44,7 +52,7 @@ export const InteractiveSlider: React.FC<InteractiveSliderProps> = ({
 
       // Determine current page
       let currPage = Math.round(scrollLeft / clientWidth);
-      
+
       // Snap to last dot if we've reached the end
       if (scrollLeft + clientWidth >= scrollWidth - 10) {
         currPage = totalPages - 1;
@@ -95,6 +103,16 @@ export const InteractiveSlider: React.FC<InteractiveSliderProps> = ({
     }
   };
 
+
+  const getDotStyle = (index: number) => {
+    const distance = Math.abs(index - activePage);
+    if (distance === 0) return { scale: 1.25, opacity: 1 };
+    if (distance === 1) return { scale: 1, opacity: 1 };
+    if (distance === 2) return { scale: 0.7, opacity: 1 };
+    if (distance === 3) return { scale: 0.4, opacity: 1 };
+    return { scale: 0, opacity: 0 };
+  };
+
   const totalPages = Math.ceil(itemCount / itemsPerPage);
 
   return (
@@ -114,10 +132,15 @@ export const InteractiveSlider: React.FC<InteractiveSliderProps> = ({
         </button>
 
         <div
-          className={`flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory py-10 px-5 w-full scrollbar-hide ${containerClassName}`}
+          className={`flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pt-10 pb-2 w-full scrollbar-hide ${containerClassName}`}
           ref={scrollRef}
           onScroll={checkScrollPosition}
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          style={{ 
+            scrollbarWidth: "none", 
+            msOverflowStyle: "none",
+            paddingLeft: isMobile ? `calc(50% - ${itemWidth / 2}px)` : "1.25rem",
+            paddingRight: isMobile ? `calc(50% - ${itemWidth / 2}px)` : "1.25rem"
+          }}
         >
           {children}
         </div>
@@ -132,28 +155,16 @@ export const InteractiveSlider: React.FC<InteractiveSliderProps> = ({
         </button>
       </FadeIn>
 
-      <div className="mt-8 pb-4 flex justify-center relative z-10">
+      <div className="mt-6 pb-4 flex justify-center relative z-10">
         <div className="relative overflow-hidden py-4" style={{ width: "200px" }}>
-          <div 
+          <div
             className="flex items-center gap-3 transition-transform duration-300 ease-out w-max"
-            style={{ 
-              transform: `translateX(calc(100px - ${(activePage * 26) + 7}px))` 
+            style={{
+              transform: `translateX(calc(100px - ${(activePage * 26) + 7}px))`
             }}
           >
             {Array.from({ length: totalPages }).map((_, i) => {
-              const distance = Math.abs(i - activePage);
-              let scale = 1;
-              let opacity = 1;
-
-              if (distance === 0) scale = 1.25;
-              else if (distance === 1) scale = 1;
-              else if (distance === 2) scale = 0.7;
-              else if (distance === 3) scale = 0.4;
-              else {
-                scale = 0;
-                opacity = 0;
-              }
-
+              const { scale, opacity } = getDotStyle(i);
               return (
                 <button
                   key={i}
@@ -161,10 +172,7 @@ export const InteractiveSlider: React.FC<InteractiveSliderProps> = ({
                     "w-3.5 h-3.5 rounded-full border-2 border-slate-900 cursor-pointer p-0 flex-shrink-0 transition-all duration-300 shadow-[2px_2px_0px_rgba(0,0,0,0.1)] focus:outline-none",
                     i === activePage ? "bg-primary shadow-hard" : "bg-white"
                   )}
-                  style={{ 
-                    transform: `scale(${scale})`,
-                    opacity
-                  }}
+                  style={{ transform: `scale(${scale})`, opacity }}
                   onClick={() => scrollToDots(i)}
                   aria-label={t.a11y.goToPage.replace("{page}", (i + 1).toString())}
                 />

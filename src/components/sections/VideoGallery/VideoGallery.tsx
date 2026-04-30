@@ -131,7 +131,7 @@ export const VideoGallery = () => {
           </FadeIn>
         </div>
 
-        <InteractiveSlider itemCount={VIDEO_GALLERY_METADATA.length} maxWidth="1100px">
+        <InteractiveSlider itemCount={VIDEO_GALLERY_METADATA.length} maxWidth="1100px" itemWidth={280}>
           {VIDEO_GALLERY_METADATA.map((video) => (
             <div key={video.id} className="flex-none w-[280px] md:w-[300px] snap-center">
               <VideoCard
