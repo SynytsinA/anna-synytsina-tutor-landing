@@ -32,7 +32,7 @@ export const translations = {
       title: "About Me",
       name: "Anna Synytsina",
       role: "Professional Educator & Tutor",
-      desc: "Hello! With over 12 years of experience, I combine the academic foundation of public education with the flexibility of private schools and kindergartens. As a Master of Philology and a specialist in pedagogy and teaching methodology for primary school, I deeply understand child psychology and create a space where children aren't afraid to make mistakes. After years of leading offline groups, I now work online with students worldwide using my unique author's methods. Every lesson is a child's confident step towards new knowledge and personal success.",
+      desc: "Hello! With over 12 years of experience, I combine the academic foundation of public education with the flexibility of private schools and kindergartens. As a Master of Philology and a specialist in pedagogy and teaching methodology for primary school, I deeply understand child psychology and create a space where children aren't afraid to make mistakes. After years of leading offline groups, I now work online with students worldwide using my unique author's methods. Every lesson is a child's confident step towards new knowledge and personal success.",
       stats: [
         {
           value: "12+",
@@ -263,7 +263,7 @@ export const translations = {
       title: "Про мене",
       name: "Синиціна Анна Юріївна",
       role: "Професійний Педагог та Репетитор",
-      desc: "Привіт! Маючи понад 12 років досвіду, я поєднала фундаментальність державної освіти з гнучкістю приватних шкіл та садочків. Як магістр філології і спеціаліст у педагогіці та методиці викладання в початковій школі, я глибоко розумію психологію дитини та створюю простір, де немає страху помилки. Маючи досвід проведення офлайн-груп, сьогодні я працюю онлайн з учнями з усього світу за авторськими методиками. Кожен мій урок — це впевнений крок дитини до нових знань та власного успіху.",
+      desc: "Привіт! Маючи понад 12 років досвіду, я поєднала фундаментальність державної освіти з гнучкістю приватних шкіл та садочків. Як магістр філології і спеціаліст у педагогіці та методиці викладання в початковій школі, я глибоко розумію психологію дитини та створюю простір, де немає страху помилки. Маючи досвід проведення офлайн-груп, сьогодні я працюю онлайн з учнями з усього світу за авторськими методиками. Кожен мій урок — це впевнений крок дитини до нових знань та власного успіху.",
       stats: [
         {
           value: "12+",

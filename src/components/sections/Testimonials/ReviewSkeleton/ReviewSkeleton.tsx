@@ -8,7 +8,7 @@ export const ReviewSkeleton: React.FC<ReviewSkeletonProps> = ({ isModal = false 
   return (
     <div className={`relative aspect-[9/16] rounded-3xl overflow-hidden bg-slate-200 animate-pulse ${isModal ? "h-[80vh] sm:h-[95vh] sm:rounded-[40px]" : "w-full max-h-[550px]"}`}>
         {/* Header Skeleton */}
-        <div className="absolute top-5 left-5 right-5 z-20">
+        <div className="absolute top-8 left-5 right-5 z-20">
           <div className="flex gap-1 mb-4">
             <div className="h-0.5 bg-slate-300 flex-1 rounded-sm"></div>
             <div className="h-0.5 bg-slate-300/50 flex-1 rounded-sm"></div>
@@ -23,7 +23,7 @@ export const ReviewSkeleton: React.FC<ReviewSkeletonProps> = ({ isModal = false 
         </div>
 
         {/* Footer Skeleton */}
-        <div className="absolute bottom-5 left-5 right-5 z-20 flex items-center gap-4">
+        <div className="absolute bottom-8 left-5 right-5 z-20 flex items-center gap-4">
           <div className="flex-1 h-11 rounded-full bg-slate-300 opacity-50"></div>
           <div className="w-7 h-7 rounded-full bg-slate-300"></div>
           <div className="w-7 h-7 rounded-full bg-slate-300"></div>
