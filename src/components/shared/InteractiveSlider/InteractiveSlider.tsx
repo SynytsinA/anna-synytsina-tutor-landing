@@ -4,6 +4,7 @@ import React, { useRef, useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FadeIn } from "@/components/shared/FadeIn/FadeIn";
 import { useLanguage } from "@/context/LanguageContext";
+import { cn } from "@/utils/cn";
 
 interface InteractiveSliderProps {
   children: React.ReactNode;
@@ -131,17 +132,46 @@ export const InteractiveSlider: React.FC<InteractiveSliderProps> = ({
         </button>
       </FadeIn>
 
-      <div className="flex justify-center gap-3 mt-8">
-        {Array.from({ length: totalPages }).map((_, i) => (
-          <button
-            key={i}
-            className={`w-3.5 h-3.5 rounded-full border-2 border-slate-900 cursor-pointer p-0 transition-all duration-300 shadow-[2px_2px_0px_rgba(0,0,0,0.1)] hover:-translate-y-0.5 focus:outline-none ${
-              i === activePage ? "bg-primary scale-125 shadow-hard" : "bg-white"
-            }`}
-            onClick={() => scrollToDots(i)}
-            aria-label={t.a11y.goToPage.replace("{page}", (i + 1).toString())}
-          />
-        ))}
+      <div className="mt-8 pb-4 flex justify-center relative z-10">
+        <div className="relative overflow-hidden" style={{ width: "200px" }}>
+          <div 
+            className="flex gap-3 transition-transform duration-300 ease-out w-max"
+            style={{ 
+              transform: `translateX(calc(100px - ${(activePage * 26) + 7}px))` 
+            }}
+          >
+            {Array.from({ length: totalPages }).map((_, i) => {
+              const distance = Math.abs(i - activePage);
+              let scale = 1;
+              let opacity = 1;
+
+              if (distance === 0) scale = 1.25;
+              else if (distance === 1) scale = 1;
+              else if (distance === 2) scale = 0.7;
+              else if (distance === 3) scale = 0.4;
+              else {
+                scale = 0;
+                opacity = 0;
+              }
+
+              return (
+                <button
+                  key={i}
+                  className={cn(
+                    "w-3.5 h-3.5 rounded-full border-2 border-slate-900 cursor-pointer p-0 flex-shrink-0 transition-all duration-300 shadow-[2px_2px_0px_rgba(0,0,0,0.1)] focus:outline-none",
+                    i === activePage ? "bg-primary shadow-hard" : "bg-white"
+                  )}
+                  style={{ 
+                    transform: `scale(${scale})`,
+                    opacity
+                  }}
+                  onClick={() => scrollToDots(i)}
+                  aria-label={t.a11y.goToPage.replace("{page}", (i + 1).toString())}
+                />
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );
