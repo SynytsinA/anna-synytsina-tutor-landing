@@ -29,8 +29,8 @@ export const GrinchGame = ({ translations }: GrinchGameProps) => {
     handleTouchDrop,
   } = useGrinchGame();
 
-  const grinchImgUrl = "/images/interaktyvna-navchalna-gra-grinch-pochatkova-shkola.png";
-  const bgImgUrl = "/images/ihrova-metodyka-navchannya-misto-grincha.png";
+  const grinchImgUrl = "/images/interaktyvna-navchalna-gra-grinch-pochatkova-shkola.webp";
+  const bgImgUrl = "/images/ihrova-metodyka-navchannya-misto-grincha.webp";
 
   const isLoaded = useImagePreloader([grinchImgUrl, bgImgUrl]);
 
