@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { Wand2, Gift, Play, Loader2, Snowflake } from "lucide-react";
+import { Wand2, Gift, Play, Snowflake } from "lucide-react";
 import { FadeIn } from "@/components/shared/FadeIn";
 import { useLanguage } from "@/context/LanguageContext";
-import { LANDING_SECTIONS, GAMES_SECTION_CONFIG } from "@/constants/landing";
+import { LANDING_SECTIONS } from "@/constants/landing";
 import { PotterGame } from "@/components/features/PotterGame/PotterGame";
 import { GrinchGame } from "@/components/features/GrinchGame/GrinchGame";
 import { cn } from "@/utils/cn";
@@ -13,13 +13,10 @@ export const GamesSection = () => {
   const { t } = useLanguage();
   const themesT = t.themes;
   const [activeTab, setActiveTab] = useState<"potter" | "grinch">("potter");
-  const [lessonStatus, setLessonStatus] = useState<"idle" | "loading" | "active">("idle");
+  const [lessonStatus, setLessonStatus] = useState<"idle" | "active">("idle");
 
   const startLesson = () => {
-    setLessonStatus("loading");
-    setTimeout(() => {
-      setLessonStatus("active");
-    }, GAMES_SECTION_CONFIG.loadingDelay);
+    setLessonStatus("active");
   };
 
   const handleTabChange = (tab: "potter" | "grinch") => {
@@ -86,8 +83,8 @@ export const GamesSection = () => {
 
           {/* Game Canvas Wrapper */}
           <div className={cn(
-            "relative min-h-[600px] flex flex-col items-center justify-center transition-all duration-500",
-            lessonStatus !== "active" && "bg-white/5 border border-white/10 rounded-[32px] overflow-hidden backdrop-blur-sm shadow-2xl"
+            "relative min-h-[600px] flex flex-col items-center justify-center transition-all duration-500 rounded-[32px] overflow-hidden",
+            lessonStatus === "idle" && "bg-white/5 border border-white/10 backdrop-blur-sm shadow-2xl"
           )}>
             
             {lessonStatus === "idle" && (
@@ -108,14 +105,7 @@ export const GamesSection = () => {
               </div>
             )}
 
-            {lessonStatus === "loading" && (
-              <div className="flex flex-col items-center">
-                <Loader2 size={64} className="animate-spin text-white/50 mb-6" />
-                <p className="text-white font-heading text-2xl tracking-widest animate-pulse">
-                  {themesT.loading}
-                </p>
-              </div>
-            )}
+
 
             {lessonStatus === "active" && (
               <div className="w-full animate-fade-in">

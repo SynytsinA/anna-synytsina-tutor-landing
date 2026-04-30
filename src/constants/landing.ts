@@ -35,7 +35,6 @@ export const NAV_STRUCTURE = [
 ];
 
 export const GAMES_SECTION_CONFIG = {
-  loadingDelay: 800,
   tabs: {
     potter: "potter",
     grinch: "grinch",
