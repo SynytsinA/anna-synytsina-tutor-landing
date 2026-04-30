@@ -71,7 +71,7 @@ export const GrinchGame = ({ translations }: GrinchGameProps) => {
 
       {/* Grinch Character Image */}
       <div className={styles.grinchCharacter}>
-        <Image src={grinchImgUrl} alt="The Grinch" width={480} height={480} />
+        <Image src={grinchImgUrl} alt="The Grinch" width={480} height={480} priority unoptimized />
       </div>
 
       <div className={styles.grinchHeader}>
