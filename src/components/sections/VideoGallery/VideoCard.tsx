@@ -122,11 +122,11 @@ export const VideoCard = ({
     <div
       data-testid="video-card"
       className={cn(
-        "relative rounded-[36px] p-2 shadow-2xl border border-slate-200 cursor-pointer transition-all duration-500 aspect-[9/17] mx-auto group will-change-transform transform-gpu",
-        isLoading ? "bg-slate-200" : "bg-black",
+        "relative rounded-[36px] p-2 border border-slate-200 cursor-pointer transition-all duration-500 aspect-[9/17] mx-auto group will-change-transform transform-gpu",
+        isLoading ? "bg-slate-200 shadow-md" : "bg-black shadow-xl",
         isModal
           ? "w-[min(95vw,600px)] h-auto max-h-[75vh] sm:max-h-[95vh] shadow-[0_0_100px_rgba(0,0,0,0.5)] border-white/20"
-          : "w-full max-w-[320px] hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)]"
+          : "w-full max-w-[320px] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)]"
       )}
       onClick={onToggle}
       onDoubleClick={onDoubleClick}
