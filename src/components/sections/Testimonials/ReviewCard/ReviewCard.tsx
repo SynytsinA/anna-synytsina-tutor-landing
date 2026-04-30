@@ -37,8 +37,16 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ item, index, onClick, is
       className={`${isModal ? "" : "relative flex-none w-[300px] md:w-[300px] w-[85vw] snap-center"}`}
       onClick={onClick}
     >
+      {/* Skeleton Layer - Fades out once loaded */}
+      <div 
+        className={`absolute inset-0 z-20 transition-opacity duration-500 ${isLoading ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+      >
+        <ReviewSkeleton isModal={isModal} />
+      </div>
+
+      {/* Content Layer - Fades in once image is ready */}
       <div
-        className={`relative flex flex-col justify-between text-white shadow-xl overflow-hidden border-[3px] border-white transition-all duration-500 ${!isModal ? "w-full aspect-[9/16] max-h-[550px] rounded-3xl p-5 hover:scale-[1.02] cursor-pointer" : "h-[80vh] sm:h-[95vh] aspect-[9/16] p-3 sm:p-8 rounded-xl sm:rounded-[40px]"} ${getGradientClass(index)} ${isLoading ? "opacity-0" : "opacity-100"}`}
+        className={`relative flex flex-col justify-between text-white shadow-xl overflow-hidden border-[3px] border-white transition-opacity duration-700 ${!isModal ? "w-full aspect-[9/16] max-h-[550px] rounded-3xl p-5 hover:scale-[1.02] cursor-pointer" : "h-[80vh] sm:h-[95vh] aspect-[9/16] p-3 sm:p-8 rounded-xl sm:rounded-[40px]"} ${getGradientClass(index)} ${isLoading ? "opacity-0" : "opacity-100"}`}
       >
         {/* Story Header */}
         <div className="relative z-20 flex flex-col gap-3">
@@ -85,12 +93,6 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ item, index, onClick, is
           <Send size={28} color="white" strokeWidth={1.5} className="rotate-[15deg] mb-1 filter drop-shadow-md" />
         </div>
       </div>
-
-      {isLoading && (
-        <div className={`absolute inset-0 z-50 ${isModal ? "flex items-center justify-center" : ""}`}>
-          <ReviewSkeleton isModal={isModal} />
-        </div>
-      )}
     </div>
   );
 };
