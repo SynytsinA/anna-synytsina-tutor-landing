@@ -1,10 +1,13 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { Brain, Calculator, BookA, Check, X, RotateCcw, PartyPopper, Star, Lightbulb } from "lucide-react";
+import { Brain, Calculator, BookA, PartyPopper, Star, Lightbulb } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 import { useHeroQuiz } from "@/hooks";
+
+import { QuizQuestions } from "./QuizQuestions";
+import { QuizResults } from "./QuizResults";
 
 export const HeroQuiz = () => {
   const { t: allTranslations } = useLanguage();
@@ -37,7 +40,6 @@ export const HeroQuiz = () => {
   };
 
   const resultContent = getResultContent();
-  const ResultIcon = resultContent.Icon;
 
   return (
     <div className="relative w-full md:max-w-[480px] lg:max-w-[500px] mx-auto perspective-1000 pt-5">
@@ -77,73 +79,25 @@ export const HeroQuiz = () => {
         <div className="p-4 sm:p-6 flex-1 flex flex-col">
 
           {!isFinished ? (
-            <>
-              <div className="flex justify-between items-center h-6 mb-2 shrink-0">
-                <span className="text-xs font-bold text-slate-600 tracking-wider uppercase">{t.questionLabel} {currentIndex + 1} / {currentQuestions.length}</span>
-                <div className="w-24 h-2 bg-slate-100 rounded-full overflow-hidden">
-                  <div
-                    className={`h-full rounded-full transition-all duration-500 ${activeTab === 'ukrainian' ? 'bg-primary' : 'bg-secondary'}`}
-                    style={{ width: `${progress}%` }}
-                  ></div>
-                </div>
-              </div>
-
-              <div className="h-[120px] flex items-center justify-center mb-2 shrink-0 px-2">
-                <h2 className="text-lg sm:text-xl md:text-2xl font-heading font-bold text-slate-900 text-center leading-tight w-full">
-                  {currentQuestions[currentIndex].q}
-                </h2>
-              </div>
-
-              <div className="flex flex-col gap-3 mt-2">
-                {shuffledOptions.map((optionObj, idx) => {
-                  let btnClass = "bg-white border-2 border-slate-200 text-slate-700 hover:border-slate-900 hover:bg-slate-50";
-                  let icon = null;
-
-                  if (selectedOptionIndex !== null) {
-                    if (optionObj.originalIndex === currentQuestions[currentIndex].correct) {
-                      btnClass = "bg-green-100 border-2 border-green-500 text-green-700";
-                      icon = <Check size={24} className="absolute right-4 text-green-600" />;
-                    } else if (idx === selectedOptionIndex) {
-                      btnClass = "bg-red-100 border-2 border-red-500 text-red-700";
-                      icon = <X size={24} className="absolute right-4 text-red-500" />;
-                    } else {
-                      btnClass = "border-2 border-transparent opacity-0 pointer-events-none";
-                    }
-                  } else {
-                    btnClass = "bg-white border-2 border-slate-200 text-slate-700 hover:border-slate-900 hover:bg-slate-50 shadow-sm";
-                  }
-
-                  return (
-                    <button
-                      key={idx}
-                      onClick={() => handleOptionClick(idx, optionObj.originalIndex)}
-                      disabled={selectedOptionIndex !== null}
-                      className={`w-full min-h-[64px] px-6 rounded-xl font-bold text-base sm:text-lg transition-colors duration-200 relative flex items-center justify-center outline-none focus:outline-none ${btnClass}`}
-                    >
-                      <span className="text-center w-full">{optionObj.text}</span>
-                      {icon}
-                    </button>
-                  );
-                })}
-              </div>
-            </>
+            <QuizQuestions
+              activeTab={activeTab}
+              currentIndex={currentIndex}
+              currentQuestions={currentQuestions}
+              shuffledOptions={shuffledOptions}
+              selectedOptionIndex={selectedOptionIndex}
+              progress={progress}
+              questionLabel={t.questionLabel}
+              handleOptionClick={handleOptionClick}
+            />
           ) : (
-            <div className="flex flex-col items-center justify-center text-center animate-pop-in h-full">
-              <div className={`w-20 h-20 ${resultContent.bgClass} rounded-full flex items-center justify-center mb-6`}>
-                <ResultIcon size={40} className={resultContent.colorClass} />
-              </div>
-              <h2 className="text-3xl font-heading font-bold text-slate-900 mb-2">{resultContent.title}</h2>
-              <p className="text-slate-700 mb-8 text-lg">
-                {t.scoreLabel.replace('{score}', score.toString()).replace('{total}', currentQuestions.length.toString())}
-                <br />{resultContent.desc}
-              </p>
-              <button
-                onClick={resetQuizState}
-                className="bg-slate-900 text-white px-8 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-slate-800 transition-colors shadow-hard outline-none focus:outline-none"
-              >
-                <RotateCcw size={18} /> {t.retry}
-              </button>
-            </div>
+            <QuizResults
+              score={score}
+              total={currentQuestions.length}
+              scoreLabel={t.scoreLabel}
+              retryLabel={t.retry}
+              resultContent={resultContent}
+              resetQuizState={resetQuizState}
+            />
           )}
         </div>
       </div>
@@ -158,3 +112,4 @@ export const HeroQuiz = () => {
     </div>
   );
 };
+
