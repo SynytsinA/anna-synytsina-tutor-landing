@@ -5,7 +5,8 @@ export const GameLoader = () => {
   const { t } = useLanguage();
 
   return (
-    <div className={styles.loaderContainer}>
+    <div className={styles.loaderContainer} data-testid="game-loader">
+
       <div className={styles.wand}>
         <div className={styles.sparkles}>
           {[...Array(5)].map((_, i) => (
