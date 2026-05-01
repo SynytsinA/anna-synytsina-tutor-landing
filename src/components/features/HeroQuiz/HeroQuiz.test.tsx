@@ -43,9 +43,9 @@ vi.mock("@/hooks", () => ({
       { q: "Question 1", options: ["A", "B"], correct: 0 },
     ],
     progress: 0,
-    handleTabChange: (...args: any[]) => mockHandleTabChange(...args),
-    handleOptionClick: (...args: any[]) => mockHandleOptionClick(...args),
-    resetQuizState: (...args: any[]) => mockResetQuizState(...args),
+    handleTabChange: (tab: string) => mockHandleTabChange(tab),
+    handleOptionClick: (visualIdx: number, originalIdx: number) => mockHandleOptionClick(visualIdx, originalIdx),
+    resetQuizState: () => mockResetQuizState(),
   }),
 }));
 
