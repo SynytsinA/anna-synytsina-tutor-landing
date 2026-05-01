@@ -8,6 +8,8 @@ import { GameLoader } from "@/components/shared/GameLoader";
 import { Toy } from "./parts/Toy";
 import styles from "./GrinchGame.module.css";
 
+import { GRINCH_GAME_ASSETS } from "./constants";
+
 interface GrinchGameProps {
   translations: {
     grinchTask: string;
@@ -29,8 +31,7 @@ export const GrinchGame = ({ translations }: GrinchGameProps) => {
     handleTouchDrop,
   } = useGrinchGame();
 
-  const grinchImgUrl = "/images/interaktyvna-navchalna-gra-grinch-pochatkova-shkola.webp";
-  const bgImgUrl = "/images/ihrova-metodyka-navchannya-misto-grincha.webp";
+  const { grinchImgUrl, bgImgUrl } = GRINCH_GAME_ASSETS;
 
   const isLoaded = useImagePreloader([grinchImgUrl, bgImgUrl]);
 
@@ -44,7 +45,7 @@ export const GrinchGame = ({ translations }: GrinchGameProps) => {
       <div className={styles.grinchBgCity} />
       <div className={styles.grinchBgOverlay} />
       <div className={styles.snowOverlay} />
-      
+
       {/* Dynamic Falling Snow */}
       <div className={styles.dynamicSnowContainer}>
         {snowflakes.map((flake) => (
