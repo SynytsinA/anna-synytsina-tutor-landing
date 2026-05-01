@@ -1,13 +1,20 @@
 # 🎓 Anna Synytsina - Interactive Tutoring Platform
 
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?logo=vercel&logoColor=white)](https://anna-synytsina-tutor-landing.vercel.app/)
+[![Next.js](https://img.shields.io/badge/Next.js-16.2-black?logo=next.js&logoColor=white)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vitest](https://img.shields.io/badge/Vitest-Tested-729B1B?logo=vitest&logoColor=white)](https://vitest.dev/)
+
 A modern, high-performance landing page and interactive educational platform built for a primary school teacher and tutor. Designed to combine a professional marketing presence for parents with gamified, engaging learning experiences for children (Grades 1-4).
 
 ## 🚀 Tech Stack
 
-* **Framework:** Next.js 15 (App Router)
-* **Language:** TypeScript (Strict Mode)
-* **Styling:** Tailwind CSS
+* **Framework:** Next.js 16.2 (App Router)
+* **Language:** TypeScript 5.9 (Strict Mode)
+* **Testing:** Vitest & React Testing Library
+* **Styling:** Tailwind CSS 3.4
 * **Animations:** CSS Modules & Tailwind Utilities
+* **Code Quality:** ESLint & Husky (Pre-commit hooks)
 * **Deployment:** Vercel
 
 ## ✨ Key Features
