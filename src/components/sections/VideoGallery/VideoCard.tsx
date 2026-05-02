@@ -48,10 +48,33 @@ export const VideoCard = ({
   };
 
   useEffect(() => {
-    // If video is already loaded (from cache), fire the ready state manually
-    if (videoRef.current && videoRef.current.readyState >= 2) {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Force Safari to start fetching metadata
+    video.load();
+
+    if (video.readyState >= 2) {
       setIsLoading(false);
+      return;
     }
+
+    const interval = setInterval(() => {
+      if (video.readyState >= 2) {
+        setIsLoading(false);
+        clearInterval(interval);
+      }
+    }, 100);
+
+    // Safety timeout: force show poster after 3 seconds if Safari refuses to load
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
   }, []);
 
   useEffect(() => {
@@ -66,10 +89,12 @@ export const VideoCard = ({
 
     video.addEventListener("timeupdate", handleTimeUpdate);
     video.addEventListener("loadedmetadata", handleLoadedMetadata);
+    video.addEventListener("canplaythrough", handleLoadedMetadata);
 
     return () => {
       video.removeEventListener("timeupdate", handleTimeUpdate);
       video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      video.removeEventListener("canplaythrough", handleLoadedMetadata);
     };
   }, []);
 
@@ -92,9 +117,14 @@ export const VideoCard = ({
     if (!videoRef.current) return;
 
     if (isPlaying) {
-      videoRef.current.play().catch((error) => {
-        console.error("Video play failed:", error);
-      });
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          if (error.name !== "AbortError") {
+            console.error("Video play failed:", error);
+          }
+        });
+      }
     } else {
       videoRef.current.pause();
     }
@@ -122,10 +152,10 @@ export const VideoCard = ({
     <div
       data-testid="video-card"
       className={cn(
-        "relative rounded-[36px] p-2 border border-slate-200 cursor-pointer transition-all duration-500 mx-auto group will-change-transform transform-gpu",
+        "relative rounded-[40px] p-2 border border-slate-200 cursor-pointer transition-all duration-500 mx-auto group will-change-transform transform-gpu isolate",
         isLoading ? "bg-slate-200 shadow-md" : "bg-black shadow-xl",
         isModal
-          ? "w-[min(90vw,calc(90vh*9/16))] max-h-[90vh] aspect-[9/16] shadow-[0_0_100px_rgba(0,0,0,0.5)] border-white/20"
+          ? "w-[min(90vw,calc(80dvh*9/16))] max-h-[80dvh] aspect-[9/16] shadow-[0_0_100px_rgba(0,0,0,0.5)] border-white/20"
           : "w-full max-w-[320px] aspect-[9/17] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)]"
       )}
       onClick={onToggle}
@@ -144,7 +174,7 @@ export const VideoCard = ({
 
       <div className={cn(
         "relative w-full h-full transition-opacity duration-700",
-        isLoading ? "opacity-0" : "opacity-100"
+        isLoading ? "opacity-[0.01]" : "opacity-100"
       )}>
         {/* Notch */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40%] h-6 bg-black rounded-b-xl z-10"></div>
@@ -153,14 +183,20 @@ export const VideoCard = ({
         {isModal && (
           <button
             onClick={(e) => { e.stopPropagation(); onClose?.(); }}
-            className="absolute -top-4 -right-4 w-10 h-10 bg-white text-black rounded-full flex items-center justify-center shadow-xl border border-slate-200 z-[20] hover:scale-110 transition-transform pointer-events-auto"
+            className="absolute top-4 right-4 w-10 h-10 bg-white text-black rounded-full flex items-center justify-center shadow-xl border border-slate-200 z-50 hover:scale-110 transition-transform pointer-events-auto"
             aria-label={t.a11y.close}
           >
             <X size={24} />
           </button>
         )}
 
-        <div className="relative w-full h-full bg-[#1e1e1e] rounded-3xl overflow-hidden isolate transform-gpu">
+        <div
+          className="relative w-full h-full bg-[#1e1e1e] overflow-hidden rounded-[32px] isolate z-0"
+          style={{
+            WebkitMaskImage: "-webkit-radial-gradient(white, black)",
+            WebkitTransform: "translateZ(0)"
+          }}
+        >
           <video
             ref={videoRef}
             src={video.src}
@@ -172,14 +208,16 @@ export const VideoCard = ({
             onLoadedData={() => setIsLoading(false)}
             onLoadedMetadata={() => setIsLoading(false)}
             onCanPlay={() => setIsLoading(false)}
+            onCanPlayThrough={() => setIsLoading(false)}
+            onError={() => setIsLoading(false)}
             muted={isMuted}
             preload="metadata"
-            className="w-full h-full object-cover rounded-3xl"
+            className="w-full h-full object-cover rounded-[32px] pointer-events-auto"
           />
 
           <div
             className={cn(
-              "absolute inset-0 flex items-center justify-center bg-black/20 z-[5] transition-opacity duration-200",
+              "absolute inset-0 rounded-3xl flex items-center justify-center bg-black/20 z-[5] transition-opacity duration-200",
               isPlaying ? "opacity-0" : "opacity-100"
             )}
           >
@@ -189,13 +227,14 @@ export const VideoCard = ({
           </div>
 
           {/* Video UI Overlay */}
-          <div className="absolute inset-0 pointer-events-none flex flex-col justify-between p-5 bg-gradient-to-b from-black/40 via-transparent via-80% to-black/80 z-[6]">
+          <div className="absolute inset-0 rounded-3xl pointer-events-none flex flex-col justify-between p-5 bg-gradient-to-b from-black/40 via-transparent via-80% to-black/80 z-[6]">
             <div className={cn("pt-4 flex justify-between transition-opacity duration-300", isPlaying ? "opacity-0" : "opacity-100")}>
               <div className="text-white text-[10px] font-bold flex items-center gap-1 bg-white/20 px-2.5 py-1 rounded-full backdrop-blur-md border border-white/10 uppercase tracking-widest">
                 <span>{getLabel()}</span>
               </div>
             </div>
 
+            {/* Side Controls */}
             <div className="absolute right-4 bottom-[100px] pointer-events-auto">
               <div className="flex flex-col gap-5 items-center text-white">
                 <button
@@ -226,28 +265,28 @@ export const VideoCard = ({
                 </button>
               </div>
             </div>
-
-            {/* Progress Bar (Modal Only) */}
-            {isModal && (
-              <div className="absolute bottom-6 left-5 right-14 pointer-events-auto flex items-center gap-3">
-                <input
-                  type="range"
-                  min="0"
-                  max={duration || 0}
-                  step="0.1"
-                  value={currentTime}
-                  onChange={handleSeek}
-                  onClick={(e) => e.stopPropagation()}
-                  className="w-full h-1 bg-white/30 rounded-lg appearance-none cursor-pointer accent-white transition-all hover:h-1.5"
-                  aria-label={t.a11y.videoProgress}
-                />
-                <span className="text-white text-[10px] font-mono whitespace-nowrap min-w-[60px]">
-                  {formatTime(currentTime)} / {formatTime(duration)}
-                </span>
-              </div>
-            )}
           </div>
         </div>
+
+        {/* Progress Bar — outside overflow-hidden to avoid WebKit clipping bug */}
+        {isModal && (
+          <div className="absolute bottom-6 left-0 right-0 w-[88%] mx-auto pointer-events-auto flex items-center gap-3 z-20 px-3 py-2 rounded-full bg-black/50 backdrop-blur-sm">
+            <input
+              type="range"
+              min="0"
+              max={duration || 0}
+              step="0.1"
+              value={currentTime}
+              onChange={handleSeek}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full h-1 bg-white/30 rounded-lg appearance-none cursor-pointer accent-white transition-all hover:h-1.5"
+              aria-label={t.a11y.videoProgress}
+            />
+            <span className="text-white text-[10px] font-mono whitespace-nowrap min-w-[60px]">
+              {formatTime(currentTime)} / {formatTime(duration)}
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );
