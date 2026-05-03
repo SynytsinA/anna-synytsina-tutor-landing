@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Nunito, Caveat, Alice, Kelly_Slab } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { MainLayout } from "@/components/shared/MainLayout";
 import { ScrollToTop } from "@/components/ui/ScrollToTop/ScrollToTop";
@@ -69,10 +70,9 @@ export default function RootLayout({
           <ScrollToTop />
         </MainLayout>
       </body>
+      {process.env.NEXT_PUBLIC_GA_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+      )}
     </html>
   );
 }
-
-
-
-
