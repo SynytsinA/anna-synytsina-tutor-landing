@@ -8,7 +8,7 @@
   "license": "MIT",
   "type": "module",
   "engines": {
-    "node": ">=20.0.0"
+    "node": "22.x"
   },
   "scripts": {
     "dev": "next dev",
@@ -18,22 +18,23 @@
     "type-check": "tsc --noEmit",
     "test": "vitest run",
     "validate": "npm run lint && npm run type-check && npm run test",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
     "@next/third-parties": "^16.2.4",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.344.0",
+    "lucide-react": "^1.14.0",
     "next": "^16.2.4",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {
     "@eslint/compat": "^2.0.5",
+    "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
-    "@types/node": "^20",
+    "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@typescript-eslint/eslint-plugin": "^8.59.0",
