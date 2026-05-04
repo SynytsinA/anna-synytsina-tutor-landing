@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Instagram, GraduationCap, Menu, X } from "lucide-react";
+import { GraduationCap, Menu, X } from "lucide-react";
+import { InstagramIcon } from "@/components/ui/InstagramIcon";
 import { SOCIAL_LINKS } from "@/constants/seo";
 import { NAV_STRUCTURE } from "@/constants/landing";
 import { cn } from "@/utils/cn";
@@ -189,7 +190,7 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
               className="hidden md:flex items-center justify-center w-10 h-10 bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] rounded-blob text-white border-2 border-slate-900 shadow-[2px_2px_0px_#0f172a] transition-transform duration-200 hover:scale-110 hover:rotate-6"
               aria-label="Instagram"
             >
-              <Instagram size={22} />
+              <InstagramIcon size={22} />
             </a>
 
             <button
@@ -258,7 +259,7 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
                 rel="noreferrer"
                 className="flex items-center gap-2 font-bold font-hand text-2xl text-slate-700 hover:text-pink-600 transition-colors"
               >
-                <Instagram size={28} /> Instagram
+                <InstagramIcon size={28} /> Instagram
               </a>
             </div>
           </div>

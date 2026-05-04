@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import { Instagram, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
+import { InstagramIcon } from "@/components/ui/InstagramIcon";
 import { FadeIn } from "@/components/shared/FadeIn";
 import { SOCIAL_LINKS } from "@/constants/seo";
 import { FOOTER_METADATA } from "@/constants/landing";
@@ -64,7 +65,7 @@ export const Footer = ({ t }: FooterProps) => {
                     rel="noreferrer"
                     className="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-2xl font-hand text-2xl font-bold no-underline border-[3px] border-slate-900 shadow-hard-lg transition-all duration-200 hover:-translate-2 hover:-translate-y-2 hover:shadow-hard-xl hover:bg-primary-dark active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_#0f172a]"
                   >
-                    <Instagram size={24} />
+                    <InstagramIcon size={24} />
                     <span>{t.cta}</span>
                   </a>
                 </div>
