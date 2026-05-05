@@ -24,26 +24,26 @@ export const GlobalClassroom = () => {
       <div className="max-w-[1200px] mx-auto px-5 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Text Side */}
-          <div className="flex flex-col">
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
             <FadeIn>
-              <h2 className="text-4xl font-heading font-bold text-white mb-6 flex items-center gap-4 text-left">
+              <h2 className="text-4xl font-heading font-bold text-white mb-6 flex items-center justify-center lg:justify-start gap-4">
                 <Globe size={36} className="text-primary" /> {t.title}
               </h2>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <p className="text-lg text-slate-300 leading-relaxed mb-10 text-left">
+              <p className="text-lg text-slate-300 leading-relaxed mb-10">
                 {t.desc}
               </p>
             </FadeIn>
 
             <FadeIn delay={0.2}>
-              <div className="flex gap-10">
-                <div className="flex flex-col">
+              <div className="flex gap-10 justify-center lg:justify-start">
+                <div className="flex flex-col items-center lg:items-start">
                   <span className="text-4xl font-bold text-purple-400">{stats.countriesCount}</span>
                   <span className="text-sm uppercase tracking-wider text-slate-400 mt-1">{t.countriesLabel}</span>
                 </div>
                 <div className="w-px bg-white/20"></div>
-                <div className="flex flex-col">
+                <div className="flex flex-col items-center lg:items-start">
                   <span className="text-4xl font-bold text-purple-400">{stats.onlineValue}</span>
                   <span className="text-sm uppercase tracking-wider text-slate-400 mt-1">{t.onlineLabel}</span>
                 </div>
