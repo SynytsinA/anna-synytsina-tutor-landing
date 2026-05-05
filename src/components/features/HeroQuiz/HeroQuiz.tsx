@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useEffect } from "react";
 import { Brain, Calculator, BookA, PartyPopper, Star, Lightbulb } from "lucide-react";
-import { useLanguage } from "@/context/LanguageContext";
+import React, { useEffect } from "react";
 
+import { useLanguage } from "@/context/LanguageContext";
 import { useHeroQuiz } from "@/hooks";
 
 import { QuizQuestions } from "./QuizQuestions";

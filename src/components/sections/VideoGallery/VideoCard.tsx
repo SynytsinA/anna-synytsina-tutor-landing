@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
 import { Play, Volume2, VolumeX, Heart, Maximize, Minimize, X } from "lucide-react";
+import React, { useRef, useState, useEffect } from "react";
+
 import { useLanguage } from "@/context/LanguageContext";
-import { cn } from "@/utils/cn";
 import { VideoMetadata } from "@/types/landing";
+import { cn } from "@/utils/cn";
+
 import { VideoSkeleton } from "./VideoSkeleton";
 
 interface VideoCardProps {

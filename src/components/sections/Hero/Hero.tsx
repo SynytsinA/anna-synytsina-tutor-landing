@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
 import { ArrowRight, Play } from "lucide-react";
-import { FadeIn } from "@/components/shared/FadeIn";
+import React from "react";
+
 import { HeroQuiz } from "@/components/features/HeroQuiz";
+import { FadeIn } from "@/components/shared/FadeIn";
 import { HERO_CONFIG, LANDING_SECTIONS } from "@/constants/landing";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -102,9 +103,9 @@ export const Hero = () => {
             </FadeIn>
 
             <FadeIn delay={HERO_CONFIG.fadeDelays.subtitle}>
-            <p className="text-xl leading-relaxed text-slate-700 max-w-[500px] mb-10 font-medium">
-              {t.hero.subtitle}
-            </p>
+              <p className="text-xl leading-relaxed text-slate-700 max-w-[500px] mb-10 font-medium">
+                {t.hero.subtitle}
+              </p>
             </FadeIn>
 
             <FadeIn

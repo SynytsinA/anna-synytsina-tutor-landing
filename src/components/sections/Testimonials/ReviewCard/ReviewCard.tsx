@@ -1,12 +1,13 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
 import { Heart, Send, MoreHorizontal, X } from "lucide-react";
+import Image from "next/image";
+import React from "react";
+
 import { Avatar } from "@/components/ui/Avatar";
 import { Testimonial } from "@/types/landing";
-import styles from "./ReviewCard.module.css";
 
+import styles from "./ReviewCard.module.css";
 import { ReviewSkeleton } from "../ReviewSkeleton";
 
 interface ReviewCardProps {
@@ -38,7 +39,7 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ item, index, onClick, is
       onClick={onClick}
     >
       {/* Skeleton Layer - Fades out once loaded */}
-      <div 
+      <div
         className={`absolute inset-0 z-20 transition-opacity duration-500 ${isLoading ? "opacity-100" : "opacity-0 pointer-events-none"}`}
       >
         <ReviewSkeleton isModal={isModal} />

@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
+
 import { Footer } from "./Footer";
 
 // Mock FadeIn to avoid intersection observer overhead in unit test

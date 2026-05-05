@@ -1,8 +1,10 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
-import { VideoGallery } from "./VideoGallery";
-import { LanguageProvider } from "@/context/LanguageContext";
+
 import { VIDEO_GALLERY_METADATA } from "@/constants/landing";
+import { LanguageProvider } from "@/context/LanguageContext";
+
+import { VideoGallery } from "./VideoGallery";
 
 // Mock the InteractiveSlider
 vi.mock("@/components/shared/InteractiveSlider", () => ({

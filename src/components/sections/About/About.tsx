@@ -1,18 +1,19 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
-import { FadeIn } from "@/components/shared/FadeIn";
-import { 
-  GraduationCap, 
-  Briefcase, 
-  Building2, 
-  Quote, 
-  Star, 
-  Sparkles 
+import {
+  GraduationCap,
+  Briefcase,
+  Building2,
+  Quote,
+  Star,
+  Sparkles
 } from "lucide-react";
-import { useLanguage } from "@/context/LanguageContext";
+import Image from "next/image";
+import React from "react";
+
+import { FadeIn } from "@/components/shared/FadeIn";
 import { ABOUT_METADATA, LANDING_SECTIONS } from "@/constants/landing";
+import { useLanguage } from "@/context/LanguageContext";
 
 const colorClasses = ["bg-indigo-50", "bg-pink-50", "bg-yellow-50"];
 
@@ -119,9 +120,8 @@ export const About = () => {
                   <FadeIn
                     key={index}
                     delay={0.2 + index * 0.1}
-                    className={`flex items-center gap-6 px-6 py-5 rounded-hand border-2 border-slate-900 shadow-hard transition-all duration-300 hover:translate-x-1 hover:-rotate-1 ${
-                      colorClasses[index % colorClasses.length]
-                    }`}
+                    className={`flex items-center gap-6 px-6 py-5 rounded-hand border-2 border-slate-900 shadow-hard transition-all duration-300 hover:translate-x-1 hover:-rotate-1 ${colorClasses[index % colorClasses.length]
+                      }`}
                   >
                     <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center border-2 border-slate-900 shrink-0 shadow-sm">
                       {getIcon(index)}

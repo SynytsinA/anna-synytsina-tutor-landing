@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useState, useEffect } from "react";
+
 import { FadeIn } from "@/components/shared/FadeIn/FadeIn";
 import { InteractiveSlider } from "@/components/shared/InteractiveSlider";
-import { useLanguage } from "@/context/LanguageContext";
 import { LANDING_SECTIONS, VIDEO_GALLERY_METADATA } from "@/constants/landing";
+import { useLanguage } from "@/context/LanguageContext";
 import { useSwipeNavigation } from "@/hooks";
+
 import { VideoCard } from "./VideoCard";
 
 export const VideoGallery = () => {
@@ -31,10 +33,10 @@ export const VideoGallery = () => {
     if (modalVideoId === null) return;
     const currentIndex = VIDEO_GALLERY_METADATA.findIndex(v => v.id === modalVideoId);
     let nextIndex = currentIndex + direction;
-    
+
     if (nextIndex >= VIDEO_GALLERY_METADATA.length) nextIndex = 0;
     if (nextIndex < 0) nextIndex = VIDEO_GALLERY_METADATA.length - 1;
-    
+
     const nextId = VIDEO_GALLERY_METADATA[nextIndex].id;
     setModalVideoId(nextId);
     setPlayingId(null); // Ensure video is paused when navigating
@@ -176,7 +178,7 @@ export const VideoGallery = () => {
             <ChevronRight size={32} />
           </button>
 
-          <div 
+          <div
             className={`relative z-10 transition-all ${isAnimating ? "opacity-0" : "opacity-100"}`}
             style={getSwipeStyle()}
             onClick={(e) => e.stopPropagation()}

@@ -1,5 +1,5 @@
-import React from "react";
 import { RotateCcw } from "lucide-react";
+import React from "react";
 
 interface QuizResultsProps {
   score: number;

@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useRef } from "react";
 import Image from "next/image";
+import React, { useRef } from "react";
+
+import { GameLoader } from "@/components/shared/GameLoader";
 import { useLanguage } from "@/context/LanguageContext";
 import { usePotterGame, useImagePreloader } from "@/hooks";
-import { GameLoader } from "@/components/shared/GameLoader";
+
 import styles from "./PotterGame.module.css";
 
-// --- Custom SVGs ---
 const SnitchIcon = ({ className }: { className?: string }) => (
   <svg viewBox="-20 -10 140 80" className={className} fill="none" stroke="currentColor" strokeWidth="2">
     <circle cx="50" cy="30" r="10" fill="gold" stroke="none" />

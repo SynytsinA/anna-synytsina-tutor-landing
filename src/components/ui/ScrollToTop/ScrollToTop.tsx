@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
 import { ArrowUp } from "lucide-react";
+import React, { useState, useEffect } from "react";
+
 import { useLanguage } from "@/context/LanguageContext";
 
 export const ScrollToTop = () => {

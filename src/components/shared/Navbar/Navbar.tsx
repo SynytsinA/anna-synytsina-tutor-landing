@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import { GraduationCap, Menu, X } from "lucide-react";
+import Link from "next/link";
+import React, { useState, useEffect } from "react";
+
 import { InstagramIcon } from "@/components/ui/InstagramIcon";
-import { SOCIAL_LINKS } from "@/constants/seo";
 import { NAV_STRUCTURE } from "@/constants/landing";
+import { SOCIAL_LINKS } from "@/constants/seo";
 import { cn } from "@/utils/cn";
 
 interface NavbarProps {
@@ -26,11 +27,11 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
-  const menuItems = React.useMemo(() => 
+  const menuItems = React.useMemo(() =>
     NAV_STRUCTURE.map(item => ({
       ...item,
       label: t.menuLabels[item.id] || item.id
-    })), 
+    })),
     [t.menuLabels]
   );
 
@@ -46,9 +47,9 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
       setIsScrolled(window.scrollY > 20);
 
       if (menuItems.length > 0) {
-        const scrolledToBottom = 
+        const scrolledToBottom =
           window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 20;
-        
+
         if (scrolledToBottom) {
           setActiveSection(menuItems[menuItems.length - 1].href);
         }
@@ -73,9 +74,9 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       // Check if we are at the bottom first - if so, don't let observer override
-      const scrolledToBottom = 
+      const scrolledToBottom =
         window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 20;
-      
+
       if (scrolledToBottom) return;
 
       entries.forEach((entry) => {
@@ -104,7 +105,7 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
       const element = document.getElementById(id);
       if (element) {
         e.preventDefault();
-        
+
         // Manual smooth scroll
         const offset = 80; // Navbar height
         const elementPosition = element.getBoundingClientRect().top;
@@ -130,8 +131,8 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
           isMobileMenuOpen
             ? "bg-transparent"
             : isScrolled
-            ? "bg-white/95 backdrop-blur-md h-[70px] shadow-sm border-b-2"
-            : "bg-transparent"
+              ? "bg-white/95 backdrop-blur-md h-[70px] shadow-sm border-b-2"
+              : "bg-transparent"
         )}
       >
         <div className="max-w-[1200px] mx-auto px-5 h-full flex items-center justify-between">

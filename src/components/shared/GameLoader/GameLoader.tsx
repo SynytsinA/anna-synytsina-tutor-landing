@@ -1,4 +1,5 @@
 import { useLanguage } from '@/context/LanguageContext';
+
 import styles from './GameLoader.module.css';
 
 export const GameLoader = () => {

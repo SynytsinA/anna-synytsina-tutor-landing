@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useRef, useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
+
 import { FadeIn } from "@/components/shared/FadeIn/FadeIn";
 import { useLanguage } from "@/context/LanguageContext";
 import { cn } from "@/utils/cn";

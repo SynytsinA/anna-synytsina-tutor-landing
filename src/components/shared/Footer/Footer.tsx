@@ -1,10 +1,11 @@
-import React from "react";
-import Image from "next/image";
 import { Sparkles } from "lucide-react";
-import { InstagramIcon } from "@/components/ui/InstagramIcon";
+import Image from "next/image";
+import React from "react";
+
 import { FadeIn } from "@/components/shared/FadeIn";
-import { SOCIAL_LINKS } from "@/constants/seo";
+import { InstagramIcon } from "@/components/ui/InstagramIcon";
 import { FOOTER_METADATA } from "@/constants/landing";
+import { SOCIAL_LINKS } from "@/constants/seo";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface FooterProps {

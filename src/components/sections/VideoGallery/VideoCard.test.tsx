@@ -1,7 +1,9 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
-import { VideoCard } from "./VideoCard";
+
 import { LanguageProvider } from "@/context/LanguageContext";
+
+import { VideoCard } from "./VideoCard";
 
 const mockVideo = {
   id: 1,

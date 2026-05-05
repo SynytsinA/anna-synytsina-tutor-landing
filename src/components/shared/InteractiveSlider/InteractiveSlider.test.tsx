@@ -1,5 +1,6 @@
 import { render, screen, fireEvent, act } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
+
 import { InteractiveSlider } from "./InteractiveSlider";
 
 vi.mock("@/components/shared/FadeIn/FadeIn", () => ({

@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
 import { Plus, Minus, MessageCircleQuestion } from "lucide-react";
-import { useLanguage } from "@/context/LanguageContext";
+import React, { useState } from "react";
+
 import { FadeIn } from "@/components/shared/FadeIn";
 import { FAQ_CONFIG } from "@/constants/landing";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const FAQ = () => {
   const { t: allTranslations } = useLanguage();
@@ -38,9 +39,8 @@ export const FAQ = () => {
               <FadeIn
                 key={index}
                 delay={index * 0.1}
-                className={`bg-white border-2 border-slate-900 rounded-2xl shadow-hard overflow-hidden transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-lg ${colorClass} ${
-                  isOpen ? "translate-x-0.5 translate-y-0.5 shadow-[2px_2px_0px_#0f172a]" : ""
-                }`}
+                className={`bg-white border-2 border-slate-900 rounded-2xl shadow-hard overflow-hidden transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-lg ${colorClass} ${isOpen ? "translate-x-0.5 translate-y-0.5 shadow-[2px_2px_0px_#0f172a]" : ""
+                  }`}
               >
                 <button
                   className="w-full flex justify-between items-center p-6 bg-transparent border-none cursor-pointer text-left focus:outline-none"

@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import { useLanguage } from "@/context/LanguageContext";
+import React, { useState, useEffect, useCallback } from "react";
+
 import { FadeIn } from "@/components/shared/FadeIn";
 import { InteractiveSlider } from "@/components/shared/InteractiveSlider";
-import { useSwipeNavigation } from "@/hooks";
 import { TESTIMONIALS_DATA } from "@/constants/landing";
+import { useLanguage } from "@/context/LanguageContext";
+import { useSwipeNavigation } from "@/hooks";
+
 import { ReviewCard } from "./ReviewCard";
 import styles from "./Testimonials.module.css";
 

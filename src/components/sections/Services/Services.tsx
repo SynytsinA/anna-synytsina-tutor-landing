@@ -1,10 +1,11 @@
 "use client";
 
-import React from "react";
 import { Backpack, BookOpen, Pencil, CheckCircle } from "lucide-react";
+import React from "react";
+
 import { FadeIn } from "@/components/shared/FadeIn";
-import { useLanguage } from "@/context/LanguageContext";
 import { LANDING_SECTIONS, SERVICES_CONFIG } from "@/constants/landing";
+import { useLanguage } from "@/context/LanguageContext";
 import { cn } from "@/utils/cn";
 
 const getIcon = (iconName: string) => {

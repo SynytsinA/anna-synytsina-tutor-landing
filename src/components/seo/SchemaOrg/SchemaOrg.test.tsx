@@ -1,14 +1,16 @@
-import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/react';
-import { SchemaOrg } from './SchemaOrg';
+import { describe, it, expect } from 'vitest';
+
 import { SEO_CONFIG } from '@/constants/seo';
+
+import { SchemaOrg } from './SchemaOrg';
 import type { SchemaData } from './types';
 
 describe('SchemaOrg', () => {
   it('renders correctly and matches SEO_CONFIG data', () => {
     const { container } = render(<SchemaOrg />);
     const script = container.querySelector('script[type="application/ld+json"]');
-    
+
     expect(script).toBeTruthy();
     if (!script) return;
 
@@ -28,7 +30,7 @@ describe('SchemaOrg', () => {
     expect(Array.isArray(schema.areaServed)).toBe(true);
     const hasDnipro = schema.areaServed.some(area => area.name === "Dnipro");
     expect(hasDnipro).toBe(true);
-    
+
     // Ensure it matches the count from SEO_CONFIG
     expect(schema.areaServed.length).toBe(SEO_CONFIG.areaServed.length);
 

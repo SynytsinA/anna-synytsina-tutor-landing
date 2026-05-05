@@ -1,16 +1,17 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
-import { FadeIn } from "@/components/shared/FadeIn";
 import {
   ShieldCheck,
   Award,
   Zap,
   Sparkles,
 } from "lucide-react";
-import { useLanguage } from "@/context/LanguageContext";
+import Image from "next/image";
+import React from "react";
+
+import { FadeIn } from "@/components/shared/FadeIn";
 import { APPROACH_METADATA, LANDING_SECTIONS } from "@/constants/landing";
+import { useLanguage } from "@/context/LanguageContext";
 
 const icons = [ShieldCheck, Award, Zap, Sparkles];
 const colorClasses = [

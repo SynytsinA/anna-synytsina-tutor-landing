@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
 import { Wand2, Gift, Play, Snowflake } from "lucide-react";
-import { FadeIn } from "@/components/shared/FadeIn";
-import { useLanguage } from "@/context/LanguageContext";
-import { LANDING_SECTIONS } from "@/constants/landing";
-import { PotterGame } from "@/components/features/PotterGame/PotterGame";
+import React, { useState } from "react";
+
 import { GrinchGame } from "@/components/features/GrinchGame/GrinchGame";
+import { PotterGame } from "@/components/features/PotterGame/PotterGame";
+import { FadeIn } from "@/components/shared/FadeIn";
+import { LANDING_SECTIONS } from "@/constants/landing";
+import { useLanguage } from "@/context/LanguageContext";
 import { cn } from "@/utils/cn";
 
 export const GamesSection = () => {

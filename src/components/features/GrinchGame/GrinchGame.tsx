@@ -1,14 +1,15 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
 import { Candy, TreePine, Snowflake, Gift } from "lucide-react";
-import { useGrinchGame, useImagePreloader } from "@/hooks";
+import Image from "next/image";
+import React from "react";
+
 import { GameLoader } from "@/components/shared/GameLoader";
-import { Toy } from "./parts/Toy";
-import styles from "./GrinchGame.module.css";
+import { useGrinchGame, useImagePreloader } from "@/hooks";
 
 import { GRINCH_GAME_ASSETS } from "./constants";
+import styles from "./GrinchGame.module.css";
+import { Toy } from "./parts/Toy";
 
 interface GrinchGameProps {
   translations: {

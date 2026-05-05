@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
+
 import styles from "../GrinchGame.module.css";
 
 interface ToyProps {
