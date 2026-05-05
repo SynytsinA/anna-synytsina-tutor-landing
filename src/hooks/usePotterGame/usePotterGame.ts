@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useMemo } from "react";
+
 import { AUDIO_ASSETS } from "@/constants/audio";
 import { translations } from "@/constants/translations";
 import { SparkConfig } from "@/types/game";

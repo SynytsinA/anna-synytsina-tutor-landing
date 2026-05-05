@@ -1,9 +1,11 @@
 import { renderHook, act } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { useHeroQuiz } from "./useHeroQuiz";
+
 import { QUIZ_QUESTIONS } from "@/constants/landing";
-import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/constants/translations";
+import { useLanguage } from "@/context/LanguageContext";
+
+import { useHeroQuiz } from "./useHeroQuiz";
 
 // Mock useLanguage
 vi.mock("@/context/LanguageContext", () => ({

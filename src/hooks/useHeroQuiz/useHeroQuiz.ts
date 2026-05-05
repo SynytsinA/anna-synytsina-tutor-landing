@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { QUIZ_QUESTIONS } from "@/constants/landing";
+
 import { AUDIO_ASSETS } from "@/constants/audio";
-import { Subject, ShuffledOption } from "@/types/quiz";
+import { QUIZ_QUESTIONS } from "@/constants/landing";
 import { useLanguage } from "@/context/LanguageContext";
+import { Subject, ShuffledOption } from "@/types/quiz";
 
 export const useHeroQuiz = () => {
   const { lang } = useLanguage();

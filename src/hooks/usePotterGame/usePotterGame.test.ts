@@ -1,7 +1,9 @@
 import { renderHook, act } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { usePotterGame } from "./usePotterGame";
+
 import { translations } from "@/constants/translations";
+
+import { usePotterGame } from "./usePotterGame";
 
 const POTTER_PUZZLES_UA = translations.ua.themes.potterPuzzles.map(([scrambled, answer], index) => ({
   id: index + 1,
