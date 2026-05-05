@@ -26,8 +26,8 @@ export const GamesSection = () => {
   };
 
   return (
-    <section 
-      className="py-24 bg-gradient-to-br from-[#1e1b4b] to-[#312e81] relative overflow-hidden" 
+    <section
+      className="py-24 bg-gradient-to-br from-[#1e1b4b] to-[#312e81] relative overflow-hidden"
       id={LANDING_SECTIONS.games}
     >
       {/* Background Decor */}
@@ -86,7 +86,7 @@ export const GamesSection = () => {
             "relative min-h-[600px] flex flex-col items-center justify-center transition-all duration-500 rounded-[32px] overflow-hidden",
             lessonStatus === "idle" && "bg-white/5 border border-white/10 backdrop-blur-sm shadow-2xl"
           )}>
-            
+
             {lessonStatus === "idle" && (
               <div className="flex flex-col items-center animate-pop-in">
                 <div className={cn(
@@ -104,8 +104,6 @@ export const GamesSection = () => {
                 </button>
               </div>
             )}
-
-
 
             {lessonStatus === "active" && (
               <div className="w-full animate-fade-in">

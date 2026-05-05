@@ -12,7 +12,6 @@ export const usePotterGame = (lang: "en" | "ua" = "ua") => {
 
   const [sparkConfigs, setSparkConfigs] = useState<SparkConfig[]>([]);
 
-
   // Sound Refs
   const correctSfx = useRef<HTMLAudioElement | null>(null);
   const winSfx = useRef<HTMLAudioElement | null>(null);
@@ -25,7 +24,7 @@ export const usePotterGame = (lang: "en" | "ua" = "ua") => {
     })),
     [lang]
   );
-  
+
   const solvedCount = Object.keys(completed).length;
   const totalCount = currentPuzzles.length;
   const progressPercent = (solvedCount / totalCount) * 100;
@@ -42,8 +41,6 @@ export const usePotterGame = (lang: "en" | "ua" = "ua") => {
         }))
       );
     }, 0);
-
-
 
     // Initialize Audio
     correctSfx.current = new Audio(AUDIO_ASSETS.GAME_STEP_SUCCESS);
@@ -76,7 +73,7 @@ export const usePotterGame = (lang: "en" | "ua" = "ua") => {
       } else {
         if (correctSfx.current) {
           correctSfx.current.currentTime = 0;
-          correctSfx.current.play().catch(() => {});
+          correctSfx.current.play().catch(() => { });
         }
         onFocusNext(id);
       }

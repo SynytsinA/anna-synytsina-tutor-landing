@@ -17,6 +17,7 @@ const eslintConfig = [
         },
       ],
       "jsx-a11y/anchor-has-content": "error",
+      "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }]
     },
   },
 ];

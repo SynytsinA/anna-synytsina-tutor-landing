@@ -10,7 +10,6 @@ import { TESTIMONIALS_DATA } from "@/constants/landing";
 import { ReviewCard } from "./ReviewCard";
 import styles from "./Testimonials.module.css";
 
-
 export const Testimonials = () => {
   const { t: allTranslations } = useLanguage();
   const t = allTranslations.testimonials;
@@ -61,7 +60,7 @@ export const Testimonials = () => {
     if (modalItemId !== null) {
       document.body.style.overflow = "hidden";
       window.addEventListener("keydown", handleKeyDown);
-      
+
       // Push state for back button handling
       if (!window.history.state?.modal) {
         window.history.pushState({ modal: true }, "");
@@ -74,7 +73,7 @@ export const Testimonials = () => {
       };
 
       window.addEventListener("popstate", handlePopState);
-      
+
       return () => {
         window.removeEventListener("keydown", handleKeyDown);
         window.removeEventListener("popstate", handlePopState);

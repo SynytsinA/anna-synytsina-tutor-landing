@@ -103,7 +103,6 @@ export const InteractiveSlider: React.FC<InteractiveSliderProps> = ({
     }
   };
 
-
   const getDotStyle = (index: number) => {
     const distance = Math.abs(index - activePage);
     if (distance === 0) return { scale: 1.25, opacity: 1 };
@@ -135,8 +134,8 @@ export const InteractiveSlider: React.FC<InteractiveSliderProps> = ({
           className={`flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pt-10 pb-2 w-full scrollbar-hide ${containerClassName}`}
           ref={scrollRef}
           onScroll={checkScrollPosition}
-          style={{ 
-            scrollbarWidth: "none", 
+          style={{
+            scrollbarWidth: "none",
             msOverflowStyle: "none",
             paddingLeft: isMobile ? `calc(50% - ${itemWidth / 2}px)` : "1.25rem",
             paddingRight: isMobile ? `calc(50% - ${itemWidth / 2}px)` : "1.25rem"

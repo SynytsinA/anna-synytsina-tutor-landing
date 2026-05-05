@@ -13,7 +13,6 @@ vi.mock("@/context/LanguageContext", () => ({
   }),
 }));
 
-
 const mockTranslations = {
   grinchTask: "Task text",
   success: "Success message",

@@ -124,7 +124,6 @@ export const PotterGame = () => {
         <HallowsIcon className={styles.hallowsIconBg} />
       </div>
 
-
       <div className={styles.potterHeaderModern}>
         <div>
           <Image
