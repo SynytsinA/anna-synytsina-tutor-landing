@@ -17,7 +17,36 @@ const eslintConfig = [
         },
       ],
       "jsx-a11y/anchor-has-content": "error",
-      "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }]
+      "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
+      "import/order": [
+        "error",
+        {
+          groups: [
+            "builtin",
+            "external",
+            "internal",
+            ["parent", "sibling", "index"]
+          ],
+          pathGroups: [
+            {
+              pattern: "@/**",
+              group: "internal",
+              position: "before"
+            },
+            {
+              pattern: "**/*.css",
+              group: "index",
+              position: "after"
+            }
+          ],
+          pathGroupsExcludedImportTypes: [],
+          "newlines-between": "always",
+          alphabetize: {
+            order: "asc",
+            caseInsensitive: true
+          }
+        }
+      ],
     },
   },
 ];

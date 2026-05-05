@@ -1,12 +1,12 @@
-import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
-import { Services } from "@/components/sections/Services";
 import { Approach } from "@/components/sections/Approach";
-import { VideoGallery } from "@/components/sections/VideoGallery";
+import { FAQ } from "@/components/sections/FAQ";
 import { GamesSection } from "@/components/sections/GamesSection";
 import { GlobalClassroom } from "@/components/sections/GlobalClassroom";
+import { Hero } from "@/components/sections/Hero";
+import { Services } from "@/components/sections/Services";
 import { Testimonials } from "@/components/sections/Testimonials";
-import { FAQ } from "@/components/sections/FAQ";
+import { VideoGallery } from "@/components/sections/VideoGallery";
 
 export default function Home() {
   return (

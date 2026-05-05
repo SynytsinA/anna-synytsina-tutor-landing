@@ -1,10 +1,12 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Nunito, Caveat, Alice, Kelly_Slab } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
-import "./globals.css";
+
+import { SchemaOrg } from "@/components/seo/SchemaOrg";
 import { MainLayout } from "@/components/shared/MainLayout";
 import { ScrollToTop } from "@/components/ui/ScrollToTop/ScrollToTop";
-import { SchemaOrg } from "@/components/seo/SchemaOrg";
+
+import "./globals.css";
 
 // Rounded, friendly font for body and headings (Cyrillic supported)
 const nunito = Nunito({
