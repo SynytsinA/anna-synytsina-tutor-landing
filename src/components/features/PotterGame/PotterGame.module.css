@@ -7,17 +7,14 @@
   overflow: hidden;
   min-height: 600px;
   border: 4px solid #1a1625;
-  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9), 0 15px 40px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 0 100px rgb(0 0 0 / 90%), 0 15px 40px rgb(0 0 0 / 80%);
   font-family: var(--font-alice), serif;
   z-index: 1;
 }
 
 .potterBgStone {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-image: url('/images/tsikavi-uroky-dlya-ditei-hogwarts-hall.webp');
   background-size: cover;
   background-position: center;
@@ -28,11 +25,8 @@
 
 .potterBgOverlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 50% 20%, rgba(251, 191, 36, 0.15) 0%, rgba(0, 0, 0, 0.7) 60%, rgba(0, 0, 0, 1) 100%);
+  inset: 0;
+  background: radial-gradient(circle at 50% 20%, rgb(251 191 36 / 15%) 0%, rgb(0 0 0 / 70%) 60%, rgb(0 0 0 / 100%) 100%);
   z-index: 1;
   pointer-events: none;
 }
@@ -47,7 +41,7 @@
   opacity: 0.1;
   pointer-events: none;
   z-index: 2;
-  filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.8));
+  filter: drop-shadow(0 0 20px rgb(251 191 36 / 80%));
 }
 
 .hallowsIconBg {
@@ -72,7 +66,7 @@
   height: 3px;
   background: #fbbf24;
   border-radius: 50%;
-  box-shadow: 0 0 8px 2px rgba(251, 191, 36, 0.6);
+  box-shadow: 0 0 8px 2px rgb(251 191 36 / 60%);
   animation: floatSpark 4s infinite ease-in-out;
   opacity: 0;
 }
@@ -111,13 +105,12 @@
   width: 100%;
   max-width: 250px;
   height: auto;
-  filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.4));
+  filter: drop-shadow(0 0 15px rgb(251 191 36 / 40%));
   margin-bottom: 5px;
   animation: floatHat 4s ease-in-out infinite;
 }
 
 @keyframes floatHat {
-
   0%,
   100% {
     transform: translateY(0) rotate(-2deg);
@@ -133,7 +126,7 @@
   color: #fdf5e6;
   text-transform: uppercase;
   margin: 0;
-  text-shadow: 0 0 5px #fff, 0 0 10px #fbbf24, 0 0 20px #fbbf24, 0 0 40px #b45309, 2px 2px 4px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 0 5px #fff, 0 0 10px #fbbf24, 0 0 20px #fbbf24, 0 0 40px #b45309, 2px 2px 4px rgb(0 0 0 / 80%);
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: 2px;
@@ -143,12 +136,12 @@
   width: 100%;
   max-width: 500px;
   height: 6px;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(251, 191, 36, 0.2);
+  background: rgb(0 0 0 / 50%);
+  border: 1px solid rgb(251 191 36 / 20%);
   border-radius: 10px;
   position: relative;
   margin-top: 15px;
-  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 2px 5px rgb(0 0 0 / 50%);
 }
 
 .snitchProgressFill {
@@ -157,7 +150,7 @@
   border-radius: 10px;
   position: relative;
   transition: width 0.5s ease-out;
-  box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+  box-shadow: 0 0 10px rgb(251 191 36 / 50%);
 }
 
 .flyingSnitchMarker {
@@ -166,7 +159,7 @@
   top: -22px;
   width: 45px;
   height: 45px;
-  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+  filter: drop-shadow(0 0 15px rgb(255 215 0 / 80%));
   animation: flutter 0.15s linear infinite alternate;
 }
 
@@ -187,19 +180,19 @@
   color: #fbbf24;
   font-weight: 700;
   font-size: 1.4rem;
-  text-shadow: 0 0 15px rgba(251, 191, 36, 0.8), 2px 2px 0 #000;
-  background: linear-gradient(90deg, transparent, rgba(120, 53, 15, 0.6), transparent);
+  text-shadow: 0 0 15px rgb(251 191 36 / 80%), 2px 2px 0 #000;
+  background: linear-gradient(90deg, transparent, rgb(120 53 15 / 60%), transparent);
   padding: 12px 40px;
   border-radius: 10px;
-  border-top: 1px solid rgba(251, 191, 36, 0.3);
-  border-bottom: 1px solid rgba(251, 191, 36, 0.3);
+  border-top: 1px solid rgb(251 191 36 / 30%);
+  border-bottom: 1px solid rgb(251 191 36 / 30%);
 }
 
 .boltIcon {
   width: 24px;
   height: 24px;
   color: #facc15;
-  filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.6));
+  filter: drop-shadow(0 0 5px rgb(251 191 36 / 60%));
 }
 
 .potterGridParchment {
@@ -215,7 +208,7 @@
   width: 100%;
 }
 
-@media (min-width: 850px) {
+@media (width >= 850px) {
   .potterGridParchment {
     grid-template-columns: repeat(4, 1fr);
     gap: 30px 20px;
@@ -233,7 +226,7 @@
   justify-content: center;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(87, 65, 35, 0.5);
+  box-shadow: 0 8px 25px rgb(0 0 0 / 60%), inset 0 0 20px rgb(87 65 35 / 50%);
   color: #3f2e18;
   height: 145px;
   width: 100%;
@@ -244,14 +237,14 @@
   content: '';
   position: absolute;
   inset: 4px;
-  border: 1px solid rgba(87, 65, 35, 0.4);
+  border: 1px solid rgb(87 65 35 / 40%);
   pointer-events: none;
   border-radius: 4px;
 }
 
 .potterParchmentCard:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 15px rgba(251, 191, 36, 0.3);
+  box-shadow: 0 15px 35px rgb(0 0 0 / 70%), 0 0 15px rgb(251 191 36 / 30%);
   z-index: 20;
 }
 
@@ -260,7 +253,7 @@
   opacity: 0.9;
   transform: scale(0.95);
   filter: grayscale(20%);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 10px rgb(0 0 0 / 50%);
 }
 
 .potterParchmentCard.solved .parchmentInput {
@@ -310,8 +303,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.9);
-  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5), inset -2px -2px 5px rgba(0, 0, 0, 0.5);
+  color: rgb(255 255 255 / 90%);
+  box-shadow: 2px 4px 8px rgb(0 0 0 / 50%), inset -2px -2px 5px rgb(0 0 0 / 50%);
   z-index: 10;
 }
 
@@ -329,7 +322,7 @@
   color: #291206;
   font-weight: 800;
   text-align: center;
-  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+  text-shadow: 1px 1px 0 rgb(255 255 255 / 30%);
   white-space: nowrap;
   overflow: hidden;
   width: 100%;
@@ -369,12 +362,11 @@
   font-family: var(--font-alice), serif;
   box-shadow: none !important;
   appearance: none;
-  -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
 }
 
 .parchmentInput::placeholder {
-  color: rgba(41, 18, 6, 0.4);
+  color: rgb(41 18 6 / 40%);
   font-weight: 400;
 }
 
@@ -386,7 +378,7 @@
   background: transparent !important;
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .potterGameContainer {
     padding: 20px 10px;
   }
@@ -412,7 +404,7 @@
 
   .scrambledTextParchment {
     font-size: clamp(0.75rem, 3.2vw, 0.95rem);
-    letter-spacing: 0px;
+    letter-spacing: 0;
   }
 
   .parchmentInput {

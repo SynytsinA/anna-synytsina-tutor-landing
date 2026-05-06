@@ -8,17 +8,14 @@
   overflow: hidden;
   min-height: 500px;
   border: 4px solid #b91c1c;
-  box-shadow: 0 0 30px rgba(220, 38, 38, 0.2);
+  box-shadow: 0 0 30px rgb(220 38 38 / 20%);
   font-family: var(--font-poppins), sans-serif;
   z-index: 1;
 }
 
 .grinchBgCity {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-image: url('/images/ihrova-metodyka-navchannya-misto-grincha.webp');
   background-size: cover;
   background-position: center;
@@ -29,21 +26,15 @@
 
 .grinchBgOverlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(180deg, rgba(19, 78, 74, 0.4) 0%, rgba(6, 78, 59, 0.9) 100%);
+  inset: 0;
+  background: linear-gradient(180deg, rgb(19 78 74 / 40%) 0%, rgb(6 78 59 / 90%) 100%);
   z-index: 1;
   pointer-events: none;
 }
 
 .snowOverlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-image: radial-gradient(white 2px, transparent 3px);
   background-size: 50px 50px;
   opacity: 0.15;
@@ -53,10 +44,7 @@
 
 .dynamicSnowContainer {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   pointer-events: none;
   z-index: 2;
   overflow: hidden;
@@ -119,10 +107,10 @@
 .grinchCharacter img {
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 0 10px rgb(0 0 0 / 50%));
 }
 
-@media (min-width: 600px) {
+@media (width >= 600px) {
   .grinchCharacter {
     width: 150px;
     top: -20px;
@@ -139,7 +127,7 @@
 
 .grinchHeader h3 {
   font-size: 1.7rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 4px rgb(0 0 0 / 30%);
 }
 
 .successBadge {
@@ -161,8 +149,7 @@
 .numberPool {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-content: flex-start;
+  place-content: flex-start center;
   gap: 15px;
   min-height: 140px;
   margin-top: 70px;
@@ -198,15 +185,15 @@
 .dropZone {
   flex: 1;
   min-height: 200px;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgb(0 0 0 / 30%);
   border-radius: 16px;
   padding: 15px;
-  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border: 2px dashed rgb(255 255 255 / 30%);
   transition: background 0.3s;
 }
 
 .errorFlash {
-  background: rgba(239, 68, 68, 0.4);
+  background: rgb(239 68 68 / 40%);
   border-color: #ef4444;
 }
 
@@ -230,9 +217,9 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border: 2px dashed rgb(255 255 255 / 20%);
   margin: 0 3px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 10px rgb(0 0 0 / 10%);
   flex-shrink: 0;
 }
 
@@ -251,7 +238,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 5px 10px rgb(0 0 0 / 30%);
   position: relative;
   overflow: hidden;
 }
@@ -260,7 +247,7 @@
   width: 54px;
   height: 54px;
   position: relative;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 4px 6px rgb(0 0 0 / 30%));
 }
 
 .toySvgShape {
@@ -273,7 +260,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   color: white;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 2px 4px rgb(0 0 0 / 60%);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -289,7 +276,7 @@
   font-size: 1.6rem;
   font-weight: 800;
   z-index: 20;
-  text-shadow: 1.5px 1.5px 0 #ffffff, -1.5px 1.5px 0 #ffffff, 1.5px -1.5px 0 #ffffff, -1.5px -1.5px 0 #ffffff, 0 2px 5px rgba(0, 0, 0, 0.3);
+  text-shadow: 1.5px 1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px -1.5px 0 #fff, 0 2px 5px rgb(0 0 0 / 30%);
 }
 
 .toyHighlight {
@@ -298,7 +285,7 @@
   left: 10%;
   width: 40%;
   height: 40%;
-  background: radial-gradient(circle, rgba(251, 255, 255, 0.8) 0%, transparent 70%);
+  background: radial-gradient(circle, rgb(251 255 255 / 80%) 0%, transparent 70%);
   border-radius: 50%;
 }
 
