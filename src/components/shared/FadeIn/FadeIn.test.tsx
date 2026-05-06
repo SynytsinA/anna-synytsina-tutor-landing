@@ -30,7 +30,7 @@ describe("FadeIn", () => {
     expect(screen.getByTestId("child")).toBeInTheDocument();
   });
 
-  it("applies the fade-in-section class initially", () => {
+  it("applies the initial Tailwind classes", () => {
     render(
       <FadeIn className="custom-class">
         <div>Content</div>
@@ -38,9 +38,10 @@ describe("FadeIn", () => {
     );
 
     const container = screen.getByText("Content").parentElement;
-    expect(container).toHaveClass("fade-in-section");
+    expect(container).toHaveClass("opacity-0");
+    expect(container).toHaveClass("translate-y-5");
     expect(container).toHaveClass("custom-class");
-    expect(container).not.toHaveClass("fade-in-visible");
+    expect(container).not.toHaveClass("opacity-100");
   });
 
   it("triggers visibility when intersection observer fires", () => {
@@ -69,7 +70,8 @@ describe("FadeIn", () => {
     });
 
     const container = screen.getByTestId("child").parentElement;
-    expect(container).toHaveClass("fade-in-visible");
+    expect(container).toHaveClass("opacity-100");
+    expect(container).toHaveClass("translate-y-0");
     expect(mockUnobserve).toHaveBeenCalled();
   });
 

@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 html {
   scroll-behavior: smooth;
@@ -10,133 +10,81 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Hide Scrollbar for Horizontal Scroll areas */
 .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-}
-.scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  display: none;
 }
 
-/* --- SHARED ANIMATIONS --- */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
 @keyframes playfulWave {
-  0%, 80%, 100% { transform: translateY(0) rotate(0deg); }
-  10% { transform: translateY(-12px) rotate(-3deg); }
-  20% { transform: translateY(0) rotate(3deg); }
-  30% { transform: translateY(-6px) rotate(-2deg); }
-  40% { transform: translateY(0) rotate(0deg); }
+
+  0%,
+  80%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  10% {
+    transform: translateY(-12px) rotate(-3deg);
+  }
+
+  20% {
+    transform: translateY(0) rotate(3deg);
+  }
+
+  30% {
+    transform: translateY(-6px) rotate(-2deg);
+  }
+
+  40% {
+    transform: translateY(0) rotate(0deg);
+  }
 }
 
 @keyframes drawScribble {
-  to { opacity: 1; transform: scaleX(1); }
-}
-.animate-draw-scribble {
-  animation: drawScribble 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
 }
 
 @keyframes morph {
-  0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-}
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
 
-@keyframes rotateRock {
-  0% { transform: rotate(-25deg); }
-  50% { transform: rotate(25deg); }
-  100% { transform: rotate(-25deg); }
-}
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
 
-@keyframes floatDoodle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-
-@keyframes waveHand {
-  0% { transform: rotate(0deg); }
-  10% { transform: rotate(14deg); }
-  20% { transform: rotate(-8deg); }
-  30% { transform: rotate(14deg); }
-  40% { transform: rotate(-4deg); }
-  50% { transform: rotate(10deg); }
-  60% { transform: rotate(0deg); }
-  100% { transform: rotate(0deg); }
-}
-.animate-wave {
-  animation: waveHand 2s infinite;
-}
-
-@keyframes spinSlow { 
-  100% { transform: translate(-50%, -50%) rotate(360deg); } 
-}
-
-@keyframes floatNode {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-.animate-float-node {
-  animation: floatNode 4s ease-in-out infinite;
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
 }
 
 @keyframes floatDecor {
-   0%, 100% { transform: translateY(0) rotate(0deg); }
-   50% { transform: translateY(-15px) rotate(5deg); }
-}
-.animate-float-decor {
-    animation: floatDecor 6s ease-in-out infinite;
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
 }
 
 @keyframes popIn {
-  from { transform: scale(0) translateY(20px); opacity: 0; }
-  to { transform: scale(1) translateY(0); opacity: 1; }
-}
-.animate-pop-in {
-    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s backwards;
-}
-
-
-/* === COMPONENT STYLES === */
-
-/* FadeIn */
-.fade-in-section {
+  from {
+    transform: scale(0) translateY(20px);
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.fade-in-visible {
+  }
+
+  to {
+    transform: scale(1) translateY(0);
     opacity: 1;
-    transform: none;
+  }
 }
-
-/* Testimonials Gradients */
-.t-gradient-insta { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
-.t-gradient-indigo-pink { background: linear-gradient(to bottom right, #4f46e5, #ec4899); }
-.t-gradient-cyan-blue { background: linear-gradient(to bottom right, #06b6d4, #3b82f6); }
-.t-gradient-amber-red { background: linear-gradient(to bottom right, #f59e0b, #ef4444); }
-.t-gradient-violet-fuchsia { background: linear-gradient(to bottom right, #8b5cf6, #d946ef); }
-
-/* Toy Component */
-.toy-item {
-  width: 56px; height: 70px; display: flex; flex-direction: column; align-items: center;
-  position: relative; transition: transform 0.2s, filter 0.2s; user-select: none;
-  z-index: 10; transform-origin: top center;
-  touch-action: none;
-  justify-content: flex-end;
-}
-.toy-item.is-draggable { cursor: grab; animation: swayIdle 4s ease-in-out infinite alternate; }
-.toy-item.is-draggable:hover { transform: scale(1.1); filter: brightness(1.1); z-index: 20; animation: sway 2s ease-in-out infinite; }
-.toy-item.is-draggable:active { cursor: grabbing; transform: scale(1.15) !important; animation: none; filter: drop-shadow(0 15px 20px rgba(0,0,0,0.4)); z-index: 100; }
-.toy-item.is-sorted { cursor: default; filter: none !important; }
-
-.toy-hanger-loop { width: 8px; height: 8px; border: 2px solid #d1d5db; border-radius: 50%; margin-bottom: -4px; z-index: 1; }
-.toy-hanger-cap {
-  width: 14px; height: 10px; background: linear-gradient(90deg, #9ca3af, #f3f4f6, #6b7280);
-  border-radius: 3px 3px 1px 1px; box-shadow: 0 2px 4px rgba(0,0,0,0.3); z-index: 5; position: relative;
-}
-.toy-hanger-cap::after {
-  content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 3px;
-  background: rgba(0,0,0,0.2); border-radius: 0 0 2px 2px;
-}
-
-

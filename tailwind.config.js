@@ -42,14 +42,9 @@ const config = {
       animation: {
         'playful-wave': 'playfulWave 3s ease-in-out infinite',
         'morph': 'morph 8s ease-in-out infinite',
-        'rotate-rock': 'rotateRock 5s ease-in-out infinite',
-        'float': 'floatDoodle 4s ease-in-out infinite',
-        'spin-slow': 'spinSlow 60s linear infinite',
         'float-decor': 'floatDecor 6s ease-in-out infinite',
         'pop-in': 'popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s backwards',
         'draw-scribble': 'drawScribble 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
-        'float-node': 'floatNode 4s ease-in-out infinite',
-        'pulse-green': 'pulseGreen 1.5s infinite',
       }
     },
   },
@@ -57,4 +52,3 @@ const config = {
 };
 
 export default config;
-

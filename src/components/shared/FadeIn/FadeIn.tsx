@@ -45,8 +45,8 @@ export const FadeIn = ({
     <div
       ref={domRef}
       className={cn(
-        "fade-in-section",
-        isVisible && "fade-in-visible",
+        "opacity-0 translate-y-5 transition-all duration-[600ms] ease-out",
+        isVisible && "opacity-100 translate-y-0",
         className
       )}
       style={{ transitionDelay: `${delay}s`, ...style }}
