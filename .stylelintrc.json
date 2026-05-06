@@ -1,0 +1,44 @@
+{
+  "extends": [
+    "stylelint-config-standard"
+  ],
+  "rules": {
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "except": [
+          "blockless-after-same-name-blockless",
+          "first-nested"
+        ],
+        "ignore": [
+          "after-comment"
+        ],
+        "ignoreAtRules": [
+          "import",
+          "tailwind",
+          "apply",
+          "variants",
+          "responsive",
+          "screen"
+        ]
+      }
+    ],
+    "declaration-empty-line-before": "never",
+    "no-descending-specificity": null,
+    "rule-empty-line-before": [
+      "always",
+      {
+        "except": [
+          "first-nested"
+        ],
+        "ignore": [
+          "after-comment"
+        ]
+      }
+    ],
+    "selector-class-pattern": "^[a-z][a-zA-Z0-9-]*$",
+    "keyframes-name-pattern": "^[a-z][a-zA-Z0-9-]*$",
+    "no-duplicate-selectors": null,
+    "import-notation": "string"
+  }
+}
