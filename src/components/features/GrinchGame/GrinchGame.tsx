@@ -9,7 +9,7 @@ import { useGrinchGame, useImagePreloader } from "@/hooks";
 
 import { GRINCH_GAME_ASSETS } from "./constants";
 import styles from "./GrinchGame.module.css";
-import { Toy } from "./parts/Toy";
+import { Toy } from "./Toy";
 
 interface GrinchGameProps {
   translations: {

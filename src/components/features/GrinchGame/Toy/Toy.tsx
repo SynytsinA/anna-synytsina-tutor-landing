@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 
-import styles from "../GrinchGame.module.css";
+import styles from "./Toy.module.css";
 
 interface ToyProps {
   num: number;
