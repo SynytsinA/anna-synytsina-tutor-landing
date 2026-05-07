@@ -1,22 +1,16 @@
 "use client";
 
 import { Plus, Minus, MessageCircleQuestion } from "lucide-react";
-import React, { useState } from "react";
+import React from "react";
 
 import { FadeIn } from "@/components/shared/FadeIn";
-import { FAQ_CONFIG } from "@/constants/landing";
-import { useLanguage } from "@/context/LanguageContext";
+import { SECTIONS_METADATA } from "@/constants/data";
+import { useFAQ } from "@/hooks/useFAQ";
+
+const { faq: config } = SECTIONS_METADATA;
 
 export const FAQ = () => {
-  const { t: allTranslations } = useLanguage();
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const t = allTranslations.faq;
-  const { colorClasses } = FAQ_CONFIG;
-
-  const toggleItem = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
+  const { t, openIndex, toggleItem } = useFAQ();
 
   return (
     <section className="py-20 bg-white" id="faq">
@@ -31,16 +25,17 @@ export const FAQ = () => {
         </FadeIn>
 
         <div className="flex flex-col gap-5 max-w-[800px] mx-auto">
-          {t.items.map((item: { q: string; a: string }, index: number) => {
+          {t.items.map((item, index) => {
             const isOpen = openIndex === index;
-            const colorClass = colorClasses[index % colorClasses.length];
+            const colorClass = config.colorClasses[index % config.colorClasses.length];
 
             return (
               <FadeIn
                 key={index}
                 delay={index * 0.1}
-                className={`bg-white border-2 border-slate-900 rounded-2xl shadow-hard overflow-hidden transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-lg ${colorClass} ${isOpen ? "translate-x-0.5 translate-y-0.5 shadow-[2px_2px_0px_#0f172a]" : ""
-                  }`}
+                className={`bg-white border-2 border-slate-900 rounded-2xl shadow-hard overflow-hidden transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-lg ${colorClass} ${
+                  isOpen ? "translate-x-0.5 translate-y-0.5 shadow-[2px_2px_0px_#0f172a]" : ""
+                }`}
               >
                 <button
                   className="w-full flex justify-between items-center p-6 bg-transparent border-none cursor-pointer text-left focus:outline-none"

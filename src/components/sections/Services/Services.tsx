@@ -4,9 +4,12 @@ import { Backpack, BookOpen, Pencil, CheckCircle } from "lucide-react";
 import React from "react";
 
 import { FadeIn } from "@/components/shared/FadeIn";
-import { LANDING_SECTIONS, SERVICES_CONFIG } from "@/constants/landing";
-import { useLanguage } from "@/context/LanguageContext";
+import { HERO_DATA, SECTIONS_METADATA } from "@/constants/data";
+import { useServices } from "@/hooks/useServices";
 import { cn } from "@/utils/cn";
+
+const { sections } = HERO_DATA;
+const { services: config } = SECTIONS_METADATA;
 
 const getIcon = (iconName: string) => {
   switch (iconName) {
@@ -35,21 +38,19 @@ const getBgClass = (index: number) => {
 };
 
 export const Services = () => {
-  const { t } = useLanguage();
-  const servicesT = t.subjects; // Known as 'subjects' in translations but 'Services' in UI
-  const cards = servicesT.cards || [];
+  const { t, cards } = useServices();
 
   return (
-    <section className="py-20 bg-white" id={LANDING_SECTIONS.subjects}>
+    <section className="py-20 bg-white" id={sections.subjects}>
       <div className="max-w-[1200px] mx-auto px-5">
         <FadeIn>
           <h2 className="text-4xl font-heading font-bold text-slate-900 mb-5 text-center">
-            {servicesT.title}
+            {t.title}
           </h2>
         </FadeIn>
 
-        <div className={cn("grid gap-8", SERVICES_CONFIG.grid)}>
-          {cards.map((card, index: number) => (
+        <div className={cn("grid gap-8", config.grid)}>
+          {cards.map((card, index) => (
             <FadeIn
               key={index}
               className="bg-white rounded-3xl p-8 border-[3px] border-slate-900 transition-all duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] flex flex-col gap-6 h-full shadow-[6px_6px_0px_rgba(15,23,42,0.1)] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg hover:border-slate-900"
@@ -69,7 +70,7 @@ export const Services = () => {
                 </h3>
                 <p className="mb-4 text-slate-700">{card.desc}</p>
                 <ul className="flex flex-col gap-3 m-0 p-0 list-none">
-                  {card.list.map((item: string, i: number) => (
+                  {card.list.map((item, i) => (
                     <li
                       key={i}
                       className="flex items-start gap-2.5 text-slate-700 font-semibold text-[0.95rem] leading-[1.4]"

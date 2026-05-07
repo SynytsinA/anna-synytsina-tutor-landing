@@ -5,8 +5,10 @@ import React from "react";
 
 import { HeroQuiz } from "@/components/features/HeroQuiz";
 import { FadeIn } from "@/components/shared/FadeIn";
-import { HERO_CONFIG, LANDING_SECTIONS } from "@/constants/landing";
-import { useLanguage } from "@/context/LanguageContext";
+import { HERO_DATA } from "@/constants/data";
+import { useHero } from "@/hooks/useHero";
+
+const { config, sections } = HERO_DATA;
 
 const InteractiveWord = ({ word }: { word: string }) => {
   return (
@@ -16,9 +18,8 @@ const InteractiveWord = ({ word }: { word: string }) => {
           key={i}
           className="inline-block animate-playful-wave origin-bottom"
           style={{
-            animationDelay: `${i * HERO_CONFIG.interactiveWordDelay}s`,
-            color:
-              i % 3 === 0 ? "#4f46e5" : i % 3 === 1 ? "#ec4899" : "#f59e0b",
+            animationDelay: `${i * config.interactiveWordDelay}s`,
+            color: i % 3 === 0 ? "#4f46e5" : i % 3 === 1 ? "#ec4899" : "#f59e0b",
           }}
         >
           {char}
@@ -26,7 +27,7 @@ const InteractiveWord = ({ word }: { word: string }) => {
       ))}
       <svg
         className="absolute -bottom-3 left-0 w-full h-[15px] -z-10 opacity-0 scale-x-0 origin-left animate-draw-scribble"
-        style={{ animationDelay: HERO_CONFIG.scribbleDelay }}
+        style={{ animationDelay: config.scribbleDelay }}
         viewBox="0 0 200 9"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -43,43 +44,23 @@ const InteractiveWord = ({ word }: { word: string }) => {
 };
 
 export const Hero = () => {
-  const { t } = useLanguage();
-
-  const handleScroll = (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const titleStartString = t.hero.titleStart || "";
-  const firstSpaceIndex = titleStartString.indexOf(" ");
-
-  let firstWord = titleStartString;
-  let restOfTitle = "";
-
-  if (firstSpaceIndex !== -1) {
-    firstWord = titleStartString.substring(0, firstSpaceIndex);
-    restOfTitle = titleStartString.substring(firstSpaceIndex);
-  }
+  const { t, handleScroll, firstWord, restOfTitle } = useHero();
 
   return (
     <header className="pt-32 pb-20 md:pt-40 md:pb-32 bg-[#fffdf5] relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_2px,transparent_2px)] bg-[length:30px_30px] opacity-50 z-0"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_2px,transparent_2px)] bg-[length:30px_30px] opacity-50 z-0" />
 
       <div className="max-w-[1200px] mx-auto px-5 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-20 items-center">
-          {/* Left Side - Content */}
           <div className="flex flex-col items-start order-1">
-            <FadeIn delay={HERO_CONFIG.fadeDelays.badge}>
+            <FadeIn delay={config.fadeDelays.badge}>
               <div className="inline-flex items-center gap-2 bg-white border-2 border-slate-900 rounded-hand px-5 py-2 font-hand font-bold text-xl text-slate-900 tracking-wide shadow-hard-orange mb-8 -rotate-2">
-                <span>{HERO_CONFIG.badgeIcon}</span>
+                <span>{config.badgeIcon}</span>
                 {t.hero.tag}
               </div>
             </FadeIn>
 
-            <FadeIn delay={HERO_CONFIG.fadeDelays.title}>
+            <FadeIn delay={config.fadeDelays.title}>
               <h1 className="text-[3rem] sm:text-[3.5rem] md:text-[4.5rem] leading-[1.1] text-slate-900 font-heading font-semibold mb-6">
                 <InteractiveWord word={firstWord} />
                 {restOfTitle} <br />
@@ -102,26 +83,26 @@ export const Hero = () => {
               </h1>
             </FadeIn>
 
-            <FadeIn delay={HERO_CONFIG.fadeDelays.subtitle}>
+            <FadeIn delay={config.fadeDelays.subtitle}>
               <p className="text-xl leading-relaxed text-slate-700 max-w-[500px] mb-10 font-medium">
                 {t.hero.subtitle}
               </p>
             </FadeIn>
 
             <FadeIn
-              delay={HERO_CONFIG.fadeDelays.actions}
+              delay={config.fadeDelays.actions}
               className="flex flex-wrap gap-5 items-center"
             >
               <a
-                href={`#${LANDING_SECTIONS.contact}`}
-                onClick={handleScroll(LANDING_SECTIONS.contact)}
+                href={`#${sections.contact}`}
+                onClick={handleScroll(sections.contact)}
                 className="bg-primary text-white px-8 py-4 rounded-hand font-hand text-2xl font-medium no-underline flex items-center gap-2 transition-all duration-200 shadow-hard-indigo border-2 border-black hover:-translate-y-1 hover:shadow-[0_12px_0px_#4338ca] active:translate-y-1 active:shadow-none"
               >
                 {t.hero.cta} <ArrowRight size={20} />
               </a>
               <a
-                href={`#${LANDING_SECTIONS.videoGallery}`}
-                onClick={handleScroll(LANDING_SECTIONS.videoGallery)}
+                href={`#${sections.videoGallery}`}
+                onClick={handleScroll(sections.videoGallery)}
                 className="flex items-center gap-2 font-bold text-slate-900 no-underline px-5 py-2.5 rounded-full transition-colors duration-200 hover:bg-white hover:shadow-sm"
               >
                 <div className="w-12 h-12 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center text-secondary shadow-sm">
@@ -132,9 +113,8 @@ export const Hero = () => {
             </FadeIn>
           </div>
 
-          {/* Right Side - Interactive Quiz Widget */}
           <div className="flex flex-col items-center justify-center relative order-2 mb-8 lg:mb-0 w-full">
-            <FadeIn delay={HERO_CONFIG.fadeDelays.quiz} className="relative w-full flex justify-center">
+            <FadeIn delay={config.fadeDelays.quiz} className="relative w-full flex justify-center">
               <HeroQuiz />
             </FadeIn>
           </div>
