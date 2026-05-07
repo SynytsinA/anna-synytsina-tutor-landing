@@ -154,6 +154,7 @@ export const VideoGallery = () => {
       {modalVideoId !== null && modalVideo && (
         <div
           className="fixed inset-0 bg-black/90 backdrop-blur-xl z-[9999] flex items-center justify-center p-4 sm:p-10 animate-in fade-in duration-500"
+          data-testid="video-modal"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}

@@ -11,11 +11,38 @@ A modern, high-performance landing page and interactive educational platform bui
 
 * **Framework:** Next.js 16.2 (App Router)
 * **Language:** TypeScript 5.9 (Strict Mode)
-* **Testing:** Vitest & React Testing Library
+* **Testing:** Vitest, React Testing Library & Playwright (E2E)
 * **Styling:** Tailwind CSS 3.4
 * **Animations:** CSS Modules & Tailwind Utilities
-* **Code Quality:** ESLint & Husky (Pre-commit hooks)
+* **Code Quality:** ESLint, Stylelint & Husky (Pre-commit hooks)
 * **Deployment:** Vercel
+
+## 🧪 Testing
+
+This project maintains high quality standards with a multi-layered testing strategy:
+
+### Unit & Integration (Vitest)
+Used for testing individual components and custom hooks.
+```bash
+npm run test
+```
+
+### End-to-End & Visual (Playwright)
+Used for verifying critical user flows and UI stability across Chromium, Firefox, and WebKit (Safari).
+```bash
+npx playwright install # Install browsers first time
+npm run test:e2e       # Run all E2E tests
+```
+On failure, Playwright generates an HTML report and saves traces/videos for debugging.
+```bash
+npx playwright show-report
+```
+
+### Quality Gate
+Run the full validation suite before pushing changes:
+```bash
+npm run validate
+```
 
 ## ✨ Key Features
 

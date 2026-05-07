@@ -251,7 +251,7 @@ export const Navbar = ({ t, toggleLang }: NavbarProps) => {
                 onClick={toggleLang}
                 className="font-bold font-hand text-2xl text-slate-700 hover:text-primary transition-colors"
               >
-                {t.toggle === "🇺🇦 UA" ? "English" : "Українська"}
+                {t.toggle.includes("EN") ? "English" : "Українська"}
               </button>
 
               <a

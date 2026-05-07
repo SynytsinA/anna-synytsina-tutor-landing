@@ -1,4 +1,5 @@
 {
+  "ignoreFiles": ["playwright-report/**/*"],
   "extends": [
     "stylelint-config-standard"
   ],
