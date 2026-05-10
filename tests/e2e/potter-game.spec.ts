@@ -62,8 +62,10 @@ test.describe('Potter Game', () => {
   });
 
   test('completes the game and shows success message', async ({ page }) => {
+    test.slow(); // multiple fills + state transitions need extra time in CI
+
     const inputs = page.locator('input[type="text"]');
-    
+
     const answers = [
       "КВІДІЧ",
       "МАНТІЯ",
@@ -75,18 +77,17 @@ test.describe('Potter Game', () => {
       "ВАСИЛІСК"
     ];
 
-    // Fill all answers
+    // Fill all answers sequentially, waiting for each to be disabled
     for (let i = 0; i < answers.length; i++) {
       await inputs.nth(i).fill(answers[i]);
-      // Verify it's disabled after typing correct answer
-      await expect(inputs.nth(i)).toBeDisabled();
+      await expect(inputs.nth(i)).toBeDisabled({ timeout: 10000 });
     }
 
     // After all are solved, success message should appear
-    await expect(page.getByText('Виграш Гриффіндору!')).toBeVisible();
+    await expect(page.getByText('Виграш Гриффіндору!')).toBeVisible({ timeout: 10000 });
 
     // The progress track should disappear since allFinished is true
     const progressTrack = page.locator('[class*="snitchProgressTrack"]');
-    await expect(progressTrack).not.toBeVisible();
+    await expect(progressTrack).not.toBeVisible({ timeout: 5000 });
   });
 });
