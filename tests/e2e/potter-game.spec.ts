@@ -3,15 +3,16 @@ import { test, expect } from '@playwright/test';
 test.describe('Potter Game', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
-    
+    await page.waitForLoadState('networkidle');
+
     // Search for the section title containing the game text (UA)
     const gameSection = page.locator('#games');
     await gameSection.scrollIntoViewIfNeeded();
 
     // Click "Start Lesson" button
     const startButton = page.getByRole('button', { name: /Почати Урок/i });
-    await expect(startButton).toBeVisible();
-    await startButton.click({ force: true });
+    await expect(startButton).toBeInViewport();
+    await startButton.click();
 
     // Wait for the PotterGame container to be visible
     const gameContainer = page.locator('[class*="potterGameContainer"]');
@@ -36,7 +37,7 @@ test.describe('Potter Game', () => {
 
     // First puzzle scrambled is "ІЧКВДІ", answer is "КВІДІЧ"
     const firstInput = inputs.nth(0);
-    
+
     // Type incorrect answer
     await firstInput.fill('НЕПРАВИЛЬНО');
     // It shouldn't get disabled
@@ -55,7 +56,7 @@ test.describe('Potter Game', () => {
     const progressFill = page.locator('[class*="snitchProgressFill"]');
     // The width should be > 0% now. 1/8 * 100 = 12.5%
     await expect(progressFill).toHaveAttribute('style', 'width: 12.5%;');
-    
+
     // Verify wax seal shows a checkmark for the first solved puzzle (by checking class)
     const firstCard = page.locator('[class*="potterParchmentCard"]').nth(0);
     await expect(firstCard).toHaveClass(/solved/);
