@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 
-import styles from "./Toy.module.css";
+import { cn } from "@/utils/cn";
 
 interface ToyProps {
   num: number;
@@ -88,11 +88,15 @@ export const Toy: React.FC<ToyProps> = ({
   };
 
   const renderToyContent = () => {
+    const commonNumClass = "text-[1.5rem] font-bold text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.6)] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none";
+    const wrapperClass = "w-[54px] h-[54px] relative drop-shadow-[0_4px_6px_rgba(0,0,0,0.3)]";
+    const svgClass = "w-full h-full block";
+
     switch (variant) {
       case 1:
         return (
-          <div className={styles.toyShapeWrapper}>
-            <svg viewBox="0 0 50 50" className={styles.toySvgShape}>
+          <div className={wrapperClass}>
+            <svg viewBox="0 0 50 50" className={svgClass}>
               <defs>
                 <linearGradient id="treeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
                   <stop offset="0%" stopColor="#86efac" />
@@ -110,13 +114,13 @@ export const Toy: React.FC<ToyProps> = ({
               <circle cx="14" cy="30" r="3" fill="#f87171" stroke="#991b1b" strokeWidth="0.5" />
               <circle cx="36" cy="30" r="3" fill="#60a5fa" stroke="#1e40af" strokeWidth="0.5" />
             </svg>
-            <span className={styles.toyNum}>{num}</span>
+            <span className={commonNumClass}>{num}</span>
           </div>
         );
       case 2:
         return (
-          <div className={styles.toyShapeWrapper}>
-            <svg viewBox="0 0 50 50" className={styles.toySvgShape}>
+          <div className={wrapperClass}>
+            <svg viewBox="0 0 50 50" className={svgClass}>
               <defs>
                 <linearGradient id="starGold" x1="0%" y1="0%" x2="0%" y2="100%">
                   <stop offset="0%" stopColor="#fde047" />
@@ -131,13 +135,13 @@ export const Toy: React.FC<ToyProps> = ({
                 strokeLinejoin="round"
               />
             </svg>
-            <span className={styles.toyNum}>{num}</span>
+            <span className={commonNumClass}>{num}</span>
           </div>
         );
       case 3:
         return (
-          <div className={styles.toyShapeWrapper}>
-            <svg viewBox="0 0 50 50" className={styles.toySvgShape}>
+          <div className={wrapperClass}>
+            <svg viewBox="0 0 50 50" className={svgClass}>
               <pattern
                 id="candyStripes"
                 patternUnits="userSpaceOnUse"
@@ -156,16 +160,24 @@ export const Toy: React.FC<ToyProps> = ({
                 fill="none"
               />
             </svg>
-            <span className={`${styles.toyNum} ${styles.candyNum}`}>{num}</span>
+            <span className={cn(
+              "absolute z-20 pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#14532d] text-[1.6rem] font-extrabold [text-shadow:1.5px_1.5px_0_#fff,-1.5px_1.5px_0_#fff,1.5px_-1.5px_0_#fff,-1.5px_-1.5px_0_#fff,0_2px_5px_rgba(0,0,0,0.3)]"
+            )}>{num}</span>
           </div>
         );
       case 0:
       case 4:
       default:
         return (
-          <div className={styles.toyBody}>
-            <div className={styles.toyHighlight} />
-            <span className={styles.toyNum}>{num}</span>
+          <div 
+            data-testid="toy-body"
+            className={cn(
+              "w-full h-full rounded-full flex items-center justify-center shadow-[2px_5px_10px_rgba(0,0,0,0.3)] relative overflow-hidden",
+              variant === 0 ? "bg-[radial-gradient(circle_at_30%_30%,#f87171,#991b1b)]" : "bg-[radial-gradient(circle_at_30%_30%,#2dd4bf,#0f766e)]"
+            )}
+          >
+            <div className="absolute top-[10%] left-[10%] w-[40%] h-[40%] bg-[radial-gradient(circle,rgba(251,255,255,0.8)_0%,transparent_70%)] rounded-full" />
+            <span className={commonNumClass}>{num}</span>
           </div>
         );
     }
@@ -174,15 +186,19 @@ export const Toy: React.FC<ToyProps> = ({
   return (
     <div
       ref={elementRef}
-      className={`${styles.toyItem} ${styles[`toyVariant${variant}`]} ${isDraggable ? "cursor-grab active:cursor-grabbing" : ""}`}
+      data-testid="toy-item"
+      className={cn(
+        "w-[50px] h-[50px] relative select-none",
+        isDraggable && "cursor-grab active:cursor-grabbing"
+      )}
       style={{ touchAction: isDraggable ? "none" : "auto" }}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerCancel={handlePointerUp}
     >
-      <div className={styles.toyHangerLoop} />
-      <div className={styles.toyHangerCap} />
+      <div className="absolute top-[-8px] left-1/2 -translate-x-1/2 w-[12px] h-[12px] border-2 border-[#ccc] rounded-full border-b-0 z-0" />
+      <div className="absolute top-[-2px] left-1/2 -translate-x-1/2 w-[18px] h-[8px] bg-[#999] rounded-[3px] z-[1]" />
       {renderToyContent()}
     </div>
   );
