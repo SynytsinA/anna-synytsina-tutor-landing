@@ -37,10 +37,10 @@ describe("Toy", () => {
 
   it("renders circular variant for variant 0 and 4", () => {
     const { container: container0 } = render(<Toy num={5} />);
-    expect(container0.querySelector("[class*='toyBody']")).toBeInTheDocument();
+    expect(container0.querySelector("[data-testid='toy-body']")).toBeInTheDocument();
 
     const { container: container4 } = render(<Toy num={4} />);
-    expect(container4.querySelector("[class*='toyBody']")).toBeInTheDocument();
+    expect(container4.querySelector("[data-testid='toy-body']")).toBeInTheDocument();
   });
 
   it("handles dragging behavior when isDraggable is true", () => {

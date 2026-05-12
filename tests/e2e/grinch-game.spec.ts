@@ -29,7 +29,7 @@ async function pointerDrag(page: Page, source: Locator, target: Locator) {
     proto.hasPointerCapture = () => true;
 
     const el = document.elementFromPoint(startX, startY);
-    const toy = (el?.closest('[class*="toyItem"]') || el) as HTMLElement | null;
+    const toy = (el?.closest('[data-testid="toy-item"]') || el) as HTMLElement | null;
 
     if (toy) {
       const opts: PointerEventInit = {
@@ -69,7 +69,7 @@ test.describe('Grinch Game', () => {
     await expect(startButton).toBeVisible();
     await startButton.click({ force: true });
 
-    const gameContainer = page.locator('[class*="grinchGameContainer"]');
+    const gameContainer = page.getByTestId('grinch-game-container');
     await expect(gameContainer).toBeVisible({ timeout: 20000 });
   });
 
@@ -77,9 +77,9 @@ test.describe('Grinch Game', () => {
     await expect(page.getByText('Допоможи Грінчу посортувати іграшки!')).toBeVisible();
     await expect(page.getByText('Парні числа', { exact: true })).toBeVisible();
     await expect(page.getByText('Непарні числа', { exact: true })).toBeVisible();
-    await expect(page.locator('#zone-even [class*="toyItem"]')).toHaveCount(0);
-    await expect(page.locator('#zone-odd [class*="toyItem"]')).toHaveCount(0);
-    await expect(page.locator('[class*="numberPool"] [class*="toyItem"]')).toHaveCount(10);
+    await expect(page.locator('#zone-even').getByTestId('toy-item')).toHaveCount(0);
+    await expect(page.locator('#zone-odd').getByTestId('toy-item')).toHaveCount(0);
+    await expect(page.getByTestId('number-pool').getByTestId('toy-item')).toHaveCount(10);
   });
 
   test('drops an even number into the even zone correctly', async ({ page, isMobile }) => {
@@ -87,11 +87,11 @@ test.describe('Grinch Game', () => {
     test.slow();
     await pointerDrag(
       page,
-      page.locator('[class*="numberPool"] [class*="toyItem"]').filter({ hasText: '8' }),
+      page.getByTestId('number-pool').getByTestId('toy-item').filter({ hasText: '8' }),
       page.locator('#zone-even'),
     );
-    await expect(page.locator('#zone-even [class*="toyItem"]')).toHaveCount(1);
-    await expect(page.locator('[class*="numberPool"] [class*="toyItem"]')).toHaveCount(9);
+    await expect(page.locator('#zone-even').getByTestId('toy-item')).toHaveCount(1);
+    await expect(page.getByTestId('number-pool').getByTestId('toy-item')).toHaveCount(9);
   });
 
   test('drops an odd number into the odd zone correctly', async ({ page, isMobile }) => {
@@ -99,11 +99,11 @@ test.describe('Grinch Game', () => {
     test.slow();
     await pointerDrag(
       page,
-      page.locator('[class*="numberPool"] [class*="toyItem"]').filter({ hasText: '9' }).first(),
+      page.getByTestId('number-pool').getByTestId('toy-item').filter({ hasText: '9' }).first(),
       page.locator('#zone-odd'),
     );
-    await expect(page.locator('#zone-odd [class*="toyItem"]')).toHaveCount(1);
-    await expect(page.locator('[class*="numberPool"] [class*="toyItem"]')).toHaveCount(9);
+    await expect(page.locator('#zone-odd').getByTestId('toy-item')).toHaveCount(1);
+    await expect(page.getByTestId('number-pool').getByTestId('toy-item')).toHaveCount(9);
   });
 
   test('flashes error when dropping even number into odd zone', async ({ page, isMobile }) => {
@@ -112,12 +112,12 @@ test.describe('Grinch Game', () => {
     const oddZone = page.locator('#zone-odd');
     await pointerDrag(
       page,
-      page.locator('[class*="numberPool"] [class*="toyItem"]').filter({ hasText: '8' }),
+      page.getByTestId('number-pool').getByTestId('toy-item').filter({ hasText: '8' }),
       oddZone,
     );
     // errorFlash lasts 600ms — poll immediately after drop
     await expect(oddZone).toHaveClass(/errorFlash/, { timeout: 1000 });
-    await expect(page.locator('[class*="numberPool"] [class*="toyItem"]')).toHaveCount(10);
+    await expect(page.getByTestId('number-pool').getByTestId('toy-item')).toHaveCount(10);
   });
 
   test('flashes error when dropping odd number into even zone', async ({ page, isMobile }) => {
@@ -126,11 +126,11 @@ test.describe('Grinch Game', () => {
     const evenZone = page.locator('#zone-even');
     await pointerDrag(
       page,
-      page.locator('[class*="numberPool"] [class*="toyItem"]').filter({ hasText: '9' }).first(),
+      page.getByTestId('number-pool').getByTestId('toy-item').filter({ hasText: '9' }).first(),
       evenZone,
     );
     await expect(evenZone).toHaveClass(/errorFlash/, { timeout: 1000 });
-    await expect(page.locator('[class*="numberPool"] [class*="toyItem"]')).toHaveCount(10);
+    await expect(page.getByTestId('number-pool').getByTestId('toy-item')).toHaveCount(10);
   });
 
   test('completes the game after sorting all toys correctly', async ({ page, isMobile }) => {
@@ -142,21 +142,21 @@ test.describe('Grinch Game', () => {
     for (const num of [8, 10, 4, 6, 2]) {
       await pointerDrag(
         page,
-        page.locator('[class*="numberPool"] [class*="toyItem"]').filter({ hasText: String(num) }).first(),
+        page.getByTestId('number-pool').getByTestId('toy-item').filter({ hasText: String(num) }).first(),
         evenZone,
       );
     }
     for (const num of [1, 9, 3, 7, 5]) {
       await pointerDrag(
         page,
-        page.locator('[class*="numberPool"] [class*="toyItem"]').filter({ hasText: String(num) }).first(),
+        page.getByTestId('number-pool').getByTestId('toy-item').filter({ hasText: String(num) }).first(),
         oddZone,
       );
     }
 
-    await expect(page.locator('[class*="poolEmpty"]')).toBeVisible({ timeout: 10000 });
-    await expect(page.locator('[class*="poolEmpty"]')).toContainText('Все розсортовано!');
-    await expect(page.locator('[class*="successBadge"]')).toBeVisible({ timeout: 10000 });
-    await expect(page.locator('[class*="successBadge"]')).toContainText('Чудова робота!');
+    await expect(page.getByTestId('pool-empty')).toBeVisible({ timeout: 10000 });
+    await expect(page.getByTestId('pool-empty')).toContainText('Все розсортовано!');
+    await expect(page.getByTestId('success-badge')).toBeVisible({ timeout: 10000 });
+    await expect(page.getByTestId('success-badge')).toContainText('Чудова робота!');
   });
 });

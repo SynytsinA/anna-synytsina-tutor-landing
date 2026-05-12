@@ -41,7 +41,7 @@ export const GrinchGame = ({ translations }: GrinchGameProps) => {
   }
 
   return (
-    <div className={`${styles.grinchGameContainer} animate-in fade-in duration-700`}>
+    <div data-testid="grinch-game-container" className={`${styles.grinchGameContainer} animate-in fade-in duration-700`}>
       {/* Decorative Background Elements */}
       <div className={styles.grinchBgCity} />
       <div className={styles.grinchBgOverlay} />
@@ -78,11 +78,11 @@ export const GrinchGame = ({ translations }: GrinchGameProps) => {
 
       <div className={styles.grinchHeader}>
         <h3>{translations.grinchTask}</h3>
-        {isComplete && <div className={styles.successBadge}>{translations.success}</div>}
+        {isComplete && <div data-testid="success-badge" className={styles.successBadge}>{translations.success}</div>}
       </div>
 
       {/* Number Pool */}
-      <div className={styles.numberPool}>
+      <div data-testid="number-pool" className={styles.numberPool}>
         {pool.map((num) => (
           <Toy
             key={num}
@@ -92,7 +92,7 @@ export const GrinchGame = ({ translations }: GrinchGameProps) => {
           />
         ))}
         {pool.length === 0 && (
-          <div className={styles.poolEmpty}>{translations.empty}</div>
+          <div data-testid="pool-empty" className={styles.poolEmpty}>{translations.empty}</div>
         )}
       </div>
 
