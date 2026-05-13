@@ -118,7 +118,7 @@ export const VIDEO_GALLERY_METADATA = [
   },
   {
     id: 5,
-    src: "/videos/urok-matematyky-online-home-pochatkovi-klasy-3.mp4",
+    src: "/videos/urok-matematyky-online-pochatkovi-klasy-3.mp4",
     poster: "/images/posters/urok-matematyky-online-pochatkovi-klasy-3.webp",
   },
   {
