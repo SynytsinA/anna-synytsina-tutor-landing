@@ -116,7 +116,7 @@ test.describe('Grinch Game', () => {
       oddZone,
     );
     // errorFlash lasts 600ms — poll immediately after drop
-    await expect(oddZone).toHaveClass(/errorFlash/, { timeout: 1000 });
+    await expect(oddZone).toHaveClass(/error-flash/, { timeout: 1000 });
     await expect(page.getByTestId('number-pool').getByTestId('toy-item')).toHaveCount(10);
   });
 
@@ -129,7 +129,7 @@ test.describe('Grinch Game', () => {
       page.getByTestId('number-pool').getByTestId('toy-item').filter({ hasText: '9' }).first(),
       evenZone,
     );
-    await expect(evenZone).toHaveClass(/errorFlash/, { timeout: 1000 });
+    await expect(evenZone).toHaveClass(/error-flash/, { timeout: 1000 });
     await expect(page.getByTestId('number-pool').getByTestId('toy-item')).toHaveCount(10);
   });
 

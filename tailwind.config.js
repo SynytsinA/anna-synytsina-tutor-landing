@@ -45,7 +45,17 @@ const config = {
         'float-decor': 'floatDecor 6s ease-in-out infinite',
         'pop-in': 'popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s backwards',
         'draw-scribble': 'drawScribble 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
-      }
+        'pop-in-centered': 'popInCentered 0.5s ease-out forwards',
+      },
+      keyframes: {
+        popInCentered: {
+          '0%': { transform: 'translateX(-50%) scale(0)' },
+          '100%': { transform: 'translateX(-50%) scale(1)' },
+        },
+        snowFall: {
+          '100%': { transform: 'translate(0, 105vh)' },
+        },
+      },
     },
   },
   plugins: [],
