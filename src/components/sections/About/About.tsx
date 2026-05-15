@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  GraduationCap,
-  Briefcase,
-  Building2,
-  Quote,
-  Star,
-  Sparkles
-} from "lucide-react";
+import { Quote, Star, Sparkles } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
@@ -15,20 +8,8 @@ import { FadeIn } from "@/components/shared/FadeIn";
 import { ABOUT_METADATA, LANDING_SECTIONS } from "@/constants/landing";
 import { useLanguage } from "@/context/LanguageContext";
 
-const colorClasses = ["bg-indigo-50", "bg-pink-50", "bg-yellow-50"];
-
-const getIcon = (index: number) => {
-  switch (index) {
-    case 0:
-      return <Briefcase size={24} className="text-primary" />;
-    case 1:
-      return <GraduationCap size={24} className="text-secondary" />;
-    case 2:
-      return <Building2 size={24} className="text-accent" />;
-    default:
-      return <Briefcase size={24} />;
-  }
-};
+import { COLOR_CLASSES } from "./constants";
+import { getStatIcon } from "./utils";
 
 export const About = () => {
   const { t, lang } = useLanguage();
@@ -120,11 +101,12 @@ export const About = () => {
                   <FadeIn
                     key={index}
                     delay={0.2 + index * 0.1}
-                    className={`flex items-center gap-6 px-6 py-5 rounded-hand border-2 border-slate-900 shadow-hard transition-all duration-300 hover:translate-x-1 hover:-rotate-1 ${colorClasses[index % colorClasses.length]
-                      }`}
+                    className={`flex items-center gap-6 px-6 py-5 rounded-hand border-2 border-slate-900 shadow-hard transition-all duration-300 hover:translate-x-1 hover:-rotate-1 ${
+                      COLOR_CLASSES[index % COLOR_CLASSES.length]
+                    }`}
                   >
                     <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center border-2 border-slate-900 shrink-0 shadow-sm">
-                      {getIcon(index)}
+                      {getStatIcon(index)}
                     </div>
                     <div className="flex flex-col">
                       <h4 className="font-heading text-2xl font-bold text-slate-900 m-0 leading-none mb-1">
