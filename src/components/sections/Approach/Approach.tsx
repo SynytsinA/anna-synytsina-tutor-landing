@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  ShieldCheck,
-  Award,
-  Zap,
-  Sparkles,
-} from "lucide-react";
+import { Sparkles } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
@@ -13,19 +8,7 @@ import { FadeIn } from "@/components/shared/FadeIn";
 import { APPROACH_METADATA, LANDING_SECTIONS } from "@/constants/landing";
 import { useLanguage } from "@/context/LanguageContext";
 
-const icons = [ShieldCheck, Award, Zap, Sparkles];
-const colorClasses = [
-  "bg-rose-50",
-  "bg-indigo-50",
-  "bg-amber-50",
-  "bg-emerald-50",
-];
-const iconColorClasses = [
-  "text-rose-600",
-  "text-indigo-600",
-  "text-amber-600",
-  "text-emerald-600",
-];
+import { APPROACH_ICONS, COLOR_CLASSES, ICON_COLOR_CLASSES } from "./constants";
 
 export const Approach = () => {
   const { t, lang } = useLanguage();
@@ -47,9 +30,9 @@ export const Approach = () => {
           {/* Left: 4 Value Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 order-2 lg:order-1">
             {list.map((item, index: number) => {
-              const Icon = icons[index % icons.length];
-              const colorClass = colorClasses[index % colorClasses.length];
-              const iconColorClass = iconColorClasses[index % iconColorClasses.length];
+              const Icon = APPROACH_ICONS[index % APPROACH_ICONS.length];
+              const colorClass = COLOR_CLASSES[index % COLOR_CLASSES.length];
+              const iconColorClass = ICON_COLOR_CLASSES[index % ICON_COLOR_CLASSES.length];
 
               return (
                 <FadeIn
