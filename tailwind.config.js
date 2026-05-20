@@ -46,6 +46,8 @@ const config = {
         'pop-in': 'popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s backwards',
         'draw-scribble': 'drawScribble 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
         'pop-in-centered': 'popInCentered 0.5s ease-out forwards',
+        'float-node': 'floatNode 4s ease-in-out infinite',
+        'pulse-green': 'pulseGreenScale 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
         popInCentered: {
@@ -54,6 +56,15 @@ const config = {
         },
         snowFall: {
           '100%': { transform: 'translate(0, 105vh)' },
+        },
+        floatNode: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-15px)' },
+        },
+        pulseGreenScale: {
+          '0%': { transform: 'scale(1)', opacity: '0.7' },
+          '70%': { transform: 'scale(2.5)', opacity: '0' },
+          '100%': { transform: 'scale(2.5)', opacity: '0' },
         },
       },
     },
