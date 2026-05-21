@@ -8,9 +8,6 @@ import { HERO_DATA, SECTIONS_METADATA } from "@/constants/data";
 import { useServices } from "@/hooks/useServices";
 import { cn } from "@/utils/cn";
 
-const { sections } = HERO_DATA;
-const { services: config } = SECTIONS_METADATA;
-
 const getIcon = (iconName: string) => {
   switch (iconName) {
     case "backpack":
@@ -39,6 +36,8 @@ const getBgClass = (index: number) => {
 
 export const Services = () => {
   const { t, cards } = useServices();
+  const { sections } = HERO_DATA;
+  const { services: config } = SECTIONS_METADATA;
 
   return (
     <section className="py-20 bg-white" id={sections.subjects}>
