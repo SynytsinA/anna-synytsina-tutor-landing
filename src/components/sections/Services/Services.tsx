@@ -1,6 +1,6 @@
 "use client";
 
-import { Backpack, BookOpen, Pencil, CheckCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import React from "react";
 
 import { FadeIn } from "@/components/shared/FadeIn";
@@ -8,31 +8,7 @@ import { HERO_DATA, SECTIONS_METADATA } from "@/constants/data";
 import { useServices } from "@/hooks/useServices";
 import { cn } from "@/utils/cn";
 
-const getIcon = (iconName: string) => {
-  switch (iconName) {
-    case "backpack":
-      return <Backpack size={28} />;
-    case "book":
-      return <BookOpen size={28} />;
-    case "pencil":
-      return <Pencil size={28} />;
-    default:
-      return <BookOpen size={28} />;
-  }
-};
-
-const getBgClass = (index: number) => {
-  switch (index) {
-    case 0:
-      return "bg-rose-50 text-rose-600";
-    case 1:
-      return "bg-indigo-50 text-indigo-600";
-    case 2:
-      return "bg-amber-50 text-amber-600";
-    default:
-      return "bg-slate-50 text-slate-600";
-  }
-};
+import { getIcon, getBgClass } from "./utils";
 
 export const Services = () => {
   const { t, cards } = useServices();
