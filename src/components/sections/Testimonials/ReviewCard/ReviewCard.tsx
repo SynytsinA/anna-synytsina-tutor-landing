@@ -7,8 +7,8 @@ import React from "react";
 import { Avatar } from "@/components/ui/Avatar";
 import { Testimonial } from "@/types/landing";
 
-import styles from "./ReviewCard.module.css";
 import { ReviewSkeleton } from "../ReviewSkeleton";
+import { getGradientClass } from "./utils";
 
 interface ReviewCardProps {
   item: Testimonial;
@@ -18,17 +18,6 @@ interface ReviewCardProps {
 }
 
 const BLUR_DATA_URL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==";
-
-const getGradientClass = (index: number) => {
-  const classes = [
-    styles.insta,
-    styles.indigoPink,
-    styles.cyanBlue,
-    styles.amberRed,
-    styles.violetFuchsia,
-  ];
-  return classes[index % classes.length];
-};
 
 export const ReviewCard: React.FC<ReviewCardProps> = ({ item, index, onClick, isModal = false }) => {
   const [isLoading, setIsLoading] = React.useState(true);
