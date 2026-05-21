@@ -8,6 +8,7 @@ import { Avatar } from "@/components/ui/Avatar";
 import { Testimonial } from "@/types/landing";
 
 import { ReviewSkeleton } from "../ReviewSkeleton";
+import { BLUR_DATA_URL } from "./constants";
 import { getGradientClass } from "./utils";
 
 interface ReviewCardProps {
@@ -16,8 +17,6 @@ interface ReviewCardProps {
   onClick?: () => void;
   isModal?: boolean;
 }
-
-const BLUR_DATA_URL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==";
 
 export const ReviewCard: React.FC<ReviewCardProps> = ({ item, index, onClick, isModal = false }) => {
   const [isLoading, setIsLoading] = React.useState(true);
