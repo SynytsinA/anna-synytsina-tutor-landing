@@ -9,10 +9,9 @@ import { InteractiveWord } from "@/components/ui/InteractiveWord";
 import { HERO_DATA } from "@/constants/data";
 import { useHero } from "@/hooks/useHero";
 
-const { config, sections } = HERO_DATA;
-
 export const Hero = () => {
   const { t, handleScroll, firstWord, restOfTitle } = useHero();
+  const { config, sections } = HERO_DATA;
 
   return (
     <header className="pt-32 pb-20 md:pt-40 md:pb-32 bg-[#fffdf5] relative overflow-hidden">
@@ -30,10 +29,10 @@ export const Hero = () => {
 
             <FadeIn delay={config.fadeDelays.title}>
               <h1 className="text-[3rem] sm:text-[3.5rem] md:text-[4.5rem] leading-[1.1] text-slate-900 font-heading font-semibold mb-6">
-                <InteractiveWord 
-                  word={firstWord} 
-                  delayStep={config.interactiveWordDelay} 
-                  scribbleDelay={config.scribbleDelay} 
+                <InteractiveWord
+                  word={firstWord}
+                  delayStep={config.interactiveWordDelay}
+                  scribbleDelay={config.scribbleDelay}
                 />
                 {restOfTitle} <br />
                 <span className="relative inline-block text-primary">
