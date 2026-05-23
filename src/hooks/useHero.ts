@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 
+import { translations } from "@/constants/translations";
 import { useLanguage } from "@/context/LanguageContext";
 
 export const useHero = () => {
@@ -13,7 +14,8 @@ export const useHero = () => {
     }
   }, []);
 
-  const titleStartString = t.hero.titleStart || "";
+  const currentTranslations = t || translations.ua;
+  const titleStartString = currentTranslations.hero?.titleStart || translations.ua.hero.titleStart;
   const firstSpaceIndex = titleStartString.indexOf(" ");
 
   let firstWord = titleStartString;
@@ -25,9 +27,10 @@ export const useHero = () => {
   }
 
   return {
-    t,
+    t: currentTranslations,
     handleScroll,
     firstWord,
     restOfTitle,
   };
 };
+

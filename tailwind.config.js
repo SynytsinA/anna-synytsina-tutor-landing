@@ -48,6 +48,7 @@ const config = {
         'pop-in-centered': 'popInCentered 0.5s ease-out forwards',
         'float-node': 'floatNode 4s ease-in-out infinite',
         'pulse-green': 'pulseGreenScale 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'fade-in': 'fadeIn 0.6s ease-out forwards',
       },
       keyframes: {
         popInCentered: {

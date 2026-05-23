@@ -14,6 +14,7 @@ interface InteractiveSliderProps {
   maxWidth?: string;
   className?: string;
   containerClassName?: string;
+  immediate?: boolean;
 }
 
 export const InteractiveSlider: React.FC<InteractiveSliderProps> = ({
@@ -23,6 +24,7 @@ export const InteractiveSlider: React.FC<InteractiveSliderProps> = ({
   maxWidth = "1100px",
   className = "",
   containerClassName = "",
+  immediate = false,
 }) => {
   const { t } = useLanguage();
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -121,6 +123,7 @@ export const InteractiveSlider: React.FC<InteractiveSliderProps> = ({
         delay={0.2}
         className={`relative flex items-center justify-center mx-auto md:px-16 px-0`}
         style={{ maxWidth }}
+        immediate={immediate}
       >
         <button
           className="hidden md:flex absolute left-1 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border-2 border-orange-500 shadow-hard-orange items-center justify-center cursor-pointer z-20 text-orange-500 transition-all duration-200 hover:scale-110 hover:-rotate-3 hover:shadow-[6px_6px_0px_#ea580c] hover:border-orange-600 hover:text-orange-600 active:scale-95 active:shadow-none disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed outline-none focus:outline-none"

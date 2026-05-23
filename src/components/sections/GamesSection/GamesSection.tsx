@@ -39,19 +39,19 @@ export const GamesSection = () => {
 
       <div className="max-w-[1200px] mx-auto px-5 relative z-10">
         <div className="text-center mb-12">
-          <FadeIn>
+          <FadeIn immediate>
             <h2 className="text-4xl md:text-5xl font-harry text-white mb-6 drop-shadow-lg">
               {themesT.title}
             </h2>
           </FadeIn>
-          <FadeIn delay={0.1}>
+          <FadeIn delay={0.1} immediate>
             <p className="text-indigo-100 text-xl max-w-2xl mx-auto leading-relaxed font-medium">
               {themesT.desc}
             </p>
           </FadeIn>
         </div>
 
-        <FadeIn delay={0.2} className="max-w-[1000px] mx-auto">
+        <FadeIn delay={0.2} className="max-w-[1000px] mx-auto" immediate>
           {/* Custom Pill Switcher */}
           <div className="flex justify-center mb-10">
             <div className="bg-white/10 backdrop-blur-md p-1.5 rounded-full border border-white/20 inline-flex shadow-xl">

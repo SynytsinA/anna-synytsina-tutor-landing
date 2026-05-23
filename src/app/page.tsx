@@ -1,12 +1,31 @@
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+
 import { About } from "@/components/sections/About";
 import { Approach } from "@/components/sections/Approach";
 import { FAQ } from "@/components/sections/FAQ";
-import { GamesSection } from "@/components/sections/GamesSection";
+import { GamesSectionSkeleton } from "@/components/sections/GamesSection";
 import { GlobalClassroom } from "@/components/sections/GlobalClassroom";
 import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
 import { Testimonials } from "@/components/sections/Testimonials";
-import { VideoGallery } from "@/components/sections/VideoGallery";
+import { VideoGallerySkeleton } from "@/components/sections/VideoGallery";
+
+const VideoGallery = dynamic(
+  () => import("@/components/sections/VideoGallery").then((m) => m.VideoGallery),
+  {
+    ssr: true,
+    loading: () => <VideoGallerySkeleton />,
+  }
+);
+
+const GamesSection = dynamic(
+  () => import("@/components/sections/GamesSection").then((m) => m.GamesSection),
+  {
+    ssr: true,
+    loading: () => <GamesSectionSkeleton />,
+  }
+);
 
 export default function Home() {
   return (
@@ -15,11 +34,16 @@ export default function Home() {
       <About />
       <Services />
       <Approach />
-      <VideoGallery />
-      <GamesSection />
+      <Suspense fallback={<VideoGallerySkeleton />}>
+        <VideoGallery />
+      </Suspense>
+      <Suspense fallback={<GamesSectionSkeleton />}>
+        <GamesSection />
+      </Suspense>
       <GlobalClassroom />
       <Testimonials />
       <FAQ />
     </main>
   );
 }
+

@@ -8,6 +8,7 @@ import { Hero } from "./Hero";
 
 vi.mock("@/components/features/HeroQuiz", () => ({
   HeroQuiz: () => <div data-testid="mock-hero-quiz">Hero Quiz</div>,
+  HeroQuizSkeleton: () => <div data-testid="mock-hero-quiz-skeleton">Hero Quiz Skeleton</div>,
 }));
 
 vi.mock("@/components/shared/FadeIn", () => ({

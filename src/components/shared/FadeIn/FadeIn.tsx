@@ -9,6 +9,7 @@ interface FadeInProps {
   delay?: number;
   className?: string;
   style?: React.CSSProperties;
+  immediate?: boolean;
 }
 
 export const FadeIn = ({
@@ -16,11 +17,14 @@ export const FadeIn = ({
   delay = 0,
   className = "",
   style = {},
+  immediate = false,
 }: FadeInProps) => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(immediate);
   const domRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (immediate) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -39,17 +43,23 @@ export const FadeIn = ({
     return () => {
       if (currentRef) observer.unobserve(currentRef);
     };
-  }, []);
+  }, [immediate]);
 
   return (
     <div
       ref={domRef}
       className={cn(
-        "opacity-0 translate-y-5 transition-all duration-[600ms] ease-out",
+        immediate
+          ? "opacity-0 translate-y-5 animate-fade-in"
+          : "opacity-0 translate-y-5 transition-all duration-[600ms] ease-out",
         isVisible && "opacity-100 translate-y-0",
         className
       )}
-      style={{ transitionDelay: `${delay}s`, ...style }}
+      style={{
+        transitionDelay: immediate ? undefined : `${delay}s`,
+        animationDelay: immediate ? `${delay}s` : undefined,
+        ...style,
+      }}
     >
       {children}
     </div>

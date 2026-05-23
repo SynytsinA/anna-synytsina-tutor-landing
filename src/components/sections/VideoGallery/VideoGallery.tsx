@@ -123,7 +123,7 @@ export const VideoGallery = () => {
     >
       <div className="max-w-[1200px] mx-auto px-5">
         <div className="text-center mb-10">
-          <FadeIn>
+          <FadeIn immediate>
             <h2 className="text-4xl font-heading font-bold text-slate-900 mb-5">
               {galleryT.title}
             </h2>
@@ -133,7 +133,7 @@ export const VideoGallery = () => {
           </FadeIn>
         </div>
 
-        <InteractiveSlider itemCount={VIDEO_GALLERY_METADATA.length} maxWidth="1100px" itemWidth={280}>
+        <InteractiveSlider itemCount={VIDEO_GALLERY_METADATA.length} maxWidth="1100px" itemWidth={280} immediate>
           {VIDEO_GALLERY_METADATA.map((video) => (
             <div key={video.id} className="flex-none w-[280px] md:w-[300px] snap-center">
               <VideoCard
