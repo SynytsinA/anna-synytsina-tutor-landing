@@ -4,7 +4,7 @@ import { ArrowRight, Play } from "lucide-react";
 import dynamic from "next/dynamic";
 import React, { Suspense } from "react";
 
-import { HeroQuizSkeleton } from "@/components/features/HeroQuiz";
+import { HeroQuizSkeleton } from "@/components/features/HeroQuiz/HeroQuizSkeleton";
 import { FadeIn } from "@/components/shared/FadeIn";
 import { InteractiveWord } from "@/components/ui/InteractiveWord";
 import { HERO_DATA } from "@/constants/data";

@@ -4,12 +4,12 @@ import { Suspense } from "react";
 import { About } from "@/components/sections/About";
 import { Approach } from "@/components/sections/Approach";
 import { FAQ } from "@/components/sections/FAQ";
-import { GamesSectionSkeleton } from "@/components/sections/GamesSection";
+import { GamesSectionSkeleton } from "@/components/sections/GamesSection/GamesSectionSkeleton";
 import { GlobalClassroom } from "@/components/sections/GlobalClassroom";
 import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
 import { Testimonials } from "@/components/sections/Testimonials";
-import { VideoGallerySkeleton } from "@/components/sections/VideoGallery";
+import { VideoGallerySkeleton } from "@/components/sections/VideoGallery/VideoGallerySkeleton";
 
 const VideoGallery = dynamic(
   () => import("@/components/sections/VideoGallery").then((m) => m.VideoGallery),
