@@ -35,7 +35,7 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ item, index, onClick, is
 
       {/* Content Layer - Fades in once image is ready */}
       <div
-        className={`relative flex flex-col justify-between text-white shadow-xl overflow-hidden border-[3px] border-white transition-opacity duration-700 ${!isModal ? "w-full aspect-[9/16] max-h-[550px] rounded-3xl p-5 hover:scale-[1.02] cursor-pointer" : "h-[80vh] sm:h-[95vh] aspect-[9/16] p-3 sm:p-8 rounded-xl sm:rounded-[40px]"} ${getGradientClass(index)} ${isLoading ? "opacity-0" : "opacity-100"}`}
+        className={`relative flex flex-col justify-between text-white shadow-xl overflow-hidden border-[3px] border-white transition-all duration-500 will-change-transform transform-gpu ${!isModal ? "w-full aspect-[9/16] max-h-[550px] rounded-3xl p-5 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] cursor-pointer" : "h-[80vh] sm:h-[95vh] aspect-[9/16] p-3 sm:p-8 rounded-xl sm:rounded-[40px]"} ${getGradientClass(index)} ${isLoading ? "opacity-0" : "opacity-100"}`}
       >
         {/* Story Header */}
         <div className="relative z-20 flex flex-col gap-3">
