@@ -66,8 +66,9 @@ export const GlobalClassroom = () => {
                 <div className="relative z-10">
                   <Laptop size={28} color="white" />
                 </div>
-                <div className="absolute -bottom-3 bg-green-500 px-2 py-0.5 rounded-full text-[10px] font-bold flex items-center gap-1 shadow-sm whitespace-nowrap z-20">
-                  <Wifi size={8} /> ONLINE
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-green-500 text-slate-900 px-2.5 py-1 rounded-full text-[10px] leading-none font-bold flex items-center justify-center gap-1 shadow-sm whitespace-nowrap z-20">
+                  <Wifi size={10} strokeWidth={3} className="-mt-[1px]" />
+                  <span>ONLINE</span>
                 </div>
               </div>
 
