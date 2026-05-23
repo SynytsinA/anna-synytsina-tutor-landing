@@ -66,6 +66,7 @@ export const About = () => {
                       isImageLoaded ? "opacity-100" : "opacity-0"
                     }`}
                     priority
+                    fetchPriority="high"
                     onLoad={() => setIsImageLoaded(true)}
                   />
                 </div>
