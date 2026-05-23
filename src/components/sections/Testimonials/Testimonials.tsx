@@ -10,7 +10,6 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useSwipeNavigation } from "@/hooks";
 
 import { ReviewCard } from "./ReviewCard";
-import styles from "./Testimonials.module.css";
 
 export const Testimonials = () => {
   const { t: allTranslations } = useLanguage();
@@ -101,7 +100,7 @@ export const Testimonials = () => {
           itemCount={TESTIMONIALS_DATA.length}
           maxWidth="1100px"
           itemWidth={280}
-          containerClassName={styles.storyCardContainer}
+          containerClassName="sm:[mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] sm:[-webkit-mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
         >
           {TESTIMONIALS_DATA.map((item, i) => (
             <ReviewCard
