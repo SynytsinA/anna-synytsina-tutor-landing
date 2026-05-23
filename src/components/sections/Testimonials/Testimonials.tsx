@@ -91,7 +91,7 @@ export const Testimonials = () => {
     <section className="py-20 bg-slate-50 bg-[radial-gradient(#e2e8f0_1.5px,transparent_1.5px)] bg-[length:20px_20px]" id="reviews">
       <div className="max-w-[1200px] mx-auto px-5">
         <div className="text-center mb-10">
-          <FadeIn>
+          <FadeIn immediate>
             <h2 className="text-4xl font-heading font-bold text-slate-900 mb-5">{t.title}</h2>
           </FadeIn>
         </div>
@@ -101,6 +101,7 @@ export const Testimonials = () => {
           maxWidth="1100px"
           itemWidth={280}
           containerClassName="sm:[mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] sm:[-webkit-mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
+          immediate
         >
           {TESTIMONIALS_DATA.map((item, i) => (
             <ReviewCard

@@ -23,18 +23,18 @@ export const GlobalClassroom = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Text Side */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-            <FadeIn>
+            <FadeIn immediate>
               <h2 className="text-4xl font-heading font-bold text-white mb-6 flex items-center justify-center lg:justify-start gap-4">
                 <Globe size={36} className="text-primary" /> {t.title}
               </h2>
             </FadeIn>
-            <FadeIn delay={0.1}>
+            <FadeIn immediate delay={0.1}>
               <p className="text-lg text-slate-300 leading-relaxed mb-10">
                 {t.desc}
               </p>
             </FadeIn>
 
-            <FadeIn delay={0.2}>
+            <FadeIn immediate delay={0.2}>
               <div className="flex gap-10 justify-center lg:justify-start">
                 <div className="flex flex-col items-center lg:items-start">
                   <span className="text-4xl font-bold text-purple-400">{stats.countriesCount}</span>
@@ -50,7 +50,7 @@ export const GlobalClassroom = () => {
           </div>
 
           {/* Visualization Side */}
-          <FadeIn delay={0.3} className="flex items-center justify-center">
+          <FadeIn immediate delay={0.3} className="flex items-center justify-center">
             <div className="relative w-full h-[400px] flex items-center justify-center">
               {/* Background Orbit Lines (Decorative) */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] pointer-events-none">

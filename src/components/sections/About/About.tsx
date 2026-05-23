@@ -2,7 +2,7 @@
 
 import { Quote, Star, Sparkles } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 import { FadeIn } from "@/components/shared/FadeIn";
 import { ABOUT_METADATA, LANDING_SECTIONS } from "@/constants/landing";
@@ -14,11 +14,12 @@ import { getStatIcon } from "./utils";
 export const About = () => {
   const { t, lang } = useLanguage();
   const aboutT = t.about;
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   return (
     <section className="py-24 bg-white overflow-hidden" id={LANDING_SECTIONS.about}>
       <div className="max-w-[1200px] mx-auto px-5">
-        <FadeIn>
+        <FadeIn immediate>
           <h2 className="text-4xl font-heading font-bold text-slate-900 mb-16 text-center">
             {aboutT.title}
           </h2>
@@ -27,7 +28,7 @@ export const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-16 lg:gap-24 items-start">
           {/* Left: Photo with Playful Polaroid Style */}
           <div className="relative flex justify-center mt-4">
-            <FadeIn className="relative w-full max-w-[400px]">
+            <FadeIn immediate className="relative w-full max-w-[400px]">
               {/* Decorative background blob */}
               <div className="absolute -top-10 -left-10 w-[120%] h-[120%] bg-[#fff7ed] rounded-blob -rotate-3 z-0 animate-morph transition-all duration-[8000ms]"></div>
 
@@ -52,14 +53,20 @@ export const About = () => {
                 {/* Tape */}
                 <div className="absolute -top-5 left-1/2 -translate-x-1/2 -rotate-2 w-32 h-10 bg-white/80 border-x-2 border-slate-200/50 shadow-sm opacity-90 z-20 backdrop-blur-sm"></div>
 
-                <div className="overflow-hidden border border-slate-100 flex">
+                <div className="relative overflow-hidden border border-slate-100 flex aspect-[3/4]">
+                  {!isImageLoaded && (
+                    <div className="absolute inset-0 bg-slate-200 animate-pulse z-10" />
+                  )}
                   <Image
                     src={ABOUT_METADATA.profilePhoto.url}
                     alt={ABOUT_METADATA.profilePhoto.alt[lang]}
                     width={ABOUT_METADATA.profilePhoto.width}
                     height={ABOUT_METADATA.profilePhoto.height}
-                    className="w-full h-auto aspect-[3/4] object-cover filter sepia-[.15]"
+                    className={`w-full h-full object-cover filter sepia-[.15] transition-opacity duration-500 ${
+                      isImageLoaded ? "opacity-100" : "opacity-0"
+                    }`}
                     priority
+                    onLoad={() => setIsImageLoaded(true)}
                   />
                 </div>
 
@@ -78,7 +85,7 @@ export const About = () => {
 
           {/* Right: Content */}
           <div className="flex flex-col gap-10">
-            <FadeIn delay={0.1}>
+            <FadeIn immediate delay={0.1}>
               <div className="relative bg-white border-2 border-slate-900 rounded-[2rem] p-8 shadow-[8px_8px_0px_rgba(0,0,0,0.05)] hover:shadow-hard transition-shadow duration-300">
                 <div className="flex items-center gap-3 mb-4">
                   <Quote
@@ -99,6 +106,7 @@ export const About = () => {
               {aboutT.stats &&
                 aboutT.stats.map((stat, index: number) => (
                   <FadeIn
+                    immediate
                     key={index}
                     delay={0.2 + index * 0.1}
                     className={`flex items-center gap-6 px-6 py-5 rounded-hand border-2 border-slate-900 shadow-hard transition-all duration-300 hover:translate-x-1 hover:-rotate-1 ${

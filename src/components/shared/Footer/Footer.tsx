@@ -1,6 +1,6 @@
 import { Sparkles } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 import { FadeIn } from "@/components/shared/FadeIn";
 import { InstagramIcon } from "@/components/ui/InstagramIcon";
@@ -20,6 +20,7 @@ interface FooterProps {
 
 export const Footer = ({ t }: FooterProps) => {
   const { lang } = useLanguage();
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   return (
     <footer
@@ -44,7 +45,7 @@ export const Footer = ({ t }: FooterProps) => {
 
       <div className="pt-24 pb-10 bg-orange-50 relative z-20">
         <div className="max-w-[1200px] mx-auto px-5">
-          <FadeIn>
+          <FadeIn immediate>
             <div className="flex flex-col-reverse md:flex-row items-stretch bg-white rounded-[32px] overflow-hidden border-[3px] border-slate-900 shadow-hard-xl mb-16 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[12px_12px_0px_#0f172a] min-h-[450px]">
               {/* Left Side: Text */}
               <div className="flex-[1.2] p-8 md:p-12 flex flex-col justify-center relative bg-[radial-gradient(#e2e8f0_1.5px,transparent_1.5px)] bg-[length:20px_20px]">
@@ -74,12 +75,18 @@ export const Footer = ({ t }: FooterProps) => {
 
               {/* Right Side: Image */}
               <div className="flex-1 relative min-h-[250px] md:min-h-full overflow-hidden border-t-[3px] md:border-t-0 md:border-l-[3px] border-slate-900 group">
+                {!isImageLoaded && (
+                  <div className="absolute inset-0 bg-slate-200 animate-pulse z-10" />
+                )}
                 <Image
                   src={FOOTER_METADATA.image.url}
                   alt={FOOTER_METADATA.image.alt[lang]}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className={`object-cover transition-all duration-500 group-hover:scale-105 ${
+                    isImageLoaded ? "opacity-100" : "opacity-0"
+                  }`}
+                  onLoad={() => setIsImageLoaded(true)}
                 />
                 <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
 

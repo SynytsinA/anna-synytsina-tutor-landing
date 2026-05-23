@@ -18,7 +18,7 @@ export const Services = () => {
   return (
     <section className="py-20 bg-white" id={sections.subjects}>
       <div className="max-w-[1200px] mx-auto px-5">
-        <FadeIn>
+        <FadeIn immediate>
           <h2 className="text-4xl font-heading font-bold text-slate-900 mb-5 text-center">
             {t.title}
           </h2>
@@ -27,6 +27,7 @@ export const Services = () => {
         <div className={cn("grid gap-8", config.grid)}>
           {cards.map((card, index) => (
             <FadeIn
+              immediate
               key={index}
               className="bg-white rounded-3xl p-8 border-[3px] border-slate-900 transition-all duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] flex flex-col gap-6 h-full shadow-[6px_6px_0px_rgba(15,23,42,0.1)] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg hover:border-slate-900"
               delay={0.1 * (index + 1)}
